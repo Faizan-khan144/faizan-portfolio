@@ -72,18 +72,15 @@ https://faizan-khan144.github.io/student-attendance-tracker/
 Here are some screenshots of my portfolio:
 
 ### 🖥️ Desktop Views
-<img width="1366" height="768" alt="portfolio preview 1" src="https://github.com/user-attachments/assets/65283de6-b8a4-4cc9-a5cb-8ca222f2caec" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/2f0b30af-9a94-41a0-8a3a-92934db2f27c" />
 
-<img width="1366" height="768" alt="portfolio preview 2" src="https://github.com/user-attachments/assets/03054561-8f68-4d78-bb45-769da7a980f9" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/e7be60db-27d8-4222-9eef-b2d8a293b66b" />
 
-<img width="1366" height="768" alt="portfolio preview 3" src="https://github.com/user-attachments/assets/dcedb7fa-e817-4184-bc35-9a5bf7b2aba2" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/e47f45d0-67af-4983-a8ea-e9638132c45e" />
 
----
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/546b280b-ca63-4295-a15c-9856e108075c" />
 
-### 📱 UI Sections
-<img width="1366" height="768" alt="portfolio preview 4" src="https://github.com/user-attachments/assets/07caa963-77e8-4115-93de-35599834540d" />
-
-<img width="1366" height="768" alt="portfolio preview 5" src="https://github.com/user-attachments/assets/3c6047f6-a074-4a14-8e27-f3ba575bb7bc" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/310e4bfd-aaef-431b-bccc-08de6488ea7f" />
 
 ---
 
