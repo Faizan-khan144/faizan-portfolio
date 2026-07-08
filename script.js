@@ -150,9 +150,93 @@ function setupContactForm() {
   });
 }
 
+function initHeroScene() {
+  const canvas = document.getElementById("heroCanvas");
+  const hero = document.getElementById("home");
+  if (!canvas || !hero || prefersReducedMotion || typeof THREE === "undefined") return;
+
+  let renderer;
+  try {
+    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  } catch (err) {
+    return;
+  }
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
+  camera.position.z = 6;
+
+  const goldMat = new THREE.MeshBasicMaterial({ color: 0xd4a657, wireframe: true, transparent: true, opacity: 0.45 });
+  const tealMat = new THREE.MeshBasicMaterial({ color: 0x4fbdae, wireframe: true, transparent: true, opacity: 0.35 });
+
+  const shapeA = new THREE.Mesh(new THREE.IcosahedronGeometry(1.7, 1), goldMat);
+  shapeA.position.set(2.4, 0.5, -1);
+  scene.add(shapeA);
+
+  const shapeB = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 0), tealMat);
+  shapeB.position.set(-2.6, -0.9, -2);
+  scene.add(shapeB);
+
+  const pointCount = 120;
+  const positions = new Float32Array(pointCount * 3);
+  for (let i = 0; i < pointCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 12;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 7;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 6;
+  }
+  const pointsGeo = new THREE.BufferGeometry();
+  pointsGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+  const pointsMat = new THREE.PointsMaterial({ color: 0x8d96a3, size: 0.03, transparent: true, opacity: 0.5 });
+  const points = new THREE.Points(pointsGeo, pointsMat);
+  scene.add(points);
+
+  function resize() {
+    const rect = hero.getBoundingClientRect();
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    renderer.setSize(rect.width, rect.height);
+    camera.aspect = rect.width / rect.height;
+    camera.updateProjectionMatrix();
+  }
+
+  resize();
+  window.addEventListener("resize", resize);
+
+  function animate() {
+    shapeA.rotation.x += 0.0018;
+    shapeA.rotation.y += 0.0026;
+    shapeB.rotation.x -= 0.0014;
+    shapeB.rotation.y -= 0.002;
+    points.rotation.y += 0.0004;
+    renderer.render(scene, camera);
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
+
+function initTilt(selector, maxTilt) {
+  if (prefersReducedMotion) return;
+  document.querySelectorAll(selector).forEach((el) => {
+    el.addEventListener("mousemove", (event) => {
+      const rect = el.getBoundingClientRect();
+      const px = (event.clientX - rect.left) / rect.width;
+      const py = (event.clientY - rect.top) / rect.height;
+      const rx = (0.5 - py) * maxTilt;
+      const ry = (px - 0.5) * maxTilt;
+      el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+    });
+    el.addEventListener("mouseleave", () => {
+      el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   buildEditor();
   setupNav();
   setupReveals();
   setupContactForm();
+  initHeroScene();
+  initTilt("#editor", 10);
+  initTilt(".skill-card", 6);
 });
