@@ -3,148 +3,156 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Faizan Khan | Front-End Developer</title>
-<meta name="description" content="Portfolio of Muhammad Faizan Khan — a front-end developer crafting responsive, creative interfaces with HTML, CSS and JavaScript.">
+<title>Muhammad Faizan Khan — Front-End Developer</title>
+<meta name="description" content="Portfolio of Muhammad Faizan Khan, a front-end developer based in Pakistan building responsive interfaces with HTML, CSS and JavaScript.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="noise"></div>
-<div class="glow"></div>
+<div class="backdrop"></div>
 
-<header>
-  <div class="nav">
-    <a href="#home" class="logo"><span class="dot"></span>faizan.dev</a>
-    <nav class="nav-links">
-      <a href="#home">home</a>
-      <a href="#skills">skills</a>
-      <a href="#projects">projects</a>
-      <a href="#goals">goals</a>
-      <a href="#contact">contact</a>
+<header class="site-header">
+  <div class="wrap header-row">
+    <a href="#home" class="brand">
+      <span class="brand-mark">FK</span>
+      <span class="brand-name">faizan<em>.dev</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Work</a>
+      <a href="#goals">Roadmap</a>
+      <a href="#contact">Contact</a>
     </nav>
-    <a href="mailto:muhammadfaizankhan525@example.com" class="nav-cta">Hire Me</a>
-    <button class="burger" id="burger" aria-label="Toggle menu">
+    <a href="#contact" class="btn btn-ghost header-cta">Hire me</a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#home">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Work</a>
+    <a href="#goals">Roadmap</a>
+    <a href="#contact">Contact</a>
+  </div>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#home">home</a>
-  <a href="#skills">skills</a>
-  <a href="#projects">projects</a>
-  <a href="#goals">goals</a>
-  <a href="#contact">contact</a>
-</div>
+<main>
 
 <section class="hero" id="home">
   <div class="wrap hero-grid">
-    <div>
-      <div class="pill"><span class="ping"></span>Available for opportunities</div>
-      <h1>Hi, I'm Muhammad Faizan Khan.<br>I build <span>front-end</span> experiences.</h1>
-      <p>Front-end developer crafting responsive, creative and user-friendly websites with HTML, CSS and JavaScript — leveling up my skills one project at a time.</p>
+    <div class="hero-copy">
+      <div class="eyebrow"><span class="dot-live"></span>Available for front-end work</div>
+      <h1>Muhammad Faizan Khan builds interfaces that feel considered.</h1>
+      <p class="hero-sub">I turn ideas into responsive, accessible front-ends using HTML, CSS and JavaScript — and I'm currently deepening my craft with React.</p>
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-outline">Get In Touch</a>
+        <a href="#projects" class="btn btn-primary">View my work</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
       </div>
-      <div class="stats">
-        <div class="stat"><b>10+</b><span>Projects Built</span></div>
-        <div class="stat"><b>6+</b><span>Skills Learned</span></div>
-        <div class="stat"><b>∞</b><span>Curiosity</span></div>
+      <div class="stat-row">
+        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Live projects</span></div>
+        <div class="stat"><span class="stat-num">03</span><span class="stat-label">Core languages</span></div>
+        <div class="stat"><span class="stat-num">01</span><span class="stat-label">Framework in progress</span></div>
       </div>
     </div>
-    <div class="terminal">
-      <div class="terminal-bar">
-        <span></span><span></span><span></span>
-        <span class="terminal-title">about-me.js</span>
+
+    <div class="editor" id="editor">
+      <div class="editor-bar">
+        <div class="editor-dots"><span></span><span></span><span></span></div>
+        <div class="editor-tabs">
+          <span class="editor-tab active">profile.js</span>
+        </div>
       </div>
-      <div class="terminal-body">
-        <div id="typed-out"></div><span class="cursor" id="cursor"></span>
+      <div class="editor-body">
+        <div class="editor-lines" id="editorLines"></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="marquee">
-  <div class="marquee-track">
-    <span><b>HTML5</b> ✦ <b>CSS3</b> ✦ <b>JavaScript</b> ✦ Responsive Design ✦ UI/UX Basics ✦ Problem Solving ✦ <b>React.js</b> (Learning) ✦</span>
-    <span><b>HTML5</b> ✦ <b>CSS3</b> ✦ <b>JavaScript</b> ✦ Responsive Design ✦ UI/UX Basics ✦ Problem Solving ✦ <b>React.js</b> (Learning) ✦</span>
+<div class="ticker">
+  <div class="ticker-track">
+    <span>HTML5</span><i>&#10022;</i><span>CSS3</span><i>&#10022;</i><span>JavaScript</span><i>&#10022;</i><span>Responsive Design</span><i>&#10022;</i><span>Problem Solving</span><i>&#10022;</i><span>React.js — Learning</span><i>&#10022;</i>
+    <span>HTML5</span><i>&#10022;</i><span>CSS3</span><i>&#10022;</i><span>JavaScript</span><i>&#10022;</i><span>Responsive Design</span><i>&#10022;</i><span>Problem Solving</span><i>&#10022;</i><span>React.js — Learning</span><i>&#10022;</i>
   </div>
 </div>
 
 <section class="section" id="skills">
   <div class="wrap">
     <div class="eyebrow reveal">// tech-stack</div>
-    <h2 class="section-title reveal">My Skills</h2>
-    <p class="section-sub reveal">A growing toolkit of front-end technologies and concepts I use to build real-world projects.</p>
+    <h2 class="section-title reveal">Skills &amp; tools</h2>
+    <p class="section-sub reveal">A growing toolkit of front-end technologies and habits I rely on to ship real, working interfaces.</p>
+
     <div class="skills-grid">
       <div class="skill-card reveal">
-        <div class="tag">markup</div>
+        <span class="skill-index">01</span>
         <div class="skill-glyph">&lt;/&gt;</div>
         <h3>HTML5</h3>
         <p>Semantic, accessible structure</p>
       </div>
       <div class="skill-card reveal">
-        <div class="tag">style</div>
+        <span class="skill-index">02</span>
         <div class="skill-glyph">{ }</div>
         <h3>CSS3</h3>
         <p>Layouts, animation, flexbox &amp; grid</p>
       </div>
       <div class="skill-card reveal">
-        <div class="tag">logic</div>
+        <span class="skill-index">03</span>
         <div class="skill-glyph">( )</div>
         <h3>JavaScript</h3>
         <p>Interactivity &amp; DOM manipulation</p>
       </div>
       <div class="skill-card reveal">
-        <div class="tag">layout</div>
+        <span class="skill-index">04</span>
         <div class="skill-glyph">[ ]</div>
         <h3>Responsive Design</h3>
         <p>Fluid, mobile-first interfaces</p>
       </div>
       <div class="skill-card reveal">
-        <div class="tag">mindset</div>
+        <span class="skill-index">05</span>
         <div class="skill-glyph">?:</div>
         <h3>Problem Solving</h3>
         <p>Breaking down complex requirements</p>
       </div>
       <div class="skill-card reveal">
-        <div class="tag">craft</div>
-        <div class="skill-glyph">◇</div>
+        <span class="skill-index">06</span>
+        <div class="skill-glyph">&#9671;</div>
         <h3>UI / UX Basics</h3>
         <p>Clean, intuitive user experiences</p>
       </div>
       <div class="skill-card reveal">
-        <div class="tag">learning</div>
+        <span class="skill-index">07</span>
         <div class="skill-glyph">&lt;/&gt;</div>
         <h3>React.js</h3>
-        <p>Component-based frontend framework</p>
+        <p>Component-based front-end framework</p>
       </div>
       <div class="skill-card reveal">
-        <div class="tag">always</div>
-        <div class="skill-glyph">&#8734;</div>
-        <h3>Curiosity</h3>
-        <p>Always exploring what's next</p>
+        <span class="skill-index">08</span>
+        <div class="skill-glyph">git</div>
+        <h3>Git &amp; GitHub</h3>
+        <p>Version control &amp; collaboration</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section" id="projects" style="padding-top:0">
+<section class="section" id="projects">
   <div class="wrap">
-    <div class="eyebrow reveal">// projects</div>
-    <h2 class="section-title reveal">What I've Built</h2>
-    <p class="section-sub reveal">Real-world projects created while learning and growing as a front-end developer.</p>
+    <div class="eyebrow reveal">// selected-work</div>
+    <h2 class="section-title reveal">What I've built</h2>
+    <p class="section-sub reveal">Real front-end projects, shipped and deployed, while learning and growing as a developer.</p>
+
     <div class="projects-list">
 
       <div class="project-row reveal">
         <div class="project-path">~/projects/01</div>
         <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/DevDashboard/" target="_blank" rel="noopener">Dev Dashboard <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A modern developer dashboard built with HTML, CSS and JavaScript to track tools, projects and productivity in a clean UI.</p>
+          <h3><a href="https://faizan-khan144.github.io/DevDashboard/" target="_blank" rel="noopener">Dev Dashboard<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A modern developer dashboard for tracking tools, projects and productivity in a clean UI.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
       </div>
@@ -152,8 +160,8 @@
       <div class="project-row reveal">
         <div class="project-path">~/projects/02</div>
         <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/student-attendance-tracker/" target="_blank" rel="noopener">Student Attendance Tracker <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A simple and efficient attendance tracking system that helps manage student records with a clean, intuitive interface.</p>
+          <h3><a href="https://faizan-khan144.github.io/student-attendance-tracker/" target="_blank" rel="noopener">Student Attendance Tracker<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A simple, efficient attendance system that manages student records with a clean, intuitive interface.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
       </div>
@@ -161,8 +169,8 @@
       <div class="project-row reveal">
         <div class="project-path">~/projects/03</div>
         <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/Tic-Tac-Toe-Game/" target="_blank" rel="noopener">Tic Tac Toe Game <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A simple interactive Tic Tac Toe game with smooth UI and complete win/draw game logic built in vanilla JavaScript.</p>
+          <h3><a href="https://faizan-khan144.github.io/Tic-Tac-Toe-Game/" target="_blank" rel="noopener">Tic Tac Toe Game<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>An interactive Tic Tac Toe game with a smooth UI and complete win / draw logic in vanilla JavaScript.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
       </div>
@@ -170,8 +178,8 @@
       <div class="project-row reveal">
         <div class="project-path">~/projects/04</div>
         <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/fz-bank-modern-banking-website/" target="_blank" rel="noopener">FZ Bank Website <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A modern banking website UI featuring a clean design, responsive layout and professional presentation of financial services.</p>
+          <h3><a href="https://faizan-khan144.github.io/fz-bank-modern-banking-website/" target="_blank" rel="noopener">FZ Bank Website<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A modern banking website UI with a clean design, responsive layout and professional presentation.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
       </div>
@@ -179,8 +187,8 @@
       <div class="project-row reveal">
         <div class="project-path">~/projects/05</div>
         <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/fz-fitness/" target="_blank" rel="noopener">FZ Fitness <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A modern, responsive gym website featuring a bold fitness-focused design, membership plans, training programs and interactive sections.</p>
+          <h3><a href="https://faizan-khan144.github.io/fz-fitness/" target="_blank" rel="noopener">FZ Fitness<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A bold, responsive gym website featuring membership plans, training programs and interactive sections.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive</span></div>
       </div>
@@ -188,8 +196,8 @@
       <div class="project-row reveal">
         <div class="project-path">~/projects/06</div>
         <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/vortex-agency/" target="_blank" rel="noopener">Vortex Agency <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A modern digital agency website featuring smooth animations, service showcases, pricing plans, testimonials and a premium user experience.</p>
+          <h3><a href="https://faizan-khan144.github.io/vortex-agency/" target="_blank" rel="noopener">Vortex Agency<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A digital agency site with smooth animations, service showcases, pricing plans and testimonials.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>UI/UX</span></div>
       </div>
@@ -197,8 +205,8 @@
       <div class="project-row reveal">
         <div class="project-path">~/projects/07</div>
         <div class="project-main">
-          <h3><a href="https://github.com/Faizan-khan144/cryptolens-dashboard" target="_blank" rel="noopener">CryptoLens Dashboard <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A professional cryptocurrency dashboard featuring live market data, trending coins and a modern glassmorphism interface powered by the CoinGecko API.</p>
+          <h3><a href="https://github.com/Faizan-khan144/cryptolens-dashboard" target="_blank" rel="noopener">CryptoLens Dashboard<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A cryptocurrency dashboard with live market data and a glassmorphism interface powered by the CoinGecko API.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>API</span></div>
       </div>
@@ -206,8 +214,8 @@
       <div class="project-row reveal">
         <div class="project-path">~/projects/08</div>
         <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/profile-card-generator/" target="_blank" rel="noopener">Profile Card Generator <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A responsive profile card generator that lets users create stylish, customizable profile cards in real time.</p>
+          <h3><a href="https://faizan-khan144.github.io/profile-card-generator/" target="_blank" rel="noopener">Profile Card Generator<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A responsive profile card generator that lets users create stylish, customizable cards in real time.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
       </div>
@@ -215,26 +223,20 @@
       <div class="project-row reveal">
         <div class="project-path">~/projects/09</div>
         <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/Modern-Tic-Tac-Toe/" target="_blank" rel="noopener">Modern Rock Paper Scissors <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A modern, responsive Rock Paper Scissors game featuring smooth animations, sound effects, score tracking and winner detection.</p>
+          <h3><a href="https://faizan-khan144.github.io/Modern-Tic-Tac-Toe/" target="_blank" rel="noopener">Modern Rock Paper Scissors<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A responsive Rock Paper Scissors game with smooth animations, sound effects and score tracking.</p>
         </div>
         <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
       </div>
-      
+
       <div class="project-row reveal">
-  <div class="project-path">~/projects/10</div>
-  <div class="project-main">
-    <h3><a href="https://faizan-khan144.github.io/august-and-oak-ecommerce/" target="_blank" rel="noopener">August &amp; Oak <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-    <p>A modern and responsive e-commerce website featuring product browsing, category filtering, search, wishlist, shopping cart, and a clean shopping experience with an elegant interface.</p>
-  </div>
-  <div class="project-tags">
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JavaScript</span>
-    <span>E-Commerce</span>
-  </div>
-        
-</div>
+        <div class="project-path">~/projects/10</div>
+        <div class="project-main">
+          <h3><a href="https://faizan-khan144.github.io/august-and-oak-ecommerce/" target="_blank" rel="noopener">August &amp; Oak<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
+          <p>A responsive e-commerce site with product browsing, filtering, search, wishlist and cart.</p>
+        </div>
+        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>E-Commerce</span></div>
+      </div>
 
     </div>
   </div>
@@ -243,27 +245,28 @@
 <section class="section" id="goals">
   <div class="wrap">
     <div class="eyebrow reveal">// roadmap</div>
-    <h2 class="section-title reveal">Where I'm Headed</h2>
-    <p class="section-sub reveal">Milestones I'm actively working towards on the road to becoming a professional front-end developer.</p>
+    <h2 class="section-title reveal">Where I'm headed</h2>
+    <p class="section-sub reveal">The milestones I'm actively working through on the way to becoming a professional front-end developer.</p>
+
     <div class="roadmap">
-      <div class="roadmap-item active reveal">
-        <div class="roadmap-check">01</div>
+      <div class="roadmap-item done reveal">
+        <div class="roadmap-node">01</div>
         <div class="roadmap-text"><h3>Improve JavaScript to an advanced level</h3><p>Deepen async patterns, architecture and testing</p></div>
       </div>
       <div class="roadmap-item active reveal">
-        <div class="roadmap-check">02</div>
-        <div class="roadmap-text"><h3>Learn React.js and modern frameworks</h3><p>Component design, state management, hooks</p></div>
+        <div class="roadmap-node">02</div>
+        <div class="roadmap-text"><h3>Learn React and modern frameworks</h3><p>Component design, state management, hooks</p></div>
       </div>
       <div class="roadmap-item reveal">
-        <div class="roadmap-check">03</div>
-        <div class="roadmap-text"><h3>Build advanced, full-featured projects</h3><p>Ship products with real users in mind</p></div>
+        <div class="roadmap-node">03</div>
+        <div class="roadmap-text"><h3>Build advanced, full-featured projects</h3><p>Ship products designed with real users in mind</p></div>
       </div>
       <div class="roadmap-item reveal">
-        <div class="roadmap-check">04</div>
+        <div class="roadmap-node">04</div>
         <div class="roadmap-text"><h3>Contribute to open-source projects</h3><p>Collaborate with developers worldwide</p></div>
       </div>
       <div class="roadmap-item reveal">
-        <div class="roadmap-check">05</div>
+        <div class="roadmap-node">05</div>
         <div class="roadmap-text"><h3>Become a professional front-end developer</h3><p>Turn passion into a full-time craft</p></div>
       </div>
     </div>
@@ -274,52 +277,65 @@
   <div class="wrap contact-grid">
     <div class="contact-info reveal">
       <div class="eyebrow">// contact</div>
-      <h3>Let's build something together</h3>
-      <p>Have a project idea or an opportunity? I'd love to hear from you.</p>
+      <h2 class="section-title">Let's build something together</h2>
+      <p class="section-sub">Have a project in mind or an opportunity to discuss? I'd love to hear from you.</p>
+
       <div class="contact-links">
         <a href="mailto:muhammadfaizankhan525@gmail.com">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
-          muhammadfaizankhan525@example.com
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></span>
+          muhammadfaizankhan525@gmail.com
         </a>
         <a href="https://github.com/Faizan-khan144" target="_blank" rel="noopener">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9c0-1.1.4-1.8.9-2.2-3.1-.3-6.4-1.5-6.4-6.9 0-1.5.5-2.8 1.5-3.8-.1-.3-.6-1.8.1-3.8 0 0 1.2-.4 4 1.5a13.7 13.7 0 017.2 0c2.8-1.9 4-1.5 4-1.5.7 2 .2 3.5.1 3.8.9 1 1.5 2.3 1.5 3.8 0 5.4-3.3 6.6-6.4 6.9.5.4 1 1.3 1 2.6V21"/></svg>
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9c0-1.1.4-1.8.9-2.2-3.1-.3-6.4-1.5-6.4-6.9 0-1.5.5-2.8 1.5-3.8-.1-.3-.6-1.8.1-3.8 0 0 1.2-.4 4 1.5a13.7 13.7 0 017.2 0c2.8-1.9 4-1.5 4-1.5.7 2 .2 3.5.1 3.8.9 1 1.5 2.3 1.5 3.8 0 5.4-3.3 6.6-6.4 6.9.5.4 1 1.3 1 2.6V21"/></svg></span>
           github.com/Faizan-khan144
         </a>
-        <a href="#" onclick="return false;">
-          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <a href="#" class="static">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
           Pakistan
         </a>
       </div>
     </div>
-    <form class="form reveal" id="contactForm">
+
+    <form class="form reveal" id="contactForm" novalidate>
       <div class="form-row">
-        <div class="field"><label>Name</label><input type="text" id="cName" placeholder="Your name" required></div>
-        <div class="field"><label>Email</label><input type="email" id="cEmail" placeholder="you@example.com" required></div>
+        <div class="field">
+          <label for="cName">Name</label>
+          <input type="text" id="cName" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="cEmail">Email</label>
+          <input type="email" id="cEmail" placeholder="you@example.com" required>
+        </div>
       </div>
-      <div class="field full" style="margin-bottom:16px">
-        <label>Message</label>
+      <div class="field full">
+        <label for="cMessage">Message</label>
         <textarea id="cMessage" rows="5" placeholder="Tell me about your project..." required></textarea>
       </div>
-      <button type="submit" class="submit-btn">Send Message
+      <button type="submit" class="submit-btn">
+        Send message
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </button>
+      <p class="form-note" id="formNote">Submitting opens your email client with this message pre-filled.</p>
     </form>
   </div>
 </section>
 
-<footer>
+</main>
+
+<footer class="site-footer">
   <div class="wrap foot-row">
-    <p>&copy; 2026 Faizan Khan. Built with HTML, CSS &amp; JavaScript.</p>
+    <p>&copy; 2026 Muhammad Faizan Khan. Built with HTML, CSS &amp; JavaScript.</p>
     <div class="foot-social">
       <a href="https://github.com/Faizan-khan144" target="_blank" rel="noopener" aria-label="GitHub">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9c0-1.1.4-1.8.9-2.2-3.1-.3-6.4-1.5-6.4-6.9 0-1.5.5-2.8 1.5-3.8-.1-.3-.6-1.8.1-3.8 0 0 1.2-.4 4 1.5a13.7 13.7 0 017.2 0c2.8-1.9 4-1.5 4-1.5.7 2 .2 3.5.1 3.8.9 1 1.5 2.3 1.5 3.8 0 5.4-3.3 6.6-6.4 6.9.5.4 1 1.3 1 2.6V21"/></svg>
       </a>
-      <a href="mailto:muhammadfaizankhan525@example.com" aria-label="Email">
+      <a href="mailto:muhammadfaizankhan525@gmail.com" aria-label="Email">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
       </a>
     </div>
   </div>
 </footer>
+
 <script src="script.js"></script>
 </body>
 </html>
