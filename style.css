@@ -273,6 +273,17 @@ img, svg {
 .hero {
   padding: 168px 0 96px;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 .hero-grid {
@@ -280,6 +291,9 @@ img, svg {
   grid-template-columns: 1.05fr 0.95fr;
   gap: 64px;
   align-items: center;
+  position: relative;
+  z-index: 1;
+  perspective: 1400px;
 }
 
 .hero-copy h1 {
@@ -337,6 +351,9 @@ img, svg {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.6);
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  will-change: transform;
 }
 
 .editor-bar {
@@ -475,13 +492,15 @@ img, svg {
   border: 1px solid var(--border-soft);
   border-radius: 14px;
   overflow: hidden;
+  perspective: 1000px;
 }
 
 .skill-card {
   background: var(--surface);
   padding: 30px 26px;
   position: relative;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
+  will-change: transform;
 }
 
 .skill-card:hover {
@@ -861,5 +880,8 @@ img, svg {
   * {
     animation: none !important;
     transition: none !important;
+  }
+  .hero-canvas {
+    display: none;
   }
 }
