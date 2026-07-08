@@ -1,103 +1,158 @@
-const burger = document.getElementById('burger');
-const mobileMenu = document.getElementById('mobileMenu');
-burger.addEventListener('click', () => {
-  mobileMenu.classList.toggle('open');
-  burger.classList.toggle('active');
-});
-document.querySelectorAll('.mobile-menu a').forEach(a => {
-  a.addEventListener('click', () => mobileMenu.classList.remove('open'));
-});
-
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-      io.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-revealEls.forEach(el => io.observe(el));
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const codeLines = [
-  { html: '<span class="key">const</span> <span class="punc">developer</span> <span class="punc">=</span> <span class="punc">{</span>' },
-  { html: '&nbsp;&nbsp;name:&nbsp;<span class="str">"Muhammad Faizan Khan"</span><span class="punc">,</span>' },
-  { html: '&nbsp;&nbsp;role:&nbsp;<span class="str">"Front-End Developer"</span><span class="punc">,</span>' },
-  { html: '&nbsp;&nbsp;stack:&nbsp;<span class="punc">[</span><span class="str">"HTML"</span><span class="punc">,</span> <span class="str">"CSS"</span><span class="punc">,</span> <span class="str">"JS"</span><span class="punc">],</span>' },
-  { html: '&nbsp;&nbsp;learning:&nbsp;<span class="str">"React.js"</span><span class="punc">,</span>' },
-  { html: '&nbsp;&nbsp;location:&nbsp;<span class="str">"Pakistan"</span><span class="punc">,</span>' },
-  { html: '&nbsp;&nbsp;available:&nbsp;<span class="key">true</span>' },
-  { html: '<span class="punc">};</span>' },
-  { html: '' },
-  { html: '<span class="comment">// building something new, always.</span>' }
+  { indent: 0, text: "const developer = {" },
+  { indent: 1, key: "name", value: "Muhammad Faizan Khan" },
+  { indent: 1, key: "role", value: "Front-End Developer" },
+  { indent: 1, key: "based", value: "Pakistan" },
+  { indent: 1, keyword: "stack", value: '["HTML5", "CSS3", "JavaScript"]' },
+  { indent: 1, key: "learning", value: "React.js" },
+  { indent: 1, key: "status", value: "open to work", last: true },
+  { indent: 0, text: "};" }
 ];
 
-const out = document.getElementById('typed-out');
-let lineIndex = 0;
+function highlightLine(line) {
+  if (line.text) {
+    return `<span class="tok-punct">${line.text}</span>`;
+  }
+  const comma = line.last ? "" : ",";
+  if (line.keyword) {
+    return `<span class="tok-key">${line.keyword}</span><span class="tok-punct">: </span><span class="tok-punct">${line.value}${comma}</span>`;
+  }
+  return `<span class="tok-key">${line.key}</span><span class="tok-punct">: </span><span class="tok-string">"${line.value}"</span><span class="tok-punct">${comma}</span>`;
+}
 
-function typeNextLine() {
-  if (lineIndex >= codeLines.length) return;
-  const lineEl = document.createElement('div');
-  const lnNum = document.createElement('span');
-  lnNum.className = 'ln';
-  lnNum.textContent = (lineIndex + 1) + ' ';
-  lineEl.appendChild(lnNum);
-  const content = document.createElement('span');
-  lineEl.appendChild(content);
-  out.appendChild(lineEl);
+function plainLine(line) {
+  const indent = "  ".repeat(line.indent);
+  if (line.text) return indent + line.text;
+  const comma = line.last ? "" : ",";
+  if (line.keyword) return `${indent}${line.keyword}: ${line.value}${comma}`;
+  return `${indent}${line.key}: "${line.value}"${comma}`;
+}
 
-  const raw = codeLines[lineIndex].html;
-  const temp = document.createElement('div');
-  temp.innerHTML = raw;
-  const fullText = temp.textContent;
-  let charIndex = 0;
+function buildEditor() {
+  const container = document.getElementById("editorLines");
+  if (!container) return;
 
-  function typeChar() {
-    if (charIndex <= fullText.length) {
-      const partial = raw.length && charIndex === fullText.length ? raw : sliceHtml(raw, charIndex);
-      content.innerHTML = partial;
+  if (prefersReducedMotion) {
+    codeLines.forEach((line, i) => {
+      const row = document.createElement("div");
+      row.className = "editor-line";
+      row.innerHTML = `<span class="editor-line-num">${i + 1}</span><span class="editor-line-code">${"  ".repeat(line.indent)}${highlightLine(line)}</span>`;
+      container.appendChild(row);
+    });
+    return;
+  }
+
+  let lineIndex = 0;
+
+  function typeLine() {
+    if (lineIndex >= codeLines.length) return;
+
+    const line = codeLines[lineIndex];
+    const row = document.createElement("div");
+    row.className = "editor-line";
+    const numSpan = document.createElement("span");
+    numSpan.className = "editor-line-num";
+    numSpan.textContent = lineIndex + 1;
+    const codeSpan = document.createElement("span");
+    codeSpan.className = "editor-line-code";
+    row.appendChild(numSpan);
+    row.appendChild(codeSpan);
+    container.appendChild(row);
+
+    const full = plainLine(line);
+    let charIndex = 0;
+    const cursor = document.createElement("span");
+    cursor.className = "cursor";
+    codeSpan.appendChild(cursor);
+
+    const typer = setInterval(() => {
       charIndex++;
-      setTimeout(typeChar, fullText.length === 0 ? 0 : 14 + Math.random() * 18);
-    } else {
-      lineIndex++;
-      setTimeout(typeNextLine, 90);
-    }
+      codeSpan.textContent = full.slice(0, charIndex);
+      codeSpan.appendChild(cursor);
+      if (charIndex >= full.length) {
+        clearInterval(typer);
+        codeSpan.innerHTML = "  ".repeat(line.indent) + highlightLine(line);
+        lineIndex++;
+        setTimeout(typeLine, 90);
+      }
+    }, 18);
   }
-  typeChar();
+
+  typeLine();
 }
 
-function sliceHtml(html, count) {
-  let result = '';
-  let plainCount = 0;
-  let i = 0;
-  while (i < html.length && plainCount < count) {
-    if (html[i] === '<') {
-      const close = html.indexOf('>', i);
-      result += html.slice(i, close + 1);
-      i = close + 1;
-    } else if (html[i] === '&') {
-      const semi = html.indexOf(';', i);
-      result += html.slice(i, semi + 1);
-      i = semi + 1;
-      plainCount++;
-    } else {
-      result += html[i];
-      i++;
-      plainCount++;
-    }
-  }
-  return result;
+function setupNav() {
+  const burger = document.getElementById("burger");
+  const menu = document.getElementById("mobileMenu");
+  if (!burger || !menu) return;
+
+  burger.addEventListener("click", () => {
+    const isOpen = menu.classList.toggle("open");
+    burger.setAttribute("aria-expanded", String(isOpen));
+    burger.classList.toggle("open", isOpen);
+  });
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("open");
+      burger.setAttribute("aria-expanded", "false");
+    });
+  });
 }
 
-setTimeout(typeNextLine, 600);
+function setupReveals() {
+  const items = document.querySelectorAll(".reveal");
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    items.forEach((item) => item.classList.add("in"));
+    return;
+  }
 
-const form = document.getElementById('contactForm');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const name = document.getElementById('cName').value;
-  const email = document.getElementById('cEmail').value;
-  const message = document.getElementById('cMessage').value;
-  const subject = encodeURIComponent('Portfolio inquiry from ' + name);
-  const body = encodeURIComponent(message + '\n\nFrom: ' + name + ' (' + email + ')');
-  window.location.href = 'mailto:muhammadfaizankhan525@example.com?subject=' + subject + '&body=' + body;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  items.forEach((item) => observer.observe(item));
+}
+
+function setupContactForm() {
+  const form = document.getElementById("contactForm");
+  const note = document.getElementById("formNote");
+  if (!form) return;
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById("cName").value.trim();
+    const email = document.getElementById("cEmail").value.trim();
+    const message = document.getElementById("cMessage").value.trim();
+
+    if (!name || !email || !message) {
+      note.textContent = "Please fill in every field before sending.";
+      return;
+    }
+
+    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const body = encodeURIComponent(`${message}\n\nFrom: ${name}\nEmail: ${email}`);
+    window.location.href = `mailto:muhammadfaizankhan525@gmail.com?subject=${subject}&body=${body}`;
+
+    note.textContent = "Your email client should now be open with the message ready to send.";
+    form.reset();
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  buildEditor();
+  setupNav();
+  setupReveals();
+  setupContactForm();
 });
