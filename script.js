@@ -5,8 +5,8 @@ const codeLines = [
   { indent: 1, key: "name", value: "Muhammad Faizan Khan" },
   { indent: 1, key: "role", value: "Front-End Developer" },
   { indent: 1, key: "based", value: "Pakistan" },
-  { indent: 1, keyword: "stack", value: '["HTML5", "CSS3", "JavaScript"]' },
-  { indent: 1, key: "learning", value: "React.js" },
+  { indent: 1, keyword: "stack", value: '["React", "Tailwind", "JavaScript"]' },
+  { indent: 1, keyword: "tools", value: '["Figma", "Python", "Git"]' },
   { indent: 1, key: "status", value: "open to work", last: true },
   { indent: 0, text: "};" }
 ];
@@ -231,6 +231,23 @@ function initTilt(selector, maxTilt) {
   });
 }
 
+function initParallax() {
+  if (prefersReducedMotion) return;
+  const shapes = document.querySelectorAll(".float-shape.parallax");
+  if (!shapes.length) return;
+
+  document.addEventListener("mousemove", (event) => {
+    const px = event.clientX / window.innerWidth - 0.5;
+    const py = event.clientY / window.innerHeight - 0.5;
+    shapes.forEach((shape, i) => {
+      const depth = (i % 3) + 1;
+      const x = px * 18 * depth;
+      const y = py * 18 * depth;
+      shape.style.transform = `translate(${x}px, ${y}px)`;
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   buildEditor();
   setupNav();
@@ -239,4 +256,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroScene();
   initTilt("#editor", 10);
   initTilt(".skill-card", 6);
+  initTilt(".project-row", 3);
+  initParallax();
 });
