@@ -166,8 +166,8 @@ function initHeroScene() {
   const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
   camera.position.z = 6;
 
-  const goldMat = new THREE.MeshBasicMaterial({ color: 0xd4a657, wireframe: true, transparent: true, opacity: 0.45 });
-  const tealMat = new THREE.MeshBasicMaterial({ color: 0x4fbdae, wireframe: true, transparent: true, opacity: 0.35 });
+  const goldMat = new THREE.MeshBasicMaterial({ color: 0xf2f2f0, wireframe: true, transparent: true, opacity: 0.45 });
+  const tealMat = new THREE.MeshBasicMaterial({ color: 0x9599a1, wireframe: true, transparent: true, opacity: 0.35 });
 
   const shapeA = new THREE.Mesh(new THREE.IcosahedronGeometry(1.7, 1), goldMat);
   shapeA.position.set(2.4, 0.5, -1);
@@ -186,7 +186,7 @@ function initHeroScene() {
   }
   const pointsGeo = new THREE.BufferGeometry();
   pointsGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  const pointsMat = new THREE.PointsMaterial({ color: 0x8d96a3, size: 0.03, transparent: true, opacity: 0.5 });
+  const pointsMat = new THREE.PointsMaterial({ color: 0x6b6f77, size: 0.03, transparent: true, opacity: 0.5 });
   const points = new THREE.Points(pointsGeo, pointsMat);
   scene.add(points);
 
