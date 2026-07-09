@@ -482,6 +482,11 @@ img, svg {
   opacity: 0.5;
 }
 
+.float-shape.parallax {
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
 .float-ring {
   width: 220px;
   height: 220px;
@@ -532,13 +537,13 @@ img, svg {
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--border-soft);
   border: 1px solid var(--border-soft);
   border-radius: 14px;
   overflow: hidden;
-  perspective: 1000px;
+  perspective: 1200px;
 }
 
 .skill-card {
@@ -567,6 +572,13 @@ img, svg {
   font-size: 26px;
   color: var(--gold);
   margin-bottom: 22px;
+  display: inline-block;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+
+.skill-card:hover .skill-glyph {
+  transform: rotateY(360deg);
 }
 
 .skill-card h3 {
@@ -592,8 +604,9 @@ img, svg {
   align-items: center;
   padding: 30px 20px;
   border-bottom: 1px solid var(--border-soft);
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
   border-radius: 8px;
+  will-change: transform;
 }
 
 .project-row:hover {
