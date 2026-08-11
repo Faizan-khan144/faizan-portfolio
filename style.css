@@ -196,15 +196,27 @@ img, svg {
 .brand-mark {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
-  background: var(--surface-2);
-  border: 1px solid var(--border);
-  color: var(--gold);
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
-  font-family: var(--font-mono);
+}
+
+.brand-mark svg {
+  width: 100%;
+  height: 100%;
+}
+
+.brand-glyph {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  fill: var(--gold);
+}
+
+.brand-mark-sm {
+  width: 26px;
+  height: 26px;
 }
 
 .brand-name em {
@@ -308,15 +320,36 @@ img, svg {
 .hero-sub {
   color: var(--text-dim);
   font-size: 17px;
-  max-width: 500px;
+  max-width: 520px;
   margin-bottom: 34px;
 }
 
 .hero-actions {
   display: flex;
   gap: 14px;
-  margin-bottom: 52px;
+  margin-bottom: 28px;
   flex-wrap: wrap;
+}
+
+.hero-note {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-dim);
+  margin-bottom: 40px;
+}
+
+.hero-note-label {
+  background: var(--teal-soft);
+  color: var(--teal);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
 }
 
 .stat-row {
@@ -392,7 +425,7 @@ img, svg {
 
 .editor-body {
   padding: 26px 24px;
-  min-height: 320px;
+  min-height: 340px;
   font-family: var(--font-mono);
   font-size: 14.5px;
 }
@@ -447,7 +480,7 @@ img, svg {
   display: flex;
   width: max-content;
   gap: 20px;
-  animation: scroll 26s linear infinite;
+  animation: scroll 32s linear infinite;
   font-family: var(--font-mono);
   font-size: 14px;
   color: var(--text-dim);
@@ -535,15 +568,53 @@ img, svg {
   transform: perspective(900px) translateY(0) rotateX(0deg);
 }
 
+.skills-panel {
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+
+.skills-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 14px;
+  border-bottom: 1px solid var(--border-soft);
+  background: var(--surface-2);
+}
+
+.skills-tab {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.skills-tab:hover {
+  color: var(--text);
+}
+
+.skills-tab.active {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  color: var(--teal);
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--border-soft);
-  border: 1px solid var(--border-soft);
-  border-radius: 14px;
-  overflow: hidden;
-  perspective: 1200px;
+}
+
+.skills-grid[hidden] {
+  display: none;
 }
 
 .skill-card {
@@ -569,7 +640,7 @@ img, svg {
 
 .skill-glyph {
   font-family: var(--font-mono);
-  font-size: 26px;
+  font-size: 24px;
   color: var(--gold);
   margin-bottom: 22px;
   display: inline-block;
@@ -583,7 +654,7 @@ img, svg {
 
 .skill-card h3 {
   font-family: var(--font-display);
-  font-size: 17px;
+  font-size: 16.5px;
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -613,6 +684,11 @@ img, svg {
   background: var(--surface);
 }
 
+.project-row-next {
+  border-style: dashed;
+  border-color: var(--border);
+}
+
 .project-path {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -626,7 +702,7 @@ img, svg {
   margin-bottom: 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .project-main h3 a {
@@ -655,6 +731,17 @@ img, svg {
   color: var(--text-dim);
   font-size: 14.5px;
   max-width: 520px;
+}
+
+.badge-soon {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--teal);
+  border: 1px solid var(--border);
+  background: var(--teal-soft);
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 500;
 }
 
 .project-tags {
@@ -886,7 +973,13 @@ img, svg {
   gap: 16px;
 }
 
-.foot-row p {
+.foot-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.foot-brand p {
   color: var(--text-faint);
   font-size: 13.5px;
 }
@@ -933,6 +1026,7 @@ img, svg {
   .stat-row { gap: 26px; flex-wrap: wrap; }
   .form-row { grid-template-columns: 1fr; }
   .project-row { grid-template-columns: 1fr; gap: 10px; }
+  .foot-row { flex-direction: column; align-items: flex-start; }
 }
 
 @media (prefers-reduced-motion: reduce) {
