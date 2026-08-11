@@ -1,4 +1,4 @@
-```javascript
+
 const loader = document.getElementById("loader");
 const cursor = document.getElementById("cursor");
 const cursorRing = document.getElementById("cursorRing");
@@ -197,4 +197,4 @@ window.addEventListener("keydown", (event) => {
 });
 
 updateActiveLink();
-```
+
