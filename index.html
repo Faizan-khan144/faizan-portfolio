@@ -1,95 +1,86 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Muhammad Faizan Khan - Full Stack Developer Portfolio">
-    <meta name="theme-color" content="#070b16">
-    <title>Faizan Khan | Full Stack Developer</title>
+    <meta name="description" content="Muhammad Faizan Khan — Front-End Developer, MERN Stack Learner and AI with Python Learner.">
+    <title>Faizan Khan | Developer Portfolio</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="loader">
-    <div class="loader-core">
-        <div class="loader-orbit"></div>
-        <span>F</span>
-    </div>
-    <div class="loader-text">INITIALIZING PORTFOLIO</div>
-    <div class="loader-progress">
-        <span></span>
-    </div>
+<div class="loader" id="loader">
+    <div class="loader-logo">FZ</div>
+    <div class="loader-line"><span></span></div>
+    <p>INITIALIZING PORTFOLIO...</p>
 </div>
 
-<canvas id="particles"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-<div class="background">
+<div class="scene">
     <div class="grid"></div>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    <div class="glow glow-3"></div>
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
 </div>
 
 <header class="header">
-    <div class="container nav">
+    <div class="nav-wrap">
         <a href="#home" class="logo">
-            <span class="logo-box">F</span>
-            <span>faizan<span>.dev</span></span>
+            <span class="logo-box">FZ</span>
+            <span>FAIZAN<span class="orange">.</span></span>
         </a>
 
-        <nav class="nav-links">
-            <a href="#home" class="active">Home</a>
+        <nav class="nav" id="nav">
+            <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
-            <a href="#roadmap">Roadmap</a>
+            <a href="#journey">Journey</a>
             <a href="#contact">Contact</a>
         </nav>
 
-        <a href="#contact" class="nav-button">Let's Talk</a>
+        <a class="nav-github" href="https://github.com/Faizan-khan144" target="_blank">
+            GitHub ↗
+        </a>
 
-        <button class="menu-btn" id="menuBtn">
+        <button class="menu" id="menu">
             <span></span>
             <span></span>
             <span></span>
         </button>
-    </div>
-
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#contact">Contact</a>
     </div>
 </header>
 
 <main>
 
 <section class="hero" id="home">
-    <div class="container hero-container">
+    <div class="hero-content">
 
-        <div class="hero-content reveal">
+        <div class="hero-copy reveal">
             <div class="status">
                 <span></span>
-                Available for opportunities
+                AVAILABLE FOR OPPORTUNITIES
             </div>
 
-            <p class="hero-label">FULL STACK DEVELOPER · MERN · PYTHON</p>
+            <p class="hero-kicker">FRONT-END DEVELOPER / BUILDER</p>
 
             <h1>
-                Building the
-                <span>digital future</span>
-                one project at a time.
+                I BUILD
+                <span>DIGITAL</span>
+                EXPERIENCES.
             </h1>
 
             <p class="hero-description">
-                I'm <strong>Muhammad Faizan Khan</strong>, a Full Stack Developer focused on building modern,
-                responsive and interactive web experiences with MERN Stack, JavaScript and Python.
+                I'm <strong>Muhammad Faizan Khan</strong>, a developer focused on
+                modern web experiences, currently expanding into the
+                <strong>MERN Stack</strong> and <strong>AI with Python</strong>.
             </p>
 
             <div class="hero-buttons">
@@ -98,59 +89,85 @@
                     <span>↗</span>
                 </a>
 
-                <a href="#contact" class="btn btn-secondary">
-                    Contact Me
+                <a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041a"
+                   target="_blank"
+                   class="btn btn-outline">
+                    LinkedIn
                 </a>
             </div>
 
-            <div class="hero-socials">
-                <a href="https://github.com/Faizan-khan144" target="_blank">GitHub ↗</a>
-                <a href="https://www.linkedin.com/" target="_blank">LinkedIn ↗</a>
-                <span>Pakistan</span>
+            <div class="hero-meta">
+                <span>HTML</span>
+                <i></i>
+                <span>CSS</span>
+                <i></i>
+                <span>JAVASCRIPT</span>
+                <i></i>
+                <span>MERN</span>
+                <i></i>
+                <span>PYTHON + AI</span>
             </div>
         </div>
 
         <div class="hero-visual reveal">
-            <div class="scene" id="scene">
 
-                <div class="orbit orbit-one"></div>
-                <div class="orbit orbit-two"></div>
-                <div class="orbit orbit-three"></div>
-
-                <div class="orbit-dot dot-one"></div>
-                <div class="orbit-dot dot-two"></div>
-                <div class="orbit-dot dot-three"></div>
-
-                <div class="core">
-                    <div class="core-inner">
-                        <div class="core-symbol">&lt;/&gt;</div>
-                        <div class="core-name">FAIZAN</div>
-                        <div class="core-role">DEVELOPER</div>
-                    </div>
-                </div>
-
-                <div class="tech-card tech-html">
-                    <strong>HTML</strong>
-                    <small>Structure</small>
-                </div>
-
-                <div class="tech-card tech-react">
-                    <strong>REACT</strong>
-                    <small>Frontend</small>
-                </div>
-
-                <div class="tech-card tech-node">
-                    <strong>NODE.JS</strong>
-                    <small>Backend</small>
-                </div>
-
-                <div class="tech-card tech-python">
-                    <strong>PYTHON</strong>
-                    <small>Logic</small>
-                </div>
-
-                <div class="scene-floor"></div>
+            <div class="floating-label label-one">
+                <span class="label-dot"></span>
+                CODE
             </div>
+
+            <div class="floating-label label-two">
+                <span class="label-dot"></span>
+                BUILD
+            </div>
+
+            <div class="floating-label label-three">
+                <span class="label-dot"></span>
+                SHIP
+            </div>
+
+            <div class="platform">
+                <div class="platform-top"></div>
+
+                <div class="cube">
+                    <div class="cube-face front">FZ</div>
+                    <div class="cube-face back">DEV</div>
+                    <div class="cube-face right">JS</div>
+                    <div class="cube-face left">PY</div>
+                    <div class="cube-face top">MERN</div>
+                    <div class="cube-face bottom">AI</div>
+                </div>
+
+                <div class="ring ring-one"></div>
+                <div class="ring ring-two"></div>
+                <div class="ring ring-three"></div>
+
+                <div class="platform-light"></div>
+            </div>
+
+            <div class="code-card">
+                <div class="code-top">
+                    <div>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <small>developer.js</small>
+                </div>
+
+                <pre><code><span class="purple">const</span> developer = {
+  name: <span class="orange-text">"Faizan"</span>,
+  role: <span class="orange-text">"Web Developer"</span>,
+  stack: [<span class="blue">"HTML"</span>,
+          <span class="blue">"CSS"</span>,
+          <span class="blue">"JS"</span>],
+  learning: [
+    <span class="green">"MERN"</span>,
+    <span class="green">"Python + AI"</span>
+  ]
+};</code></pre>
+            </div>
+
         </div>
     </div>
 
@@ -160,827 +177,736 @@
     </div>
 </section>
 
-<section class="ticker">
-    <div class="ticker-track">
-        <span>FULL STACK DEVELOPMENT</span>
-        <b>✦</b>
-        <span>MERN STACK</span>
-        <b>✦</b>
-        <span>PYTHON</span>
-        <b>✦</b>
-        <span>FRONTEND ENGINEERING</span>
-        <b>✦</b>
-        <span>UI DEVELOPMENT</span>
-        <b>✦</b>
-        <span>PROBLEM SOLVING</span>
-        <b>✦</b>
-        <span>FULL STACK DEVELOPMENT</span>
-        <b>✦</b>
-        <span>MERN STACK</span>
-        <b>✦</b>
-        <span>PYTHON</span>
-        <b>✦</b>
-        <span>FRONTEND ENGINEERING</span>
-        <b>✦</b>
-        <span>UI DEVELOPMENT</span>
-        <b>✦</b>
+<section class="numbers">
+    <div class="container numbers-grid">
+        <div class="number-item">
+            <strong>22<span>+</span></strong>
+            <p>PUBLIC REPOSITORIES</p>
+        </div>
+
+        <div class="number-item">
+            <strong>20<span>+</span></strong>
+            <p>PROJECTS & BUILDS</p>
+        </div>
+
+        <div class="number-item">
+            <strong>08<span>+</span></strong>
+            <p>CORE TECHNOLOGIES</p>
+        </div>
+
+        <div class="number-item">
+            <strong>2026</strong>
+            <p>MERN + AI JOURNEY</p>
+        </div>
     </div>
 </section>
 
-<section class="section about-section" id="about">
+<section class="section about" id="about">
     <div class="container">
+
         <div class="section-heading reveal">
-            <span class="section-number">01 / ABOUT</span>
-            <h2>Developer with a<br><span>builder's mindset.</span></h2>
+            <p class="eyebrow">01 / ABOUT</p>
+            <h2>BUILDING WITH<br><span>PURPOSE.</span></h2>
         </div>
 
         <div class="about-grid">
-            <div class="about-main reveal">
-                <p class="large-text">
-                    I don't just learn technologies. I turn them into
-                    <span>real projects.</span>
+            <div class="about-large reveal">
+                <p>
+                    I started with the fundamentals of the web and turned
+                    learning into a habit of building.
                 </p>
 
                 <p>
-                    My journey revolves around web development, programming and continuously
-                    improving my technical skills. From designing responsive interfaces to
-                    building full-stack applications, I enjoy turning ideas into functional
-                    digital products.
+                    Today I'm focused on creating responsive, interactive and
+                    visually polished interfaces while developing my skills
+                    across the full-stack ecosystem.
                 </p>
 
                 <p>
-                    Currently focused on the MERN ecosystem and Python, while expanding my
-                    understanding of backend development, databases, APIs and modern development
-                    workflows.
+                    My current direction combines <strong>web development,
+                    MERN and Python-based AI</strong>.
                 </p>
             </div>
 
-            <div class="about-side reveal">
-                <div class="info-card">
+            <div class="about-panel reveal">
+                <div class="panel-row">
                     <span>01</span>
-                    <strong>Frontend</strong>
-                    <p>Modern responsive interfaces and interactive experiences.</p>
+                    <div>
+                        <strong>Frontend</strong>
+                        <p>Responsive interfaces and interactive experiences.</p>
+                    </div>
                 </div>
 
-                <div class="info-card">
+                <div class="panel-row">
                     <span>02</span>
-                    <strong>Backend</strong>
-                    <p>APIs, server-side logic, databases and application architecture.</p>
+                    <div>
+                        <strong>Full Stack</strong>
+                        <p>Learning MongoDB, Express, React and Node.</p>
+                    </div>
                 </div>
 
-                <div class="info-card">
+                <div class="panel-row">
                     <span>03</span>
-                    <strong>Problem Solving</strong>
-                    <p>Breaking complex problems into practical solutions.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="stats reveal">
-            <div class="stat">
-                <strong data-count="20">0</strong>
-                <span>Projects Built</span>
-            </div>
-            <div class="stat">
-                <strong data-count="15">0</strong>
-                <span>Technologies</span>
-            </div>
-            <div class="stat">
-                <strong data-count="100">0</strong>
-                <span>Learning Mode</span>
-            </div>
-            <div class="stat">
-                <strong>∞</strong>
-                <span>Ideas to Build</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="section skills-section" id="skills">
-    <div class="container">
-        <div class="section-heading reveal">
-            <span class="section-number">02 / SKILLS</span>
-            <h2>The tools behind<br><span>the work.</span></h2>
-            <p>
-                A growing technical stack covering frontend, backend, programming,
-                databases, data tools and creative software.
-            </p>
-        </div>
-
-        <div class="skills-layout">
-
-            <div class="skill-category reveal">
-                <div class="category-top">
-                    <span>01</span>
-                    <h3>Frontend</h3>
-                </div>
-
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <div>
-                            <strong>HTML5</strong>
-                            <span>Semantic Structure</span>
-                        </div>
-                        <b>95%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>CSS3</strong>
-                            <span>Responsive Design</span>
-                        </div>
-                        <b>90%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>JavaScript</strong>
-                            <span>Interactive Web</span>
-                        </div>
-                        <b>85%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>React</strong>
-                            <span>Component UI</span>
-                        </div>
-                        <b>80%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>Tailwind CSS</strong>
-                            <span>Utility Styling</span>
-                        </div>
-                        <b>80%</b>
+                    <div>
+                        <strong>AI + Python</strong>
+                        <p>Exploring Python for future AI-powered applications.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="skill-category reveal">
-                <div class="category-top">
-                    <span>02</span>
-                    <h3>Backend & MERN</h3>
-                </div>
-
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <div>
-                            <strong>Node.js</strong>
-                            <span>Server Runtime</span>
-                        </div>
-                        <b>75%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>Express.js</strong>
-                            <span>Backend APIs</span>
-                        </div>
-                        <b>75%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>MongoDB</strong>
-                            <span>NoSQL Database</span>
-                        </div>
-                        <b>70%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>REST APIs</strong>
-                            <span>Application Data</span>
-                        </div>
-                        <b>70%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>Git & GitHub</strong>
-                            <span>Version Control</span>
-                        </div>
-                        <b>85%</b>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category reveal">
-                <div class="category-top">
-                    <span>03</span>
-                    <h3>Programming</h3>
-                </div>
-
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <div>
-                            <strong>Python</strong>
-                            <span>Programming</span>
-                        </div>
-                        <b>85%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>OOP</strong>
-                            <span>Object-Oriented Programming</span>
-                        </div>
-                        <b>85%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>Problem Solving</strong>
-                            <span>Logic Building</span>
-                        </div>
-                        <b>85%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>SQL</strong>
-                            <span>Data Queries</span>
-                        </div>
-                        <b>70%</b>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category reveal">
-                <div class="category-top">
+                <div class="panel-row">
                     <span>04</span>
-                    <h3>Data & Tools</h3>
-                </div>
-
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <div>
-                            <strong>Power BI</strong>
-                            <span>Data Visualization</span>
-                        </div>
-                        <b>80%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>Excel</strong>
-                            <span>Data Analysis</span>
-                        </div>
-                        <b>80%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>DAX</strong>
-                            <span>Power BI Analytics</span>
-                        </div>
-                        <b>65%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>VS Code</strong>
-                            <span>Development Environment</span>
-                        </div>
-                        <b>95%</b>
+                    <div>
+                        <strong>Design</strong>
+                        <p>Clean layouts, animations and strong visual hierarchy.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="skill-category reveal">
-                <div class="category-top">
-                    <span>05</span>
-                    <h3>Creative Tools</h3>
-                </div>
-
-                <div class="skill-items">
-                    <div class="skill-item">
-                        <div>
-                            <strong>Figma</strong>
-                            <span>UI Design</span>
-                        </div>
-                        <b>75%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>Canva</strong>
-                            <span>Visual Design</span>
-                        </div>
-                        <b>85%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>CapCut</strong>
-                            <span>Video Editing</span>
-                        </div>
-                        <b>80%</b>
-                    </div>
-
-                    <div class="skill-item">
-                        <div>
-                            <strong>GitHub</strong>
-                            <span>Project Management</span>
-                        </div>
-                        <b>85%</b>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skill-category skill-highlight reveal">
-                <div class="highlight-symbol">{ }</div>
-                <span class="section-number">CURRENT FOCUS</span>
-                <h3>MERN + AI with Python</h3>
-                <p>
-                    Building stronger full-stack foundations while exploring
-                    Python-based AI and intelligent application development.
-                </p>
-                <div class="focus-tags">
-                    <span>React</span>
-                    <span>Node</span>
-                    <span>MongoDB</span>
-                    <span>Python</span>
-                    <span>AI</span>
-                </div>
-            </div>
-
         </div>
+
     </div>
 </section>
 
-<section class="section projects-section" id="projects">
+<section class="section skills" id="skills">
     <div class="container">
+
         <div class="section-heading reveal">
-            <span class="section-number">03 / PROJECTS</span>
-            <h2>Things I've<br><span>built.</span></h2>
+            <p class="eyebrow">02 / SKILLS</p>
+            <h2>MY <span>TOOLKIT.</span></h2>
             <p>
-                A collection of websites, dashboards, applications and experiments
-                built while developing my skills.
+                Technologies I'm using, learning and combining to build
+                modern digital products.
             </p>
         </div>
 
-        <div class="projects-grid">
+        <div class="skills-grid">
+
+            <article class="skill-box reveal">
+                <span class="skill-number">01</span>
+                <div class="skill-icon">&lt;/&gt;</div>
+                <h3>Frontend</h3>
+                <p>Building responsive and interactive interfaces.</p>
+
+                <div class="tags">
+                    <span>HTML5</span>
+                    <span>CSS3</span>
+                    <span>JavaScript</span>
+                    <span>Responsive Design</span>
+                    <span>UI Design</span>
+                </div>
+            </article>
+
+            <article class="skill-box reveal">
+                <span class="skill-number">02</span>
+                <div class="skill-icon">⚛</div>
+                <h3>MERN Stack</h3>
+                <p>Growing from frontend development into full-stack applications.</p>
+
+                <div class="tags">
+                    <span>React</span>
+                    <span>Node.js</span>
+                    <span>Express.js</span>
+                    <span>MongoDB</span>
+                    <span>REST APIs</span>
+                </div>
+            </article>
+
+            <article class="skill-box reveal">
+                <span class="skill-number">03</span>
+                <div class="skill-icon">Py</div>
+                <h3>Python + AI</h3>
+                <p>Learning Python with a focus on future AI development.</p>
+
+                <div class="tags">
+                    <span>Python</span>
+                    <span>OOP</span>
+                    <span>JSON</span>
+                    <span>AI</span>
+                    <span>Problem Solving</span>
+                </div>
+            </article>
+
+            <article class="skill-box reveal">
+                <span class="skill-number">04</span>
+                <div class="skill-icon">⌘</div>
+                <h3>Developer Tools</h3>
+                <p>Tools that power my daily development workflow.</p>
+
+                <div class="tags">
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>VS Code</span>
+                    <span>Vite</span>
+                    <span>npm</span>
+                </div>
+            </article>
+
+            <article class="skill-box reveal">
+                <span class="skill-number">05</span>
+                <div class="skill-icon">▦</div>
+                <h3>Data & Analytics</h3>
+                <p>Exploring data visualization and analytical workflows.</p>
+
+                <div class="tags">
+                    <span>Power BI</span>
+                    <span>Excel</span>
+                    <span>Data Analysis</span>
+                    <span>Dashboards</span>
+                </div>
+            </article>
+
+            <article class="skill-box reveal">
+                <span class="skill-number">06</span>
+                <div class="skill-icon">✦</div>
+                <h3>Creative Tools</h3>
+                <p>Visual and content tools used alongside development.</p>
+
+                <div class="tags">
+                    <span>Canva</span>
+                    <span>CapCut</span>
+                    <span>Figma</span>
+                    <span>UI/UX</span>
+                </div>
+            </article>
+
+        </div>
+
+        <div class="tech-marquee">
+            <div class="marquee-track">
+                <span>HTML5</span>
+                <b>•</b>
+                <span>CSS3</span>
+                <b>•</b>
+                <span>JAVASCRIPT</span>
+                <b>•</b>
+                <span>REACT</span>
+                <b>•</b>
+                <span>NODE</span>
+                <b>•</b>
+                <span>EXPRESS</span>
+                <b>•</b>
+                <span>MONGODB</span>
+                <b>•</b>
+                <span>PYTHON</span>
+                <b>•</b>
+                <span>GIT</span>
+                <b>•</b>
+                <span>GITHUB</span>
+                <b>•</b>
+                <span>POWER BI</span>
+                <b>•</b>
+                <span>TAILWIND</span>
+                <b>•</b>
+                <span>HTML5</span>
+                <b>•</b>
+                <span>CSS3</span>
+                <b>•</b>
+                <span>JAVASCRIPT</span>
+                <b>•</b>
+                <span>REACT</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="section projects" id="projects">
+    <div class="container">
+
+        <div class="section-heading reveal">
+            <p class="eyebrow">03 / SELECTED WORK</p>
+            <h2>PROJECTS THAT<br><span>I BUILT.</span></h2>
+            <p>
+                A selection from my public GitHub work. Each project represents
+                something I learned by actually building it.
+            </p>
+        </div>
+
+        <div class="project-grid">
 
             <article class="project-card featured reveal">
-                <div class="project-image crypto">
-                    <span class="project-code">01</span>
-                    <div class="fake-dashboard">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <span class="project-type">DASHBOARD</span>
+                <div class="project-image project-portfolio">
+                    <span>FZ</span>
+                    <div class="image-grid"></div>
                 </div>
-                <div class="project-content">
-                    <span>01 · DATA / WEB</span>
-                    <h3>CryptoLens Dashboard</h3>
-                    <p>
-                        A modern cryptocurrency dashboard focused on presenting
-                        market information through a clean interactive interface.
-                    </p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>API</span>
-                    </div>
-                </div>
-            </article>
 
-            <article class="project-card reveal">
-                <div class="project-image bank">
-                    <span class="project-code">02</span>
-                    <div class="bank-ui">
-                        <strong>FZ</strong>
-                        <span>SECURE BANKING</span>
-                    </div>
-                    <span class="project-type">FINTECH</span>
-                </div>
-                <div class="project-content">
-                    <span>02 · WEB APP</span>
-                    <h3>FZ Bank</h3>
+                <div class="project-info">
+                    <small>01 / PORTFOLIO</small>
+                    <h3>Faizan Portfolio</h3>
                     <p>
-                        A modern banking website concept designed around
-                        clean interfaces and financial dashboard experiences.
+                        Personal developer portfolio focused on projects,
+                        skills, experience and the development journey.
                     </p>
+
                     <div class="project-tags">
                         <span>HTML</span>
                         <span>CSS</span>
                         <span>JavaScript</span>
                     </div>
+
+                    <a href="https://github.com/Faizan-khan144/faizan-portfolio"
+                       target="_blank">
+                        VIEW PROJECT ↗
+                    </a>
                 </div>
             </article>
 
             <article class="project-card reveal">
-                <div class="project-image attendance">
-                    <span class="project-code">03</span>
-                    <div class="attendance-ui">
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                    </div>
-                    <span class="project-type">PRODUCTIVITY</span>
+                <div class="project-image project-oak">
+                    <span>A&O</span>
                 </div>
-                <div class="project-content">
-                    <span>03 · APPLICATION</span>
-                    <h3>Student Attendance Tracker</h3>
-                    <p>
-                        A practical attendance management interface designed
-                        to make student records easier to manage.
-                    </p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-            </article>
 
-            <article class="project-card reveal">
-                <div class="project-image tic">
-                    <span class="project-code">04</span>
-                    <div class="tic-ui">
-                        <b>×</b>
-                        <b>○</b>
-                        <b>×</b>
-                        <b>○</b>
-                    </div>
-                    <span class="project-type">GAME</span>
-                </div>
-                <div class="project-content">
-                    <span>04 · JAVASCRIPT</span>
-                    <h3>Modern Tic-Tac-Toe</h3>
-                    <p>
-                        An interactive browser game with a modern interface,
-                        game state management and responsive layout.
-                    </p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card reveal">
-                <div class="project-image agency">
-                    <span class="project-code">05</span>
-                    <div class="agency-ui">
-                        <strong>VORTEX</strong>
-                        <span>CREATIVE AGENCY</span>
-                    </div>
-                    <span class="project-type">AGENCY</span>
-                </div>
-                <div class="project-content">
-                    <span>05 · DESIGN / WEB</span>
-                    <h3>Vortex Agency</h3>
-                    <p>
-                        A bold agency website concept focused on strong typography,
-                        visual hierarchy and modern digital branding.
-                    </p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card reveal">
-                <div class="project-image dashboard">
-                    <span class="project-code">06</span>
-                    <div class="dev-ui">
-                        <span>&lt;/&gt;</span>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <span class="project-type">DEVELOPER</span>
-                </div>
-                <div class="project-content">
-                    <span>06 · PRODUCTIVITY</span>
-                    <h3>Dev Dashboard</h3>
-                    <p>
-                        A developer-focused dashboard interface for organizing
-                        tools, projects and useful development information.
-                    </p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card reveal">
-                <div class="project-image fitness">
-                    <span class="project-code">07</span>
-                    <div class="fitness-ui">
-                        <strong>FZ FITNESS</strong>
-                        <span>TRAIN · BUILD · GROW</span>
-                    </div>
-                    <span class="project-type">FITNESS</span>
-                </div>
-                <div class="project-content">
-                    <span>07 · WEB EXPERIENCE</span>
-                    <h3>FZ Fitness</h3>
-                    <p>
-                        A fitness-focused website built around bold visuals,
-                        structured content and responsive sections.
-                    </p>
-                    <div class="project-tags">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card reveal">
-                <div class="project-image ecommerce">
-                    <span class="project-code">08</span>
-                    <div class="shop-ui">
-                        <strong>A&O</strong>
-                        <span>MODERN STORE</span>
-                    </div>
-                    <span class="project-type">E-COMMERCE</span>
-                </div>
-                <div class="project-content">
-                    <span>08 · E-COMMERCE</span>
+                <div class="project-info">
+                    <small>02 / E-COMMERCE</small>
                     <h3>August & Oak</h3>
                     <p>
-                        A premium e-commerce concept focused on product presentation,
-                        modern layouts and shopping-oriented UI.
+                        Modern shopping experience with product search,
+                        filtering, wishlist and cart functionality.
                     </p>
+
                     <div class="project-tags">
                         <span>HTML</span>
                         <span>CSS</span>
-                        <span>JavaScript</span>
+                        <span>JS</span>
                     </div>
+
+                    <a href="https://github.com/Faizan-khan144/august-and-oak-ecommerce"
+                       target="_blank">
+                        VIEW PROJECT ↗
+                    </a>
                 </div>
             </article>
 
             <article class="project-card reveal">
-                <div class="project-image portfolio">
-                    <span class="project-code">09</span>
-                    <div class="portfolio-ui">
-                        <strong>FAIZAN.DEV</strong>
-                        <span>PORTFOLIO</span>
-                    </div>
-                    <span class="project-type">PERSONAL</span>
+                <div class="project-image project-vortex">
+                    <span>VX</span>
                 </div>
-                <div class="project-content">
-                    <span>09 · PORTFOLIO</span>
-                    <h3>Developer Portfolio</h3>
+
+                <div class="project-info">
+                    <small>03 / AGENCY</small>
+                    <h3>Vortex Agency</h3>
                     <p>
-                        This portfolio — designed to showcase my technical journey,
-                        projects, skills and development roadmap.
+                        Premium digital agency website with responsive layouts
+                        and interactive animations.
                     </p>
+
                     <div class="project-tags">
                         <span>HTML</span>
                         <span>CSS</span>
-                        <span>JavaScript</span>
+                        <span>JS</span>
                     </div>
+
+                    <a href="https://github.com/Faizan-khan144/vortex-agency"
+                       target="_blank">
+                        VIEW PROJECT ↗
+                    </a>
                 </div>
             </article>
 
             <article class="project-card reveal">
-                <div class="project-image powerbi">
-                    <span class="project-code">10</span>
-                    <div class="power-ui">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                    <span class="project-type">ANALYTICS</span>
+                <div class="project-image project-crypto">
+                    <span>CRYPTO</span>
                 </div>
-                <div class="project-content">
-                    <span>10 · POWER BI</span>
-                    <h3>HR Analytics Dashboard</h3>
+
+                <div class="project-info">
+                    <small>04 / DASHBOARD</small>
+                    <h3>CryptoLens Dashboard</h3>
                     <p>
-                        An HR analytics project focused on transforming employee
-                        information into useful visual insights.
+                        Cryptocurrency dashboard with market data, trending
+                        coins and global statistics.
                     </p>
+
                     <div class="project-tags">
-                        <span>Power BI</span>
-                        <span>Excel</span>
-                        <span>DAX</span>
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>API</span>
                     </div>
+
+                    <a href="https://github.com/Faizan-khan144/cryptolens-dashboard"
+                       target="_blank">
+                        VIEW PROJECT ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-image project-dev">
+                    <span>&lt;DEV/&gt;</span>
+                </div>
+
+                <div class="project-info">
+                    <small>05 / PRODUCTIVITY</small>
+                    <h3>DevDashboard</h3>
+                    <p>
+                        Developer productivity dashboard with GitHub analytics,
+                        tasks, notes and Pomodoro tools.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JS</span>
+                    </div>
+
+                    <a href="https://github.com/Faizan-khan144/DevDashboard"
+                       target="_blank">
+                        VIEW PROJECT ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-image project-bank">
+                    <span>FZ$</span>
+                </div>
+
+                <div class="project-info">
+                    <small>06 / FINTECH UI</small>
+                    <h3>FZ Bank</h3>
+                    <p>
+                        Modern banking interface with deposits, withdrawals,
+                        balance tracking and responsive UI.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JS</span>
+                    </div>
+
+                    <a href="https://github.com/Faizan-khan144/fz-bank-modern-banking-website"
+                       target="_blank">
+                        VIEW PROJECT ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-image project-attendance">
+                    <span>ATT</span>
+                </div>
+
+                <div class="project-info">
+                    <small>07 / MANAGEMENT</small>
+                    <h3>Student Attendance Tracker</h3>
+                    <p>
+                        Attendance system with searching, filtering and CSV
+                        export functionality.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JS</span>
+                    </div>
+
+                    <a href="https://github.com/Faizan-khan144/student-attendance-tracker"
+                       target="_blank">
+                        VIEW PROJECT ↗
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-image project-python">
+                    <span>PY</span>
+                </div>
+
+                <div class="project-info">
+                    <small>08 / PYTHON</small>
+                    <h3>Student Management System</h3>
+                    <p>
+                        Python OOP project for student records, marks,
+                        calculations and JSON data storage.
+                    </p>
+
+                    <div class="project-tags">
+                        <span>Python</span>
+                        <span>OOP</span>
+                        <span>JSON</span>
+                    </div>
+
+                    <a href="https://github.com/Faizan-khan144/student-management-system"
+                       target="_blank">
+                        VIEW PROJECT ↗
+                    </a>
                 </div>
             </article>
 
         </div>
+
+        <div class="all-projects reveal">
+            <a href="https://github.com/Faizan-khan144?tab=repositories"
+               target="_blank"
+               class="btn btn-outline">
+                VIEW ALL 22+ REPOSITORIES ↗
+            </a>
+        </div>
+
     </div>
 </section>
 
-<section class="section journey-section" id="roadmap">
+<section class="section more-work">
     <div class="container">
+
         <div class="section-heading reveal">
-            <span class="section-number">04 / JOURNEY</span>
-            <h2>Always learning.<br><span>Always building.</span></h2>
+            <p class="eyebrow">04 / MORE BUILDS</p>
+            <h2>MORE FROM<br><span>THE LAB.</span></h2>
         </div>
 
-        <div class="journey">
-            <div class="journey-line"></div>
+        <div class="mini-projects">
 
-            <div class="journey-item done reveal">
-                <div class="journey-marker">01</div>
-                <div class="journey-content">
-                    <span>COMPLETED</span>
-                    <h3>Web Foundations</h3>
-                    <p>
-                        HTML, CSS, responsive layouts, semantic HTML,
-                        forms and modern frontend fundamentals.
-                    </p>
-                    <div>
-                        <b>HTML</b>
-                        <b>CSS</b>
-                        <b>Responsive Design</b>
-                    </div>
-                </div>
-            </div>
+            <a href="https://github.com/Faizan-khan144/paklounge-landing-page"
+               target="_blank" class="mini-project reveal">
+                <span>01</span>
+                <strong>PakLounge Landing Page</strong>
+                <small>HTML · Tailwind · React</small>
+                <b>↗</b>
+            </a>
 
-            <div class="journey-item done reveal">
-                <div class="journey-marker">02</div>
-                <div class="journey-content">
-                    <span>COMPLETED</span>
-                    <h3>JavaScript & Programming</h3>
-                    <p>
-                        JavaScript fundamentals, application logic,
-                        DOM interaction and programming concepts.
-                    </p>
-                    <div>
-                        <b>JavaScript</b>
-                        <b>OOP</b>
-                        <b>Logic</b>
-                    </div>
-                </div>
-            </div>
+            <a href="https://github.com/Faizan-khan144/nexus-landing-page"
+               target="_blank" class="mini-project reveal">
+                <span>02</span>
+                <strong>Nexus Landing Page</strong>
+                <small>HTML · CSS</small>
+                <b>↗</b>
+            </a>
 
-            <div class="journey-item active reveal">
-                <div class="journey-marker">03</div>
-                <div class="journey-content">
-                    <span>IN PROGRESS</span>
-                    <h3>MERN Stack Development</h3>
-                    <p>
-                        Building stronger full-stack skills with React,
-                        Node.js, Express and MongoDB.
-                    </p>
-                    <div>
-                        <b>React</b>
-                        <b>Node.js</b>
-                        <b>MongoDB</b>
-                        <b>Express</b>
-                    </div>
-                </div>
-            </div>
+            <a href="https://github.com/Faizan-khan144/profile-card-generator"
+               target="_blank" class="mini-project reveal">
+                <span>03</span>
+                <strong>Profile Card Generator</strong>
+                <small>HTML · CSS · JavaScript</small>
+                <b>↗</b>
+            </a>
 
-            <div class="journey-item active reveal">
-                <div class="journey-marker">04</div>
-                <div class="journey-content">
-                    <span>IN PROGRESS</span>
-                    <h3>AI with Python</h3>
-                    <p>
-                        Expanding Python skills toward AI, automation,
-                        intelligent applications and deeper programming.
-                    </p>
-                    <div>
-                        <b>Python</b>
-                        <b>AI</b>
-                        <b>Automation</b>
-                    </div>
-                </div>
-            </div>
+            <a href="https://github.com/Faizan-khan144/fz-fitness"
+               target="_blank" class="mini-project reveal">
+                <span>04</span>
+                <strong>FZ Fitness</strong>
+                <small>HTML · CSS · JavaScript</small>
+                <b>↗</b>
+            </a>
 
-            <div class="journey-item future reveal">
-                <div class="journey-marker">05</div>
-                <div class="journey-content">
-                    <span>NEXT</span>
-                    <h3>Full Stack + AI Applications</h3>
-                    <p>
-                        Combining full-stack development with intelligent
-                        features to build more powerful products.
-                    </p>
-                    <div>
-                        <b>MERN</b>
-                        <b>AI</b>
-                        <b>APIs</b>
-                    </div>
-                </div>
-            </div>
+            <a href="https://github.com/Faizan-khan144/happy-birthday-sis"
+               target="_blank" class="mini-project reveal">
+                <span>05</span>
+                <strong>Happy Birthday Sis</strong>
+                <small>HTML · CSS</small>
+                <b>↗</b>
+            </a>
+
+            <a href="https://github.com/Faizan-khan144/glass-login-form"
+               target="_blank" class="mini-project reveal">
+                <span>06</span>
+                <strong>Glass Login Form</strong>
+                <small>HTML · CSS</small>
+                <b>↗</b>
+            </a>
+
+            <a href="https://github.com/Faizan-khan144/codealpha_tasks"
+               target="_blank" class="mini-project reveal">
+                <span>07</span>
+                <strong>CodeAlpha Tasks</strong>
+                <small>Frontend Internship</small>
+                <b>↗</b>
+            </a>
+
+            <a href="https://github.com/Faizan-khan144/Git-prac"
+               target="_blank" class="mini-project reveal">
+                <span>08</span>
+                <strong>Git Practice</strong>
+                <small>Git · GitHub</small>
+                <b>↗</b>
+            </a>
+
         </div>
     </div>
 </section>
 
-<section class="section experience-section">
+<section class="section journey" id="journey">
     <div class="container">
+
         <div class="section-heading reveal">
-            <span class="section-number">05 / EXPERIENCE</span>
-            <h2>Learning through<br><span>real work.</span></h2>
+            <p class="eyebrow">05 / JOURNEY</p>
+            <h2>LEARNING.<br><span>BUILDING. GROWING.</span></h2>
         </div>
 
-        <div class="experience-grid">
+        <div class="timeline">
 
-            <div class="experience-card reveal">
-                <span class="experience-number">01</span>
-                <div class="experience-icon">&lt;/&gt;</div>
-                <h3>Frontend Development</h3>
-                <p>
-                    Building responsive interfaces and interactive web experiences
-                    while working with modern frontend technologies.
-                </p>
-                <span class="experience-label">WEB DEVELOPMENT</span>
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-line">
+                    <span></span>
+                </div>
+                <div class="timeline-content">
+                    <small>THE START</small>
+                    <h3>HTML, CSS & JavaScript</h3>
+                    <p>
+                        Started building a foundation in web development
+                        through frontend fundamentals and practical projects.
+                    </p>
+                </div>
             </div>
 
-            <div class="experience-card reveal">
-                <span class="experience-number">02</span>
-                <div class="experience-icon">{ }</div>
-                <h3>Python Development</h3>
-                <p>
-                    Practicing Python programming, object-oriented programming,
-                    logic building and application development.
-                </p>
-                <span class="experience-label">PROGRAMMING</span>
+            <div class="timeline-item reveal">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-line">
+                    <span></span>
+                </div>
+                <div class="timeline-content">
+                    <small>BUILDING</small>
+                    <h3>Projects & GitHub</h3>
+                    <p>
+                        Started creating more complete websites, UI projects,
+                        games, dashboards and publishing work on GitHub.
+                    </p>
+                </div>
             </div>
 
-            <div class="experience-card reveal">
-                <span class="experience-number">03</span>
-                <div class="experience-icon">▦</div>
-                <h3>Data & Analytics</h3>
-                <p>
-                    Exploring Power BI, Excel, DAX and data visualization
-                    through practical analytics projects.
-                </p>
-                <span class="experience-label">DATA</span>
+            <div class="timeline-item active reveal">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-line">
+                    <span></span>
+                </div>
+                <div class="timeline-content">
+                    <small>CURRENT FOCUS</small>
+                    <h3>MERN + AI with Python</h3>
+                    <p>
+                        Expanding from frontend development into React,
+                        Node.js, Express, MongoDB and Python-based AI.
+                    </p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal">
+                <div class="timeline-year">NEXT</div>
+                <div class="timeline-line">
+                    <span></span>
+                </div>
+                <div class="timeline-content">
+                    <small>THE GOAL</small>
+                    <h3>Full-Stack Applications</h3>
+                    <p>
+                        Build and deploy complete MERN applications and
+                        experiment with AI-powered features.
+                    </p>
+                </div>
             </div>
 
         </div>
     </div>
 </section>
 
-<section class="section contact-section" id="contact">
-    <div class="container contact-container">
-        <div class="contact-left reveal">
-            <span class="section-number">06 / CONTACT</span>
-            <h2>Have an idea?<br><span>Let's build it.</span></h2>
-            <p>
-                Whether it's a project, collaboration, opportunity or just
-                a conversation about development — I'm always open to connecting.
-            </p>
+<section class="section github-section">
+    <div class="container">
 
-            <div class="contact-links">
-                <a href="mailto:muhammadfaizankhan525@gmail.com">
-                    <span>EMAIL</span>
-                    <strong>muhammadfaizankhan525@gmail.com</strong>
-                </a>
+        <div class="github-card reveal">
+            <div>
+                <p class="eyebrow">06 / OPEN SOURCE</p>
+                <h2>FOLLOW THE<br><span>CODE.</span></h2>
+                <p>
+                    My GitHub is where the projects, experiments and learning
+                    happen in public.
+                </p>
+            </div>
 
-                <a href="https://github.com/Faizan-khan144" target="_blank">
-                    <span>GITHUB</span>
-                    <strong>Faizan-khan144 ↗</strong>
-                </a>
+            <div class="github-stats">
+                <div>
+                    <strong>22</strong>
+                    <span>REPOSITORIES</span>
+                </div>
 
-                <a href="https://www.linkedin.com/" target="_blank">
-                    <span>LINKEDIN</span>
-                    <strong>Connect with me ↗</strong>
+                <div>
+                    <strong>34</strong>
+                    <span>STARS</span>
+                </div>
+
+                <div>
+                    <strong>211</strong>
+                    <span>FOLLOWERS</span>
+                </div>
+
+                <a href="https://github.com/Faizan-khan144"
+                   target="_blank"
+                   class="github-button">
+                    OPEN GITHUB ↗
                 </a>
             </div>
         </div>
 
-        <form class="contact-form reveal" id="contactForm">
-            <div class="form-top">
-                <span>START A CONVERSATION</span>
-                <b>06</b>
+    </div>
+</section>
+
+<section class="section contact" id="contact">
+    <div class="container">
+
+        <div class="contact-grid">
+
+            <div class="contact-copy reveal">
+                <p class="eyebrow">07 / CONTACT</p>
+                <h2>LET'S BUILD<br><span>SOMETHING.</span></h2>
+
+                <p>
+                    Have an idea, project or collaboration in mind?
+                    Let's connect and turn it into something useful.
+                </p>
+
+                <div class="contact-links">
+
+                    <a href="https://github.com/Faizan-khan144"
+                       target="_blank">
+                        <span>GH</span>
+                        <div>
+                            <small>GITHUB</small>
+                            <strong>Faizan-khan144</strong>
+                        </div>
+                        ↗
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041a"
+                       target="_blank">
+                        <span>in</span>
+                        <div>
+                            <small>LINKEDIN</small>
+                            <strong>Connect with me</strong>
+                        </div>
+                        ↗
+                    </a>
+                </div>
             </div>
 
-            <label>
-                Name
-                <input type="text" placeholder="Your name" required>
-            </label>
+            <form class="contact-form reveal" id="contactForm">
 
-            <label>
-                Email
-                <input type="email" placeholder="your@email.com" required>
-            </label>
+                <div class="form-title">
+                    SEND A MESSAGE
+                </div>
 
-            <label>
-                Message
-                <textarea placeholder="Tell me about your project..." required></textarea>
-            </label>
+                <label>
+                    NAME
+                    <input type="text" id="name" placeholder="Your name" required>
+                </label>
 
-            <button type="submit">
-                Send Message
-                <span>↗</span>
-            </button>
+                <label>
+                    EMAIL
+                    <input type="email" id="email" placeholder="your@email.com" required>
+                </label>
 
-            <p id="formMessage"></p>
-        </form>
+                <label>
+                    MESSAGE
+                    <textarea id="message"
+                              placeholder="Tell me about your idea..."
+                              required></textarea>
+                </label>
+
+                <button type="submit">
+                    SEND MESSAGE
+                    <span>↗</span>
+                </button>
+
+                <p id="formMessage"></p>
+            </form>
+
+        </div>
     </div>
 </section>
 
@@ -989,27 +915,27 @@
 <footer>
     <div class="container footer-main">
         <div class="footer-logo">
-            <span>F</span>
-            <strong>faizan.dev</strong>
+            <span>FZ</span>
+            <strong>FAIZAN<span>.</span></strong>
         </div>
 
         <p>Designed & built by Muhammad Faizan Khan.</p>
 
         <div class="footer-links">
-            <a href="#home">Top ↑</a>
             <a href="https://github.com/Faizan-khan144" target="_blank">GitHub</a>
-            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041a" target="_blank">LinkedIn</a>
         </div>
     </div>
 
-    <div class="container footer-bottom">
-        <span>© 2026 Faizan Khan</span>
-        <span>MERN + AI with Python</span>
+    <div class="footer-bottom">
+        <span>© 2026 FAIZAN KHAN</span>
+        <span>LEARN → BUILD → IMPROVE → REPEAT</span>
     </div>
 </footer>
 
-<button class="back-top" id="backTop">↑</button>
+<button class="top" id="top">↑</button>
 
 <script src="script.js"></script>
 </body>
 </html>
+```
