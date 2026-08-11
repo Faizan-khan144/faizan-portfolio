@@ -4,50 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Muhammad Faizan Khan - Full Stack Developer Portfolio">
+    <meta name="theme-color" content="#070b16">
     <title>Faizan Khan | Full Stack Developer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="cursor-glow"></div>
+<div id="loader">
+    <div class="loader-core">
+        <div class="loader-orbit"></div>
+        <span>F</span>
+    </div>
+    <div class="loader-text">INITIALIZING PORTFOLIO</div>
+    <div class="loader-progress">
+        <span></span>
+    </div>
+</div>
+
+<canvas id="particles"></canvas>
 
 <div class="background">
     <div class="grid"></div>
-    <div class="orb orb-one"></div>
-    <div class="orb orb-two"></div>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+    <div class="glow glow-3"></div>
 </div>
 
 <header class="header">
     <div class="container nav">
         <a href="#home" class="logo">
-            <span class="logo-box">&lt;/&gt;</span>
-            <span>Faizan<span class="logo-dot">.dev</span></span>
+            <span class="logo-box">F</span>
+            <span>faizan<span>.dev</span></span>
         </a>
 
         <nav class="nav-links">
             <a href="#home" class="active">Home</a>
+            <a href="#about">About</a>
             <a href="#skills">Skills</a>
-            <a href="#work">Work</a>
+            <a href="#projects">Projects</a>
             <a href="#roadmap">Roadmap</a>
             <a href="#contact">Contact</a>
         </nav>
 
         <a href="#contact" class="nav-button">Let's Talk</a>
 
-        <button class="menu-button" aria-label="Open menu">
+        <button class="menu-btn" id="menuBtn">
             <span></span>
             <span></span>
             <span></span>
         </button>
     </div>
 
-    <div class="mobile-menu">
+    <div class="mobile-menu" id="mobileMenu">
         <a href="#home">Home</a>
+        <a href="#about">About</a>
         <a href="#skills">Skills</a>
-        <a href="#work">Work</a>
+        <a href="#projects">Projects</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#contact">Contact</a>
     </div>
@@ -56,416 +71,708 @@
 <main>
 
 <section class="hero" id="home">
-    <div class="container hero-grid">
+    <div class="container hero-container">
 
         <div class="hero-content reveal">
             <div class="status">
-                <span class="status-dot"></span>
+                <span></span>
                 Available for opportunities
             </div>
 
-            <p class="eyebrow">MERN + AI WITH PYTHON</p>
+            <p class="hero-label">FULL STACK DEVELOPER · MERN · PYTHON</p>
 
             <h1>
-                Muhammad <span>Faizan</span><br>
-                Khan.
+                Building the
+                <span>digital future</span>
+                one project at a time.
             </h1>
 
             <p class="hero-description">
-                Full Stack Developer building modern, responsive and
-                scalable web experiences with MERN and Python.
+                I'm <strong>Muhammad Faizan Khan</strong>, a Full Stack Developer focused on building modern,
+                responsive and interactive web experiences with MERN Stack, JavaScript and Python.
             </p>
 
             <div class="hero-buttons">
-                <a href="#work" class="button button-primary">
-                    View My Work
+                <a href="#projects" class="btn btn-primary">
+                    Explore My Work
                     <span>↗</span>
                 </a>
 
-                <a href="#contact" class="button button-secondary">
+                <a href="#contact" class="btn btn-secondary">
                     Contact Me
                 </a>
             </div>
 
-            <div class="social-links">
+            <div class="hero-socials">
                 <a href="https://github.com/Faizan-khan144" target="_blank">GitHub ↗</a>
                 <a href="https://www.linkedin.com/" target="_blank">LinkedIn ↗</a>
-            </div>
-
-            <div class="stats">
-                <div class="stat">
-                    <strong>10+</strong>
-                    <span>Projects</span>
-                </div>
-                <div class="stat">
-                    <strong>8+</strong>
-                    <span>Technologies</span>
-                </div>
-                <div class="stat">
-                    <strong>100%</strong>
-                    <span>Learning</span>
-                </div>
+                <span>Pakistan</span>
             </div>
         </div>
 
-        <div class="editor-wrap reveal delay-one">
-            <div class="editor">
-                <div class="editor-top">
-                    <div class="editor-dots">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+        <div class="hero-visual reveal">
+            <div class="scene" id="scene">
 
-                    <div class="editor-tab">
-                        developer.js
-                    </div>
+                <div class="orbit orbit-one"></div>
+                <div class="orbit orbit-two"></div>
+                <div class="orbit orbit-three"></div>
 
-                    <div class="editor-actions">
-                        <span>−</span>
-                        <span>□</span>
-                        <span>×</span>
-                    </div>
-                </div>
+                <div class="orbit-dot dot-one"></div>
+                <div class="orbit-dot dot-two"></div>
+                <div class="orbit-dot dot-three"></div>
 
-                <div class="editor-content">
-                    <div class="code-line">
-                        <span class="line-number">01</span>
-                        <span><b class="purple">const</b> <b class="blue">developer</b> = {</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">02</span>
-                        <span>&nbsp;&nbsp;name: <b class="green">"Faizan Khan"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">03</span>
-                        <span>&nbsp;&nbsp;role: <b class="green">"Full Stack Developer"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">04</span>
-                        <span>&nbsp;&nbsp;focus: <b class="green">"MERN + AI"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">05</span>
-                        <span>&nbsp;&nbsp;stack: [</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">06</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="green">"HTML"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">07</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="green">"CSS"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">08</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="green">"JavaScript"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">09</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="green">"React"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">10</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="green">"Node.js"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">11</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="green">"MongoDB"</b>,</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">12</span>
-                        <span>&nbsp;&nbsp;&nbsp;&nbsp;<b class="green">"Python"</b></span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">13</span>
-                        <span>&nbsp;&nbsp;],</span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">14</span>
-                        <span>&nbsp;&nbsp;status: <b class="green">"building"</b></span>
-                    </div>
-
-                    <div class="code-line">
-                        <span class="line-number">15</span>
-                        <span>};<span class="typing-cursor"></span></span>
+                <div class="core">
+                    <div class="core-inner">
+                        <div class="core-symbol">&lt;/&gt;</div>
+                        <div class="core-name">FAIZAN</div>
+                        <div class="core-role">DEVELOPER</div>
                     </div>
                 </div>
 
-                <div class="editor-bottom">
-                    <span>main</span>
-                    <span>UTF-8</span>
-                    <span>JavaScript</span>
+                <div class="tech-card tech-html">
+                    <strong>HTML</strong>
+                    <small>Structure</small>
                 </div>
+
+                <div class="tech-card tech-react">
+                    <strong>REACT</strong>
+                    <small>Frontend</small>
+                </div>
+
+                <div class="tech-card tech-node">
+                    <strong>NODE.JS</strong>
+                    <small>Backend</small>
+                </div>
+
+                <div class="tech-card tech-python">
+                    <strong>PYTHON</strong>
+                    <small>Logic</small>
+                </div>
+
+                <div class="scene-floor"></div>
             </div>
         </div>
+    </div>
 
+    <div class="hero-scroll">
+        <span>SCROLL TO EXPLORE</span>
+        <div></div>
     </div>
 </section>
 
-<section class="tech-strip">
-    <div class="container tech-track">
-        <span>HTML5</span>
-        <i>•</i>
-        <span>CSS3</span>
-        <i>•</i>
-        <span>JavaScript</span>
-        <i>•</i>
-        <span>React</span>
-        <i>•</i>
-        <span>Node.js</span>
-        <i>•</i>
-        <span>MongoDB</span>
-        <i>•</i>
-        <span>Python</span>
-        <i>•</i>
-        <span>Git</span>
-        <i>•</i>
-        <span>GitHub</span>
+<section class="ticker">
+    <div class="ticker-track">
+        <span>FULL STACK DEVELOPMENT</span>
+        <b>✦</b>
+        <span>MERN STACK</span>
+        <b>✦</b>
+        <span>PYTHON</span>
+        <b>✦</b>
+        <span>FRONTEND ENGINEERING</span>
+        <b>✦</b>
+        <span>UI DEVELOPMENT</span>
+        <b>✦</b>
+        <span>PROBLEM SOLVING</span>
+        <b>✦</b>
+        <span>FULL STACK DEVELOPMENT</span>
+        <b>✦</b>
+        <span>MERN STACK</span>
+        <b>✦</b>
+        <span>PYTHON</span>
+        <b>✦</b>
+        <span>FRONTEND ENGINEERING</span>
+        <b>✦</b>
+        <span>UI DEVELOPMENT</span>
+        <b>✦</b>
     </div>
 </section>
 
-<section class="section" id="skills">
+<section class="section about-section" id="about">
     <div class="container">
-
         <div class="section-heading reveal">
-            <p class="eyebrow">01 / SKILLS</p>
-            <h2>Tools I use to<br><span>build things.</span></h2>
+            <span class="section-number">01 / ABOUT</span>
+            <h2>Developer with a<br><span>builder's mindset.</span></h2>
+        </div>
+
+        <div class="about-grid">
+            <div class="about-main reveal">
+                <p class="large-text">
+                    I don't just learn technologies. I turn them into
+                    <span>real projects.</span>
+                </p>
+
+                <p>
+                    My journey revolves around web development, programming and continuously
+                    improving my technical skills. From designing responsive interfaces to
+                    building full-stack applications, I enjoy turning ideas into functional
+                    digital products.
+                </p>
+
+                <p>
+                    Currently focused on the MERN ecosystem and Python, while expanding my
+                    understanding of backend development, databases, APIs and modern development
+                    workflows.
+                </p>
+            </div>
+
+            <div class="about-side reveal">
+                <div class="info-card">
+                    <span>01</span>
+                    <strong>Frontend</strong>
+                    <p>Modern responsive interfaces and interactive experiences.</p>
+                </div>
+
+                <div class="info-card">
+                    <span>02</span>
+                    <strong>Backend</strong>
+                    <p>APIs, server-side logic, databases and application architecture.</p>
+                </div>
+
+                <div class="info-card">
+                    <span>03</span>
+                    <strong>Problem Solving</strong>
+                    <p>Breaking complex problems into practical solutions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats reveal">
+            <div class="stat">
+                <strong data-count="20">0</strong>
+                <span>Projects Built</span>
+            </div>
+            <div class="stat">
+                <strong data-count="15">0</strong>
+                <span>Technologies</span>
+            </div>
+            <div class="stat">
+                <strong data-count="100">0</strong>
+                <span>Learning Mode</span>
+            </div>
+            <div class="stat">
+                <strong>∞</strong>
+                <span>Ideas to Build</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section skills-section" id="skills">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="section-number">02 / SKILLS</span>
+            <h2>The tools behind<br><span>the work.</span></h2>
             <p>
-                A growing technical stack focused on modern web development,
-                backend systems and Python-based development.
+                A growing technical stack covering frontend, backend, programming,
+                databases, data tools and creative software.
             </p>
         </div>
 
-        <div class="skills-grid">
+        <div class="skills-layout">
 
-            <article class="skill-card reveal">
-                <div class="skill-number">01</div>
-                <div class="skill-icon">&lt;/&gt;</div>
-                <h3>Frontend</h3>
-                <p>Creating responsive and interactive interfaces.</p>
-                <div class="tags">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
+            <div class="skill-category reveal">
+                <div class="category-top">
+                    <span>01</span>
+                    <h3>Frontend</h3>
+                </div>
+
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <div>
+                            <strong>HTML5</strong>
+                            <span>Semantic Structure</span>
+                        </div>
+                        <b>95%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>CSS3</strong>
+                            <span>Responsive Design</span>
+                        </div>
+                        <b>90%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>JavaScript</strong>
+                            <span>Interactive Web</span>
+                        </div>
+                        <b>85%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>React</strong>
+                            <span>Component UI</span>
+                        </div>
+                        <b>80%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>Tailwind CSS</strong>
+                            <span>Utility Styling</span>
+                        </div>
+                        <b>80%</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <div class="category-top">
+                    <span>02</span>
+                    <h3>Backend & MERN</h3>
+                </div>
+
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <div>
+                            <strong>Node.js</strong>
+                            <span>Server Runtime</span>
+                        </div>
+                        <b>75%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>Express.js</strong>
+                            <span>Backend APIs</span>
+                        </div>
+                        <b>75%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>MongoDB</strong>
+                            <span>NoSQL Database</span>
+                        </div>
+                        <b>70%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>REST APIs</strong>
+                            <span>Application Data</span>
+                        </div>
+                        <b>70%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>Git & GitHub</strong>
+                            <span>Version Control</span>
+                        </div>
+                        <b>85%</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <div class="category-top">
+                    <span>03</span>
+                    <h3>Programming</h3>
+                </div>
+
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <div>
+                            <strong>Python</strong>
+                            <span>Programming</span>
+                        </div>
+                        <b>85%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>OOP</strong>
+                            <span>Object-Oriented Programming</span>
+                        </div>
+                        <b>85%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>Problem Solving</strong>
+                            <span>Logic Building</span>
+                        </div>
+                        <b>85%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>SQL</strong>
+                            <span>Data Queries</span>
+                        </div>
+                        <b>70%</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <div class="category-top">
+                    <span>04</span>
+                    <h3>Data & Tools</h3>
+                </div>
+
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <div>
+                            <strong>Power BI</strong>
+                            <span>Data Visualization</span>
+                        </div>
+                        <b>80%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>Excel</strong>
+                            <span>Data Analysis</span>
+                        </div>
+                        <b>80%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>DAX</strong>
+                            <span>Power BI Analytics</span>
+                        </div>
+                        <b>65%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>VS Code</strong>
+                            <span>Development Environment</span>
+                        </div>
+                        <b>95%</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category reveal">
+                <div class="category-top">
+                    <span>05</span>
+                    <h3>Creative Tools</h3>
+                </div>
+
+                <div class="skill-items">
+                    <div class="skill-item">
+                        <div>
+                            <strong>Figma</strong>
+                            <span>UI Design</span>
+                        </div>
+                        <b>75%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>Canva</strong>
+                            <span>Visual Design</span>
+                        </div>
+                        <b>85%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>CapCut</strong>
+                            <span>Video Editing</span>
+                        </div>
+                        <b>80%</b>
+                    </div>
+
+                    <div class="skill-item">
+                        <div>
+                            <strong>GitHub</strong>
+                            <span>Project Management</span>
+                        </div>
+                        <b>85%</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category skill-highlight reveal">
+                <div class="highlight-symbol">{ }</div>
+                <span class="section-number">CURRENT FOCUS</span>
+                <h3>MERN + AI with Python</h3>
+                <p>
+                    Building stronger full-stack foundations while exploring
+                    Python-based AI and intelligent application development.
+                </p>
+                <div class="focus-tags">
                     <span>React</span>
-                </div>
-            </article>
-
-            <article class="skill-card reveal delay-one">
-                <div class="skill-number">02</div>
-                <div class="skill-icon">{ }</div>
-                <h3>Backend</h3>
-                <p>Building APIs and server-side applications.</p>
-                <div class="tags">
-                    <span>Node.js</span>
-                    <span>Express</span>
+                    <span>Node</span>
                     <span>MongoDB</span>
-                </div>
-            </article>
-
-            <article class="skill-card reveal delay-two">
-                <div class="skill-number">03</div>
-                <div class="skill-icon">Py</div>
-                <h3>Python</h3>
-                <p>Learning Python for development and AI applications.</p>
-                <div class="tags">
-                    <span>Python</span>
-                    <span>OOP</span>
-                    <span>AI</span>
-                </div>
-            </article>
-
-            <article class="skill-card reveal">
-                <div class="skill-number">04</div>
-                <div class="skill-icon">⌘</div>
-                <h3>Development</h3>
-                <p>Tools and workflows I use every day.</p>
-                <div class="tags">
-                    <span>VS Code</span>
-                    <span>Git</span>
-                    <span>GitHub</span>
-                </div>
-            </article>
-
-            <article class="skill-card reveal delay-one">
-                <div class="skill-number">05</div>
-                <div class="skill-icon">UI</div>
-                <h3>UI Design</h3>
-                <p>Designing clean and modern digital experiences.</p>
-                <div class="tags">
-                    <span>Responsive</span>
-                    <span>Layouts</span>
-                    <span>UX</span>
-                </div>
-            </article>
-
-            <article class="skill-card reveal delay-two">
-                <div class="skill-number">06</div>
-                <div class="skill-icon">AI</div>
-                <h3>AI Learning</h3>
-                <p>Exploring AI concepts and Python-based development.</p>
-                <div class="tags">
                     <span>Python</span>
                     <span>AI</span>
-                    <span>Automation</span>
                 </div>
-            </article>
+            </div>
 
         </div>
     </div>
 </section>
 
-<section class="section work-section" id="work">
+<section class="section projects-section" id="projects">
     <div class="container">
-
         <div class="section-heading reveal">
-            <p class="eyebrow">02 / SELECTED WORK</p>
+            <span class="section-number">03 / PROJECTS</span>
             <h2>Things I've<br><span>built.</span></h2>
             <p>
-                A selection of projects built while improving my frontend,
-                full-stack and development skills.
+                A collection of websites, dashboards, applications and experiments
+                built while developing my skills.
             </p>
         </div>
 
-        <div class="projects">
+        <div class="projects-grid">
 
-            <article class="project reveal">
-                <div class="project-image project-one">
-                    <div class="project-window">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <div class="project-preview">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
+            <article class="project-card featured reveal">
+                <div class="project-image crypto">
+                    <span class="project-code">01</span>
+                    <div class="fake-dashboard">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span class="project-type">DASHBOARD</span>
+                </div>
+                <div class="project-content">
+                    <span>01 · DATA / WEB</span>
+                    <h3>CryptoLens Dashboard</h3>
+                    <p>
+                        A modern cryptocurrency dashboard focused on presenting
+                        market information through a clean interactive interface.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                        <span>API</span>
                     </div>
                 </div>
+            </article>
 
-                <div class="project-info">
-                    <span class="project-number">01</span>
+            <article class="project-card reveal">
+                <div class="project-image bank">
+                    <span class="project-code">02</span>
+                    <div class="bank-ui">
+                        <strong>FZ</strong>
+                        <span>SECURE BANKING</span>
+                    </div>
+                    <span class="project-type">FINTECH</span>
+                </div>
+                <div class="project-content">
+                    <span>02 · WEB APP</span>
                     <h3>FZ Bank</h3>
                     <p>
-                        A modern banking interface focused on clean UI,
-                        responsive layouts and smooth interactions.
+                        A modern banking website concept designed around
+                        clean interfaces and financial dashboard experiences.
                     </p>
-
                     <div class="project-tags">
                         <span>HTML</span>
                         <span>CSS</span>
                         <span>JavaScript</span>
                     </div>
-
-                    <a href="#" class="project-link">View Project ↗</a>
                 </div>
             </article>
 
-            <article class="project reverse reveal">
-                <div class="project-image project-two">
-                    <div class="dashboard">
-                        <div class="dashboard-top"></div>
-                        <div class="dashboard-grid">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
+            <article class="project-card reveal">
+                <div class="project-image attendance">
+                    <span class="project-code">03</span>
+                    <div class="attendance-ui">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </div>
+                    <span class="project-type">PRODUCTIVITY</span>
+                </div>
+                <div class="project-content">
+                    <span>03 · APPLICATION</span>
+                    <h3>Student Attendance Tracker</h3>
+                    <p>
+                        A practical attendance management interface designed
+                        to make student records easier to manage.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
                     </div>
                 </div>
+            </article>
 
-                <div class="project-info">
-                    <span class="project-number">02</span>
+            <article class="project-card reveal">
+                <div class="project-image tic">
+                    <span class="project-code">04</span>
+                    <div class="tic-ui">
+                        <b>×</b>
+                        <b>○</b>
+                        <b>×</b>
+                        <b>○</b>
+                    </div>
+                    <span class="project-type">GAME</span>
+                </div>
+                <div class="project-content">
+                    <span>04 · JAVASCRIPT</span>
+                    <h3>Modern Tic-Tac-Toe</h3>
+                    <p>
+                        An interactive browser game with a modern interface,
+                        game state management and responsive layout.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-image agency">
+                    <span class="project-code">05</span>
+                    <div class="agency-ui">
+                        <strong>VORTEX</strong>
+                        <span>CREATIVE AGENCY</span>
+                    </div>
+                    <span class="project-type">AGENCY</span>
+                </div>
+                <div class="project-content">
+                    <span>05 · DESIGN / WEB</span>
+                    <h3>Vortex Agency</h3>
+                    <p>
+                        A bold agency website concept focused on strong typography,
+                        visual hierarchy and modern digital branding.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="project-card reveal">
+                <div class="project-image dashboard">
+                    <span class="project-code">06</span>
+                    <div class="dev-ui">
+                        <span>&lt;/&gt;</span>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span class="project-type">DEVELOPER</span>
+                </div>
+                <div class="project-content">
+                    <span>06 · PRODUCTIVITY</span>
                     <h3>Dev Dashboard</h3>
                     <p>
-                        A developer-focused dashboard interface designed
-                        around productivity and information hierarchy.
+                        A developer-focused dashboard interface for organizing
+                        tools, projects and useful development information.
                     </p>
-
                     <div class="project-tags">
                         <span>HTML</span>
                         <span>CSS</span>
                         <span>JavaScript</span>
                     </div>
-
-                    <a href="#" class="project-link">View Project ↗</a>
                 </div>
             </article>
 
-            <article class="project reveal">
-                <div class="project-image project-three">
-                    <div class="store-preview">
-                        <div class="store-header"></div>
-                        <div class="store-products">
-                            <div></div>
-                            <div></div>
-                            <div></div>
-                        </div>
+            <article class="project-card reveal">
+                <div class="project-image fitness">
+                    <span class="project-code">07</span>
+                    <div class="fitness-ui">
+                        <strong>FZ FITNESS</strong>
+                        <span>TRAIN · BUILD · GROW</span>
+                    </div>
+                    <span class="project-type">FITNESS</span>
+                </div>
+                <div class="project-content">
+                    <span>07 · WEB EXPERIENCE</span>
+                    <h3>FZ Fitness</h3>
+                    <p>
+                        A fitness-focused website built around bold visuals,
+                        structured content and responsive sections.
+                    </p>
+                    <div class="project-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
                     </div>
                 </div>
+            </article>
 
-                <div class="project-info">
-                    <span class="project-number">03</span>
+            <article class="project-card reveal">
+                <div class="project-image ecommerce">
+                    <span class="project-code">08</span>
+                    <div class="shop-ui">
+                        <strong>A&O</strong>
+                        <span>MODERN STORE</span>
+                    </div>
+                    <span class="project-type">E-COMMERCE</span>
+                </div>
+                <div class="project-content">
+                    <span>08 · E-COMMERCE</span>
                     <h3>August & Oak</h3>
                     <p>
-                        A premium e-commerce experience with a clean,
-                        modern product-focused interface.
+                        A premium e-commerce concept focused on product presentation,
+                        modern layouts and shopping-oriented UI.
                     </p>
-
                     <div class="project-tags">
                         <span>HTML</span>
                         <span>CSS</span>
                         <span>JavaScript</span>
                     </div>
-
-                    <a href="#" class="project-link">View Project ↗</a>
                 </div>
             </article>
 
-            <article class="project reverse reveal">
-                <div class="project-image project-four">
-                    <div class="crypto-preview">
-                        <div class="crypto-chart"></div>
-                        <div class="crypto-bars">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
+            <article class="project-card reveal">
+                <div class="project-image portfolio">
+                    <span class="project-code">09</span>
+                    <div class="portfolio-ui">
+                        <strong>FAIZAN.DEV</strong>
+                        <span>PORTFOLIO</span>
                     </div>
+                    <span class="project-type">PERSONAL</span>
                 </div>
-
-                <div class="project-info">
-                    <span class="project-number">04</span>
-                    <h3>CryptoLens</h3>
+                <div class="project-content">
+                    <span>09 · PORTFOLIO</span>
+                    <h3>Developer Portfolio</h3>
                     <p>
-                        A cryptocurrency dashboard concept for presenting
-                        market information through a modern interface.
+                        This portfolio — designed to showcase my technical journey,
+                        projects, skills and development roadmap.
                     </p>
-
                     <div class="project-tags">
                         <span>HTML</span>
                         <span>CSS</span>
                         <span>JavaScript</span>
                     </div>
+                </div>
+            </article>
 
-                    <a href="#" class="project-link">View Project ↗</a>
+            <article class="project-card reveal">
+                <div class="project-image powerbi">
+                    <span class="project-code">10</span>
+                    <div class="power-ui">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <span class="project-type">ANALYTICS</span>
+                </div>
+                <div class="project-content">
+                    <span>10 · POWER BI</span>
+                    <h3>HR Analytics Dashboard</h3>
+                    <p>
+                        An HR analytics project focused on transforming employee
+                        information into useful visual insights.
+                    </p>
+                    <div class="project-tags">
+                        <span>Power BI</span>
+                        <span>Excel</span>
+                        <span>DAX</span>
+                    </div>
                 </div>
             </article>
 
@@ -473,66 +780,145 @@
     </div>
 </section>
 
-<section class="section roadmap-section" id="roadmap">
+<section class="section journey-section" id="roadmap">
     <div class="container">
-
         <div class="section-heading reveal">
-            <p class="eyebrow">03 / ROADMAP</p>
-            <h2>Currently<br><span>building.</span></h2>
-            <p>
-                The technologies and concepts I'm focusing on as I continue
-                growing as a developer.
-            </p>
+            <span class="section-number">04 / JOURNEY</span>
+            <h2>Always learning.<br><span>Always building.</span></h2>
         </div>
 
-        <div class="roadmap">
+        <div class="journey">
+            <div class="journey-line"></div>
 
-            <div class="roadmap-item done reveal">
-                <div class="roadmap-number">01</div>
-                <div class="roadmap-content">
-                    <span class="roadmap-state">COMPLETED</span>
-                    <h3>Frontend Foundations</h3>
+            <div class="journey-item done reveal">
+                <div class="journey-marker">01</div>
+                <div class="journey-content">
+                    <span>COMPLETED</span>
+                    <h3>Web Foundations</h3>
                     <p>
-                        HTML, CSS, responsive design, layouts and modern
-                        frontend fundamentals.
+                        HTML, CSS, responsive layouts, semantic HTML,
+                        forms and modern frontend fundamentals.
                     </p>
+                    <div>
+                        <b>HTML</b>
+                        <b>CSS</b>
+                        <b>Responsive Design</b>
+                    </div>
                 </div>
             </div>
 
-            <div class="roadmap-item active reveal delay-one">
-                <div class="roadmap-number">02</div>
-                <div class="roadmap-content">
-                    <span class="roadmap-state">CURRENT</span>
-                    <h3>JavaScript & React</h3>
+            <div class="journey-item done reveal">
+                <div class="journey-marker">02</div>
+                <div class="journey-content">
+                    <span>COMPLETED</span>
+                    <h3>JavaScript & Programming</h3>
                     <p>
-                        Building interactive applications with JavaScript,
-                        React and component-based architecture.
+                        JavaScript fundamentals, application logic,
+                        DOM interaction and programming concepts.
                     </p>
+                    <div>
+                        <b>JavaScript</b>
+                        <b>OOP</b>
+                        <b>Logic</b>
+                    </div>
                 </div>
             </div>
 
-            <div class="roadmap-item reveal delay-two">
-                <div class="roadmap-number">03</div>
-                <div class="roadmap-content">
-                    <span class="roadmap-state">NEXT</span>
-                    <h3>MERN Stack</h3>
+            <div class="journey-item active reveal">
+                <div class="journey-marker">03</div>
+                <div class="journey-content">
+                    <span>IN PROGRESS</span>
+                    <h3>MERN Stack Development</h3>
                     <p>
-                        Deepening my knowledge of Node.js, Express,
-                        MongoDB and full-stack application development.
+                        Building stronger full-stack skills with React,
+                        Node.js, Express and MongoDB.
                     </p>
+                    <div>
+                        <b>React</b>
+                        <b>Node.js</b>
+                        <b>MongoDB</b>
+                        <b>Express</b>
+                    </div>
                 </div>
             </div>
 
-            <div class="roadmap-item reveal delay-three">
-                <div class="roadmap-number">04</div>
-                <div class="roadmap-content">
-                    <span class="roadmap-state">UPCOMING</span>
+            <div class="journey-item active reveal">
+                <div class="journey-marker">04</div>
+                <div class="journey-content">
+                    <span>IN PROGRESS</span>
                     <h3>AI with Python</h3>
                     <p>
-                        Exploring Python-based AI development and practical
-                        intelligent applications.
+                        Expanding Python skills toward AI, automation,
+                        intelligent applications and deeper programming.
                     </p>
+                    <div>
+                        <b>Python</b>
+                        <b>AI</b>
+                        <b>Automation</b>
+                    </div>
                 </div>
+            </div>
+
+            <div class="journey-item future reveal">
+                <div class="journey-marker">05</div>
+                <div class="journey-content">
+                    <span>NEXT</span>
+                    <h3>Full Stack + AI Applications</h3>
+                    <p>
+                        Combining full-stack development with intelligent
+                        features to build more powerful products.
+                    </p>
+                    <div>
+                        <b>MERN</b>
+                        <b>AI</b>
+                        <b>APIs</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section experience-section">
+    <div class="container">
+        <div class="section-heading reveal">
+            <span class="section-number">05 / EXPERIENCE</span>
+            <h2>Learning through<br><span>real work.</span></h2>
+        </div>
+
+        <div class="experience-grid">
+
+            <div class="experience-card reveal">
+                <span class="experience-number">01</span>
+                <div class="experience-icon">&lt;/&gt;</div>
+                <h3>Frontend Development</h3>
+                <p>
+                    Building responsive interfaces and interactive web experiences
+                    while working with modern frontend technologies.
+                </p>
+                <span class="experience-label">WEB DEVELOPMENT</span>
+            </div>
+
+            <div class="experience-card reveal">
+                <span class="experience-number">02</span>
+                <div class="experience-icon">{ }</div>
+                <h3>Python Development</h3>
+                <p>
+                    Practicing Python programming, object-oriented programming,
+                    logic building and application development.
+                </p>
+                <span class="experience-label">PROGRAMMING</span>
+            </div>
+
+            <div class="experience-card reveal">
+                <span class="experience-number">03</span>
+                <div class="experience-icon">▦</div>
+                <h3>Data & Analytics</h3>
+                <p>
+                    Exploring Power BI, Excel, DAX and data visualization
+                    through practical analytics projects.
+                </p>
+                <span class="experience-label">DATA</span>
             </div>
 
         </div>
@@ -540,103 +926,89 @@
 </section>
 
 <section class="section contact-section" id="contact">
-    <div class="container">
+    <div class="container contact-container">
+        <div class="contact-left reveal">
+            <span class="section-number">06 / CONTACT</span>
+            <h2>Have an idea?<br><span>Let's build it.</span></h2>
+            <p>
+                Whether it's a project, collaboration, opportunity or just
+                a conversation about development — I'm always open to connecting.
+            </p>
 
-        <div class="contact-grid">
+            <div class="contact-links">
+                <a href="mailto:muhammadfaizankhan525@gmail.com">
+                    <span>EMAIL</span>
+                    <strong>muhammadfaizankhan525@gmail.com</strong>
+                </a>
 
-            <div class="contact-content reveal">
-                <p class="eyebrow">04 / CONTACT</p>
-                <h2>Let's build<br><span>something.</span></h2>
-                <p>
-                    Have an idea, project or opportunity? Feel free to
-                    reach out and let's connect.
-                </p>
+                <a href="https://github.com/Faizan-khan144" target="_blank">
+                    <span>GITHUB</span>
+                    <strong>Faizan-khan144 ↗</strong>
+                </a>
 
-                <div class="contact-links">
-                    <a href="mailto:muhammadfaizankhan525@gmail.com">
-                        <span class="contact-icon">@</span>
-                        <span>muhammadfaizankhan525@gmail.com</span>
-                    </a>
+                <a href="https://www.linkedin.com/" target="_blank">
+                    <span>LINKEDIN</span>
+                    <strong>Connect with me ↗</strong>
+                </a>
+            </div>
+        </div>
 
-                    <a href="https://github.com/Faizan-khan144" target="_blank">
-                        <span class="contact-icon">GH</span>
-                        <span>github.com/Faizan-khan144</span>
-                    </a>
-
-                    <a href="https://www.linkedin.com/" target="_blank">
-                        <span class="contact-icon">in</span>
-                        <span>LinkedIn</span>
-                    </a>
-                </div>
+        <form class="contact-form reveal" id="contactForm">
+            <div class="form-top">
+                <span>START A CONVERSATION</span>
+                <b>06</b>
             </div>
 
-            <form class="contact-form reveal delay-one">
+            <label>
+                Name
+                <input type="text" placeholder="Your name" required>
+            </label>
 
-                <div class="form-header">
-                    <span>01</span>
-                    <h3>Send a message</h3>
-                </div>
+            <label>
+                Email
+                <input type="email" placeholder="your@email.com" required>
+            </label>
 
-                <div class="form-row">
-                    <div class="field">
-                        <label for="name">Name</label>
-                        <input id="name" type="text" placeholder="Your name" required>
-                    </div>
+            <label>
+                Message
+                <textarea placeholder="Tell me about your project..." required></textarea>
+            </label>
 
-                    <div class="field">
-                        <label for="email">Email</label>
-                        <input id="email" type="email" placeholder="your@email.com" required>
-                    </div>
-                </div>
+            <button type="submit">
+                Send Message
+                <span>↗</span>
+            </button>
 
-                <div class="field">
-                    <label for="subject">Subject</label>
-                    <input id="subject" type="text" placeholder="What's this about?" required>
-                </div>
-
-                <div class="field">
-                    <label for="message">Message</label>
-                    <textarea id="message" placeholder="Tell me about your project..." required></textarea>
-                </div>
-
-                <button type="submit" class="submit-button">
-                    Send Message
-                    <span>↗</span>
-                </button>
-
-                <p class="form-message"></p>
-            </form>
-
-        </div>
+            <p id="formMessage"></p>
+        </form>
     </div>
 </section>
 
 </main>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer-top">
-            <a href="#home" class="logo">
-                <span class="logo-box">&lt;/&gt;</span>
-                <span>Faizan<span class="logo-dot">.dev</span></span>
-            </a>
-
-            <p>Building the web, one project at a time.</p>
-
-            <div class="footer-socials">
-                <a href="https://github.com/Faizan-khan144" target="_blank">GitHub</a>
-                <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
-            </div>
+<footer>
+    <div class="container footer-main">
+        <div class="footer-logo">
+            <span>F</span>
+            <strong>faizan.dev</strong>
         </div>
 
-        <div class="footer-bottom">
-            <span>© <span id="year"></span> Faizan Khan</span>
-            <span>Designed & built with code.</span>
+        <p>Designed & built by Muhammad Faizan Khan.</p>
+
+        <div class="footer-links">
+            <a href="#home">Top ↑</a>
+            <a href="https://github.com/Faizan-khan144" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
         </div>
+    </div>
+
+    <div class="container footer-bottom">
+        <span>© 2026 Faizan Khan</span>
+        <span>MERN + AI with Python</span>
     </div>
 </footer>
 
-<button class="back-top" aria-label="Back to top">↑</button>
+<button class="back-top" id="backTop">↑</button>
 
 <script src="script.js"></script>
 </body>
