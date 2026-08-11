@@ -1,406 +1,1063 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muhammad Faizan Khan | Full Stack Developer</title>
-    <meta name="description" content="Faizan Khan — Full Stack Developer focused on MERN, Python and AI.">
 
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2315152b'/%3E%3Ctext x='50' y='70' text-anchor='middle' font-family='Arial' font-size='62' font-weight='700' fill='white'%3EF%3C/text%3E%3C/svg%3E">
+```
+<title>Muhammad Faizan Khan | Full Stack Developer</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Muhammad Faizan Khan — Full Stack Developer learning MERN Stack and AI with Python. Explore projects, skills and development work.">
 
-    <link rel="stylesheet" href="style.css">
+<meta name="author" content="Muhammad Faizan Khan">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2315152b'/%3E%3Ctext x='50' y='70' text-anchor='middle' font-family='Arial' font-size='62' font-weight='700' fill='white'%3EF%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+```
+
 </head>
 
 <body>
 
-    <nav class="navbar">
-        <div class="container nav-inner">
+```
+<nav class="navbar" id="navbar">
+    <div class="container nav-inner">
 
-            <a href="#home" class="logo">
-                <span class="logo-mark">F</span>
-                <span>faizan.dev</span>
-            </a>
+        <a href="#home" class="logo">
+            <span class="logo-mark">F</span>
+            <span>faizan.dev</span>
+        </a>
 
-            <button class="menu" id="menu">☰</button>
+        <button class="menu" id="menu" aria-label="Toggle navigation">
+            ☰
+        </button>
 
-            <div class="nav-links" id="navLinks">
-                <a href="#home" class="active">Home</a>
-                <a href="#skills">Skills</a>
-                <a href="#work">Work</a>
-                <a href="#roadmap">Roadmap</a>
-                <a href="#contact" class="nav-contact">Contact</a>
-            </div>
-
+        <div class="nav-links" id="navLinks">
+            <a href="#home" class="active">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#work">Work</a>
+            <a href="#roadmap">Roadmap</a>
+            <a href="#contact" class="nav-contact">Contact</a>
         </div>
-    </nav>
 
-    <main>
+    </div>
+</nav>
 
-        <section class="hero" id="home">
-            <div class="container hero-grid">
 
-                <div class="reveal">
+<main>
 
-                    <div class="status">
-                        <span class="status-dot"></span>
-                        MERN + AI with Python
-                    </div>
+    <section class="hero" id="home">
 
-                    <h1>
-                        Muhammad Faizan
-                        <br>
-                        <span class="gradient">Khan.</span>
-                    </h1>
+        <div class="container hero-grid">
 
-                    <p class="hero-bio">
-                        Full Stack Developer focused on MERN, Python and AI.
-                    </p>
+            <div class="reveal">
 
-                    <div class="hero-actions">
-                        <a href="#work" class="btn btn-primary">View Work</a>
-                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
-                    </div>
+                <div class="status">
+                    <span class="status-dot"></span>
+                    MERN + AI with Python
+                </div>
+
+                <h1>
+                    Muhammad Faizan
+                    <br>
+                    <span class="gradient">Khan.</span>
+                </h1>
+
+                <p class="hero-bio">
+                    Full Stack Developer building modern web experiences with MERN and Python.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#work" class="btn btn-primary">
+                        View Work
+                    </a>
+
+                    <a href="#contact" class="btn btn-secondary">
+                        Contact Me
+                    </a>
 
                 </div>
 
-                <div class="hero-code reveal">
+                <div class="hero-socials">
 
-                    <div class="code-header">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+                    <a href="https://github.com/Faizan-khan144" target="_blank" rel="noopener noreferrer">
+                        GitHub
+                    </a>
 
-                    <div class="code-body">
-                        <div><span class="purple">const</span> developer = {</div>
-                        <div>&nbsp;&nbsp;name: <span class="green">"Faizan Khan"</span>,</div>
-                        <div>&nbsp;&nbsp;focus: <span class="green">"Full Stack + AI"</span>,</div>
-                        <div>&nbsp;&nbsp;stack: [</div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">"React"</span>,</div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">"Node.js"</span>,</div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">"MongoDB"</span>,</div>
-                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">"Python"</span></div>
-                        <div>&nbsp;&nbsp;],</div>
-                        <div>&nbsp;&nbsp;status: <span class="green">"building"</span></div>
-                        <div>};</div>
-                        <div class="gray">_create();</div>
-                    </div>
+                    <a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041a" target="_blank" rel="noopener noreferrer">
+                        LinkedIn
+                    </a>
 
                 </div>
 
             </div>
-        </section>
 
-        <section class="section" id="skills">
-            <div class="container">
 
-                <div class="section-heading reveal">
-                    <div class="eyebrow">01 / SKILLS</div>
-                    <h2>My toolkit.</h2>
-                    <p>Technologies I'm learning and using across development, AI and creative work.</p>
+            <div class="hero-code reveal">
+
+                <div class="code-header">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
 
-                <div class="skill-panel reveal">
-
-                    <div class="skill-tabs">
-                        <button class="skill-tab active" data-target="frontend">frontend.tsx</button>
-                        <button class="skill-tab" data-target="backend">backend.js</button>
-                        <button class="skill-tab" data-target="ai">ai_ml.py</button>
-                        <button class="skill-tab" data-target="tools">tools.md</button>
-                    </div>
-
-                    <div class="skill-content active" id="frontend">
-                        <div class="skill-content-grid">
-                            <div class="skill-icon">&lt;/&gt;</div>
-
-                            <div>
-                                <h3>Frontend Development</h3>
-                                <p>Creating responsive, interactive and modern web interfaces.</p>
-
-                                <div class="tags">
-                                    <span class="tag">HTML5</span>
-                                    <span class="tag">CSS3</span>
-                                    <span class="tag">JavaScript</span>
-                                    <span class="tag">React</span>
-                                    <span class="tag">TypeScript</span>
-                                    <span class="tag">Tailwind CSS</span>
-                                    <span class="tag">Responsive Design</span>
-                                    <span class="tag">DOM</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-content" id="backend">
-                        <div class="skill-content-grid">
-                            <div class="skill-icon">{ }</div>
-
-                            <div>
-                                <h3>MERN Stack</h3>
-                                <p>Building full-stack applications with modern JavaScript technologies.</p>
-
-                                <div class="tags">
-                                    <span class="tag">MongoDB</span>
-                                    <span class="tag">Express.js</span>
-                                    <span class="tag">React</span>
-                                    <span class="tag">Node.js</span>
-                                    <span class="tag">REST APIs</span>
-                                    <span class="tag">CRUD</span>
-                                    <span class="tag">Authentication</span>
-                                    <span class="tag">Authorization</span>
-                                    <span class="tag">API Integration</span>
-                                    <span class="tag">Deployment</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-content" id="ai">
-                        <div class="skill-content-grid">
-                            <div class="skill-icon">AI</div>
-
-                            <div>
-                                <h3>Python & AI</h3>
-                                <p>Exploring data, machine learning, deep learning and generative AI with Python.</p>
-
-                                <div class="tags">
-                                    <span class="tag">Python</span>
-                                    <span class="tag">OOP</span>
-                                    <span class="tag">NumPy</span>
-                                    <span class="tag">Pandas</span>
-                                    <span class="tag">Matplotlib</span>
-                                    <span class="tag">Seaborn</span>
-                                    <span class="tag">Machine Learning</span>
-                                    <span class="tag">Deep Learning</span>
-                                    <span class="tag">ANN</span>
-                                    <span class="tag">CNN</span>
-                                    <span class="tag">RNN</span>
-                                    <span class="tag">LSTM</span>
-                                    <span class="tag">OpenCV</span>
-                                    <span class="tag">NLP</span>
-                                    <span class="tag">Generative AI</span>
-                                    <span class="tag">LangChain</span>
-                                    <span class="tag">RAG</span>
-                                    <span class="tag">Flask</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="skill-content" id="tools">
-                        <div class="skill-content-grid">
-                            <div class="skill-icon">~/</div>
-
-                            <div>
-                                <h3>Tools & Design</h3>
-                                <p>Development tools, workflows and creative technologies.</p>
-
-                                <div class="tags">
-                                    <span class="tag">Git</span>
-                                    <span class="tag">GitHub</span>
-                                    <span class="tag">VS Code</span>
-                                    <span class="tag">Figma</span>
-                                    <span class="tag">UI/UX</span>
-                                    <span class="tag">3D Modeling</span>
-                                    <span class="tag">APIs</span>
-                                    <span class="tag">Web Deployment</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="work">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <div class="eyebrow">02 / PROJECTS</div>
-                    <h2>Selected work.</h2>
-                    <p>A collection of projects built while developing my technical skills.</p>
-                </div>
-
-                <div class="projects">
-
-                    <article class="project reveal">
-                        <span class="project-number">01</span>
-                        <h3>Dev Dashboard</h3>
-                        <p>A modern dashboard designed for developers and productivity workflows.</p>
-
-                        <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </article>
-
-                    <article class="project reveal">
-                        <span class="project-number">02</span>
-                        <h3>CryptoLens</h3>
-                        <p>A cryptocurrency dashboard with market data and API integration.</p>
-
-                        <div class="tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">API</span>
-                            <span class="tag">CSS</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </article>
-
-                    <article class="project reveal">
-                        <span class="project-number">03</span>
-                        <h3>FZ Bank</h3>
-                        <p>A modern banking interface focused on clean UI and responsive design.</p>
-
-                        <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </article>
-
-                    <article class="project reveal">
-                        <span class="project-number">04</span>
-                        <h3>August & Oak</h3>
-                        <p>A responsive e-commerce website with modern shopping interfaces.</p>
-
-                        <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </article>
-
-                    <article class="project reveal">
-                        <span class="project-number">05</span>
-                        <h3>Attendance Tracker</h3>
-                        <p>A student attendance interface with interactive data management.</p>
-
-                        <div class="tags">
-                            <span class="tag">JavaScript</span>
-                            <span class="tag">DOM</span>
-                            <span class="tag">CSS</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </article>
-
-                    <article class="project reveal">
-                        <span class="project-number">06</span>
-                        <h3>Vortex Agency</h3>
-                        <p>A professional agency website with responsive layouts and modern UI.</p>
-
-                        <div class="tags">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-
-                        <a href="#" class="project-link">View Project →</a>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="roadmap">
-            <div class="container">
-
-                <div class="section-heading reveal">
-                    <div class="eyebrow">03 / DIRECTION</div>
-                    <h2>What's next.</h2>
-                    <p>My current path toward becoming a stronger full-stack and AI developer.</p>
-                </div>
-
-                <div class="roadmap">
-
-                    <div class="roadmap-item reveal">
-                        <div class="roadmap-number">01</div>
-                        <div>
-                            <h3>Modern Frontend</h3>
-                            <p>Deepen JavaScript, React, TypeScript and responsive UI development.</p>
-                        </div>
-                    </div>
-
-                    <div class="roadmap-item reveal">
-                        <div class="roadmap-number">02</div>
-                        <div>
-                            <h3>MERN Development</h3>
-                            <p>Build complete applications using MongoDB, Express, React and Node.js.</p>
-                        </div>
-                    </div>
-
-                    <div class="roadmap-item reveal">
-                        <div class="roadmap-number">03</div>
-                        <div>
-                            <h3>AI with Python</h3>
-                            <p>Continue developing skills in data analysis, machine learning and deep learning.</p>
-                        </div>
-                    </div>
-
-                    <div class="roadmap-item reveal">
-                        <div class="roadmap-number">04</div>
-                        <div>
-                            <h3>Generative AI</h3>
-                            <p>Explore NLP, RAG, LangChain and practical AI applications.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="contact">
-            <div class="container">
-
-                <div class="contact-box reveal">
+                <div class="code-body">
 
                     <div>
-                        <div class="eyebrow">04 / CONTACT</div>
-                        <h2>Let's connect.</h2>
-                        <p>Open to projects, collaborations and development opportunities.</p>
+                        <span class="purple">const</span>
+                        developer = {
                     </div>
 
-                    <div class="contact-links">
-                        <a class="contact-link" href="mailto:muhammadfaizankhan525@gmail.com">
-                            muhammadfaizankhan525@gmail.com
-                        </a>
+                    <div>
+                        &nbsp;&nbsp;name:
+                        <span class="green">"Faizan Khan"</span>,
+                    </div>
 
-                        <a class="contact-link" href="https://github.com/Faizan-khan144" target="_blank">
-                            GitHub · Faizan-khan144
-                        </a>
+                    <div>
+                        &nbsp;&nbsp;role:
+                        <span class="green">"Full Stack Developer"</span>,
+                    </div>
 
-                        <a class="contact-link" href="https://www.linkedin.com/" target="_blank">
-                            LinkedIn · Faizan Khan
-                        </a>
+                    <div>
+                        &nbsp;&nbsp;focus:
+                        <span class="green">"MERN + AI"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;stack: [
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue">"HTML"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue">"CSS"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue">"JavaScript"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue">"React"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue">"Node.js"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue">"MongoDB"</span>,
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <span class="blue">"Python"</span>
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;],
+                    </div>
+
+                    <div>
+                        &nbsp;&nbsp;status:
+                        <span class="green">"building"</span>
+                    </div>
+
+                    <div>
+                        };
+                    </div>
+
+                    <div class="gray">
+                        _create();
                     </div>
 
                 </div>
+
             </div>
-        </section>
 
-    </main>
+        </div>
 
-    <footer>
+    </section>
+
+
+    <section class="section" id="skills">
+
         <div class="container">
+
+            <div class="section-heading reveal">
+
+                <div class="eyebrow">
+                    01 / SKILLS
+                </div>
+
+                <h2>
+                    My toolkit.
+                </h2>
+
+                <p>
+                    Technologies I'm learning and using across full-stack development, AI and creative work.
+                </p>
+
+            </div>
+
+
+            <div class="skill-panel reveal">
+
+                <div class="skill-tabs">
+
+                    <button class="skill-tab active" data-target="frontend">
+                        frontend.tsx
+                    </button>
+
+                    <button class="skill-tab" data-target="backend">
+                        backend.js
+                    </button>
+
+                    <button class="skill-tab" data-target="ai">
+                        ai_ml.py
+                    </button>
+
+                    <button class="skill-tab" data-target="tools">
+                        tools.md
+                    </button>
+
+                </div>
+
+
+                <div class="skill-content active" id="frontend">
+
+                    <div class="skill-content-grid">
+
+                        <div class="skill-icon">
+                            &lt;/&gt;
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Frontend Development
+                            </h3>
+
+                            <p>
+                                Building responsive, interactive and modern user interfaces.
+                            </p>
+
+                            <div class="tags">
+
+                                <span class="tag">HTML5</span>
+                                <span class="tag">CSS3</span>
+                                <span class="tag">JavaScript</span>
+                                <span class="tag">React</span>
+                                <span class="tag">TypeScript</span>
+                                <span class="tag">Tailwind CSS</span>
+                                <span class="tag">Responsive Design</span>
+                                <span class="tag">DOM</span>
+                                <span class="tag">UI/UX</span>
+                                <span class="tag">Accessibility</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-content" id="backend">
+
+                    <div class="skill-content-grid">
+
+                        <div class="skill-icon">
+                            { }
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                MERN Stack
+                            </h3>
+
+                            <p>
+                                Learning full-stack application development with modern JavaScript technologies.
+                            </p>
+
+                            <div class="tags">
+
+                                <span class="tag">MongoDB</span>
+                                <span class="tag">Express.js</span>
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">REST APIs</span>
+                                <span class="tag">CRUD</span>
+                                <span class="tag">Authentication</span>
+                                <span class="tag">Authorization</span>
+                                <span class="tag">API Integration</span>
+                                <span class="tag">JSON</span>
+                                <span class="tag">npm</span>
+                                <span class="tag">Git</span>
+                                <span class="tag">GitHub</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-content" id="ai">
+
+                    <div class="skill-content-grid">
+
+                        <div class="skill-icon">
+                            AI
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Python & AI
+                            </h3>
+
+                            <p>
+                                Exploring Python, data analysis, machine learning and modern AI development.
+                            </p>
+
+                            <div class="tags">
+
+                                <span class="tag">Python</span>
+                                <span class="tag">OOP</span>
+                                <span class="tag">NumPy</span>
+                                <span class="tag">Pandas</span>
+                                <span class="tag">Matplotlib</span>
+                                <span class="tag">Seaborn</span>
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">Deep Learning</span>
+                                <span class="tag">ANN</span>
+                                <span class="tag">CNN</span>
+                                <span class="tag">RNN</span>
+                                <span class="tag">LSTM</span>
+                                <span class="tag">OpenCV</span>
+                                <span class="tag">NLP</span>
+                                <span class="tag">Generative AI</span>
+                                <span class="tag">LangChain</span>
+                                <span class="tag">RAG</span>
+                                <span class="tag">Flask</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="skill-content" id="tools">
+
+                    <div class="skill-content-grid">
+
+                        <div class="skill-icon">
+                            ~/
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Tools & Technologies
+                            </h3>
+
+                            <p>
+                                Development tools, workflows, design systems and deployment technologies.
+                            </p>
+
+                            <div class="tags">
+
+                                <span class="tag">Git</span>
+                                <span class="tag">GitHub</span>
+                                <span class="tag">VS Code</span>
+                                <span class="tag">Figma</span>
+                                <span class="tag">UI/UX</span>
+                                <span class="tag">3D Modeling</span>
+                                <span class="tag">APIs</span>
+                                <span class="tag">Web Deployment</span>
+                                <span class="tag">Vite</span>
+                                <span class="tag">npm</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section" id="work">
+
+        <div class="container">
+
+            <div class="section-heading reveal">
+
+                <div class="eyebrow">
+                    02 / PROJECTS
+                </div>
+
+                <h2>
+                    Selected work.
+                </h2>
+
+                <p>
+                    Projects I've built while developing my frontend, full-stack and Python skills.
+                </p>
+
+            </div>
+
+
+            <div class="projects">
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        01
+                    </span>
+
+                    <h3>
+                        Dev Dashboard
+                    </h3>
+
+                    <p>
+                        Developer productivity dashboard featuring GitHub analytics, Pomodoro timer, notes, tasks, dark mode and responsive UI.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/DevDashboard"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        02
+                    </span>
+
+                    <h3>
+                        CryptoLens Dashboard
+                    </h3>
+
+                    <p>
+                        Cryptocurrency dashboard with market data, trending coins, global statistics and CoinGecko API integration.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">API</span>
+                        <span class="tag">CSS</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/cryptolens-dashboard"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        03
+                    </span>
+
+                    <h3>
+                        FZ Bank
+                    </h3>
+
+                    <p>
+                        Modern banking interface featuring deposits, withdrawals, balance tracking and responsive design.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/fz-bank-modern-banking-website"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        04
+                    </span>
+
+                    <h3>
+                        August & Oak
+                    </h3>
+
+                    <p>
+                        Modern e-commerce storefront with product search, filtering, wishlist, shopping cart and quick-view functionality.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/august-and-oak-ecommerce"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        05
+                    </span>
+
+                    <h3>
+                        Vortex Agency
+                    </h3>
+
+                    <p>
+                        Premium digital agency website with responsive layouts, interactive animations and modern user experience.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/vortex-agency"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        06
+                    </span>
+
+                    <h3>
+                        FZ Fitness
+                    </h3>
+
+                    <p>
+                        Responsive fitness landing page with a clean dark interface and mobile-focused layout.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/fz-fitness"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        07
+                    </span>
+
+                    <h3>
+                        Student Attendance Tracker
+                    </h3>
+
+                    <p>
+                        Lightweight attendance management application with search, filtering and CSV export functionality.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/student-attendance-tracker"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        08
+                    </span>
+
+                    <h3>
+                        Profile Card Generator
+                    </h3>
+
+                    <p>
+                        Developer profile card generator with live preview, dark mode, theme customization and PNG/PDF export.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/profile-card-generator"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        09
+                    </span>
+
+                    <h3>
+                        Nexus Landing Page
+                    </h3>
+
+                    <p>
+                        Modern SaaS landing page featuring responsive design, glassmorphism UI, animations and interactive cards.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/nexus-landing-page"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        10
+                    </span>
+
+                    <h3>
+                        PakLounge
+                    </h3>
+
+                    <p>
+                        Discord community landing page with animations, marquee effects and a premium responsive interface.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Tailwind CSS</span>
+                        <span class="tag">HTML</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/paklounge-landing-page"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        11
+                    </span>
+
+                    <h3>
+                        Student Management System
+                    </h3>
+
+                    <p>
+                        Python-based student management application using OOP, student records, marks management and JSON storage.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">OOP</span>
+                        <span class="tag">JSON</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/student-management-system"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+                <article class="project reveal">
+
+                    <span class="project-number">
+                        12
+                    </span>
+
+                    <h3>
+                        Happy Birthday Sis
+                    </h3>
+
+                    <p>
+                        Responsive interactive birthday website featuring animations, modern UI and personalized sections.
+                    </p>
+
+                    <div class="tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+
+                    <a
+                        href="https://github.com/Faizan-khan144/happy-birthday-sis"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="project-link"
+                    >
+                        View GitHub →
+                    </a>
+
+                </article>
+
+
+            </div>
+
+
+            <div class="github-more reveal">
+
+                <a
+                    href="https://github.com/Faizan-khan144?tab=repositories"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-secondary"
+                >
+                    Explore All GitHub Repositories →
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section" id="roadmap">
+
+        <div class="container">
+
+            <div class="section-heading reveal">
+
+                <div class="eyebrow">
+                    03 / DIRECTION
+                </div>
+
+                <h2>
+                    What's next.
+                </h2>
+
+                <p>
+                    My current path toward becoming a stronger full-stack and AI developer.
+                </p>
+
+            </div>
+
+
+            <div class="roadmap">
+
+
+                <div class="roadmap-item reveal">
+
+                    <div class="roadmap-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Modern Frontend
+                        </h3>
+
+                        <p>
+                            Strengthen JavaScript, React, TypeScript and responsive interface development.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-item reveal">
+
+                    <div class="roadmap-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            MERN Development
+                        </h3>
+
+                        <p>
+                            Build complete applications with MongoDB, Express.js, React and Node.js.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-item reveal">
+
+                    <div class="roadmap-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            AI with Python
+                        </h3>
+
+                        <p>
+                            Continue developing skills in Python, data analysis, machine learning and deep learning.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="roadmap-item reveal">
+
+                    <div class="roadmap-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Generative AI
+                        </h3>
+
+                        <p>
+                            Explore NLP, RAG, LangChain and practical AI-powered applications.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="section" id="contact">
+
+        <div class="container">
+
+            <div class="contact-box reveal">
+
+                <div>
+
+                    <div class="eyebrow">
+                        04 / CONTACT
+                    </div>
+
+                    <h2>
+                        Let's connect.
+                    </h2>
+
+                    <p>
+                        Open to development opportunities, projects and collaborations.
+                    </p>
+
+                </div>
+
+
+                <div class="contact-links">
+
+                    <a
+                        class="contact-link"
+                        href="mailto:muhammadfaizankhan525@gmail.com"
+                    >
+                        muhammadfaizankhan525@gmail.com
+                    </a>
+
+
+                    <a
+                        class="contact-link"
+                        href="https://github.com/Faizan-khan144"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        GitHub · Faizan-khan144
+                    </a>
+
+
+                    <a
+                        class="contact-link"
+                        href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041a"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        LinkedIn · Muhammad Faizan Khan
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="container footer-inner">
+
+        <div>
             © <span id="year"></span> Muhammad Faizan Khan
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <div class="footer-links">
+
+            <a
+                href="https://github.com/Faizan-khan144"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                GitHub
+            </a>
+
+            <a
+                href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041a"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                LinkedIn
+            </a>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script src="script.js"></script>
+```
 
 </body>
 </html>
