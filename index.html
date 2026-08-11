@@ -1,394 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Muhammad Faizan Khan — Full Stack Developer (MERN) &amp; AI with Python</title>
-<link rel="icon" href="data:image/svg+xml,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-<rect width='100' height='100' rx='22' fill='%23131519'/>
-<rect width='100' height='100' rx='22' fill='none' stroke='%23262a30' stroke-width='2'/>
-<text x='50' y='68' font-size='58' text-anchor='middle' fill='%23f2f2f0' font-family='Arial' font-weight='bold'>F</text>
-</svg>">
-<meta name="description" content="Portfolio of Muhammad Faizan Khan, a full stack developer based in Pakistan building with the MERN stack and exploring artificial intelligence with Python.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Faizan Khan | Full Stack Developer</title>
+    <meta name="description" content="Faizan Khan — Full Stack Developer focused on MERN, Python and AI.">
+
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2315152b'/%3E%3Ctext x='50' y='70' text-anchor='middle' font-family='Arial' font-size='62' font-weight='700' fill='white'%3EF%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="backdrop"></div>
+    <nav class="navbar">
+        <div class="container nav-inner">
 
-<header class="site-header">
-  <div class="wrap header-row">
-    <a href="#home" class="brand">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 40 40" width="34" height="34">
-          <rect x="1" y="1" width="38" height="38" rx="9" fill="var(--surface-2)" stroke="var(--border)"/>
-          <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" class="brand-glyph">F</text>
-        </svg>
-      </span>
-      <span class="brand-name">faizan<em>.dev</em></span>
-    </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#home">Home</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Work</a>
-      <a href="#goals">Roadmap</a>
-      <a href="#contact">Contact</a>
+            <a href="#home" class="logo">
+                <span class="logo-mark">F</span>
+                <span>faizan.dev</span>
+            </a>
+
+            <button class="menu" id="menu">☰</button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#home" class="active">Home</a>
+                <a href="#skills">Skills</a>
+                <a href="#work">Work</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#contact" class="nav-contact">Contact</a>
+            </div>
+
+        </div>
     </nav>
-    <a href="#contact" class="btn btn-ghost header-cta">Hire me</a>
-    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#home">Home</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Work</a>
-    <a href="#goals">Roadmap</a>
-    <a href="#contact">Contact</a>
-  </div>
-</header>
 
-<main>
+    <main>
 
-<section class="hero" id="home">
-  <canvas class="hero-canvas" id="heroCanvas"></canvas>
-  <div class="float-shape parallax" style="top:14%; left:2%;">
-    <div class="float-ring" style="width:120px; height:120px;"></div>
-  </div>
-  <div class="float-shape parallax" style="bottom:6%; right:4%;">
-    <div class="float-tri" style="transform:scale(0.6);"></div>
-  </div>
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <div class="eyebrow"><span class="dot-live"></span>Available for full stack &amp; AI work</div>
-      <h1>Muhammad Faizan Khan builds full stack products and explores intelligent systems.</h1>
-      <p class="hero-sub">I design and build responsive, full stack web applications with the MERN stack and TypeScript, and I'm extending into artificial intelligence with Python — from data analysis and machine learning to LLM powered apps with LangChain and RAG. I also model in 3D to prototype ideas and bring interfaces to life.</p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View my work</a>
-        <a href="#contact" class="btn btn-outline">Get in touch</a>
-      </div>
-      <p class="hero-note">
-        <span class="hero-note-label">Currently studying</span>
-        Full Stack Web Development (MERN) &amp; Artificial Intelligence with Python — DigiSkills
-      </p>
-      <div class="stat-row">
-        <div class="stat"><span class="stat-num">10+</span><span class="stat-label">Live projects</span></div>
-        <div class="stat"><span class="stat-num">30+</span><span class="stat-label">Technologies &amp; tools</span></div>
-        <div class="stat"><span class="stat-num">02</span><span class="stat-label">Core specializations</span></div>
-      </div>
-    </div>
+        <section class="hero" id="home">
+            <div class="container hero-grid">
 
-    <div class="editor" id="editor">
-      <div class="editor-bar">
-        <div class="editor-dots"><span></span><span></span><span></span></div>
-        <div class="editor-tabs">
-          <span class="editor-tab active">profile.js</span>
+                <div class="reveal">
+
+                    <div class="status">
+                        <span class="status-dot"></span>
+                        MERN + AI with Python
+                    </div>
+
+                    <h1>
+                        Muhammad Faizan
+                        <br>
+                        <span class="gradient">Khan.</span>
+                    </h1>
+
+                    <p class="hero-bio">
+                        Full Stack Developer focused on MERN, Python and AI.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#work" class="btn btn-primary">View Work</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+
+                </div>
+
+                <div class="hero-code reveal">
+
+                    <div class="code-header">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <div class="code-body">
+                        <div><span class="purple">const</span> developer = {</div>
+                        <div>&nbsp;&nbsp;name: <span class="green">"Faizan Khan"</span>,</div>
+                        <div>&nbsp;&nbsp;focus: <span class="green">"Full Stack + AI"</span>,</div>
+                        <div>&nbsp;&nbsp;stack: [</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">"React"</span>,</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">"Node.js"</span>,</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">"MongoDB"</span>,</div>
+                        <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="blue">"Python"</span></div>
+                        <div>&nbsp;&nbsp;],</div>
+                        <div>&nbsp;&nbsp;status: <span class="green">"building"</span></div>
+                        <div>};</div>
+                        <div class="gray">_create();</div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <div class="eyebrow">01 / SKILLS</div>
+                    <h2>My toolkit.</h2>
+                    <p>Technologies I'm learning and using across development, AI and creative work.</p>
+                </div>
+
+                <div class="skill-panel reveal">
+
+                    <div class="skill-tabs">
+                        <button class="skill-tab active" data-target="frontend">frontend.tsx</button>
+                        <button class="skill-tab" data-target="backend">backend.js</button>
+                        <button class="skill-tab" data-target="ai">ai_ml.py</button>
+                        <button class="skill-tab" data-target="tools">tools.md</button>
+                    </div>
+
+                    <div class="skill-content active" id="frontend">
+                        <div class="skill-content-grid">
+                            <div class="skill-icon">&lt;/&gt;</div>
+
+                            <div>
+                                <h3>Frontend Development</h3>
+                                <p>Creating responsive, interactive and modern web interfaces.</p>
+
+                                <div class="tags">
+                                    <span class="tag">HTML5</span>
+                                    <span class="tag">CSS3</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">React</span>
+                                    <span class="tag">TypeScript</span>
+                                    <span class="tag">Tailwind CSS</span>
+                                    <span class="tag">Responsive Design</span>
+                                    <span class="tag">DOM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-content" id="backend">
+                        <div class="skill-content-grid">
+                            <div class="skill-icon">{ }</div>
+
+                            <div>
+                                <h3>MERN Stack</h3>
+                                <p>Building full-stack applications with modern JavaScript technologies.</p>
+
+                                <div class="tags">
+                                    <span class="tag">MongoDB</span>
+                                    <span class="tag">Express.js</span>
+                                    <span class="tag">React</span>
+                                    <span class="tag">Node.js</span>
+                                    <span class="tag">REST APIs</span>
+                                    <span class="tag">CRUD</span>
+                                    <span class="tag">Authentication</span>
+                                    <span class="tag">Authorization</span>
+                                    <span class="tag">API Integration</span>
+                                    <span class="tag">Deployment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-content" id="ai">
+                        <div class="skill-content-grid">
+                            <div class="skill-icon">AI</div>
+
+                            <div>
+                                <h3>Python & AI</h3>
+                                <p>Exploring data, machine learning, deep learning and generative AI with Python.</p>
+
+                                <div class="tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">OOP</span>
+                                    <span class="tag">NumPy</span>
+                                    <span class="tag">Pandas</span>
+                                    <span class="tag">Matplotlib</span>
+                                    <span class="tag">Seaborn</span>
+                                    <span class="tag">Machine Learning</span>
+                                    <span class="tag">Deep Learning</span>
+                                    <span class="tag">ANN</span>
+                                    <span class="tag">CNN</span>
+                                    <span class="tag">RNN</span>
+                                    <span class="tag">LSTM</span>
+                                    <span class="tag">OpenCV</span>
+                                    <span class="tag">NLP</span>
+                                    <span class="tag">Generative AI</span>
+                                    <span class="tag">LangChain</span>
+                                    <span class="tag">RAG</span>
+                                    <span class="tag">Flask</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-content" id="tools">
+                        <div class="skill-content-grid">
+                            <div class="skill-icon">~/</div>
+
+                            <div>
+                                <h3>Tools & Design</h3>
+                                <p>Development tools, workflows and creative technologies.</p>
+
+                                <div class="tags">
+                                    <span class="tag">Git</span>
+                                    <span class="tag">GitHub</span>
+                                    <span class="tag">VS Code</span>
+                                    <span class="tag">Figma</span>
+                                    <span class="tag">UI/UX</span>
+                                    <span class="tag">3D Modeling</span>
+                                    <span class="tag">APIs</span>
+                                    <span class="tag">Web Deployment</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="work">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <div class="eyebrow">02 / PROJECTS</div>
+                    <h2>Selected work.</h2>
+                    <p>A collection of projects built while developing my technical skills.</p>
+                </div>
+
+                <div class="projects">
+
+                    <article class="project reveal">
+                        <span class="project-number">01</span>
+                        <h3>Dev Dashboard</h3>
+                        <p>A modern dashboard designed for developers and productivity workflows.</p>
+
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </article>
+
+                    <article class="project reveal">
+                        <span class="project-number">02</span>
+                        <h3>CryptoLens</h3>
+                        <p>A cryptocurrency dashboard with market data and API integration.</p>
+
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">API</span>
+                            <span class="tag">CSS</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </article>
+
+                    <article class="project reveal">
+                        <span class="project-number">03</span>
+                        <h3>FZ Bank</h3>
+                        <p>A modern banking interface focused on clean UI and responsive design.</p>
+
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </article>
+
+                    <article class="project reveal">
+                        <span class="project-number">04</span>
+                        <h3>August & Oak</h3>
+                        <p>A responsive e-commerce website with modern shopping interfaces.</p>
+
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </article>
+
+                    <article class="project reveal">
+                        <span class="project-number">05</span>
+                        <h3>Attendance Tracker</h3>
+                        <p>A student attendance interface with interactive data management.</p>
+
+                        <div class="tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">DOM</span>
+                            <span class="tag">CSS</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </article>
+
+                    <article class="project reveal">
+                        <span class="project-number">06</span>
+                        <h3>Vortex Agency</h3>
+                        <p>A professional agency website with responsive layouts and modern UI.</p>
+
+                        <div class="tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+
+                        <a href="#" class="project-link">View Project →</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="roadmap">
+            <div class="container">
+
+                <div class="section-heading reveal">
+                    <div class="eyebrow">03 / DIRECTION</div>
+                    <h2>What's next.</h2>
+                    <p>My current path toward becoming a stronger full-stack and AI developer.</p>
+                </div>
+
+                <div class="roadmap">
+
+                    <div class="roadmap-item reveal">
+                        <div class="roadmap-number">01</div>
+                        <div>
+                            <h3>Modern Frontend</h3>
+                            <p>Deepen JavaScript, React, TypeScript and responsive UI development.</p>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item reveal">
+                        <div class="roadmap-number">02</div>
+                        <div>
+                            <h3>MERN Development</h3>
+                            <p>Build complete applications using MongoDB, Express, React and Node.js.</p>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item reveal">
+                        <div class="roadmap-number">03</div>
+                        <div>
+                            <h3>AI with Python</h3>
+                            <p>Continue developing skills in data analysis, machine learning and deep learning.</p>
+                        </div>
+                    </div>
+
+                    <div class="roadmap-item reveal">
+                        <div class="roadmap-number">04</div>
+                        <div>
+                            <h3>Generative AI</h3>
+                            <p>Explore NLP, RAG, LangChain and practical AI applications.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <div class="container">
+
+                <div class="contact-box reveal">
+
+                    <div>
+                        <div class="eyebrow">04 / CONTACT</div>
+                        <h2>Let's connect.</h2>
+                        <p>Open to projects, collaborations and development opportunities.</p>
+                    </div>
+
+                    <div class="contact-links">
+                        <a class="contact-link" href="mailto:muhammadfaizankhan525@gmail.com">
+                            muhammadfaizankhan525@gmail.com
+                        </a>
+
+                        <a class="contact-link" href="https://github.com/Faizan-khan144" target="_blank">
+                            GitHub · Faizan-khan144
+                        </a>
+
+                        <a class="contact-link" href="https://www.linkedin.com/" target="_blank">
+                            LinkedIn · Faizan Khan
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            © <span id="year"></span> Muhammad Faizan Khan
         </div>
-      </div>
-      <div class="editor-body">
-        <div class="editor-lines" id="editorLines"></div>
-      </div>
-    </div>
-  </div>
-</section>
+    </footer>
 
-<div class="ticker">
-  <div class="ticker-track">
-    <span>HTML5</span><i>&#10022;</i><span>CSS3</span><i>&#10022;</i><span>JavaScript</span><i>&#10022;</i><span>TypeScript</span><i>&#10022;</i><span>React</span><i>&#10022;</i><span>Tailwind CSS</span><i>&#10022;</i><span>Node.js</span><i>&#10022;</i><span>Express.js</span><i>&#10022;</i><span>MongoDB</span><i>&#10022;</i><span>Python</span><i>&#10022;</i><span>Machine Learning</span><i>&#10022;</i><span>Generative AI</span><i>&#10022;</i><span>LangChain</span><i>&#10022;</i><span>3D Modeling</span><i>&#10022;</i><span>Git &amp; GitHub</span><i>&#10022;</i>
-    <span>HTML5</span><i>&#10022;</i><span>CSS3</span><i>&#10022;</i><span>JavaScript</span><i>&#10022;</i><span>TypeScript</span><i>&#10022;</i><span>React</span><i>&#10022;</i><span>Tailwind CSS</span><i>&#10022;</i><span>Node.js</span><i>&#10022;</i><span>Express.js</span><i>&#10022;</i><span>MongoDB</span><i>&#10022;</i><span>Python</span><i>&#10022;</i><span>Machine Learning</span><i>&#10022;</i><span>Generative AI</span><i>&#10022;</i><span>LangChain</span><i>&#10022;</i><span>3D Modeling</span><i>&#10022;</i><span>Git &amp; GitHub</span><i>&#10022;</i>
-  </div>
-</div>
+    <script src="script.js"></script>
 
-<section class="section" id="skills">
-  <div class="wrap">
-    <div class="float-shape float-ring" style="top:-60px; right:6%;"></div>
-    <div class="float-shape float-tri" style="bottom:-30px; left:2%;"></div>
-    <div class="eyebrow reveal">// tech-stack</div>
-    <h2 class="section-title reveal">Skills &amp; tools</h2>
-    <p class="section-sub reveal">A full stack toolkit spanning the MERN stack and Python, built through real projects and structured coursework in web development and artificial intelligence.</p>
-
-    <div class="skills-panel reveal">
-      <div class="skills-tabs" id="skillsTabs" role="tablist">
-        <button class="skills-tab active" type="button" role="tab" aria-selected="true" data-tab="frontend">frontend.tsx</button>
-        <button class="skills-tab" type="button" role="tab" aria-selected="false" data-tab="backend">backend.js</button>
-        <button class="skills-tab" type="button" role="tab" aria-selected="false" data-tab="ai">ai_ml.py</button>
-        <button class="skills-tab" type="button" role="tab" aria-selected="false" data-tab="tools">tools.md</button>
-      </div>
-
-      <div class="skills-grid" data-panel="frontend" role="tabpanel">
-        <div class="skill-card reveal"><span class="skill-index">01</span><div class="skill-glyph">&lt;/&gt;</div><h3>HTML5</h3><p>Semantic, accessible structure</p></div>
-        <div class="skill-card reveal"><span class="skill-index">02</span><div class="skill-glyph">{ }</div><h3>CSS3</h3><p>Layouts, animation, flexbox &amp; grid</p></div>
-        <div class="skill-card reveal"><span class="skill-index">03</span><div class="skill-glyph">( )</div><h3>JavaScript</h3><p>Interactivity &amp; DOM manipulation</p></div>
-        <div class="skill-card reveal"><span class="skill-index">04</span><div class="skill-glyph">TS</div><h3>TypeScript</h3><p>Typed, scalable front-end code</p></div>
-        <div class="skill-card reveal"><span class="skill-index">05</span><div class="skill-glyph">&#9979;</div><h3>React</h3><p>Component-based, stateful interfaces</p></div>
-        <div class="skill-card reveal"><span class="skill-index">06</span><div class="skill-glyph">~</div><h3>Tailwind CSS</h3><p>Utility-first, rapid interface styling</p></div>
-        <div class="skill-card reveal"><span class="skill-index">07</span><div class="skill-glyph">[ ]</div><h3>Responsive Design</h3><p>Fluid, mobile-first interfaces</p></div>
-        <div class="skill-card reveal"><span class="skill-index">08</span><div class="skill-glyph">&#9671;</div><h3>UI / UX Design</h3><p>Clean, intuitive user experiences</p></div>
-      </div>
-
-      <div class="skills-grid" data-panel="backend" role="tabpanel" hidden>
-        <div class="skill-card reveal"><span class="skill-index">01</span><div class="skill-glyph">js</div><h3>Node.js</h3><p>Server-side JavaScript runtime</p></div>
-        <div class="skill-card reveal"><span class="skill-index">02</span><div class="skill-glyph">ex</div><h3>Express.js</h3><p>REST APIs &amp; server architecture</p></div>
-        <div class="skill-card reveal"><span class="skill-index">03</span><div class="skill-glyph">db</div><h3>MongoDB</h3><p>Document-based NoSQL database</p></div>
-        <div class="skill-card reveal"><span class="skill-index">04</span><div class="skill-glyph">api</div><h3>REST APIs</h3><p>Designing &amp; consuming live data</p></div>
-        <div class="skill-card reveal"><span class="skill-index">05</span><div class="skill-glyph">git</div><h3>Git &amp; GitHub</h3><p>Version control &amp; collaboration</p></div>
-        <div class="skill-card reveal"><span class="skill-index">06</span><div class="skill-glyph">?:</div><h3>Problem Solving</h3><p>Breaking down complex requirements</p></div>
-      </div>
-
-      <div class="skills-grid" data-panel="ai" role="tabpanel" hidden>
-        <div class="skill-card reveal"><span class="skill-index">01</span><div class="skill-glyph">py</div><h3>Python</h3><p>Scripting, automation &amp; logic building</p></div>
-        <div class="skill-card reveal"><span class="skill-index">02</span><div class="skill-glyph">OOP</div><h3>Object-Oriented Programming</h3><p>Classes, objects &amp; clean architecture</p></div>
-        <div class="skill-card reveal"><span class="skill-index">03</span><div class="skill-glyph">np</div><h3>NumPy</h3><p>Numerical computing &amp; arrays</p></div>
-        <div class="skill-card reveal"><span class="skill-index">04</span><div class="skill-glyph">pd</div><h3>Pandas</h3><p>Data wrangling &amp; analysis</p></div>
-        <div class="skill-card reveal"><span class="skill-index">05</span><div class="skill-glyph">plt</div><h3>Matplotlib</h3><p>Data visualization</p></div>
-        <div class="skill-card reveal"><span class="skill-index">06</span><div class="skill-glyph">sns</div><h3>Seaborn</h3><p>Statistical visualization</p></div>
-        <div class="skill-card reveal"><span class="skill-index">07</span><div class="skill-glyph">&#8721;</div><h3>Data Analysis</h3><p>Extracting insight from raw data</p></div>
-        <div class="skill-card reveal"><span class="skill-index">08</span><div class="skill-glyph">ml</div><h3>Machine Learning</h3><p>Predictive model building</p></div>
-        <div class="skill-card reveal"><span class="skill-index">09</span><div class="skill-glyph">dl</div><h3>Deep Learning</h3><p>Neural network architectures</p></div>
-        <div class="skill-card reveal"><span class="skill-index">10</span><div class="skill-glyph">cv</div><h3>Computer Vision</h3><p>Image &amp; video understanding</p></div>
-        <div class="skill-card reveal"><span class="skill-index">11</span><div class="skill-glyph">nlp</div><h3>NLP</h3><p>Language understanding &amp; processing</p></div>
-        <div class="skill-card reveal"><span class="skill-index">12</span><div class="skill-glyph">gen</div><h3>Generative AI</h3><p>LLM powered applications</p></div>
-        <div class="skill-card reveal"><span class="skill-index">13</span><div class="skill-glyph">&#8594;</div><h3>LangChain</h3><p>LLM app orchestration</p></div>
-        <div class="skill-card reveal"><span class="skill-index">14</span><div class="skill-glyph">rag</div><h3>RAG</h3><p>Retrieval-augmented generation</p></div>
-        <div class="skill-card reveal"><span class="skill-index">15</span><div class="skill-glyph">fl</div><h3>Flask</h3><p>Lightweight Python web APIs</p></div>
-      </div>
-
-      <div class="skills-grid" data-panel="tools" role="tabpanel" hidden>
-        <div class="skill-card reveal"><span class="skill-index">01</span><div class="skill-glyph">&#9686;</div><h3>Figma</h3><p>Wireframes, prototypes &amp; design systems</p></div>
-        <div class="skill-card reveal"><span class="skill-index">02</span><div class="skill-glyph">3D</div><h3>3D Modeling</h3><p>Prototyping ideas &amp; interactive visuals</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="projects">
-  <div class="wrap">
-    <div class="float-shape float-cube" style="top:10%; right:4%;"></div>
-    <div class="eyebrow reveal">// selected-work</div>
-    <h2 class="section-title reveal">What I've built</h2>
-    <p class="section-sub reveal">Real front-end projects, shipped and deployed, while I expand into full stack MERN development and AI powered applications.</p>
-
-    <div class="projects-list">
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/01</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/DevDashboard/" target="_blank" rel="noopener">Dev Dashboard<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A modern developer dashboard for tracking tools, projects and productivity in a clean UI.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>Responsive</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/02</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/student-attendance-tracker/" target="_blank" rel="noopener">Student Attendance Tracker<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A simple, efficient attendance system that manages student records with a clean, intuitive interface.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/03</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/Tic-Tac-Toe-Game/" target="_blank" rel="noopener">Tic Tac Toe Game<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>An interactive Tic Tac Toe game with a smooth UI and complete win / draw logic in vanilla JavaScript.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/04</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/fz-bank-modern-banking-website/" target="_blank" rel="noopener">FZ Bank Website<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A modern banking website UI with a clean design, responsive layout and professional presentation.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/05</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/fz-fitness/" target="_blank" rel="noopener">FZ Fitness<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A bold, responsive gym website featuring membership plans, training programs and interactive sections.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/06</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/vortex-agency/" target="_blank" rel="noopener">Vortex Agency<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A digital agency site with smooth animations, service showcases, pricing plans and testimonials.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>UI/UX</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/07</div>
-        <div class="project-main">
-          <h3><a href="https://github.com/Faizan-khan144/cryptolens-dashboard" target="_blank" rel="noopener">CryptoLens Dashboard<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A cryptocurrency dashboard with live market data and a glassmorphism interface powered by the CoinGecko API.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>API</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/08</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/profile-card-generator/" target="_blank" rel="noopener">Profile Card Generator<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A responsive profile card generator that lets users create stylish, customizable cards in real time.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/09</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/Modern-Tic-Tac-Toe/" target="_blank" rel="noopener">Modern Rock Paper Scissors<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A responsive Rock Paper Scissors game with smooth animations, sound effects and score tracking.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-      </div>
-
-      <div class="project-row reveal">
-        <div class="project-path">~/projects/10</div>
-        <div class="project-main">
-          <h3><a href="https://faizan-khan144.github.io/august-and-oak-ecommerce/" target="_blank" rel="noopener">August &amp; Oak<svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a></h3>
-          <p>A responsive e-commerce site with product browsing, filtering, search, wishlist and cart.</p>
-        </div>
-        <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>E-Commerce</span></div>
-      </div>
-
-      <div class="project-row project-row-next reveal">
-        <div class="project-path">~/projects/11</div>
-        <div class="project-main">
-          <h3>MERN &amp; AI Projects<span class="badge-soon">In progress</span></h3>
-          <p>Full stack applications with Node.js, Express and MongoDB, plus Python powered AI features, currently in development through my DigiSkills coursework.</p>
-        </div>
-        <div class="project-tags"><span>Node.js</span><span>MongoDB</span><span>Python</span><span>AI</span></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section class="section" id="goals">
-  <div class="wrap">
-    <div class="float-shape float-ring" style="bottom:0; right:8%;"></div>
-    <div class="float-shape parallax" style="top:6%; left:3%;">
-      <div class="float-cube" style="width:60px; height:60px;"></div>
-    </div>
-    <div class="eyebrow reveal">// roadmap</div>
-    <h2 class="section-title reveal">Where I'm headed</h2>
-    <p class="section-sub reveal">The milestones I'm actively working through on the way to becoming a professional full stack developer with a specialization in AI.</p>
-
-    <div class="roadmap">
-      <div class="roadmap-item done reveal">
-        <div class="roadmap-node">01</div>
-        <div class="roadmap-text"><h3>Master JavaScript &amp; front-end fundamentals</h3><p>HTML, CSS, JavaScript and responsive, accessible interfaces</p></div>
-      </div>
-      <div class="roadmap-item done reveal">
-        <div class="roadmap-node">02</div>
-        <div class="roadmap-text"><h3>Learn React, Tailwind and Figma</h3><p>Component design, utility-first styling, design handoff</p></div>
-      </div>
-      <div class="roadmap-item active reveal">
-        <div class="roadmap-node">03</div>
-        <div class="roadmap-text"><h3>Full Stack Web Development — MERN</h3><p>Node.js, Express.js, MongoDB, REST APIs and TypeScript, via DigiSkills</p></div>
-      </div>
-      <div class="roadmap-item active reveal">
-        <div class="roadmap-node">04</div>
-        <div class="roadmap-text"><h3>Artificial Intelligence with Python</h3><p>NumPy, Pandas, Machine Learning, Deep Learning, NLP and Generative AI, via DigiSkills</p></div>
-      </div>
-      <div class="roadmap-item reveal">
-        <div class="roadmap-node">05</div>
-        <div class="roadmap-text"><h3>Build full stack &amp; AI powered projects</h3><p>Ship products that combine MERN applications with intelligent features</p></div>
-      </div>
-      <div class="roadmap-item reveal">
-        <div class="roadmap-node">06</div>
-        <div class="roadmap-text"><h3>Contribute to open-source &amp; go professional</h3><p>Collaborate with developers worldwide and turn this into a full-time craft</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="contact">
-  <div class="wrap contact-grid">
-    <div class="float-shape float-tri" style="top:-40px; right:10%;"></div>
-    <div class="contact-info reveal">
-      <div class="eyebrow">// contact</div>
-      <h2 class="section-title">Let's build something together</h2>
-      <p class="section-sub">Have a full stack or AI project in mind, or an opportunity to discuss? I'd love to hear from you.</p>
-
-      <div class="contact-links">
-        <a href="mailto:muhammadfaizankhan525@gmail.com">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg></span>
-          muhammadfaizankhan525@gmail.com
-        </a>
-        <a href="https://github.com/Faizan-khan144" target="_blank" rel="noopener">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9c0-1.1.4-1.8.9-2.2-3.1-.3-6.4-1.5-6.4-6.9 0-1.5.5-2.8 1.5-3.8-.1-.3-.6-1.8.1-3.8 0 0 1.2-.4 4 1.5a13.7 13.7 0 017.2 0c2.8-1.9 4-1.5 4-1.5.7 2 .2 3.5.1 3.8.9 1 1.5 2.3 1.5 3.8 0 5.4-3.3 6.6-6.4 6.9.5.4 1 1.3 1 2.6V21"/></svg></span>
-          github.com/Faizan-khan144
-        </a>
-        <a href="#" class="static">
-          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
-          Pakistan
-        </a>
-      </div>
-    </div>
-
-    <form class="form reveal" id="contactForm" novalidate>
-      <div class="form-row">
-        <div class="field">
-          <label for="cName">Name</label>
-          <input type="text" id="cName" placeholder="Your name" required>
-        </div>
-        <div class="field">
-          <label for="cEmail">Email</label>
-          <input type="email" id="cEmail" placeholder="you@example.com" required>
-        </div>
-      </div>
-      <div class="field full">
-        <label for="cMessage">Message</label>
-        <textarea id="cMessage" rows="5" placeholder="Tell me about your project..." required></textarea>
-      </div>
-      <button type="submit" class="submit-btn">
-        Send message
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </button>
-      <p class="form-note" id="formNote">Submitting opens your email client with this message pre-filled.</p>
-    </form>
-  </div>
-</section>
-
-</main>
-
-<footer class="site-footer">
-  <div class="wrap foot-row">
-    <div class="foot-brand">
-      <span class="brand-mark brand-mark-sm" aria-hidden="true">
-        <svg viewBox="0 0 40 40" width="26" height="26">
-          <rect x="1" y="1" width="38" height="38" rx="9" fill="var(--surface-2)" stroke="var(--border)"/>
-          <text x="50%" y="56%" text-anchor="middle" dominant-baseline="middle" class="brand-glyph">F</text>
-        </svg>
-      </span>
-      <p>&copy; 2026 Muhammad Faizan Khan. Full Stack Developer — MERN &amp; AI with Python.</p>
-    </div>
-    <div class="foot-social">
-      <a href="https://github.com/Faizan-khan144" target="_blank" rel="noopener" aria-label="GitHub">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.9c0-1.1.4-1.8.9-2.2-3.1-.3-6.4-1.5-6.4-6.9 0-1.5.5-2.8 1.5-3.8-.1-.3-.6-1.8.1-3.8 0 0 1.2-.4 4 1.5a13.7 13.7 0 017.2 0c2.8-1.9 4-1.5 4-1.5.7 2 .2 3.5.1 3.8.9 1 1.5 2.3 1.5 3.8 0 5.4-3.3 6.6-6.4 6.9.5.4 1 1.3 1 2.6V21"/></svg>
-      </a>
-      <a href="mailto:muhammadfaizankhan525@gmail.com" aria-label="Email">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 6l8 7 8-7"/></svg>
-      </a>
-    </div>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-<script src="script.js"></script>
 </body>
 </html>
