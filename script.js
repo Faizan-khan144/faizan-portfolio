@@ -1,76 +1,83 @@
+```javascript
 const loader = document.getElementById("loader");
-const header = document.querySelector(".header");
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const backTop = document.getElementById("backTop");
-const scene = document.getElementById("scene");
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+const cursor = document.getElementById("cursor");
+const cursorRing = document.getElementById("cursorRing");
+const menu = document.getElementById("menu");
+const nav = document.getElementById("nav");
+const topButton = document.getElementById("top");
+const contactForm = document.getElementById("contactForm");
+const formMessage = document.getElementById("formMessage");
 
 window.addEventListener("load", () => {
     setTimeout(() => {
         loader.classList.add("hide");
-    }, 1600);
+    }, 900);
 });
 
-window.addEventListener("scroll", () => {
-    header.classList.toggle("scrolled", window.scrollY > 40);
-    backTop.classList.toggle("show", window.scrollY > 500);
+let mouseX = 0;
+let mouseY = 0;
+let ringX = 0;
+let ringY = 0;
 
-    updateActiveNav();
+document.addEventListener("mousemove", (event) => {
+    mouseX = event.clientX;
+    mouseY = event.clientY;
+
+    cursor.style.left = `${mouseX}px`;
+    cursor.style.top = `${mouseY}px`;
 });
 
-menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("open");
+function animateCursor() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+
+    cursorRing.style.left = `${ringX}px`;
+    cursorRing.style.top = `${ringY}px`;
+
+    requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+document.querySelectorAll("a, button, .skill-box, .project-card").forEach((element) => {
+    element.addEventListener("mouseenter", () => {
+        cursorRing.style.width = "48px";
+        cursorRing.style.height = "48px";
+    });
+
+    element.addEventListener("mouseleave", () => {
+        cursorRing.style.width = "32px";
+        cursorRing.style.height = "32px";
+    });
 });
 
-document.querySelectorAll(".mobile-menu a").forEach(link => {
+menu.addEventListener("click", () => {
+    nav.classList.toggle("open");
+    menu.classList.toggle("open");
+});
+
+document.querySelectorAll(".nav a").forEach((link) => {
     link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
+        nav.classList.remove("open");
+        menu.classList.remove("open");
     });
-});
-
-backTop.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-});
-
-const reveals = document.querySelectorAll(".reveal");
-
-const revealObserver = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("visible");
-            }
-        });
-    },
-    {
-        threshold: 0.12
-    }
-);
-
-reveals.forEach(element => {
-    revealObserver.observe(element);
 });
 
 const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll(".nav-links a");
+const navLinks = document.querySelectorAll(".nav a");
 
-function updateActiveNav() {
+function updateActiveLink() {
     let current = "";
 
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 160;
+    sections.forEach((section) => {
+        const sectionTop = section.offsetTop - 180;
 
         if (window.scrollY >= sectionTop) {
             current = section.getAttribute("id");
         }
     });
 
-    navLinks.forEach(link => {
+    navLinks.forEach((link) => {
         link.classList.remove("active");
 
         if (link.getAttribute("href") === `#${current}`) {
@@ -79,173 +86,115 @@ function updateActiveNav() {
     });
 }
 
-const counters = document.querySelectorAll("[data-count]");
+window.addEventListener("scroll", () => {
+    updateActiveLink();
 
-const counterObserver = new IntersectionObserver(
-    entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
+    if (window.scrollY > 600) {
+        topButton.classList.add("show");
+    } else {
+        topButton.classList.remove("show");
+    }
+});
 
-            const counter = entry.target;
-            const target = Number(counter.dataset.count);
-            let current = 0;
+topButton.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
 
-            const duration = 1300;
-            const start = performance.now();
-
-            function animate(time) {
-                const progress = Math.min((time - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-
-                current = Math.floor(target * eased);
-                counter.textContent = current + (target === 100 ? "%" : "+");
-
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                }
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
             }
-
-            requestAnimationFrame(animate);
-            counterObserver.unobserve(counter);
         });
     },
     {
-        threshold: 0.7
+        threshold: 0.12
     }
 );
 
-counters.forEach(counter => {
-    counterObserver.observe(counter);
+document.querySelectorAll(".reveal").forEach((element) => {
+    observer.observe(element);
 });
 
-if (scene && window.matchMedia("(pointer: fine)").matches) {
-    scene.parentElement.addEventListener("mousemove", event => {
-        const rect = scene.parentElement.getBoundingClientRect();
+const platform = document.querySelector(".platform");
+const heroVisual = document.querySelector(".hero-visual");
 
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = (event.clientY - rect.top) / rect.height;
+if (platform && heroVisual && window.matchMedia("(pointer:fine)").matches) {
+    heroVisual.addEventListener("mousemove", (event) => {
+        const rect = heroVisual.getBoundingClientRect();
 
-        const rotateY = (x - 0.5) * 16;
-        const rotateX = (0.5 - y) * 12;
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
 
-        scene.style.transform =
-            `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        platform.style.transform = `
+            rotateX(${62 - y * 8}deg)
+            rotateZ(${-28 + x * 8}deg)
+        `;
     });
 
-    scene.parentElement.addEventListener("mouseleave", () => {
-        scene.style.transform = "rotateX(0deg) rotateY(0deg)";
+    heroVisual.addEventListener("mouseleave", () => {
+        platform.style.transform = "rotateX(62deg) rotateZ(-28deg)";
     });
 }
 
-const form = document.getElementById("contactForm");
-const formMessage = document.getElementById("formMessage");
-
-form.addEventListener("submit", event => {
+contactForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    formMessage.textContent = "Message interface ready — connect your form backend.";
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-    setTimeout(() => {
-        formMessage.textContent = "";
-    }, 5000);
-});
-
-const particles = [];
-
-function resizeCanvas() {
-    canvas.width = window.innerWidth * window.devicePixelRatio;
-    canvas.height = window.innerHeight * window.devicePixelRatio;
-
-    canvas.style.width = window.innerWidth + "px";
-    canvas.style.height = window.innerHeight + "px";
-
-    ctx.setTransform(
-        window.devicePixelRatio,
-        0,
-        0,
-        window.devicePixelRatio,
-        0,
-        0
-    );
-}
-
-function createParticles() {
-    particles.length = 0;
-
-    const amount = Math.min(
-        Math.floor(window.innerWidth / 7),
-        180
-    );
-
-    for (let i = 0; i < amount; i++) {
-        particles.push({
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            size: Math.random() * 1.6 + 0.3,
-            speed: Math.random() * 0.25 + 0.05,
-            opacity: Math.random() * 0.5 + 0.1,
-            drift: Math.random() * 0.4 - 0.2
-        });
+    if (!name || !email || !message) {
+        formMessage.textContent = "Please complete all fields.";
+        formMessage.style.color = "#ff756d";
+        return;
     }
-}
 
-function drawParticles() {
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    const subject = encodeURIComponent(`Portfolio message from ${name}`);
+    const body = encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\n${message}`
+    );
 
-    particles.forEach(particle => {
-        particle.y -= particle.speed;
-        particle.x += particle.drift;
+    window.location.href =
+        `mailto:muhammadfaizankhan525@gmail.com?subject=${subject}&body=${body}`;
 
-        if (particle.y < -10) {
-            particle.y = window.innerHeight + 10;
-            particle.x = Math.random() * window.innerWidth;
-        }
-
-        if (particle.x < -10) {
-            particle.x = window.innerWidth + 10;
-        }
-
-        if (particle.x > window.innerWidth + 10) {
-            particle.x = -10;
-        }
-
-        ctx.beginPath();
-        ctx.arc(
-            particle.x,
-            particle.y,
-            particle.size,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle = `rgba(117, 168, 255, ${particle.opacity})`;
-        ctx.fill();
-    });
-
-    requestAnimationFrame(drawParticles);
-}
-
-resizeCanvas();
-createParticles();
-drawParticles();
-
-window.addEventListener("resize", () => {
-    resizeCanvas();
-    createParticles();
+    formMessage.textContent = "Opening your email client...";
+    formMessage.style.color = "#78d59b";
 });
 
-document.querySelectorAll("a[href^='#']").forEach(anchor => {
-    anchor.addEventListener("click", event => {
-        const target = document.querySelector(
-            anchor.getAttribute("href")
-        );
+document.querySelectorAll(".project-card").forEach((card) => {
+    card.addEventListener("mousemove", (event) => {
+        if (window.innerWidth < 820) return;
 
-        if (!target) return;
+        const rect = card.getBoundingClientRect();
 
-        event.preventDefault();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
 
-        target.scrollIntoView({
-            behavior: "smooth"
-        });
+        card.style.transform = `
+            perspective(900px)
+            rotateX(${y * -3}deg)
+            rotateY(${x * 3}deg)
+            translateY(-8px)
+        `;
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
     });
 });
+
+window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        nav.classList.remove("open");
+        menu.classList.remove("open");
+    }
+});
+
+updateActiveLink();
+```
