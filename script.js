@@ -1,261 +1,306 @@
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
 
-const codeLines = [
-  { indent: 0, text: "const developer = {" },
-  { indent: 1, key: "name", value: "Muhammad Faizan Khan" },
-  { indent: 1, key: "role", value: "Front-End Developer" },
-  { indent: 1, key: "based", value: "Pakistan" },
-  { indent: 1, keyword: "stack", value: '["React", "Tailwind", "JavaScript"]' },
-  { indent: 1, keyword: "tools", value: '["Figma", "Python", "Git"]' },
-  { indent: 1, key: "status", value: "open to work", last: true },
-  { indent: 0, text: "};" }
+if (burger && mobileMenu) {
+  burger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    burger.classList.toggle('open', isOpen);
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.classList.remove('open');
+    });
+  });
+}
+
+const skillsTabs = document.querySelectorAll('.skills-tab');
+const skillsGrids = document.querySelectorAll('.skills-grid');
+
+skillsTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = tab.getAttribute('data-tab');
+
+    skillsTabs.forEach(t => {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+
+    skillsGrids.forEach(grid => {
+      if (grid.getAttribute('data-panel') === target) {
+        grid.hidden = false;
+      } else {
+        grid.hidden = true;
+      }
+    });
+  });
+});
+
+const revealEls = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in'));
+}
+
+const editorLinesEl = document.getElementById('editorLines');
+
+const editorCode = [
+  { key: 'const', punct: ' developer = {' },
+  { indent: 1, key: 'name', punct: ': ', string: "'Muhammad Faizan Khan'", punct2: ',' },
+  { indent: 1, key: 'role', punct: ': ', string: "'Full Stack Developer'", punct2: ',' },
+  { indent: 1, key: 'stack', punct: ': ', string: "['MERN', 'Python', 'AI']", punct2: ',' },
+  { indent: 1, key: 'location', punct: ': ', string: "'Pakistan'", punct2: ',' },
+  { indent: 1, key: 'status', punct: ': ', string: "'available for work'" },
+  { punct: '};' },
+  { punct: '' },
+  { keyword: 'export default', punct: ' developer;' }
 ];
 
-function highlightLine(line) {
-  if (line.text) {
-    return `<span class="tok-punct">${line.text}</span>`;
-  }
-  const comma = line.last ? "" : ",";
-  if (line.keyword) {
-    return `<span class="tok-key">${line.keyword}</span><span class="tok-punct">: </span><span class="tok-punct">${line.value}${comma}</span>`;
-  }
-  return `<span class="tok-key">${line.key}</span><span class="tok-punct">: </span><span class="tok-string">"${line.value}"</span><span class="tok-punct">${comma}</span>`;
+function buildLine(lineNumber) {
+  const line = document.createElement('div');
+  line.className = 'editor-line';
+
+  const num = document.createElement('span');
+  num.className = 'editor-line-num';
+  num.textContent = String(lineNumber);
+
+  const code = document.createElement('span');
+  code.className = 'editor-line-code';
+
+  line.appendChild(num);
+  line.appendChild(code);
+  return { line, code };
 }
 
-function plainLine(line) {
-  const indent = "  ".repeat(line.indent);
-  if (line.text) return indent + line.text;
-  const comma = line.last ? "" : ",";
-  if (line.keyword) return `${indent}${line.keyword}: ${line.value}${comma}`;
-  return `${indent}${line.key}: "${line.value}"${comma}`;
-}
+function renderTokens(codeEl, tokenSpec) {
+  codeEl.innerHTML = '';
 
-function buildEditor() {
-  const container = document.getElementById("editorLines");
-  if (!container) return;
-
-  if (prefersReducedMotion) {
-    codeLines.forEach((line, i) => {
-      const row = document.createElement("div");
-      row.className = "editor-line";
-      row.innerHTML = `<span class="editor-line-num">${i + 1}</span><span class="editor-line-code">${"  ".repeat(line.indent)}${highlightLine(line)}</span>`;
-      container.appendChild(row);
-    });
-    return;
+  if (tokenSpec.indent) {
+    codeEl.appendChild(document.createTextNode('  '.repeat(tokenSpec.indent)));
   }
 
+  if (tokenSpec.keyword) {
+    const span = document.createElement('span');
+    span.className = 'tok-keyword';
+    span.textContent = tokenSpec.keyword;
+    codeEl.appendChild(span);
+  }
+
+  if (tokenSpec.key) {
+    const span = document.createElement('span');
+    span.className = 'tok-key';
+    span.textContent = tokenSpec.key;
+    codeEl.appendChild(span);
+  }
+
+  if (tokenSpec.punct) {
+    const span = document.createElement('span');
+    span.className = 'tok-punct';
+    span.textContent = tokenSpec.punct;
+    codeEl.appendChild(span);
+  }
+
+  if (tokenSpec.string) {
+    const span = document.createElement('span');
+    span.className = 'tok-string';
+    span.textContent = tokenSpec.string;
+    codeEl.appendChild(span);
+  }
+
+  if (tokenSpec.punct2) {
+    const span = document.createElement('span');
+    span.className = 'tok-punct';
+    span.textContent = tokenSpec.punct2;
+    codeEl.appendChild(span);
+  }
+}
+
+function typeEditor() {
+  if (!editorLinesEl) return;
+
+  editorLinesEl.innerHTML = '';
   let lineIndex = 0;
 
   function typeLine() {
-    if (lineIndex >= codeLines.length) return;
-
-    const line = codeLines[lineIndex];
-    const row = document.createElement("div");
-    row.className = "editor-line";
-    const numSpan = document.createElement("span");
-    numSpan.className = "editor-line-num";
-    numSpan.textContent = lineIndex + 1;
-    const codeSpan = document.createElement("span");
-    codeSpan.className = "editor-line-code";
-    row.appendChild(numSpan);
-    row.appendChild(codeSpan);
-    container.appendChild(row);
-
-    const full = plainLine(line);
-    let charIndex = 0;
-    const cursor = document.createElement("span");
-    cursor.className = "cursor";
-    codeSpan.appendChild(cursor);
-
-    const typer = setInterval(() => {
-      charIndex++;
-      codeSpan.textContent = full.slice(0, charIndex);
-      codeSpan.appendChild(cursor);
-      if (charIndex >= full.length) {
-        clearInterval(typer);
-        codeSpan.innerHTML = "  ".repeat(line.indent) + highlightLine(line);
-        lineIndex++;
-        setTimeout(typeLine, 90);
+    if (lineIndex >= editorCode.length) {
+      const cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      const lastLine = editorLinesEl.lastElementChild;
+      if (lastLine) {
+        lastLine.querySelector('.editor-line-code').appendChild(cursor);
       }
-    }, 18);
+      return;
+    }
+
+    const spec = editorCode[lineIndex];
+    const { line, code } = buildLine(lineIndex + 1);
+    editorLinesEl.appendChild(line);
+    renderTokens(code, spec);
+
+    lineIndex += 1;
+    setTimeout(typeLine, 140);
   }
 
   typeLine();
 }
 
-function setupNav() {
-  const burger = document.getElementById("burger");
-  const menu = document.getElementById("mobileMenu");
-  if (!burger || !menu) return;
+typeEditor();
 
-  burger.addEventListener("click", () => {
-    const isOpen = menu.classList.toggle("open");
-    burger.setAttribute("aria-expanded", String(isOpen));
-    burger.classList.toggle("open", isOpen);
-  });
+const parallaxEls = document.querySelectorAll('.parallax');
+const editorEl = document.getElementById('editor');
+const heroSection = document.querySelector('.hero');
 
-  menu.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("open");
-      burger.setAttribute("aria-expanded", "false");
+if (heroSection) {
+  heroSection.addEventListener('mousemove', e => {
+    const rect = heroSection.getBoundingClientRect();
+    const relX = (e.clientX - rect.left) / rect.width - 0.5;
+    const relY = (e.clientY - rect.top) / rect.height - 0.5;
+
+    parallaxEls.forEach(el => {
+      const depth = 24;
+      el.style.transform = `translate(${relX * depth}px, ${relY * depth}px)`;
     });
-  });
-}
 
-function setupReveals() {
-  const items = document.querySelectorAll(".reveal");
-  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
-    items.forEach((item) => item.classList.add("in"));
-    return;
-  }
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("in");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.15 }
-  );
-
-  items.forEach((item) => observer.observe(item));
-}
-
-function setupContactForm() {
-  const form = document.getElementById("contactForm");
-  const note = document.getElementById("formNote");
-  if (!form) return;
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const name = document.getElementById("cName").value.trim();
-    const email = document.getElementById("cEmail").value.trim();
-    const message = document.getElementById("cMessage").value.trim();
-
-    if (!name || !email || !message) {
-      note.textContent = "Please fill in every field before sending.";
-      return;
+    if (editorEl) {
+      const rotateY = relX * 10;
+      const rotateX = relY * -10;
+      editorEl.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
     }
+  });
 
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
-    const body = encodeURIComponent(`${message}\n\nFrom: ${name}\nEmail: ${email}`);
-    window.location.href = `mailto:muhammadfaizankhan525@gmail.com?subject=${subject}&body=${body}`;
-
-    note.textContent = "Your email client should now be open with the message ready to send.";
-    form.reset();
+  heroSection.addEventListener('mouseleave', () => {
+    parallaxEls.forEach(el => {
+      el.style.transform = 'translate(0px, 0px)';
+    });
+    if (editorEl) {
+      editorEl.style.transform = 'rotateY(0deg) rotateX(0deg)';
+    }
   });
 }
 
-function initHeroScene() {
-  const canvas = document.getElementById("heroCanvas");
-  const hero = document.getElementById("home");
-  if (!canvas || !hero || prefersReducedMotion || typeof THREE === "undefined") return;
+const heroCanvas = document.getElementById('heroCanvas');
 
-  let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-  } catch (err) {
-    return;
-  }
+function initHeroCanvas() {
+  if (!heroCanvas || typeof THREE === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100);
-  camera.position.z = 6;
+  const camera = new THREE.PerspectiveCamera(60, heroCanvas.clientWidth / heroCanvas.clientHeight, 0.1, 1000);
+  camera.position.z = 60;
 
-  const goldMat = new THREE.MeshBasicMaterial({ color: 0xf2f2f0, wireframe: true, transparent: true, opacity: 0.45 });
-  const tealMat = new THREE.MeshBasicMaterial({ color: 0x9599a1, wireframe: true, transparent: true, opacity: 0.35 });
+  const renderer = new THREE.WebGLRenderer({ canvas: heroCanvas, alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(heroCanvas.clientWidth, heroCanvas.clientHeight, false);
 
-  const shapeA = new THREE.Mesh(new THREE.IcosahedronGeometry(1.7, 1), goldMat);
-  shapeA.position.set(2.4, 0.5, -1);
-  scene.add(shapeA);
+  const particleCount = 260;
+  const positions = new Float32Array(particleCount * 3);
 
-  const shapeB = new THREE.Mesh(new THREE.IcosahedronGeometry(1, 0), tealMat);
-  shapeB.position.set(-2.6, -0.9, -2);
-  scene.add(shapeB);
-
-  const pointCount = 120;
-  const positions = new Float32Array(pointCount * 3);
-  for (let i = 0; i < pointCount; i++) {
-    positions[i * 3] = (Math.random() - 0.5) * 12;
-    positions[i * 3 + 1] = (Math.random() - 0.5) * 7;
-    positions[i * 3 + 2] = (Math.random() - 0.5) * 6;
+  for (let i = 0; i < particleCount; i++) {
+    positions[i * 3] = (Math.random() - 0.5) * 160;
+    positions[i * 3 + 1] = (Math.random() - 0.5) * 100;
+    positions[i * 3 + 2] = (Math.random() - 0.5) * 100;
   }
-  const pointsGeo = new THREE.BufferGeometry();
-  pointsGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  const pointsMat = new THREE.PointsMaterial({ color: 0x6b6f77, size: 0.03, transparent: true, opacity: 0.5 });
-  const points = new THREE.Points(pointsGeo, pointsMat);
+
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  const material = new THREE.PointsMaterial({
+    color: 0xf4f5f6,
+    size: 0.7,
+    transparent: true,
+    opacity: 0.5
+  });
+
+  const points = new THREE.Points(geometry, material);
   scene.add(points);
 
+  let frameId;
+
   function resize() {
-    const rect = hero.getBoundingClientRect();
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
-    renderer.setSize(rect.width, rect.height);
-    camera.aspect = rect.width / rect.height;
+    const width = heroCanvas.clientWidth;
+    const height = heroCanvas.clientHeight;
+    camera.aspect = width / height;
     camera.updateProjectionMatrix();
+    renderer.setSize(width, height, false);
   }
 
-  resize();
-  window.addEventListener("resize", resize);
+  window.addEventListener('resize', resize);
 
   function animate() {
-    shapeA.rotation.x += 0.0018;
-    shapeA.rotation.y += 0.0026;
-    shapeB.rotation.x -= 0.0014;
-    shapeB.rotation.y -= 0.002;
-    points.rotation.y += 0.0004;
+    points.rotation.y += 0.0006;
+    points.rotation.x += 0.0002;
     renderer.render(scene, camera);
-    requestAnimationFrame(animate);
+    frameId = requestAnimationFrame(animate);
   }
 
   animate();
-}
 
-function initTilt(selector, maxTilt) {
-  if (prefersReducedMotion) return;
-  document.querySelectorAll(selector).forEach((el) => {
-    el.addEventListener("mousemove", (event) => {
-      const rect = el.getBoundingClientRect();
-      const px = (event.clientX - rect.left) / rect.width;
-      const py = (event.clientY - rect.top) / rect.height;
-      const rx = (0.5 - py) * maxTilt;
-      const ry = (px - 0.5) * maxTilt;
-      el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-    });
-    el.addEventListener("mouseleave", () => {
-      el.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
-    });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      cancelAnimationFrame(frameId);
+    } else {
+      animate();
+    }
   });
 }
 
-function initParallax() {
-  if (prefersReducedMotion) return;
-  const shapes = document.querySelectorAll(".float-shape.parallax");
-  if (!shapes.length) return;
+initHeroCanvas();
 
-  document.addEventListener("mousemove", (event) => {
-    const px = event.clientX / window.innerWidth - 0.5;
-    const py = event.clientY / window.innerHeight - 0.5;
-    shapes.forEach((shape, i) => {
-      const depth = (i % 3) + 1;
-      const x = px * 18 * depth;
-      const y = py * 18 * depth;
-      shape.style.transform = `translate(${x}px, ${y}px)`;
-    });
+const contactForm = document.getElementById('contactForm');
+const formNote = document.getElementById('formNote');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const name = document.getElementById('cName').value.trim();
+    const email = document.getElementById('cEmail').value.trim();
+    const message = document.getElementById('cMessage').value.trim();
+
+    if (!name || !email || !message) {
+      if (formNote) {
+        formNote.textContent = 'Please fill in all fields before sending.';
+      }
+      return;
+    }
+
+    const subject = encodeURIComponent(`Project inquiry from ${name}`);
+    const body = encodeURIComponent(`${message}\n\nFrom: ${name}\nEmail: ${email}`);
+    window.location.href = `mailto:muhammadfaizankhan525@gmail.com?subject=${subject}&body=${body}`;
+
+    if (formNote) {
+      formNote.textContent = 'Opening your email client...';
+    }
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  buildEditor();
-  setupNav();
-  setupReveals();
-  setupContactForm();
-  initHeroScene();
-  initTilt("#editor", 10);
-  initTilt(".skill-card", 6);
-  initTilt(".project-row", 3);
-  initParallax();
+const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+
+navLinks.forEach(link => {
+  link.addEventListener('click', e => {
+    const href = link.getAttribute('href');
+    if (!href || !href.startsWith('#')) return;
+
+    const target = document.querySelector(href);
+    if (!target) return;
+
+    e.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
