@@ -4,81 +4,96 @@ const mobileMenu = document.getElementById("mobileMenu");
 const backTop = document.getElementById("backTop");
 const form = document.getElementById("contactForm");
 const formMessage = document.getElementById("formMessage");
-const scene = document.querySelector(".scene");
-const sections = document.querySelectorAll("section[id]");
+const scene = document.getElementById("scene");
+
 const navItems = document.querySelectorAll(".nav-links a");
+const mobileLinks = document.querySelectorAll(".mobile-menu a");
+const sections = document.querySelectorAll("section[id]");
+const revealElements = document.querySelectorAll(".reveal");
+const magneticElements = document.querySelectorAll(".magnetic");
 const projectCards = document.querySelectorAll(".project-card");
-const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-const finePointer = window.matchMedia("(pointer:fine)").matches;
+
+const reducedMotion = window.matchMedia(
+  "(prefers-reduced-motion: reduce)"
+).matches;
+
+const finePointer = window.matchMedia(
+  "(pointer: fine)"
+).matches;
 
 const updateHeader = () => {
-  const scrolled = window.scrollY > 80;
+  const scrolled = window.scrollY > 60;
 
-  header?.classList.toggle("scrolled", scrolled);
-  backTop?.classList.toggle("show", scrolled);
+  header.classList.toggle("scrolled", scrolled);
+  backTop.classList.toggle("show", scrolled);
 };
 
-window.addEventListener("scroll", updateHeader, { passive: true });
+window.addEventListener("scroll", updateHeader, {
+  passive: true
+});
+
 updateHeader();
 
-menuBtn?.addEventListener("click", () => {
-  const isOpen = mobileMenu?.classList.toggle("open");
+const closeMobileMenu = () => {
+  mobileMenu.classList.remove("open");
+  menuBtn.setAttribute("aria-expanded", "false");
+  document.body.classList.remove("menu-open");
+};
 
-  menuBtn.setAttribute("aria-expanded", String(isOpen));
-  document.body.classList.toggle("menu-open", isOpen);
-});
+menuBtn.addEventListener("click", () => {
+  const open = mobileMenu.classList.toggle("open");
 
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu?.classList.remove("open");
-    menuBtn?.setAttribute("aria-expanded", "false");
-    document.body.classList.remove("menu-open");
-  });
-});
-
-navItems.forEach(link => {
-  link.addEventListener("click", () => {
-    navItems.forEach(item => item.classList.remove("active"));
-    link.classList.add("active");
-  });
-});
-
-backTop?.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: reducedMotion ? "auto" : "smooth"
-  });
-});
-
-if (!reducedMotion) {
-  const revealObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.12
-    }
+  menuBtn.setAttribute(
+    "aria-expanded",
+    String(open)
   );
 
-  document.querySelectorAll(".reveal").forEach(element => {
-    revealObserver.observe(element);
+  document.body.classList.toggle(
+    "menu-open",
+    open
+  );
+});
+
+mobileLinks.forEach(link => {
+  link.addEventListener("click", closeMobileMenu);
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    closeMobileMenu();
+  }
+});
+
+const revealObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.12
+  }
+);
+
+if (reducedMotion) {
+  revealElements.forEach(element => {
+    element.classList.add("show");
   });
 } else {
-  document.querySelectorAll(".reveal").forEach(element => {
-    element.classList.add("show");
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
   });
 }
 
 const updateActiveSection = () => {
-  let current = "";
+  let current = "home";
 
   sections.forEach(section => {
-    const sectionTop = section.offsetTop - 160;
+    const sectionTop =
+      section.offsetTop - 180;
 
     if (window.scrollY >= sectionTop) {
       current = section.id;
@@ -86,110 +101,242 @@ const updateActiveSection = () => {
   });
 
   navItems.forEach(link => {
+    const target =
+      link.getAttribute("href");
+
     link.classList.toggle(
       "active",
-      link.getAttribute("href") === `#${current}`
+      target === `#${current}`
     );
   });
 };
 
-window.addEventListener("scroll", updateActiveSection, { passive: true });
+window.addEventListener(
+  "scroll",
+  updateActiveSection,
+  {
+    passive: true
+  }
+);
+
 updateActiveSection();
 
-form?.addEventListener("submit", event => {
-  event.preventDefault();
-
-  const submitButton = form.querySelector(".submit");
-
-  if (submitButton) {
-    submitButton.disabled = true;
-    submitButton.innerHTML = 'Message Ready <span>✓</span>';
-  }
-
-  if (formMessage) {
-    formMessage.textContent =
-      "Thanks. The form is ready to be connected to a backend service.";
-  }
-
-  form.reset();
-
-  setTimeout(() => {
-    if (formMessage) {
-      formMessage.textContent = "";
-    }
-
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.innerHTML = 'Send Message <span>↗</span>';
-    }
-  }, 4000);
+backTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: reducedMotion
+      ? "auto"
+      : "smooth"
+  });
 });
 
 if (scene && finePointer && !reducedMotion) {
   scene.addEventListener("mousemove", event => {
-    const rect = scene.getBoundingClientRect();
+    const rect =
+      scene.getBoundingClientRect();
 
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    const x =
+      (event.clientX - rect.left) /
+        rect.width -
+      0.5;
+
+    const y =
+      (event.clientY - rect.top) /
+        rect.height -
+      0.5;
+
+    const rotateY = x * 14;
+    const rotateX = -y * 14;
 
     scene.style.transform = `
-      rotateX(${-y * 10}deg)
-      rotateY(${x * 10}deg)
-      translateZ(10px)
+      rotateX(${rotateX}deg)
+      rotateY(${rotateY}deg)
     `;
   });
 
   scene.addEventListener("mouseleave", () => {
     scene.style.transform =
-      "rotateX(0deg) rotateY(0deg) translateZ(0)";
+      "rotateX(0deg) rotateY(0deg)";
   });
 }
 
 if (finePointer && !reducedMotion) {
   projectCards.forEach(card => {
+
     card.addEventListener("mousemove", event => {
-      const rect = card.getBoundingClientRect();
 
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
+      const rect =
+        card.getBoundingClientRect();
 
-      const rotateX = ((y / rect.height) - 0.5) * -8;
-      const rotateY = ((x / rect.width) - 0.5) * 8;
+      const x =
+        (event.clientX - rect.left) /
+        rect.width;
 
-      card.style.setProperty("--mouse-x", `${x}px`);
-      card.style.setProperty("--mouse-y", `${y}px`);
+      const y =
+        (event.clientY - rect.top) /
+        rect.height;
+
+      const rotateX =
+        (0.5 - y) * 6;
+
+      const rotateY =
+        (x - 0.5) * 7;
+
       card.style.transform = `
-        perspective(900px)
+        perspective(1100px)
         rotateX(${rotateX}deg)
         rotateY(${rotateY}deg)
         translateY(-8px)
-        translateZ(12px)
       `;
     });
 
     card.addEventListener("mouseleave", () => {
       card.style.transform =
-        "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0) translateZ(0)";
+        "perspective(1100px) rotateX(0deg) rotateY(0deg) translateY(0)";
     });
   });
 }
 
 if (finePointer && !reducedMotion) {
-  document.addEventListener("mousemove", event => {
-    document.documentElement.style.setProperty(
-      "--cursor-x",
-      `${event.clientX}px`
+
+  const cursorDot =
+    document.querySelector(".cursor-dot");
+
+  const cursorRing =
+    document.querySelector(".cursor-ring");
+
+  document.addEventListener(
+    "mousemove",
+    event => {
+
+      cursorDot.style.left =
+        `${event.clientX}px`;
+
+      cursorDot.style.top =
+        `${event.clientY}px`;
+
+      cursorRing.style.left =
+        `${event.clientX}px`;
+
+      cursorRing.style.top =
+        `${event.clientY}px`;
+    }
+  );
+
+  const interactiveElements =
+    document.querySelectorAll(
+      "a, button, input, textarea"
     );
 
-    document.documentElement.style.setProperty(
-      "--cursor-y",
-      `${event.clientY}px`
+  interactiveElements.forEach(element => {
+
+    element.addEventListener("mouseenter", () => {
+      cursorRing.style.width = "52px";
+      cursorRing.style.height = "52px";
+      cursorRing.style.background =
+        "rgba(37, 99, 235, 0.08)";
+    });
+
+    element.addEventListener("mouseleave", () => {
+      cursorRing.style.width = "34px";
+      cursorRing.style.height = "34px";
+      cursorRing.style.background =
+        "transparent";
+    });
+  });
+}
+
+if (finePointer && !reducedMotion) {
+
+  magneticElements.forEach(element => {
+
+    element.addEventListener(
+      "mousemove",
+      event => {
+
+        const rect =
+          element.getBoundingClientRect();
+
+        const x =
+          event.clientX -
+          rect.left -
+          rect.width / 2;
+
+        const y =
+          event.clientY -
+          rect.top -
+          rect.height / 2;
+
+        element.style.transform =
+          `translate(${x * 0.16}px, ${y * 0.16}px)`;
+      }
+    );
+
+    element.addEventListener(
+      "mouseleave",
+      () => {
+        element.style.transform =
+          "translate(0, 0)";
+      }
     );
   });
 }
 
-document.querySelectorAll(".project-link, .project-title-link").forEach(link => {
-  link.addEventListener("click", event => {
-    event.stopPropagation();
+form.addEventListener("submit", event => {
+
+  event.preventDefault();
+
+  const name =
+    document.getElementById("name").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const message =
+    document.getElementById("message").value.trim();
+
+  if (!name || !email || !message) {
+    formMessage.textContent =
+      "Please complete all fields.";
+
+    return;
+  }
+
+  const subject =
+    encodeURIComponent(
+      `Portfolio Contact — ${name}`
+    );
+
+  const body =
+    encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    );
+
+  formMessage.textContent =
+    "Opening your email application...";
+
+  window.location.href =
+    `mailto:muhammadfaizankhan525@gmail.com?subject=${subject}&body=${body}`;
+
+  setTimeout(() => {
+    formMessage.textContent = "";
+  }, 5000);
+});
+
+document
+  .querySelectorAll(".project-title-link, .project-arrow")
+  .forEach(link => {
+
+    link.addEventListener("click", event => {
+      event.stopPropagation();
+    });
+
   });
+
+window.addEventListener("resize", () => {
+
+  if (window.innerWidth > 1050) {
+    closeMobileMenu();
+  }
+
 });
