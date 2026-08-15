@@ -3,39 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Faizan Khan - Frontend Developer and MERN Stack Developer Portfolio">
+  <meta name="description" content="Faizan Khan — Frontend Developer and MERN Stack Developer">
   <title>Faizan Khan | Frontend Developer</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <div class="page-loader" id="loader">
-    <div class="loader-box">
-      <span>F</span>
-    </div>
+  <div class="loader" id="loader">
+    <div class="loader-logo">F</div>
   </div>
 
   <header class="header" id="header">
     <a href="#home" class="logo">
       <span>F</span>
-      <strong>Faizan</strong>
+      <strong>Faizan.</strong>
     </a>
 
     <nav class="nav" id="nav">
       <a href="#home" class="nav-link active">Home</a>
       <a href="#about" class="nav-link">About</a>
+      <a href="#services" class="nav-link">Services</a>
       <a href="#skills" class="nav-link">Skills</a>
+      <a href="#process" class="nav-link">Process</a>
       <a href="#projects" class="nav-link">Projects</a>
+      <a href="#experience" class="nav-link">Experience</a>
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
-    <a href="#contact" class="header-btn">Let's Talk <span>↗</span></a>
+    <a href="#contact" class="header-cta">
+      Let's Talk
+      <span>↗</span>
+    </a>
 
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">
+    <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -44,341 +50,657 @@
 
   <main>
 
-    <section class="hero" id="home">
-      <div class="hero-decoration decoration-one"></div>
-      <div class="hero-decoration decoration-two"></div>
+    <section class="hero section" id="home">
+      <div class="hero-grid">
 
-      <div class="hero-content reveal">
-        <div class="availability">
-          <span></span>
-          Available for opportunities
-        </div>
-
-        <p class="eyebrow">FRONTEND DEVELOPER</p>
-
-        <h1>
-          Building
-          <span>digital experiences</span>
-          that feel different.
-        </h1>
-
-        <p class="hero-text">
-          I'm Faizan, a frontend developer focused on creating responsive,
-          modern and user-friendly web experiences with clean code and thoughtful design.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#projects" class="primary-btn">
-            View My Work
-            <span>↗</span>
-          </a>
-
-          <a href="#contact" class="secondary-btn">
-            Contact Me
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div>
-            <strong>10+</strong>
-            <span>Projects</span>
+        <div class="hero-content reveal">
+          <div class="status">
+            <span></span>
+            Available for opportunities
           </div>
 
-          <div>
-            <strong>8+</strong>
-            <span>Technologies</span>
+          <p class="eyebrow">FRONTEND DEVELOPER</p>
+
+          <h1>
+            I build
+            <span>web experiences</span>
+            that make an impact.
+          </h1>
+
+          <p class="hero-description">
+            I'm Faizan, a frontend developer focused on building responsive,
+            modern and user-friendly websites with clean code and thoughtful interfaces.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#projects" class="btn primary-btn">
+              Explore My Work
+              <span>↗</span>
+            </a>
+
+            <a href="#about" class="btn outline-btn">
+              More About Me
+            </a>
           </div>
 
-          <div>
-            <strong>100%</strong>
-            <span>Learning Mindset</span>
-          </div>
-        </div>
-      </div>
+          <div class="hero-metrics">
+            <div>
+              <strong>11+</strong>
+              <span>Projects Built</span>
+            </div>
 
-      <div class="hero-visual reveal">
-        <div class="visual-card">
-          <div class="visual-top">
-            <span>PORTFOLIO</span>
-            <span>2026</span>
-          </div>
+            <div>
+              <strong>8+</strong>
+              <span>Core Technologies</span>
+            </div>
 
-          <div class="visual-center">
-            <div class="visual-letter">F</div>
-            <div class="orbit orbit-one"></div>
-            <div class="orbit orbit-two"></div>
-          </div>
-
-          <div class="visual-bottom">
-            <span>FAIZAN KHAN</span>
-            <span>WEB DEVELOPER</span>
+            <div>
+              <strong>∞</strong>
+              <span>Things To Learn</span>
+            </div>
           </div>
         </div>
 
-        <div class="floating-tag tag-one">HTML / CSS</div>
-        <div class="floating-tag tag-two">REACT</div>
-        <div class="floating-tag tag-three">MERN</div>
+        <div class="hero-art reveal">
+          <div class="hero-card">
+            <div class="card-header">
+              <span>FAIZAN KHAN</span>
+              <span>2026</span>
+            </div>
+
+            <div class="hero-monogram">
+              F
+            </div>
+
+            <div class="card-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="card-footer">
+              <span>FRONTEND</span>
+              <span>MERN</span>
+              <span>PYTHON</span>
+            </div>
+          </div>
+
+          <div class="hero-badge badge-one">HTML</div>
+          <div class="hero-badge badge-two">REACT</div>
+          <div class="hero-badge badge-three">JAVASCRIPT</div>
+        </div>
+
       </div>
     </section>
 
-    <section class="about section" id="about">
-      <div class="section-heading reveal">
+    <section class="section about" id="about">
+      <div class="section-top reveal">
         <span class="section-number">01</span>
         <div>
           <p class="eyebrow">ABOUT ME</p>
-          <h2>Turning ideas into <span>useful interfaces.</span></h2>
+          <h2>A developer who enjoys <span>building things.</span></h2>
         </div>
       </div>
 
-      <div class="about-grid">
-        <div class="about-main reveal">
-          <p class="large-text">
-            I'm a web developer passionate about building responsive,
-            modern and practical digital products.
+      <div class="about-layout">
+
+        <div class="about-copy reveal">
+          <p class="intro">
+            I'm a web developer with a strong focus on frontend development
+            and modern web technologies.
           </p>
 
           <p>
-            My main focus is frontend development, where I work with HTML,
-            CSS, JavaScript, React and Tailwind CSS. I'm also expanding my
-            skills across the MERN stack and exploring Python for data,
-            AI and machine learning.
+            I work with HTML, CSS, JavaScript, React and Tailwind CSS to
+            create responsive interfaces that work across different screen sizes.
           </p>
 
           <p>
-            I enjoy working on real projects, learning new technologies and
-            collaborating with teams to turn ideas into working software.
+            I'm also expanding into backend development with Node.js,
+            Express.js and MongoDB while continuing to explore Python,
+            data analysis, AI and machine learning.
+          </p>
+
+          <p>
+            I enjoy turning ideas into functional projects, experimenting
+            with new technologies and improving my development skills through
+            practical work.
           </p>
         </div>
 
-        <div class="about-side reveal">
-          <div class="info-card">
-            <span>FOCUS</span>
+        <div class="about-facts reveal">
+          <div class="fact">
+            <span>01</span>
             <strong>Frontend Development</strong>
+            <p>Responsive and modern interfaces.</p>
           </div>
 
-          <div class="info-card">
-            <span>STACK</span>
-            <strong>MERN Development</strong>
+          <div class="fact">
+            <span>02</span>
+            <strong>MERN Stack</strong>
+            <p>Growing across full-stack development.</p>
           </div>
 
-          <div class="info-card">
-            <span>EXPLORING</span>
-            <strong>AI & Machine Learning</strong>
+          <div class="fact">
+            <span>03</span>
+            <strong>Python & Data</strong>
+            <p>Exploring analysis and visualization.</p>
           </div>
 
-          <div class="info-card">
-            <span>BASED IN</span>
-            <strong>Pakistan</strong>
+          <div class="fact">
+            <span>04</span>
+            <strong>Team Projects</strong>
+            <p>Experience working on software projects.</p>
           </div>
         </div>
+
       </div>
     </section>
 
-    <section class="skills section" id="skills">
-      <div class="section-heading reveal">
+    <section class="section services" id="services">
+      <div class="section-top reveal">
         <span class="section-number">02</span>
         <div>
-          <p class="eyebrow">MY TOOLKIT</p>
-          <h2>Technologies I <span>work with.</span></h2>
+          <p class="eyebrow">WHAT I DO</p>
+          <h2>Building for the <span>modern web.</span></h2>
         </div>
       </div>
 
-      <div class="skills-grid reveal">
+      <div class="services-grid">
 
-        <div class="skill-card featured">
-          <div class="skill-icon">01</div>
-          <h3>Frontend</h3>
-          <p>Creating responsive and polished interfaces.</p>
-
-          <div class="skill-list">
+        <article class="service-card reveal">
+          <div class="service-number">01</div>
+          <h3>Frontend Development</h3>
+          <p>
+            Building responsive websites and interfaces using modern
+            frontend technologies.
+          </p>
+          <div class="service-tags">
             <span>HTML</span>
             <span>CSS</span>
             <span>JavaScript</span>
-            <span>React</span>
-            <span>Tailwind CSS</span>
           </div>
-        </div>
+        </article>
 
-        <div class="skill-card">
-          <div class="skill-icon">02</div>
-          <h3>Backend</h3>
-          <p>Building the foundation behind web applications.</p>
+        <article class="service-card dark reveal">
+          <div class="service-number">02</div>
+          <h3>React Development</h3>
+          <p>
+            Creating reusable components and interactive interfaces
+            using React.
+          </p>
+          <div class="service-tags">
+            <span>React</span>
+            <span>JavaScript</span>
+          </div>
+        </article>
 
-          <div class="skill-list">
+        <article class="service-card reveal">
+          <div class="service-number">03</div>
+          <h3>Responsive Design</h3>
+          <p>
+            Designing layouts that adapt smoothly to desktops,
+            tablets and mobile devices.
+          </p>
+          <div class="service-tags">
+            <span>CSS</span>
+            <span>Tailwind</span>
+          </div>
+        </article>
+
+        <article class="service-card reveal">
+          <div class="service-number">04</div>
+          <h3>MERN Development</h3>
+          <p>
+            Learning and building across the MongoDB, Express,
+            React and Node.js ecosystem.
+          </p>
+          <div class="service-tags">
             <span>Node.js</span>
-            <span>Express.js</span>
+            <span>Express</span>
             <span>MongoDB</span>
           </div>
-        </div>
-
-        <div class="skill-card">
-          <div class="skill-icon">03</div>
-          <h3>Python & Data</h3>
-          <p>Exploring programming, data analysis and visualization.</p>
-
-          <div class="skill-list">
-            <span>Python</span>
-            <span>NumPy</span>
-            <span>Pandas</span>
-            <span>Matplotlib</span>
-            <span>Seaborn</span>
-          </div>
-        </div>
+        </article>
 
       </div>
     </section>
 
-    <section class="projects section" id="projects">
-      <div class="section-heading reveal">
+    <section class="section skills" id="skills">
+      <div class="section-top reveal">
         <span class="section-number">03</span>
         <div>
-          <p class="eyebrow">SELECTED WORK</p>
-          <h2>Things I've <span>built.</span></h2>
+          <p class="eyebrow">TECH STACK</p>
+          <h2>Tools I use to <span>create.</span></h2>
         </div>
       </div>
 
-      <div class="projects-grid">
+      <div class="skills-container reveal">
 
-        <a href="https://faizan-khan144.github.io/august-and-oak-ecommerce/" target="_blank" class="project-card reveal">
-          <div class="project-number">01</div>
-          <div class="project-content">
+        <div class="skill-group">
+          <div class="skill-heading">
+            <span>01</span>
+            <h3>Frontend</h3>
+          </div>
+
+          <div class="skill-items">
+            <div class="skill">
+              <strong>HTML</strong>
+              <span>Frontend</span>
+            </div>
+
+            <div class="skill">
+              <strong>CSS</strong>
+              <span>Frontend</span>
+            </div>
+
+            <div class="skill">
+              <strong>JavaScript</strong>
+              <span>Programming</span>
+            </div>
+
+            <div class="skill">
+              <strong>React</strong>
+              <span>Library</span>
+            </div>
+
+            <div class="skill">
+              <strong>Tailwind CSS</strong>
+              <span>Framework</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-heading">
+            <span>02</span>
+            <h3>Backend</h3>
+          </div>
+
+          <div class="skill-items">
+            <div class="skill">
+              <strong>Node.js</strong>
+              <span>Runtime</span>
+            </div>
+
+            <div class="skill">
+              <strong>Express.js</strong>
+              <span>Backend</span>
+            </div>
+
+            <div class="skill">
+              <strong>MongoDB</strong>
+              <span>Database</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-heading">
+            <span>03</span>
+            <h3>Python & Data</h3>
+          </div>
+
+          <div class="skill-items">
+            <div class="skill">
+              <strong>Python</strong>
+              <span>Programming</span>
+            </div>
+
+            <div class="skill">
+              <strong>NumPy</strong>
+              <span>Data</span>
+            </div>
+
+            <div class="skill">
+              <strong>Pandas</strong>
+              <span>Data</span>
+            </div>
+
+            <div class="skill">
+              <strong>Matplotlib</strong>
+              <span>Visualization</span>
+            </div>
+
+            <div class="skill">
+              <strong>Seaborn</strong>
+              <span>Visualization</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section process" id="process">
+      <div class="section-top reveal">
+        <span class="section-number">04</span>
+        <div>
+          <p class="eyebrow">MY PROCESS</p>
+          <h2>From idea to <span>working product.</span></h2>
+        </div>
+      </div>
+
+      <div class="process-grid">
+
+        <div class="process-card reveal">
+          <span>01</span>
+          <h3>Plan</h3>
+          <p>Understand the idea, requirements and goals.</p>
+        </div>
+
+        <div class="process-card reveal">
+          <span>02</span>
+          <h3>Structure</h3>
+          <p>Create the layout, components and project structure.</p>
+        </div>
+
+        <div class="process-card reveal">
+          <span>03</span>
+          <h3>Develop</h3>
+          <p>Turn the concept into functional and responsive code.</p>
+        </div>
+
+        <div class="process-card reveal">
+          <span>04</span>
+          <h3>Test</h3>
+          <p>Check responsiveness, functionality and user experience.</p>
+        </div>
+
+        <div class="process-card reveal">
+          <span>05</span>
+          <h3>Improve</h3>
+          <p>Refine the interface and improve the overall experience.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section projects" id="projects">
+      <div class="section-top reveal">
+        <span class="section-number">05</span>
+        <div>
+          <p class="eyebrow">SELECTED PROJECTS</p>
+          <h2>Some things I've <span>built.</span></h2>
+        </div>
+      </div>
+
+      <div class="featured-projects">
+
+        <a href="https://faizan-khan144.github.io/august-and-oak-ecommerce/" target="_blank" class="featured-project reveal">
+          <div class="project-index">01</div>
+          <div class="project-info">
             <p>ECOMMERCE</p>
             <h3>August & Oak</h3>
-            <span>Explore Project ↗</span>
+            <span>View Project ↗</span>
           </div>
-          <div class="project-shape shape-blue"></div>
+          <div class="project-visual blue"></div>
         </a>
 
-        <a href="https://github.com/Faizan-khan144/student-management-system" target="_blank" class="project-card reveal">
-          <div class="project-number">02</div>
-          <div class="project-content">
-            <p>WEB APPLICATION</p>
-            <h3>Student Management System</h3>
-            <span>View Repository ↗</span>
-          </div>
-          <div class="project-shape shape-orange"></div>
-        </a>
-
-        <a href="https://faizan-khan144.github.io/Modern-Rock-Paper-Scissors/" target="_blank" class="project-card reveal">
-          <div class="project-number">03</div>
-          <div class="project-content">
-            <p>JAVASCRIPT</p>
-            <h3>Rock Paper Scissors</h3>
-            <span>Explore Project ↗</span>
-          </div>
-          <div class="project-shape shape-purple"></div>
-        </a>
-
-        <a href="https://faizan-khan144.github.io/nexus-landing-page/" target="_blank" class="project-card reveal">
-          <div class="project-number">04</div>
-          <div class="project-content">
-            <p>LANDING PAGE</p>
-            <h3>Nexus</h3>
-            <span>Explore Project ↗</span>
-          </div>
-          <div class="project-shape shape-green"></div>
-        </a>
-
-        <a href="https://faizan-khan144.github.io/profile-card-generator/" target="_blank" class="project-card reveal">
-          <div class="project-number">05</div>
-          <div class="project-content">
-            <p>JAVASCRIPT</p>
-            <h3>Profile Card Generator</h3>
-            <span>Explore Project ↗</span>
-          </div>
-          <div class="project-shape shape-yellow"></div>
-        </a>
-
-        <a href="https://faizan-khan144.github.io/cryptolens-dashboard/" target="_blank" class="project-card reveal">
-          <div class="project-number">06</div>
-          <div class="project-content">
-            <p>DASHBOARD</p>
+        <a href="https://faizan-khan144.github.io/cryptolens-dashboard/" target="_blank" class="featured-project reveal">
+          <div class="project-index">02</div>
+          <div class="project-info">
+            <p>FINTECH DASHBOARD</p>
             <h3>CryptoLens</h3>
-            <span>Explore Project ↗</span>
+            <span>View Project ↗</span>
           </div>
-          <div class="project-shape shape-cyan"></div>
+          <div class="project-visual purple"></div>
         </a>
 
-        <a href="https://faizan-khan144.github.io/vortex-agency/" target="_blank" class="project-card reveal">
-          <div class="project-number">07</div>
-          <div class="project-content">
-            <p>AGENCY</p>
-            <h3>Vortex Agency</h3>
-            <span>Explore Project ↗</span>
-          </div>
-          <div class="project-shape shape-pink"></div>
-        </a>
-
-        <a href="https://faizan-khan144.github.io/fz-fitness/" target="_blank" class="project-card reveal">
-          <div class="project-number">08</div>
-          <div class="project-content">
-            <p>FITNESS</p>
-            <h3>FZ Fitness</h3>
-            <span>Explore Project ↗</span>
-          </div>
-          <div class="project-shape shape-red"></div>
-        </a>
-
-        <a href="https://faizan-khan144.github.io/fz-bank-modern-banking-website/" target="_blank" class="project-card reveal">
-          <div class="project-number">09</div>
-          <div class="project-content">
+        <a href="https://faizan-khan144.github.io/fz-bank-modern-banking-website/" target="_blank" class="featured-project reveal">
+          <div class="project-index">03</div>
+          <div class="project-info">
             <p>FINTECH</p>
             <h3>FZ Bank</h3>
-            <span>Explore Project ↗</span>
+            <span>View Project ↗</span>
           </div>
-          <div class="project-shape shape-dark"></div>
+          <div class="project-visual green"></div>
         </a>
 
-        <a href="https://faizan-khan144.github.io/DevDashboard/" target="_blank" class="project-card reveal">
-          <div class="project-number">10</div>
-          <div class="project-content">
-            <p>DASHBOARD</p>
-            <h3>Dev Dashboard</h3>
-            <span>Explore Project ↗</span>
+        <a href="https://faizan-khan144.github.io/vortex-agency/" target="_blank" class="featured-project reveal">
+          <div class="project-index">04</div>
+          <div class="project-info">
+            <p>AGENCY WEBSITE</p>
+            <h3>Vortex Agency</h3>
+            <span>View Project ↗</span>
           </div>
-          <div class="project-shape shape-indigo"></div>
+          <div class="project-visual orange"></div>
         </a>
 
-        <a href="https://faizan-khan144.github.io/student-attendance-tracker/" target="_blank" class="project-card reveal">
-          <div class="project-number">11</div>
-          <div class="project-content">
-            <p>PRODUCTIVITY</p>
-            <h3>Attendance Tracker</h3>
-            <span>Explore Project ↗</span>
-          </div>
-          <div class="project-shape shape-teal"></div>
+      </div>
+
+      <div class="all-projects-heading reveal">
+        <p class="eyebrow">MORE WORK</p>
+        <h3>Explore more projects</h3>
+      </div>
+
+      <div class="project-list">
+
+        <a href="https://github.com/Faizan-khan144/student-management-system" target="_blank" class="project-row reveal">
+          <span>05</span>
+          <strong>Student Management System</strong>
+          <small>GitHub ↗</small>
+        </a>
+
+        <a href="https://faizan-khan144.github.io/Modern-Rock-Paper-Scissors/" target="_blank" class="project-row reveal">
+          <span>06</span>
+          <strong>Modern Rock Paper Scissors</strong>
+          <small>Live Project ↗</small>
+        </a>
+
+        <a href="https://faizan-khan144.github.io/nexus-landing-page/" target="_blank" class="project-row reveal">
+          <span>07</span>
+          <strong>Nexus Landing Page</strong>
+          <small>Live Project ↗</small>
+        </a>
+
+        <a href="https://faizan-khan144.github.io/profile-card-generator/" target="_blank" class="project-row reveal">
+          <span>08</span>
+          <strong>Profile Card Generator</strong>
+          <small>Live Project ↗</small>
+        </a>
+
+        <a href="https://faizan-khan144.github.io/fz-fitness/" target="_blank" class="project-row reveal">
+          <span>09</span>
+          <strong>FZ Fitness</strong>
+          <small>Live Project ↗</small>
+        </a>
+
+        <a href="https://faizan-khan144.github.io/DevDashboard/" target="_blank" class="project-row reveal">
+          <span>10</span>
+          <strong>Dev Dashboard</strong>
+          <small>Live Project ↗</small>
+        </a>
+
+        <a href="https://faizan-khan144.github.io/student-attendance-tracker/" target="_blank" class="project-row reveal">
+          <span>11</span>
+          <strong>Student Attendance Tracker</strong>
+          <small>Live Project ↗</small>
         </a>
 
       </div>
     </section>
 
-    <section class="contact section" id="contact">
-      <div class="contact-box reveal">
+    <section class="section experience" id="experience">
+      <div class="section-top reveal">
+        <span class="section-number">06</span>
+        <div>
+          <p class="eyebrow">EXPERIENCE</p>
+          <h2>Growing through <span>real projects.</span></h2>
+        </div>
+      </div>
 
-        <div class="contact-heading">
-          <p class="eyebrow">GET IN TOUCH</p>
-          <h2>Have an idea?<br><span>Let's build it.</span></h2>
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="timeline-marker"></div>
+
+          <div class="timeline-date">2026</div>
+
+          <div class="timeline-content">
+            <p>INTERNSHIP</p>
+            <h3>Frontend Development</h3>
+            <p>
+              Worked on practical frontend development tasks and
+              strengthened skills through real project-based work.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-marker"></div>
+
+          <div class="timeline-date">2026</div>
+
+          <div class="timeline-content">
+            <p>PROJECT DEVELOPMENT</p>
+            <h3>Web Development Projects</h3>
+            <p>
+              Built multiple responsive websites, dashboards,
+              landing pages and interactive JavaScript projects.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-marker"></div>
+
+          <div class="timeline-date">ONGOING</div>
+
+          <div class="timeline-content">
+            <p>LEARNING</p>
+            <h3>MERN + Python + Data</h3>
+            <p>
+              Continuing to expand into full-stack development,
+              Python, data analysis and AI/ML.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section learning" id="learning">
+      <div class="learning-box reveal">
+
+        <div>
+          <p class="eyebrow">CURRENTLY EXPLORING</p>
+
+          <h2>
+            Always learning.
+            <span>Always building.</span>
+          </h2>
+
           <p>
-            Whether it's a project, internship opportunity or collaboration,
-            feel free to reach out.
+            My goal is to keep expanding beyond frontend development
+            while building strong practical experience.
           </p>
         </div>
 
-        <div class="contact-details">
-          <a href="muhammadfaizankhan525@gmail.com" class="contact-item">
-            <span>Email</span>
-            <strong>Let's connect ↗</strong>
-          </a>
+        <div class="learning-list">
+          <div>
+            <span>01</span>
+            <strong>MERN Stack</strong>
+          </div>
 
-          <a href="https://github.com/Faizan-khan144" target="_blank" class="contact-item">
-            <span>GitHub</span>
+          <div>
+            <span>02</span>
+            <strong>Python</strong>
+          </div>
+
+          <div>
+            <span>03</span>
+            <strong>Data Analysis</strong>
+          </div>
+
+          <div>
+            <span>04</span>
+            <strong>AI & Machine Learning</strong>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section developer" id="developer">
+      <div class="section-top reveal">
+        <span class="section-number">07</span>
+        <div>
+          <p class="eyebrow">DEVELOPER PROFILE</p>
+          <h2>More than just <span>code.</span></h2>
+        </div>
+      </div>
+
+      <div class="developer-grid">
+
+        <div class="developer-card reveal">
+          <span class="developer-icon">01</span>
+          <h3>Problem Solving</h3>
+          <p>
+            Breaking large problems into smaller, practical steps
+            and building solutions through code.
+          </p>
+        </div>
+
+        <div class="developer-card reveal">
+          <span class="developer-icon">02</span>
+          <h3>Responsive Thinking</h3>
+          <p>
+            Building interfaces that provide a consistent experience
+            across different screen sizes.
+          </p>
+        </div>
+
+        <div class="developer-card reveal">
+          <span class="developer-icon">03</span>
+          <h3>Continuous Learning</h3>
+          <p>
+            Constantly exploring technologies and improving through
+            practical projects.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="contact-box reveal">
+
+        <div class="contact-main">
+          <p class="eyebrow">LET'S CONNECT</p>
+
+          <h2>
+            Have a project
+            <span>in mind?</span>
+          </h2>
+
+          <p>
+            I'm always interested in new projects, collaborations,
+            internships and opportunities to grow as a developer.
+          </p>
+
+          <a href="mailto:faizan@example.com" class="btn contact-btn">
+            Send Me a Message
+            <span>↗</span>
+          </a>
+        </div>
+
+        <div class="contact-links">
+
+          <a href="https://github.com/Faizan-khan144" target="_blank">
+            <span>GITHUB</span>
             <strong>Faizan-khan144 ↗</strong>
           </a>
 
-          <a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041a/?skipRedirect=true" target="_blank" class="contact-item">
-            <span>LinkedIn</span>
-            <strong>Connect with me ↗</strong>
+          <a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041a/?skipRedirect=true" target="_blank">
+            <span>LINKEDIN</span>
+            <strong>Connect With Me ↗</strong>
           </a>
+
+          <a href="mailto:muhammadfaizankhan525@gmail.com">
+            <span>EMAIL</span>
+            <strong>Send an Email ↗</strong>
+          </a>
+
         </div>
 
       </div>
@@ -387,18 +709,34 @@
   </main>
 
   <footer class="footer">
-    <div>
-      <strong>Faizan Khan</strong>
-      <span>Frontend Developer</span>
+
+    <div class="footer-brand">
+      <div class="logo">
+        <span>F</span>
+        <strong>Faizan.</strong>
+      </div>
+
+      <p>Frontend Developer building modern web experiences.</p>
     </div>
 
-    <p>© 2026 Faizan Khan. Built with HTML, CSS & JavaScript.</p>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
 
-    <a href="#home">Back to top ↑</a>
+    <div class="footer-bottom">
+      <p>© 2026 Faizan Khan</p>
+      <a href="#home">Back to top ↑</a>
+    </div>
+
   </footer>
 
-  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+  <button class="back-top" id="backTop">↑</button>
 
   <script src="script.js"></script>
+
 </body>
 </html>
