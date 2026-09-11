@@ -1,51 +1,179 @@
-# Faizan Khan — Portfolio
+# Muhammad Faizan Khan — Portfolio
 
-Personal portfolio website of Muhammad Faizan Khan, a front-end developer.
+> A modern, responsive personal portfolio built to showcase my journey as a Frontend Developer, my projects, technical skills, and future goals.
 
-Live site: https://faizan-khan144.github.io/faizan-portfolio/
+🌐 **Live Portfolio:** [faizan-khan144.github.io/faizan-portfolio](https://faizan-khan144.github.io/faizan-portfolio/)
 
-## Structure
+---
 
+## About
+
+This is my personal developer portfolio, designed and developed from scratch using **HTML, CSS, and Vanilla JavaScript**.
+
+The portfolio highlights my frontend development skills, selected projects, learning roadmap, and ways to get in touch.
+
+I focused on keeping the experience **clean, responsive, interactive, and developer-focused** while maintaining a terminal-inspired visual identity.
+
+---
+
+## Tech Stack
+
+| Technology       | Purpose                                |
+| ---------------- | -------------------------------------- |
+| **HTML5**        | Semantic page structure                |
+| **CSS3**         | Layout, animations, responsive design  |
+| **JavaScript**   | Interactions and dynamic functionality |
+| **Google Fonts** | JetBrains Mono & Inter                 |
+| **GitHub Pages** | Deployment & hosting                   |
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript
+* CSS Grid
+* Flexbox
+* CSS Custom Properties
+* Responsive Web Design
+
+### JavaScript Features
+
+* Typing animation
+* Scroll reveal animations
+* Mobile navigation
+* Interactive UI elements
+* Contact form with `mailto`
+* Smooth scrolling
+
+---
+
+## Features
+
+### Terminal-Style Hero
+
+A developer-inspired hero section featuring an animated terminal interface and typing effect.
+
+### Responsive Design
+
+Optimized for:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+### Skills Section
+
+A responsive skills grid showcasing my current technologies and development areas.
+
+### Project Showcase
+
+Selected projects are displayed with descriptions and links to their live versions.
+
+### Roadmap
+
+A dedicated section showing my learning goals and future development direction.
+
+### Contact
+
+Visitors can easily reach me through the contact section using a mail-based contact form.
+
+---
+
+## Project Structure
+
+```text
 faizan-portfolio/
+│
 ├── index.html
 ├── style.css
 ├── script.js
 └── README.md
+```
 
-## Tech Stack
-
-- HTML5
-- CSS3 (custom properties, grid, flexbox)
-- Vanilla JavaScript (typing animation, scroll reveals, mobile nav, contact form)
-- Google Fonts: JetBrains Mono, Inter
-
-## Features
-
-- Terminal-style animated hero section
-- Responsive skills grid
-- Project showcase with live links
-- Roadmap / goals section
-- Contact section with working mailto form
+---
 
 ## Run Locally
 
-Open index.html directly in a browser, or serve it:
+Clone the repository:
 
+```bash
+git clone https://github.com/Faizan-khan144/faizan-portfolio.git
+```
+
+Navigate into the project:
+
+```bash
+cd faizan-portfolio
+```
+
+Then open `index.html` directly in your browser.
+
+Alternatively, run a local server:
+
+```bash
 npx serve .
+```
 
-## Deploy to GitHub Pages
+---
 
-1. Push this repo to GitHub.
-2. Go to Settings → Pages.
-3. Under Source, select the main branch and / (root) folder.
-4. Save. The site goes live at:
-   https://faizan-khan144.github.io/faizan-portfolio/
+## Deployment
+
+This portfolio is deployed using **GitHub Pages**.
+
+To deploy your own version:
+
+1. Push the project to a GitHub repository.
+2. Open **Settings → Pages**.
+3. Select the `main` branch.
+4. Select the `/ (root)` folder.
+5. Save the configuration.
+6. GitHub Pages will generate your live website.
+
+### Live Website
+
+🌐 **[View Portfolio](https://faizan-khan144.github.io/faizan-portfolio/)**
+
+---
 
 ## Contact
 
-- Email: muhammadfaizankhan525@egmail.com
-- GitHub: github.com/Faizan-khan144
+**Muhammad Faizan Khan**
+
+Frontend Developer | MERN Stack Learner | AI with Python Learner
+
+📧 **Email:** [muhammadfaizankhan525@gmail.com](mailto:muhammadfaizankhan525@gmail.com)
+
+💻 **GitHub:** [Faizan-khan144](https://github.com/Faizan-khan144)
+
+🔗 **LinkedIn:** [Muhammad Faizan Khan](https://www.linkedin.com/in/muhammad-faizan-khan-76513041/)
+
+---
+
+## Goals
+
+I'm continuously improving my development skills and working toward becoming a stronger full-stack developer.
+
+### Current Focus
+
+* Frontend Development
+* React
+* JavaScript
+* Responsive UI Development
+* MERN Stack
+* Python & AI
+* Building real-world projects
+
+---
 
 ## License
 
-Free to use as a reference for your own portfolio.
+This project is open source and available for learning and reference.
+
+Feel free to explore the code and use the ideas as inspiration for your own portfolio.
+
+---
+
+<p align="center">
+  Built with HTML, CSS & JavaScript by <strong>Muhammad Faizan Khan</strong>
+</p>
