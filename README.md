@@ -1,324 +1,746 @@
-# Muhammad Faizan Khan
+# Muhammad Faizan Khan — Portfolio
+
+<p align="center">
+  <img src="https://img.shields.io/badge/MUHAMMAD%20FAIZAN%20KHAN-000000?style=for-the-badge&logo=github&logoColor=white" alt="Muhammad Faizan Khan">
+</p>
 
 <p align="center">
   <strong>Frontend Developer · MERN Stack Learner · AI with Python Learner</strong>
 </p>
 
 <p align="center">
-  Building responsive, modern and user-focused web experiences.
+  Building responsive, modern and interactive digital experiences.
 </p>
 
 <p align="center">
   <a href="https://faizan-khan144.github.io/faizan-portfolio/">
-    <img src="https://img.shields.io/badge/Live%20Portfolio-Visit%20Website-111111?style=for-the-badge" alt="Live Portfolio">
+    <img src="https://img.shields.io/badge/🌐%20Live%20Portfolio-Visit%20Website-000000?style=for-the-badge" alt="Live Portfolio">
   </a>
   <a href="https://github.com/Faizan-khan144">
-    <img src="https://img.shields.io/badge/GitHub-Faizan--khan144-111111?style=for-the-badge&logo=github" alt="GitHub">
+    <img src="https://img.shields.io/badge/GitHub-Faizan--khan144-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
   </a>
   <a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041/">
-    <img src="https://img.shields.io/badge/LinkedIn-Connect-111111?style=for-the-badge&logo=linkedin" alt="LinkedIn">
+    <img src="https://img.shields.io/badge/LinkedIn-Muhammad%20Faizan%20Khan-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
   </a>
 </p>
 
----
-
-## Overview
-
-This repository contains my personal developer portfolio — a custom-built website created to present my skills, projects, learning journey and development goals.
-
-The portfolio is intentionally built without a frontend framework to demonstrate a strong understanding of the fundamentals of the web platform.
-
-> **Design philosophy:** clean interfaces, responsive layouts, purposeful interactions and maintainable code.
-
-### Live
-
-**[→ Open Portfolio](https://faizan-khan144.github.io/faizan-portfolio/)**
+<p align="center">
+  <img src="https://img.shields.io/github/last-commit/Faizan-khan144/faizan-portfolio?style=flat-square" alt="Last Commit">
+  <img src="https://img.shields.io/github/repo-size/Faizan-khan144/faizan-portfolio?style=flat-square" alt="Repository Size">
+  <img src="https://img.shields.io/github/languages/count/Faizan-khan144/faizan-portfolio?style=flat-square" alt="Languages">
+  <img src="https://img.shields.io/github/license/Faizan-khan144/faizan-portfolio?style=flat-square" alt="License">
+</p>
 
 ---
 
-## What You'll Find
+## `> whoami`
+
+I'm **Muhammad Faizan Khan**, a frontend developer focused on creating clean, responsive and modern web experiences.
+
+This repository contains my personal portfolio — a place where I showcase my projects, technical skills, development journey and the technologies I'm currently exploring.
+
+I'm building my skills progressively from strong frontend fundamentals toward full-stack development and AI.
 
 ```text
-┌─────────────────────────────────────────────────────────┐
-│                    PORTFOLIO                            │
-├─────────────────────────────────────────────────────────┤
-│  About              → Developer introduction            │
-│  Skills             → Technologies & capabilities       │
-│  Projects           → Selected work                     │
-│  Roadmap            → Learning & development goals      │
-│  Contact            → Get in touch                       │
-└─────────────────────────────────────────────────────────┘
+Frontend Development
+        │
+        ├── HTML
+        ├── CSS
+        └── JavaScript
+                │
+                ▼
+              React
+                │
+                ▼
+          MERN Development
+                │
+                ├── Node.js
+                ├── Express.js
+                └── MongoDB
+                │
+                ▼
+          Python + Artificial Intelligence
 ```
 
-The portfolio brings everything together in a single responsive experience.
+---
+
+# 🌐 Live Experience
+
+<p align="center">
+
+### Visit the Portfolio
+
+**[faizan-khan144.github.io/faizan-portfolio](https://faizan-khan144.github.io/faizan-portfolio/)**
+
+</p>
+
+The portfolio is designed as a personal developer hub where visitors can quickly understand:
+
+```text
+WHO I AM
+   ↓
+WHAT I BUILD
+   ↓
+WHAT I KNOW
+   ↓
+WHAT I'M LEARNING
+   ↓
+HOW TO CONTACT ME
+```
 
 ---
 
-## Tech Stack
+# ✦ Design Philosophy
 
-### Core
+The portfolio was built around a simple idea:
+
+> **Your portfolio should demonstrate your development skills, not just describe them.**
+
+Instead of relying on a heavy framework, the project uses the core web technologies directly.
+
+### Principles
+
+* Clean visual hierarchy
+* Responsive layouts
+* Lightweight implementation
+* Meaningful animations
+* Accessible structure
+* Clear navigation
+* Minimal dependencies
+* Developer-focused visual language
+* Practical JavaScript interactions
+
+Every section exists for a reason.
+
+---
+
+# 🧰 Technology Stack
+
+## Core Technologies
 
 <p>
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" alt="JavaScript">
 </p>
 
-### Development Concepts
+## Styling
 
-* Semantic HTML
-* Responsive Web Design
+* CSS Custom Properties
 * CSS Grid
 * Flexbox
-* CSS Custom Properties
+* Responsive Media Queries
 * CSS Animations
-* DOM Manipulation
-* JavaScript Events
-* Mobile-first considerations
-* Component-like UI organization
+* CSS Transitions
+* Responsive Typography
+* Component-like styling patterns
 
-### Tools & Services
+## JavaScript
+
+* DOM Manipulation
+* Event Handling
+* Dynamic Content
+* Typing Animation
+* Scroll Detection
+* Scroll Reveal
+* Mobile Navigation
+* Form Interaction
+* UI State Management
+
+## Fonts
+
+* Inter
+* JetBrains Mono
+
+## Development Tools
 
 <p>
-  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git">
-  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub">
-  <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=flat-square&logo=githubpages&logoColor=white" alt="GitHub Pages">
-  <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white" alt="VS Code">
+  <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+  <img src="https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white" alt="VS Code">
+  <img src="https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=githubpages&logoColor=white" alt="GitHub Pages">
 </p>
 
 ---
 
-## Key Features
+# ⚡ Features
 
-### Terminal-Inspired Hero
+## Terminal-Style Hero
 
-A developer-focused hero section with a terminal-style interface and animated typing effect.
+The landing section uses a terminal-inspired developer interface to immediately establish the portfolio's technical identity.
 
-### Responsive Interface
-
-The layout adapts across different screen sizes to provide a consistent experience on:
-
-* Desktop
-* Laptop
-* Tablet
-* Mobile
-
-### Interactive Experience
-
-JavaScript powers several interactive parts of the website, including:
-
-* Typing animation
-* Scroll reveal effects
-* Mobile navigation
-* Smooth navigation
-* Dynamic UI interactions
-* Contact functionality
-
-### Project Showcase
-
-A dedicated project section allows visitors to explore selected work and access live project experiences.
-
-### Development Roadmap
-
-The roadmap communicates the technologies and areas I am currently learning and the direction I want to take my development career.
-
-### Contact System
-
-A lightweight contact experience using a mail-based form without requiring a backend server.
+The animated typing effect adds movement without requiring a JavaScript framework.
 
 ---
 
-## Architecture
+## Responsive Skill System
 
-The project intentionally keeps the architecture lightweight.
+Skills are organized into a responsive layout that adapts to different screen sizes.
+
+```text
+Desktop
+┌──────────┬──────────┬──────────┬──────────┐
+│ HTML     │ CSS      │ JS       │ React    │
+├──────────┼──────────┼──────────┼──────────┤
+│ Node     │ Express  │ MongoDB  │ Python   │
+└──────────┴──────────┴──────────┴──────────┘
+
+Mobile
+
+┌──────────────┐
+│ HTML         │
+├──────────────┤
+│ CSS          │
+├──────────────┤
+│ JavaScript   │
+├──────────────┤
+│ React        │
+└──────────────┘
+```
+
+---
+
+## Project Showcase
+
+Projects are presented with a focus on:
+
+* What was built
+* Technologies used
+* Practical purpose
+* Live experience
+* Development direction
+
+The goal is to show actual work rather than simply listing technologies.
+
+---
+
+## Scroll Reveal System
+
+Sections reveal progressively as the user navigates through the page, creating a smoother browsing experience while keeping the implementation lightweight.
+
+---
+
+## Mobile Navigation
+
+A dedicated mobile navigation experience keeps the site usable on smaller screens without sacrificing the desktop layout.
+
+---
+
+## Developer Roadmap
+
+The roadmap communicates where I am currently heading as a developer.
+
+```text
+        NOW
+         │
+         ▼
+   Frontend Development
+         │
+         ▼
+       React
+         │
+         ▼
+    MERN Stack
+         │
+         ▼
+ Python + AI
+         │
+         ▼
+   Real-World Products
+```
+
+---
+
+# 🏗️ Project Architecture
+
+The project intentionally uses a simple architecture.
 
 ```text
 faizan-portfolio/
 │
-├── index.html       # Application structure
-├── style.css        # Design system & responsive styling
-├── script.js        # Interactions & functionality
+├── index.html
 │
-└── README.md        # Project documentation
+│   └── Page structure
+│
+├── style.css
+│
+│   ├── Design system
+│   ├── Layout
+│   ├── Responsive styles
+│   ├── Animations
+│   └── Components
+│
+├── script.js
+│
+│   ├── Typing animation
+│   ├── Navigation
+│   ├── Scroll effects
+│   ├── Reveal animations
+│   └── Form interaction
+│
+└── README.md
 ```
 
-### Why Vanilla JavaScript?
+### Why this structure?
 
-This portfolio is built with vanilla JavaScript to demonstrate that I understand the fundamentals underneath modern frontend frameworks.
+The project doesn't need a complex build system or framework.
 
-The goal is not simply to use a framework, but to understand:
+The goal is to keep the portfolio:
+
+**Simple → Understandable → Fast → Maintainable**
+
+---
+
+# 🔄 User Experience Flow
 
 ```text
-HTML
-  ↓
-Structure
-
-CSS
-  ↓
-Layout + Design
-
-JavaScript
-  ↓
-Logic + Interaction
-
-Browser
-  ↓
-User Experience
+                    ┌──────────────┐
+                    │    Landing   │
+                    │     Hero     │
+                    └──────┬───────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │    About     │
+                    └──────┬───────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │    Skills    │
+                    └──────┬───────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │   Projects   │
+                    └──────┬───────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │   Roadmap    │
+                    └──────┬───────┘
+                           │
+                           ▼
+                    ┌──────────────┐
+                    │   Contact    │
+                    └──────────────┘
 ```
 
 ---
 
-## Getting Started
+# 🚀 Getting Started
 
-### 1. Clone
+## Requirements
+
+You don't need Node.js or a package manager to run the basic version.
+
+A modern browser is enough.
+
+For optional local serving:
+
+* Node.js
+* npm
+
+---
+
+## Clone the Repository
 
 ```bash
 git clone https://github.com/Faizan-khan144/faizan-portfolio.git
 ```
 
-### 2. Enter the project
+---
+
+## Navigate to the Project
 
 ```bash
 cd faizan-portfolio
 ```
 
-### 3. Run locally
+---
 
-The simplest option is to open:
+## Run Directly
+
+Open:
 
 ```text
 index.html
 ```
 
-Or start a local development server:
+in your browser.
+
+---
+
+## Run With a Local Server
 
 ```bash
 npx serve .
 ```
 
-Then open the local URL provided by the server.
+The terminal will provide the local development URL.
 
 ---
 
-## Deployment
+# ☁️ Deployment
 
-The portfolio is deployed through **GitHub Pages**.
-
-### Deployment Flow
+The project is hosted using **GitHub Pages**.
 
 ```text
-Local Development
-       ↓
-     Git
-       ↓
-GitHub Repository
-       ↓
- GitHub Pages
-       ↓
-  Live Website
+                 Git Repository
+                       │
+                       ▼
+                 GitHub Main
+                       │
+                       ▼
+                 GitHub Pages
+                       │
+                       ▼
+              Production Website
 ```
 
-### Production URL
+### Production
 
-**https://faizan-khan144.github.io/faizan-portfolio/**
-
----
-
-## Development Journey
-
-This project represents part of my journey into professional web development.
-
-I'm continuously expanding from frontend fundamentals toward full-stack development and AI.
-
-### Current Direction
-
-```text
-Frontend Development
-        ↓
-JavaScript
-        ↓
-React
-        ↓
-Node.js + Express
-        ↓
-MongoDB
-        ↓
-MERN Stack
-        ↓
-Python + AI
-```
-
-The focus is on learning through practical projects rather than only following tutorials.
+**[Open Live Portfolio →](https://faizan-khan144.github.io/faizan-portfolio/)**
 
 ---
 
-## Currently Learning
+# 📈 Development Roadmap
 
-* Advanced JavaScript
-* React
-* Tailwind CSS
-* Node.js
-* Express.js
-* MongoDB
-* MERN Stack Development
-* Python
-* Artificial Intelligence
-* Building real-world applications
+This portfolio will continue evolving as my development skills grow.
 
----
+### Completed
 
-## Future Improvements
+* [x] Responsive portfolio foundation
+* [x] Terminal-style hero
+* [x] Animated typing effect
+* [x] Responsive navigation
+* [x] Skills section
+* [x] Project showcase
+* [x] Roadmap section
+* [x] Contact section
+* [x] GitHub Pages deployment
 
-Planned improvements for the portfolio include:
+### In Progress
 
-* [ ] Project filtering
+* [ ] More advanced project case studies
 * [ ] Improved accessibility
-* [ ] More detailed project case studies
+* [ ] SEO improvements
 * [ ] Performance optimization
-* [ ] Additional micro-interactions
-* [ ] Better SEO
-* [ ] Expanded project collection
-* [ ] Blog / development notes
-* [ ] Advanced contact experience
+* [ ] More polished micro-interactions
+
+### Future
+
+* [ ] Developer blog
+* [ ] Detailed project pages
+* [ ] Advanced project filtering
+* [ ] Better analytics
+* [ ] More interactive experiences
+* [ ] Expanded portfolio ecosystem
 
 ---
 
-## Developer
+# 🧠 Current Learning Direction
 
-### Muhammad Faizan Khan
+I'm currently expanding my development skills beyond basic frontend development.
+
+```text
+HTML
+CSS
+JavaScript
+   │
+   ▼
+React
+   │
+   ▼
+Tailwind CSS
+   │
+   ▼
+Node.js
+   │
+   ▼
+Express.js
+   │
+   ▼
+MongoDB
+   │
+   ▼
+MERN
+   │
+   ├───────────────┐
+   ▼               ▼
+Real Projects   Python + AI
+```
+
+The emphasis is on **learning by building**.
+
+---
+
+# 🛠️ Development Workflow
+
+My general workflow for projects is:
+
+```text
+01  Idea
+ ↓
+02  Research
+ ↓
+03  Plan
+ ↓
+04  Build
+ ↓
+05  Test
+ ↓
+06  Improve
+ ↓
+07  Deploy
+ ↓
+08  Iterate
+```
+
+I prefer practical projects that turn concepts into something usable.
+
+---
+
+# 🎯 What This Portfolio Represents
+
+This repository isn't just a website.
+
+It represents:
+
+```text
+Learning
+   +
+Experimentation
+   +
+Consistency
+   +
+Real Projects
+   =
+Growth
+```
+
+Every project gives me an opportunity to improve how I think about:
+
+* User experience
+* Interface design
+* Code structure
+* Responsiveness
+* Performance
+* Accessibility
+* Problem solving
+
+---
+
+# 📊 Project Goals
+
+The main goals of this portfolio are:
+
+| Goal       | Purpose                             |
+| ---------- | ----------------------------------- |
+| Showcase   | Present my work                     |
+| Learn      | Practice frontend fundamentals      |
+| Experiment | Test new UI ideas                   |
+| Document   | Track development progress          |
+| Connect    | Make professional networking easier |
+| Improve    | Continuously evolve the website     |
+
+---
+
+# 🔐 Dependencies
+
+This project intentionally keeps dependencies minimal.
+
+### Runtime
+
+No framework required.
+
+### External Resources
+
+* Google Fonts
+
+This helps keep the project lightweight and easy to understand.
+
+---
+
+# ⚡ Performance Philosophy
+
+The portfolio avoids unnecessary complexity.
+
+### Priorities
+
+* Minimal dependencies
+* Lightweight assets
+* Efficient CSS
+* Vanilla JavaScript
+* Responsive layouts
+* Simple architecture
+* No unnecessary frameworks
+
+The objective is to deliver a polished experience without adding technical overhead where it isn't needed.
+
+---
+
+# ♿ Accessibility
+
+Accessibility is considered throughout the interface, including:
+
+* Semantic HTML
+* Keyboard-friendly navigation
+* Readable typography
+* Responsive layouts
+* Clear visual hierarchy
+* Meaningful interactive elements
+
+Accessibility improvements will continue as the project evolves.
+
+---
+
+# 🔎 SEO
+
+The portfolio is structured with search visibility in mind.
+
+Current focus areas include:
+
+* Semantic HTML
+* Page metadata
+* Descriptive content
+* Clear heading hierarchy
+* Mobile responsiveness
+* Fast-loading architecture
+
+Future iterations will continue improving technical SEO.
+
+---
+
+# 📱 Responsive Strategy
+
+The interface is designed to adapt across:
+
+```text
+┌─────────────────────────────────────┐
+│             DESKTOP                 │
+│         1200px +                    │
+└─────────────────────────────────────┘
+
+┌───────────────────────────┐
+│          TABLET           │
+│        768px – 1199px     │
+└───────────────────────────┘
+
+┌─────────────────┐
+│     MOBILE      │
+│      <768px     │
+└─────────────────┘
+```
+
+The goal is to maintain the same visual identity while adapting layout, spacing and navigation to the available screen size.
+
+---
+
+# 🧪 Testing
+
+Before deployment, the website is tested across different viewport sizes and modern browsers.
+
+### Areas checked
+
+* Navigation
+* Responsive layout
+* Interactive elements
+* Animations
+* Project links
+* Contact functionality
+* Typography
+* Mobile usability
+
+---
+
+# 🌎 Browser Support
+
+The project targets modern browsers with support for current HTML5, CSS3 and JavaScript standards.
+
+Recommended browsers:
+
+* Google Chrome
+* Microsoft Edge
+* Mozilla Firefox
+* Safari
+
+---
+
+# 📌 Repository Information
+
+| Property  | Details                 |
+| --------- | ----------------------- |
+| Project   | Personal Portfolio      |
+| Developer | Muhammad Faizan Khan    |
+| Type      | Personal Website        |
+| Frontend  | HTML / CSS / JavaScript |
+| Hosting   | GitHub Pages            |
+| Status    | Active                  |
+| License   | Open Source             |
+
+---
+
+# 👨‍💻 About Me
+
+## Muhammad Faizan Khan
 
 **Frontend Developer · MERN Stack Learner · AI with Python Learner**
 
-I enjoy turning ideas into functional, responsive and modern web experiences while continuously learning new technologies.
+I'm focused on building modern web experiences and improving my development skills through hands-on projects.
 
-<p>
-  <a href="https://faizan-khan144.github.io/faizan-portfolio/">Portfolio</a>
-  ·
-  <a href="https://github.com/Faizan-khan144">GitHub</a>
-  ·
-  <a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041/">LinkedIn</a>
-</p>
+My current interests include:
+
+* Frontend Development
+* React
+* JavaScript
+* Responsive UI
+* MERN Stack
+* Python
+* Artificial Intelligence
+* Real-world application development
 
 ---
 
-## Contact
+# 🔗 Connect
+
+<p align="center">
+
+<a href="https://faizan-khan144.github.io/faizan-portfolio/">
+  <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio">
+</a>
+
+<a href="https://github.com/Faizan-khan144">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+</a>
+
+<a href="https://www.linkedin.com/in/muhammad-faizan-khan-76513041/">
+  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">
+</a>
+
+</p>
+
+### Contact
 
 **Email:** `muhammadfaizankhan525@gmail.com`
 
-For project discussions, collaboration or development opportunities, feel free to connect through GitHub or LinkedIn.
-
 ---
 
-## License
+# 📜 License
 
 This project is open source and available for educational and reference purposes.
 
-You are welcome to explore the implementation and use the ideas as inspiration for your own projects.
+You are welcome to explore the code, learn from the implementation and use the concepts as inspiration for your own projects.
 
 ---
 
 <p align="center">
-  <sub>Designed & developed by <strong>Muhammad Faizan Khan</strong></sub>
+
+### Built with HTML, CSS & JavaScript
+
+**Muhammad Faizan Khan**
+
+<sub>Learning. Building. Improving.</sub>
+
 </p>
 
 <p align="center">
