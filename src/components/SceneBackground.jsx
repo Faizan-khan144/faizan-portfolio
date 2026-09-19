@@ -16,7 +16,7 @@ export default function SceneBackground() {
     let group
     const mouse = { x: 0, y: 0 }
 
-    const colors = [0x7c5cff, 0x33e6ff, 0xff5ca8]
+    const colors = [0x8b7bff, 0x4ff2de, 0xff7ab8]
     const geometries = [
       new THREE.TorusKnotGeometry(1, 0.32, 128, 20),
       new THREE.IcosahedronGeometry(1, 0),
@@ -85,7 +85,7 @@ export default function SceneBackground() {
     }
     particleGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     const particleMat = new THREE.PointsMaterial({
-      color: 0x7c5cff,
+      color: 0x8b7bff,
       size: 0.025,
       transparent: true,
       opacity: 0.7,
@@ -95,13 +95,13 @@ export default function SceneBackground() {
     scene.add(particleSystem)
 
     scene.add(new THREE.AmbientLight(0xffffff, 0.45))
-    const light1 = new THREE.DirectionalLight(0x7c5cff, 2.5)
+    const light1 = new THREE.DirectionalLight(0x8b7bff, 2.5)
     light1.position.set(5, 6, 4)
     scene.add(light1)
-    const light2 = new THREE.DirectionalLight(0x33e6ff, 2)
+    const light2 = new THREE.DirectionalLight(0x4ff2de, 2)
     light2.position.set(-6, -3, 5)
     scene.add(light2)
-    const light3 = new THREE.DirectionalLight(0xff5ca8, 1.4)
+    const light3 = new THREE.DirectionalLight(0xff7ab8, 1.4)
     light3.position.set(0, -6, -4)
     scene.add(light3)
 

@@ -4,13 +4,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#06060a',
-        surface: '#0b0b12',
-        surface2: '#12121c',
+        bg: '#030510',
+        surface: '#080b1a',
+        surface2: '#10142b',
         line: 'rgba(255,255,255,0.08)',
-        accent: '#7c5cff',
-        cyan: '#33e6ff',
-        pink: '#ff5ca8',
+        accent: '#8b7bff',
+        cyan: '#4ff2de',
+        pink: '#ff7ab8',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
