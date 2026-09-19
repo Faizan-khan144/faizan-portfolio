@@ -18,6 +18,7 @@ export default function App() {
   return (
     <div className="relative min-h-screen overflow-x-clip">
       <SceneBackground />
+      <div className="pointer-events-none fixed inset-0 z-[1] bg-[radial-gradient(120%_90%_at_50%_40%,transparent_45%,rgba(6,6,8,0.9)_100%)]"></div>
       <Navbar />
       <main className="relative z-10">
         <Hero />
