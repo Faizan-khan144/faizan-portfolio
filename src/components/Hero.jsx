@@ -1,0 +1,121 @@
+import { motion } from 'framer-motion'
+import { heroStats } from '../data'
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15, delayChildren: 0.1 },
+  },
+}
+
+const item = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
+}
+
+export default function Hero() {
+  return (
+    <section
+      id="home"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden py-32"
+    >
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="container-x relative z-10 text-center"
+      >
+        <motion.div
+          variants={item}
+          className="mx-auto mb-8 inline-flex items-center gap-2 rounded-full border border-line bg-white/5 px-5 py-2 backdrop-blur-md"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan opacity-75"></span>
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan"></span>
+          </span>
+          <span className="text-sm text-white/70">Available for opportunities</span>
+        </motion.div>
+
+        <motion.p
+          variants={item}
+          className="font-mono text-xs uppercase tracking-[0.4em] text-cyan md:text-sm"
+        >
+          Frontend Developer
+        </motion.p>
+
+        <motion.h1
+          variants={item}
+          className="mx-auto mt-6 max-w-4xl text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl"
+        >
+          I build web experiences
+          <br />
+          that <span className="text-gradient">make an impact.</span>
+        </motion.h1>
+
+        <motion.p
+          variants={item}
+          className="mx-auto mt-8 max-w-2xl text-base text-white/60 md:text-lg"
+        >
+          I'm <span className="font-semibold text-white">Faizan</span>, a frontend
+          developer focused on building responsive, modern and user-friendly
+          websites with clean code and thoughtful interfaces.
+        </motion.p>
+
+        <motion.div
+          variants={item}
+          className="mt-10 flex flex-wrap items-center justify-center gap-4"
+        >
+          <a
+            href="#projects"
+            className="group rounded-full bg-gradient-to-r from-accent to-cyan px-8 py-4 text-sm font-semibold transition-transform duration-200 hover:scale-105"
+          >
+            Explore My Work{' '}
+            <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              &#8599;
+            </span>
+          </a>
+          <a
+            href="#about"
+            className="rounded-full border border-white/20 px-8 py-4 text-sm font-medium text-white/80 transition-all duration-200 hover:border-accent hover:text-accent"
+          >
+            More About Me
+          </a>
+        </motion.div>
+
+        <motion.div
+          variants={item}
+          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 border-t border-line pt-12 sm:grid-cols-3"
+        >
+          {heroStats.map((stat) => (
+            <div key={stat.label} className="flex flex-col items-center gap-1">
+              <span className="text-3xl font-extrabold text-gradient md:text-4xl">
+                {stat.num}
+              </span>
+              <span className="text-sm text-white/50">{stat.label}</span>
+            </div>
+          ))}
+        </motion.div>
+      </motion.div>
+
+      <motion.a
+        href="#about"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"
+        animate={{ y: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+        aria-label="Scroll down"
+      >
+        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/30 p-1.5">
+          <span className="h-2 w-1 rounded-full bg-cyan"></span>
+        </div>
+      </motion.a>
+
+      <span className="pointer-events-none absolute bottom-6 right-8 hidden font-mono text-xs text-white/30 md:block">
+        FAIZAN KHAN 2026
+      </span>
+    </section>
+  )
+}
