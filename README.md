@@ -1,11 +1,10 @@
-# Faizan Khan — 3D Portfolio
+# Faizan Khan — Portfolio
 
 **Frontend Developer** building responsive, modern and user-friendly websites with clean code and thoughtful interfaces.
 
 ## Live
 
 - **Vercel:** https://faizan-portfolio-kappa.vercel.app/
-- **GitHub Pages:** https://faizan-khan144.github.io/faizan-portfolio/
 - **Repository:** https://github.com/Faizan-khan144/faizan-portfolio
 
 ## Stack
@@ -13,16 +12,14 @@
 - React 18
 - Vite
 - Tailwind CSS 3
-- Three.js (WebGL 3D background + interactive hero character)
+- Three.js (WebGL 3D background)
 - Framer Motion (animations)
-- React Router (multi-page)
 
 ## Features
 
-- Multi-page layout: Home, About, Services, Projects, Experience, Contact
-- Interactive Three.js background scene (floating geometrical shapes, particles, mouse parallax)
-- **Interactive 3D character** in the hero — tracks your cursor, blinks, idle animation
-- 3D tilt cards, scroll-reveal animations, glassmorphism UI
+- Single-page layout: Hero, About, Skills, Selected Work, Experience, Stats, Contact
+- Light theme with a soft, animated Three.js scene (floating geometrical shapes, particles, mouse parallax) — no character
+- Scroll-reveal animations, numbered editorial sections
 - Front-end only — no backend
 
 ## Getting Started
@@ -42,14 +39,13 @@ npm run preview   # preview the build
 ├── vite.config.js
 ├── tailwind.config.js
 ├── src/
-│   ├── App.jsx           # router setup
+│   ├── App.jsx           # single-page composition
 │   ├── data.js           # all content
-│   ├── components/       # Navbar, Hero, HeroCharacter, SceneBackground, sections…
-│   └── pages/            # Home, About, Services, Projects, Experience, Contact
+│   └── components/       # Navbar, Hero, SceneBackground, sections…
 ```
 
 ## Deployment
 
-Push to `main` and Vercel auto-deploys (framework preset: Vite, output: `dist`). The `vercel.json` rewrites ensure SPA routing works for every path.
+Push to `main` and Vercel auto-deploys (framework preset: Vite, output: `dist`).
 
 © 2026 Faizan Khan

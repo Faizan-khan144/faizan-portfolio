@@ -1,10 +1,9 @@
 export const navLinks = [
-  { label: 'Home', to: '/' },
-  { label: 'About', to: '/about' },
-  { label: 'Services', to: '/services' },
-  { label: 'Projects', to: '/projects' },
-  { label: 'Experience', to: '/experience' },
-  { label: 'Contact', to: '/contact' },
+  { id: 'about', label: 'About' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'work', label: 'Work' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'contact', label: 'Contact' },
 ]
 
 export const heroStats = [
@@ -13,100 +12,45 @@ export const heroStats = [
   { num: '∞', label: 'Things To Learn' },
 ]
 
-export const aboutItems = [
-  {
-    num: '01',
-    title: 'Frontend Development',
-    text: 'Responsive and modern interfaces.',
-  },
-  {
-    num: '02',
-    title: 'MERN Stack',
-    text: 'Growing across full-stack development.',
-  },
-  {
-    num: '03',
-    title: 'Python & Data',
-    text: 'Exploring analysis and visualization.',
-  },
-  {
-    num: '04',
-    title: 'Team Projects',
-    text: 'Experience working on software projects.',
-  },
-]
-
-export const services = [
-  {
-    num: '01',
-    icon: '</>',
-    title: 'Frontend Development',
-    text: 'Building responsive websites and interfaces using modern frontend technologies.',
-    tags: ['HTML', 'CSS', 'JavaScript'],
-  },
-  {
-    num: '02',
-    icon: '✦',
-    title: 'React Development',
-    text: 'Creating reusable components and interactive interfaces using React.',
-    tags: ['React', 'JavaScript'],
-  },
-  {
-    num: '03',
-    icon: '★',
-    title: 'Responsive Design',
-    text: 'Designing layouts that adapt smoothly to desktops, tablets and mobile devices.',
-    tags: ['CSS', 'Tailwind'],
-  },
-  {
-    num: '04',
-    icon: '◆',
-    title: 'MERN Development',
-    text: 'Learning and building across the MongoDB, Express, React and Node.js ecosystem.',
-    tags: ['Node.js', 'Express', 'MongoDB'],
-  },
-]
+export const profile = {
+  job: 'Frontend Developer',
+  location: 'Remote / Anywhere',
+  email: 'muhammadfaizankhan525@gmail.com',
+  status: 'Available for opportunities',
+  website: 'faizan-portfolio.vercel.app',
+  bio: [
+    "I'm Faizan, a frontend developer focused on building responsive, modern and user-friendly websites with clean code and thoughtful interfaces.",
+    'My work spans ecommerce stores, fintech dashboards, banking sites, agency websites and interactive JavaScript projects — each designed to feel fast, polished and intentional.',
+  ],
+  points: [
+    { num: '01', title: 'Frontend Development', text: 'Responsive and modern interfaces.' },
+    { num: '02', title: 'MERN Stack', text: 'Growing across full-stack development.' },
+    { num: '03', title: 'Python & Data', text: 'Exploring analysis and visualization.' },
+    { num: '04', title: 'Team Projects', text: 'Experience working on software projects.' },
+  ],
+}
 
 export const skillCategories = [
   {
     num: '01',
     title: 'Frontend',
-    items: [
-      { name: 'HTML', kind: 'Frontend' },
-      { name: 'CSS', kind: 'Frontend' },
-      { name: 'JavaScript', kind: 'Programming' },
-      { name: 'React', kind: 'Library' },
-      { name: 'Tailwind CSS', kind: 'Framework' },
-    ],
+    items: ['HTML', 'CSS', 'JavaScript', 'React', 'Tailwind CSS'],
   },
   {
     num: '02',
     title: 'Backend',
-    items: [
-      { name: 'Node.js', kind: 'Runtime' },
-      { name: 'Express.js', kind: 'Backend' },
-      { name: 'MongoDB', kind: 'Database' },
-    ],
+    items: ['Node.js', 'Express.js', 'MongoDB'],
   },
   {
     num: '03',
     title: 'Python & Data',
-    items: [
-      { name: 'Python', kind: 'Programming' },
-      { name: 'NumPy', kind: 'Data' },
-      { name: 'Pandas', kind: 'Data' },
-      { name: 'Matplotlib', kind: 'Visualization' },
-      { name: 'Seaborn', kind: 'Visualization' },
-    ],
+    items: ['Python', 'NumPy', 'Pandas', 'Matplotlib', 'Seaborn'],
   },
-]
-
-export const processSteps = [
-  { num: '01', title: 'Plan', text: 'Understand the idea, requirements and goals.' },
-  { num: '02', title: 'Structure', text: 'Create the layout, components and project structure.' },
-  { num: '03', title: 'Develop', text: 'Turn the concept into functional and responsive code.' },
-  { num: '04', title: 'Test', text: 'Check responsiveness, functionality and user experience.' },
-  { num: '05', title: 'Improve', text: 'Refine the interface and improve the overall experience.' },
+  {
+    num: '04',
+    title: 'Tools & Workflow',
+    items: ['Git', 'GitHub', 'Vite', 'VS Code', 'Responsive Design'],
+  },
 ]
 
 export const selectedProjects = [
@@ -115,6 +59,7 @@ export const selectedProjects = [
     tag: 'ECOMMERCE',
     title: 'August & Oak',
     text: 'Modern ecommerce store with a clean, product-focused interface.',
+    tech: ['HTML', 'CSS', 'JavaScript'],
     url: 'https://faizan-khan144.github.io/august-and-oak-ecommerce/',
   },
   {
@@ -122,6 +67,7 @@ export const selectedProjects = [
     tag: 'FINTECH DASHBOARD',
     title: 'CryptoLens',
     text: 'Fintech dashboard built for monitoring crypto markets at a glance.',
+    tech: ['React', 'Tailwind CSS', 'JavaScript'],
     url: 'https://faizan-khan144.github.io/cryptolens-dashboard/',
   },
   {
@@ -129,6 +75,7 @@ export const selectedProjects = [
     tag: 'FINTECH',
     title: 'FZ Bank',
     text: 'A polished modern banking website with responsive layouts.',
+    tech: ['HTML', 'Tailwind CSS', 'JavaScript'],
     url: 'https://faizan-khan144.github.io/fz-bank-modern-banking-website/',
   },
   {
@@ -136,6 +83,7 @@ export const selectedProjects = [
     tag: 'AGENCY WEBSITE',
     title: 'Vortex Agency',
     text: 'Creative agency site with bold typography and smooth interactions.',
+    tech: ['React', 'Tailwind CSS', 'Framer Motion'],
     url: 'https://faizan-khan144.github.io/vortex-agency/',
   },
 ]
@@ -171,10 +119,10 @@ export const experience = [
   },
 ]
 
-export const profileCards = [
-  { icon: '◈', title: 'Problem Solving', text: 'Breaking large problems into smaller, practical steps and building solutions through code.' },
-  { icon: '⇄', title: 'Responsive Thinking', text: 'Building interfaces that provide a consistent experience across different screen sizes.' },
-  { icon: '⟳', title: 'Continuous Learning', text: 'Constantly exploring technologies and improving through practical projects.' },
+export const stats = [
+  { num: '11+', label: 'Open Source / Live Projects' },
+  { num: '8+', label: 'Technologies In My Stack' },
+  { num: '100%', label: 'Passion For The Craft' },
 ]
 
 export const socials = [

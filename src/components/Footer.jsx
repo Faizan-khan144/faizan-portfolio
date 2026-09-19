@@ -1,52 +1,29 @@
-import { Link } from 'react-router-dom'
 import { navLinks } from '../data'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-line py-14">
-      <div className="container-x">
-        <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-start">
-          <div className="text-center md:text-left">
-            <Link to="/" className="text-xl font-extrabold tracking-tight">
-              Faizan<span className="text-accent">.</span>
-            </Link>
-            <p className="mt-3 max-w-xs text-sm text-white/50">
-              Frontend Developer building modern web experiences.
-            </p>
-          </div>
+    <footer className="border-t border-line bg-white/60 backdrop-blur-md">
+      <div className="container-x flex flex-col items-center justify-between gap-6 py-10 md:flex-row">
+        <a href="#top" className="font-display text-lg font-bold">
+          Faizan<span className="text-accent">.</span>
+        </a>
 
-          <ul className="flex flex-wrap items-center justify-center gap-5">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <Link
-                  to={link.to}
-                  className="text-sm text-white/50 transition-colors hover:text-accent"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="flex flex-wrap items-center justify-center gap-6">
+          {navLinks.map((link) => (
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                className="font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
 
-        <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-line pt-8 md:flex-row">
-          <span className="font-mono text-xs text-white/40">
-            &copy; 2026 Faizan Khan
-          </span>
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-            }}
-            className="group flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
-          >
-            Back to top{' '}
-            <span className="inline-block transition-transform duration-300 group-hover:-translate-y-1">
-              &#8593;
-            </span>
-          </a>
-        </div>
+        <p className="font-mono text-xs text-muted">
+          © 2026 Faizan Khan. All rights reserved.
+        </p>
       </div>
     </footer>
   )

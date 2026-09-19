@@ -4,31 +4,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#030510',
-        surface: '#080b1a',
-        surface2: '#10142b',
-        line: 'rgba(255,255,255,0.08)',
-        accent: '#8b7bff',
-        cyan: '#4ff2de',
-        pink: '#ff7ab8',
+        bg: '#f7f7f4',
+        surface: '#ffffff',
+        surface2: '#efefeb',
+        line: 'rgba(20,20,24,0.1)',
+        ink: '#141417',
+        muted: '#5c5c63',
+        accent: '#4f46e5',
+        cyan: '#14b8a6',
+        pink: '#ec4899',
       },
       fontFamily: {
+        display: ['Space Grotesk', 'sans-serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       animation: {
-        spinSlow: 'spin 18s linear infinite',
-        float: 'float 6s ease-in-out infinite',
-        pulseGlow: 'pulseGlow 3s ease-in-out infinite',
+        float: 'float 7s ease-in-out infinite',
+        floatSlow: 'float 11s ease-in-out infinite',
       },
       keyframes: {
         float: {
           '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-14px)' },
-        },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.5' },
-          '50%': { opacity: '1' },
+          '50%': { transform: 'translateY(-16px)' },
         },
       },
     },

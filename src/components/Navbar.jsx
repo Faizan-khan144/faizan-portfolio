@@ -1,115 +1,135 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Link } from 'react-router-dom'
 import { navLinks } from '../data'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [active, setActive] = useState('')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10)
+      const ids = ['about', 'skills', 'work', 'experience', 'contact']
+      let current = ''
+      for (const id of ids) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= 120) current = id
+      }
+      setActive(current)
+    }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
   useEffect(() => {
-    if (menuOpen) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = ''
+    document.body.style.overflow = open ? 'hidden' : ''
     return () => {
       document.body.style.overflow = ''
     }
-  }, [menuOpen])
+  }, [open])
 
   return (
     <header
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled
-          ? 'border-b border-line bg-bg/80 backdrop-blur-xl'
-          : 'bg-transparent'
+      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
+        scrolled ? 'glass shadow-sm' : 'bg-transparent'
       }`}
     >
-      <nav className="container-x flex items-center justify-between py-4">
-        <Link to="/" className="text-xl font-extrabold tracking-tight">
+      <nav className="container-x flex items-center justify-between py-4 md:py-5">
+        <a
+          href="#top"
+          className="font-display text-xl font-bold tracking-tight md:text-2xl"
+        >
           Faizan<span className="text-accent">.</span>
-        </Link>
+        </a>
 
-        <ul className="hidden items-center gap-6 lg:flex">
+        <ul className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <li key={link.to}>
-              <NavLink
-                to={link.to}
-                end={link.to === '/'}
-                className={({ isActive }) =>
-                  `relative text-sm transition-colors duration-200 ${
-                    isActive ? 'text-accent' : 'text-white/60 hover:text-white'
-                  }`
-                }
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                className={`text-sm font-medium transition-colors ${
+                  active === link.id ? 'text-accent' : 'text-muted hover:text-ink'
+                }`}
               >
                 {link.label}
-              </NavLink>
+              </a>
             </li>
           ))}
+          <li>
+            <a
+              href="#contact"
+              className="rounded-full bg-ink px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-accent"
+            >
+              Let's Talk
+            </a>
+          </li>
         </ul>
 
-        <div className="hidden lg:block">
-          <Link
-            to="/contact"
-            className="rounded-full border border-white/20 px-5 py-2 text-sm font-medium transition-all duration-200 hover:border-accent hover:text-accent"
-          >
-            Let's Talk <span className="inline-block">&#8599;</span>
-          </Link>
-        </div>
-
         <button
-          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 lg:hidden"
-          onClick={() => setMenuOpen((v) => !v)}
+          onClick={() => setOpen(!open)}
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
           aria-label="Toggle menu"
         >
           <span
-            className={`h-0.5 w-6 bg-white transition-all duration-300 ${
-              menuOpen ? 'translate-y-2 rotate-45' : ''
+            className={`h-0.5 w-6 bg-ink transition-transform ${
+              open ? 'translate-y-2 rotate-45' : ''
             }`}
-          />
+          ></span>
+          <span className={`h-0.5 w-6 bg-ink transition-opacity ${open ? 'opacity-0' : ''}`}></span>
           <span
-            className={`h-0.5 w-6 bg-white transition-all duration-300 ${
-              menuOpen ? 'opacity-0' : ''
+            className={`h-0.5 w-6 bg-ink transition-transform ${
+              open ? '-translate-y-2 -rotate-45' : ''
             }`}
-          />
-          <span
-            className={`h-0.5 w-6 bg-white transition-all duration-300 ${
-              menuOpen ? '-translate-y-2 -rotate-45' : ''
-            }`}
-          />
+          ></span>
         </button>
       </nav>
 
-      {menuOpen && (
-        <div className="fixed inset-0 z-40 flex h-screen flex-col items-center justify-center gap-5 bg-bg/95 backdrop-blur-xl lg:hidden">
-          {navLinks.map((link, i) => (
-            <NavLink
-              key={link.to}
-              to={link.to}
-              end={link.to === '/'}
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                `text-2xl font-semibold transition-colors ${
-                  isActive ? 'text-accent' : 'text-white/80 hover:text-accent'
-                }`
-              }
-              style={{ animationDelay: `${i * 60}ms` }}
-            >
-              {link.label}
-            </NavLink>
-          ))}
-          <Link
-            to="/contact"
-            onClick={() => setMenuOpen(false)}
-            className="mt-4 rounded-full border border-accent px-8 py-3 text-accent"
+      {/* Mobile menu */}
+      <div
+        className={`fixed inset-0 top-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-300 md:hidden ${
+          open ? 'visible opacity-100' : 'invisible opacity-0'
+        }`}
+      >
+        <div className="flex items-center justify-between px-5 py-4">
+          <span className="font-display text-xl font-bold">
+            Faizan<span className="text-accent">.</span>
+          </span>
+          <button
+            onClick={() => setOpen(false)}
+            className="font-mono text-xs tracking-widest text-muted"
+            aria-label="Close menu"
           >
-            Let's Talk <span>&#8599;</span>
-          </Link>
+            CLOSE &#10005;
+          </button>
         </div>
-      )}
+        <ul className="mt-10 flex flex-col gap-2 px-5">
+          {navLinks.map((link, i) => (
+            <li key={link.id}>
+              <a
+                href={`#${link.id}`}
+                onClick={() => setOpen(false)}
+                className="group flex items-center gap-4 py-3"
+              >
+                <span className="font-mono text-xs text-accent">
+                  0{i + 1}
+                </span>
+                <span className="font-display text-3xl font-semibold text-ink transition-colors group-hover:text-accent">
+                  {link.label}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="mt-8 px-5">
+          <a
+            href="mailto:muhammadfaizankhan525@gmail.com"
+            className="block rounded-full bg-ink px-6 py-4 text-center font-medium text-white"
+          >
+            Let's Talk
+          </a>
+        </div>
+      </div>
     </header>
   )
 }
