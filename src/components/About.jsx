@@ -9,7 +9,7 @@ export default function About() {
         <Reveal>
           <SectionHeading
             num="01"
-            label="About Me"
+            label="About"
             title="Developer who cares about the details."
           />
         </Reveal>
@@ -23,9 +23,28 @@ export default function About() {
                 </p>
               ))}
 
-              <div className="mt-10 flex flex-wrap gap-3">
-                <span className="chip">BASED: {profile.location}</span>
-                <span className="chip">STATUS: {profile.status}</span>
+              <div className="mt-10 flex flex-col gap-3 font-mono text-sm border border-white/10 rounded-2xl p-6">
+                <div>
+                  <span className="text-muted">$ JOB: </span>
+                  <span className="text-ink">{profile.job}</span>
+                </div>
+                <div>
+                  <span className="text-muted">$ BASED: </span>
+                  <span className="text-ink">{profile.location}</span>
+                </div>
+                <div>
+                  <span className="text-muted">$ EMAIL: </span>
+                  <a href={`mailto:${profile.email}`} className="text-cyan hover:underline">
+                    {profile.email}
+                  </a>
+                </div>
+                <div>
+                  <span className="text-muted">$ STATUS: </span>
+                  <span className="inline-flex items-center gap-2 text-accent">
+                    <span className="h-2 w-2 rounded-full bg-accent"></span>
+                    {profile.status}
+                  </span>
+                </div>
               </div>
             </div>
           </Reveal>
@@ -35,7 +54,7 @@ export default function About() {
               {profile.points.map((point) => (
                 <div
                   key={point.num}
-                  className="glass group rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:shadow-accent/10"
+                  className="glass group rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/40"
                 >
                   <div className="flex items-center justify-between">
                     <span className="font-mono text-sm font-medium text-accent">

@@ -18,15 +18,16 @@ export default function Contact() {
         <Reveal>
           <div className="max-w-3xl">
             <div className="flex items-center gap-4">
-              <span className="font-mono text-sm font-medium text-accent">05</span>
+              <span className="font-mono text-sm font-medium text-accent">06</span>
               <span className="line-h w-12"></span>
               <span className="font-mono text-xs uppercase tracking-[0.3em] text-muted">
                 Contact
               </span>
             </div>
             <h2 className="mt-6 font-display text-5xl font-bold leading-[1.02] tracking-tight text-balance md:text-7xl">
-              Let's build something{' '}
-              <span className="text-gradient">worth sharing.</span>
+              let's build{' '}
+              <span className="text-gradient">something</span> worth
+              sharing<span className="animate-blink text-accent">_</span>
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-muted md:text-xl">
               I'm currently open to new opportunities, collaborations and
@@ -40,13 +41,13 @@ export default function Contact() {
             <div className="space-y-4">
               <a
                 href={`mailto:${profile.email}`}
-                className="glass flex items-center justify-between rounded-2xl p-6 transition-all hover:border-accent"
+                className="glass flex items-center justify-between rounded-2xl p-6 transition-all hover:border-accent/50"
               >
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
                     Email Me
                   </div>
-                  <div className="mt-2 font-medium text-ink md:text-lg">
+                  <div className="mt-2 font-mono text-sm text-ink md:text-lg">
                     {profile.email}
                   </div>
                 </div>
@@ -58,13 +59,13 @@ export default function Contact() {
                   href={s.url}
                   target={s.url.startsWith('http') ? '_blank' : undefined}
                   rel="noreferrer"
-                  className="glass flex items-center justify-between rounded-2xl p-6 transition-all hover:border-accent"
+                  className="glass flex items-center justify-between rounded-2xl p-6 transition-all hover:border-accent/50"
                 >
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-widest text-muted">
                       {s.label}
                     </div>
-                    <div className="mt-2 font-medium text-ink md:text-lg">
+                    <div className="mt-2 font-mono text-sm text-ink md:text-lg">
                       {s.name}
                     </div>
                   </div>
@@ -79,6 +80,9 @@ export default function Contact() {
               onSubmit={handleSubmit}
               className="glass rounded-3xl p-7 md:p-9"
             >
+              <div className="mb-6 font-mono text-xs text-muted">
+                <span className="text-accent">$</span> cat message.txt
+              </div>
               <div className="space-y-5">
                 <div>
                   <label className="mb-2 block font-mono text-xs uppercase tracking-widest text-muted">
@@ -89,7 +93,7 @@ export default function Contact() {
                     required
                     value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-white px-4 py-3.5 text-ink placeholder:text-muted/60 focus:border-accent"
+                    className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 font-mono text-sm text-ink placeholder:text-muted/60 focus:border-accent"
                     placeholder="Your name"
                   />
                 </div>
@@ -102,7 +106,7 @@ export default function Contact() {
                     required
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className="w-full rounded-xl border border-line bg-white px-4 py-3.5 text-ink placeholder:text-muted/60 focus:border-accent"
+                    className="w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 font-mono text-sm text-ink placeholder:text-muted/60 focus:border-accent"
                     placeholder="you@example.com"
                   />
                 </div>
@@ -115,13 +119,13 @@ export default function Contact() {
                     rows={5}
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
-                    className="w-full resize-none rounded-xl border border-line bg-white px-4 py-3.5 text-ink placeholder:text-muted/60 focus:border-accent"
-                    placeholder="Tell me about your project..."
+                    className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3.5 font-mono text-sm text-ink placeholder:text-muted/60 focus:border-accent"
+                    placeholder="$ echo 'tell me about your project...'"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-ink px-6 py-4 font-medium text-white transition-all hover:bg-accent"
+                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-6 py-4 font-mono text-sm font-semibold uppercase tracking-widest text-bg transition-all hover:brightness-110"
                 >
                   Send Message{' '}
                   <span className="inline-block transition-transform group-hover:translate-x-1">

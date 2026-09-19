@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { navLinks } from '../data'
+import { navLinks, profile } from '../data'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -9,9 +9,8 @@ export default function Navbar() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 10)
-      const ids = ['about', 'skills', 'work', 'experience', 'contact']
       let current = ''
-      for (const id of ids) {
+      for (const id of ['about', 'skills', 'work', 'experience', 'contact']) {
         const el = document.getElementById(id)
         if (el && el.getBoundingClientRect().top <= 120) current = id
       }
@@ -31,25 +30,27 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-40 transition-all duration-300 ${
-        scrolled ? 'glass shadow-sm' : 'bg-transparent'
+      className={`fixed inset-x-0 top-0 z-40 border-b transition-all duration-300 ${
+        scrolled
+          ? 'border-white/10 bg-bg/80 backdrop-blur-md'
+          : 'border-transparent bg-transparent'
       }`}
     >
-      <nav className="container-x flex items-center justify-between py-4 md:py-5">
-        <a
-          href="#top"
-          className="font-display text-xl font-bold tracking-tight md:text-2xl"
-        >
-          Faizan<span className="text-accent">.</span>
+      <nav className="container-x flex items-center justify-between py-4">
+        <a href="#top" className="font-mono text-sm text-muted">
+          <span className="text-accent">faizan@dev</span>:
+          <span className="text-cyan">~</span>$
         </a>
 
-        <ul className="hidden items-center gap-8 md:flex">
+        <ul className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
-                className={`text-sm font-medium transition-colors ${
-                  active === link.id ? 'text-accent' : 'text-muted hover:text-ink'
+                className={`font-mono text-xs uppercase tracking-widest transition-colors ${
+                  active === link.id
+                    ? 'text-accent'
+                    : 'text-muted hover:text-ink'
                 }`}
               >
                 {link.label}
@@ -59,9 +60,9 @@ export default function Navbar() {
           <li>
             <a
               href="#contact"
-              className="rounded-full bg-ink px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-accent"
+              className="rounded-full border border-accent/40 bg-accent/10 px-4 py-1.5 font-mono text-xs uppercase tracking-widest text-accent transition-colors hover:bg-accent hover:text-bg"
             >
-              Let's Talk
+              Hire Me
             </a>
           </li>
         </ul>
@@ -83,17 +84,22 @@ export default function Navbar() {
             }`}
           ></span>
         </button>
+
+        <span className="hidden font-mono text-xs text-muted xl:inline">
+          <span className="mr-2 inline-block h-2 w-2 animate-pulse rounded-full bg-accent"></span>
+          {profile.status}
+        </span>
       </nav>
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 top-0 z-50 bg-white/95 backdrop-blur-md transition-all duration-300 md:hidden ${
+        className={`fixed inset-0 top-0 z-50 bg-bg transition-all duration-300 md:hidden ${
           open ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >
-        <div className="flex items-center justify-between px-5 py-4">
-          <span className="font-display text-xl font-bold">
-            Faizan<span className="text-accent">.</span>
+        <div className="container-x flex items-center justify-between py-4">
+          <span className="font-mono text-sm text-muted">
+            <span className="text-accent">faizan@dev</span>$
           </span>
           <button
             onClick={() => setOpen(false)}
@@ -103,30 +109,29 @@ export default function Navbar() {
             CLOSE &#10005;
           </button>
         </div>
-        <ul className="mt-10 flex flex-col gap-2 px-5">
-          {navLinks.map((link, i) => (
+        <ul className="mt-10 flex flex-col gap-2 px-6">
+          {navLinks.map((link) => (
             <li key={link.id}>
               <a
                 href={`#${link.id}`}
                 onClick={() => setOpen(false)}
-                className="group flex items-center gap-4 py-3"
+                className="group flex items-center gap-4 border-b border-white/10 py-4"
               >
-                <span className="font-mono text-xs text-accent">
-                  0{i + 1}
-                </span>
-                <span className="font-display text-3xl font-semibold text-ink transition-colors group-hover:text-accent">
+                <span className="font-mono text-xs text-accent">#</span>
+                <span className="font-display text-3xl font-semibold tracking-tight transition-colors group-hover:text-accent">
                   {link.label}
                 </span>
               </a>
             </li>
           ))}
         </ul>
-        <div className="mt-8 px-5">
+        <div className="px-6 pt-8">
           <a
-            href="mailto:muhammadfaizankhan525@gmail.com"
-            className="block rounded-full bg-ink px-6 py-4 text-center font-medium text-white"
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="block rounded-full bg-accent px-6 py-4 text-center font-mono text-sm font-semibold uppercase tracking-widest text-bg"
           >
-            Let's Talk
+            Hire Me
           </a>
         </div>
       </div>

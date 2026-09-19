@@ -17,9 +17,10 @@
 
 ## Features
 
-- Single-page layout: Hero, About, Skills, Selected Work, Experience, Stats, Contact
-- Light theme with a soft, animated Three.js scene (floating geometrical shapes, particles, mouse parallax) — no character
-- Scroll-reveal animations, numbered editorial sections
+- Dark terminal-style single-page portfolio with a boot screen (`Loading route 100`)
+- Monospace `$`-prompt details, status pills and numbered sections
+- Animated Three.js scene (glowing shapes, colored particles, mouse parallax)
+- Scroll-reveal animations, live count-up stats
 - Front-end only — no backend
 
 ## Getting Started
@@ -39,9 +40,9 @@ npm run preview   # preview the build
 ├── vite.config.js
 ├── tailwind.config.js
 ├── src/
-│   ├── App.jsx           # single-page composition
+│   ├── App.jsx           # single-page composition + boot screen
 │   ├── data.js           # all content
-│   └── components/       # Navbar, Hero, SceneBackground, sections…
+│   └── components/       # Navbar, Hero, BootScreen, SceneBackground, sections…
 ```
 
 ## Deployment

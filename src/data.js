@@ -18,6 +18,7 @@ export const profile = {
   email: 'muhammadfaizankhan525@gmail.com',
   status: 'Available for opportunities',
   website: 'faizan-portfolio.vercel.app',
+  stack: 'React · Tailwind CSS · Node.js · Express · MongoDB · Python',
   bio: [
     "I'm Faizan, a frontend developer focused on building responsive, modern and user-friendly websites with clean code and thoughtful interfaces.",
     'My work spans ecommerce stores, fintech dashboards, banking sites, agency websites and interactive JavaScript projects — each designed to feel fast, polished and intentional.',
@@ -29,6 +30,33 @@ export const profile = {
     { num: '04', title: 'Team Projects', text: 'Experience working on software projects.' },
   ],
 }
+
+export const services = [
+  {
+    num: '01',
+    title: 'Frontend Development',
+    text: 'Building responsive websites and interfaces using modern frontend technologies.',
+    tags: ['HTML', 'CSS', 'JavaScript'],
+  },
+  {
+    num: '02',
+    title: 'React Development',
+    text: 'Creating reusable components and interactive interfaces using React.',
+    tags: ['React', 'JavaScript'],
+  },
+  {
+    num: '03',
+    title: 'Responsive Design',
+    text: 'Designing layouts that adapt smoothly to desktops, tablets and mobile devices.',
+    tags: ['CSS', 'Tailwind'],
+  },
+  {
+    num: '04',
+    title: 'MERN Development',
+    text: 'Learning and building across the MongoDB, Express, React and Node.js ecosystem.',
+    tags: ['Node.js', 'Express', 'MongoDB'],
+  },
+]
 
 export const skillCategories = [
   {

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html {
@@ -16,21 +16,21 @@ body {
 }
 
 ::selection {
-  @apply bg-accent text-white;
+  @apply bg-accent text-bg;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f7f7f4;
+  background: #060608;
 }
 ::-webkit-scrollbar-thumb {
-  background: #d6d6d2;
+  background: #1f2027;
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b9b9b4;
+  background: #2e303a;
 }
 
 @layer components {
@@ -38,22 +38,25 @@ body {
     @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
   }
 
-  /* Light theme glass */
   .glass {
-    @apply border border-line bg-white/70 backdrop-blur-md;
+    @apply border border-line bg-white/[0.04] backdrop-blur-md;
   }
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, #4f46e5, #14b8a6 55%, #ec4899);
+    background-image: linear-gradient(90deg, #4ade80, #22d3ee 55%, #fbbf24);
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-line bg-white px-3.5 py-1.5 font-mono text-xs text-muted;
+    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.04] px-3.5 py-1.5 font-mono text-xs text-muted;
   }
 
   .line-h {
-    @apply h-px w-full bg-line;
+    @apply h-px w-full bg-white/10;
+  }
+
+  .term-marker {
+    @apply font-mono text-accent;
   }
 }
 
@@ -61,12 +64,20 @@ body {
   .text-balance {
     text-wrap: balance;
   }
-}
 
-/* Soft noise for the light background */
-.bg-noise {
-  background-image: radial-gradient(rgba(20, 20, 24, 0.035) 1px, transparent 1px);
-  background-size: 22px 22px;
+  /* Faint CRT-style scanlines / grain overlay */
+  .crt-overlay {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.025) 0px,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px,
+        transparent 3px
+      ),
+      radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100% 100%, 26px 26px;
+  }
 }
 
 input,
