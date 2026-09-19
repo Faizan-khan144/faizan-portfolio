@@ -44,7 +44,7 @@ body {
 
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, #4ade80, #22d3ee 55%, #fbbf24);
+    background-image: linear-gradient(90deg, #10b981, #22d3ee 55%, #8b5cf6);
   }
 
   .chip {

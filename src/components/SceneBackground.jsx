@@ -17,11 +17,11 @@ export default function SceneBackground() {
     const height = mount.clientHeight
 
     const scene = new THREE.Scene()
-    scene.fog = new THREE.Fog(0x060608, 14, 26)
+    scene.fog = new THREE.Fog(0x08080b, 16, 30)
 
     const camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 100)
-    camera.position.set(0, 1.6, 8.5)
-    camera.lookAt(0, 1, 0)
+    camera.position.set(0, 1.8, 9)
+    camera.lookAt(0, 1.5, 0)
 
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
     renderer.setSize(width, height)
@@ -29,30 +29,72 @@ export default function SceneBackground() {
     renderer.setClearColor(0x000000, 0)
     mount.appendChild(renderer.domElement)
 
-    // Subtle floor grid
-    const grid = new THREE.GridHelper(30, 30, 0x4ade80, 0x22d3ee)
+    // Floor grid
+    const grid = new THREE.GridHelper(30, 30, 0x10b981, 0x10b981)
     grid.material.transparent = true
-    grid.material.opacity = 0.18
+    grid.material.opacity = 0.22
     grid.position.y = -0.5
     scene.add(grid)
 
-    // Faint second grid for depth
-    const grid2 = new THREE.GridHelper(30, 30, 0x8b5cf6, 0x8b5cf6)
+    const grid2 = new THREE.GridHelper(30, 30, 0x22d3ee, 0x22d3ee)
     grid2.material.transparent = true
-    grid2.material.opacity = 0.05
-    grid2.position.y = 0.2
+    grid2.material.opacity = 0.06
+    grid2.position.y = 0.4
     scene.add(grid2)
 
-    // Fine twinkle particles
+    // Floating shapes (far, decorative)
+    const colors = [0x10b981, 0x22d3ee, 0x8b5cf6, 0xf2f2f7]
+    const shapes = []
+    const addShape = (geo, color, x, y, z, scale, wire) => {
+      const mat = wire
+        ? new THREE.MeshBasicMaterial({
+            color: new THREE.Color(color),
+            wireframe: true,
+            transparent: true,
+            opacity: 0.5,
+          })
+        : new THREE.MeshStandardMaterial({
+            color: new THREE.Color(color),
+            emissive: new THREE.Color(color),
+            emissiveIntensity: 0.4,
+            roughness: 0.4,
+            metalness: 0.4,
+            transparent: true,
+            opacity: 0.25,
+          })
+      const mesh = new THREE.Mesh(geo, mat)
+      mesh.position.set(x, y, z)
+      mesh.scale.setScalar(scale)
+      scene.add(mesh)
+      shapes.push({ mesh, rot: 0.01 + Math.random() * 0.03, float: Math.random() * Math.PI * 2 })
+    }
+
+    addShape(new THREE.TorusKnotGeometry(0.9, 0.3, 120, 16), colors[0], -8, 4, -8, 1, false)
+    addShape(new THREE.IcosahedronGeometry(1.2, 0), colors[1], 8, 3.5, -9, 1, true)
+    addShape(new THREE.OctahedronGeometry(1.4, 0), colors[2], 9, -2.5, -6, 1, false)
+    addShape(new THREE.TorusGeometry(1, 0.4, 12, 48), colors[3], -9, -2, -7, 1, true)
+    addShape(new THREE.IcosahedronGeometry(0.8, 0), colors[0], 0, 5.5, -8, 1, true)
+    addShape(new THREE.DodecahedronGeometry(1.1, 0), colors[2], -5, -4, -5, 1, false)
+    addShape(new THREE.TorusGeometry(0.7, 0.25, 12, 48), colors[1], 4.5, 5, -6, 1, false)
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5))
+    const dir = new THREE.DirectionalLight(0xffffff, 1.2)
+    dir.position.set(4, 6, 4)
+    scene.add(dir)
+    const cyanLight = new THREE.DirectionalLight(0x22d3ee, 0.8)
+    cyanLight.position.set(-5, -3, -4)
+    scene.add(cyanLight)
+
+    // Particles
     const dotGeo = new THREE.BufferGeometry()
-    const count = 320
+    const count = 500
     const positions = new Float32Array(count * 3)
     const dotColors = new Float32Array(count * 3)
-    const palette = [new THREE.Color(0x4ade80), new THREE.Color(0x22d3ee), new THREE.Color(0xffffff)]
+    const palette = [new THREE.Color(0x10b981), new THREE.Color(0x22d3ee), new THREE.Color(0xffffff), new THREE.Color(0x8b5cf6)]
     for (let i = 0; i < count; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 20
-      positions[i * 3 + 1] = Math.random() * 8
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 14 - 2
+      positions[i * 3] = (Math.random() - 0.5) * 26
+      positions[i * 3 + 1] = Math.random() * 10 - 3
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 18 - 2
       const c = palette[Math.floor(Math.random() * palette.length)]
       dotColors[i * 3] = c.r
       dotColors[i * 3 + 1] = c.g
@@ -61,10 +103,10 @@ export default function SceneBackground() {
     dotGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3))
     dotGeo.setAttribute('color', new THREE.BufferAttribute(dotColors, 3))
     const dotMat = new THREE.PointsMaterial({
-      size: 0.035,
+      size: 0.05,
       vertexColors: true,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.6,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       fog: true,
@@ -84,18 +126,24 @@ export default function SceneBackground() {
       rafId = requestAnimationFrame(animate)
       time += 0.01
 
-      target.x += (mouse.x - target.x) * 0.035
-      target.y += (mouse.y - target.y) * 0.035
+      target.x += (mouse.x - target.x) * 0.04
+      target.y += (mouse.y - target.y) * 0.04
 
-      camera.position.x += target.x * 0.02
-      camera.position.y = 1.6 - target.y * 0.45
-      camera.lookAt(target.x * 0.55, 1.6, 0)
+      shapes.forEach((s) => {
+        s.mesh.rotation.x += s.rot
+        s.mesh.rotation.y += s.rot * 1.5
+        s.mesh.position.y += Math.sin(time * 1.2 + s.float) * 0.0012
+      })
 
-      grid.rotation.z = time * 0.01
-      grid2.rotation.z = -time * 0.008
+      camera.position.x = target.x * 1.4
+      camera.position.y = 1.8 - target.y * 0.8
+      camera.lookAt(target.x * 0.4, 1.5, 0)
 
-      dots.rotation.y = time * 0.012
-      dots.rotation.x = time * 0.006
+      grid.rotation.z = time * 0.008
+      grid2.rotation.z = -time * 0.006
+
+      dots.rotation.y = time * 0.015
+      dots.rotation.x = time * 0.007
 
       renderer.render(scene, camera)
     }
@@ -121,6 +169,11 @@ export default function SceneBackground() {
       grid.material.dispose()
       grid2.geometry.dispose()
       grid2.material.dispose()
+      shapes.forEach((s) => {
+        scene.remove(s.mesh)
+        s.mesh.geometry.dispose()
+        s.mesh.material.dispose()
+      })
       dotGeo.dispose()
       dotMat.dispose()
       renderer.dispose()
@@ -131,7 +184,7 @@ export default function SceneBackground() {
   return (
     <div
       ref={mountRef}
-      className="pointer-events-none fixed inset-0 z-0 opacity-80"
+      className="pointer-events-none fixed inset-0 z-0 opacity-90"
       aria-hidden="true"
     />
   )
