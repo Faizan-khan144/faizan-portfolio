@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  * {
+    @apply m-0 box-border p-0;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-bg font-sans text-white antialiased;
+    overflow-x: hidden;
+  }
+
+  a {
+    @apply no-underline;
+  }
+
+  ::selection {
+    background: rgba(124, 92, 255, 0.4);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #06060a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #7c5cff, #33e6ff);
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-6xl px-6 md:px-10;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent via-cyan to-pink bg-clip-text text-transparent;
+  }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+  }
+
+  .glow-accent {
+    box-shadow: 0 0 40px rgba(124, 92, 255, 0.25);
+  }
+}
+
+.reveal-visible .tilt-inner {
+  transform-style: preserve-3d;
+}
