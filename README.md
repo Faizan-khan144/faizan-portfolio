@@ -13,15 +13,15 @@
 - React 18
 - Vite
 - Tailwind CSS 3
-- Three.js (WebGL 3D background + playable 3D game)
+- Three.js (WebGL 3D background + interactive hero character)
 - Framer Motion (animations)
 - React Router (multi-page)
 
 ## Features
 
-- Multi-page layout: Home, About, Services, Projects, Experience, Games, Contact
+- Multi-page layout: Home, About, Services, Projects, Experience, Contact
 - Interactive Three.js background scene (floating geometrical shapes, particles, mouse parallax)
-- **Neon Drift** — a playable 3D minigame with a WebGL character (dodge mines, collect orbs)
+- **Interactive 3D character** in the hero — tracks your cursor, blinks, idle animation
 - 3D tilt cards, scroll-reveal animations, glassmorphism UI
 - Front-end only — no backend
 
@@ -44,8 +44,8 @@ npm run preview   # preview the build
 ├── src/
 │   ├── App.jsx           # router setup
 │   ├── data.js           # all content
-│   ├── components/       # Navbar, Hero, sections, SceneBackground, TiltCard…
-│   └── pages/            # Home, About, Services, Projects, Experience, Games, Contact
+│   ├── components/       # Navbar, Hero, HeroCharacter, SceneBackground, sections…
+│   └── pages/            # Home, About, Services, Projects, Experience, Contact
 ```
 
 ## Deployment
