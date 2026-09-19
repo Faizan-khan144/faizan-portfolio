@@ -1,33 +1,37 @@
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import SceneBackground from './components/SceneBackground'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import Skills from './components/Skills'
-import Process from './components/Process'
-import Projects from './components/Projects'
-import Experience from './components/Experience'
-import Profile from './components/Profile'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+import Home from './pages/Home'
+import About from './pages/About'
+import Services from './pages/Services'
+import Projects from './pages/Projects'
+import Games from './pages/Games'
+import Experience from './pages/Experience'
+import Contact from './pages/Contact'
 
 export default function App() {
   return (
-    <div className="relative">
-      <SceneBackground />
-      <Navbar />
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Services />
-        <Skills />
-        <Process />
-        <Projects />
-        <Experience />
-        <Profile />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <HashRouter>
+      <div className="relative">
+        <SceneBackground />
+        <Navbar />
+        <ScrollToTop />
+        <main className="relative z-10">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </HashRouter>
   )
 }

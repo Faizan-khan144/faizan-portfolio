@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { navLinks } from '../data'
 
 export default function Footer() {
@@ -6,23 +7,23 @@ export default function Footer() {
       <div className="container-x">
         <div className="flex flex-col items-center justify-between gap-8 md:flex-row md:items-start">
           <div className="text-center md:text-left">
-            <a href="#home" className="text-xl font-extrabold tracking-tight">
+            <Link to="/" className="text-xl font-extrabold tracking-tight">
               Faizan<span className="text-accent">.</span>
-            </a>
+            </Link>
             <p className="mt-3 max-w-xs text-sm text-white/50">
               Frontend Developer building modern web experiences.
             </p>
           </div>
 
           <ul className="flex flex-wrap items-center justify-center gap-5">
-            {navLinks.slice(0, 5).map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <Link
+                  to={link.to}
                   className="text-sm text-white/50 transition-colors hover:text-accent"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -33,7 +34,11 @@ export default function Footer() {
             &copy; 2026 Faizan Khan
           </span>
           <a
-            href="#home"
+            href="#"
+            onClick={(e) => {
+              e.preventDefault()
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
             className="group flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
           >
             Back to top{' '}

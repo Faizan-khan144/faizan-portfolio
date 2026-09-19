@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { heroStats } from '../data'
 
 const container = {
@@ -69,21 +70,21 @@ export default function Hero() {
           variants={item}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          <a
-            href="#projects"
+          <Link
+            to="/projects"
             className="group rounded-full bg-gradient-to-r from-accent to-cyan px-8 py-4 text-sm font-semibold transition-transform duration-200 hover:scale-105"
           >
             Explore My Work{' '}
             <span className="inline-block transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               &#8599;
             </span>
-          </a>
-          <a
-            href="#about"
+          </Link>
+          <Link
+            to="/about"
             className="rounded-full border border-white/20 px-8 py-4 text-sm font-medium text-white/80 transition-all duration-200 hover:border-accent hover:text-accent"
           >
             More About Me
-          </a>
+          </Link>
         </motion.div>
 
         <motion.div
@@ -101,17 +102,20 @@ export default function Hero() {
         </motion.div>
       </motion.div>
 
-      <motion.a
-        href="#about"
+      <Link
+        to="/about"
         className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
         aria-label="Scroll down"
       >
-        <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/30 p-1.5">
-          <span className="h-2 w-1 rounded-full bg-cyan"></span>
-        </div>
-      </motion.a>
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
+        >
+          <div className="flex h-10 w-6 items-start justify-center rounded-full border border-white/30 p-1.5">
+            <span className="h-2 w-1 rounded-full bg-cyan"></span>
+          </div>
+        </motion.div>
+      </Link>
 
       <span className="pointer-events-none absolute bottom-6 right-8 hidden font-mono text-xs text-white/30 md:block">
         FAIZAN KHAN 2026
