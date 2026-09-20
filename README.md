@@ -1,6 +1,6 @@
-# Faizan Khan — Portfolio
+# Faizan Khan - Portfolio
 
-**Frontend Developer** building responsive, modern and user-friendly websites with clean code and thoughtful interfaces.
+A premium multi-page developer portfolio for **Muhammad Faizan Khan**, built with React, Vite and Tailwind CSS.
 
 ## Live
 
@@ -10,18 +10,27 @@
 ## Stack
 
 - React 18
-- Vite
+- React Router 7 (multi-page routing)
 - Tailwind CSS 3
-- Three.js (WebGL 3D background)
-- Framer Motion (animations)
+- Framer Motion (page transitions, scroll reveals)
+- Vite
 
-## Features
+## Pages
 
-- Dark terminal-style single-page portfolio with a boot screen (`Loading route 100`)
-- Monospace `$`-prompt details, status pills and numbered sections
-- Animated Three.js scene (glowing shapes, colored particles, mouse parallax)
-- Scroll-reveal animations, live count-up stats
-- Front-end only — no backend
+- **Home** - hero, featured projects, skills preview, about preview, current focus, contact CTA
+- **About** - introduction, learning journey, current focus, interests, philosophy
+- **Projects** - every public project with category filtering, source and live links
+- **Skills** - frontend, backend, database, Python and tools
+- **Journey** - timeline of real milestones (projects, internship, MERN learning)
+- **Contact** - details plus a form with a mailto fallback (no backend)
+- **404** - friendly not-found page
+
+## Details
+
+- Dark, editorial design with a single restrained gold accent
+- Fully responsive with dedicated mobile navigation
+- Accessibility: semantic HTML, skip link, focus states, ARIA attributes, `prefers-reduced-motion` support
+- SEO: per-page titles, meta descriptions, Open Graph tags, favicon
 
 ## Getting Started
 
@@ -39,10 +48,13 @@ npm run preview   # preview the build
 ├── vercel.json
 ├── vite.config.js
 ├── tailwind.config.js
-├── src/
-│   ├── App.jsx           # single-page composition + boot screen
-│   ├── data.js           # all content
-│   └── components/       # Navbar, Hero, BootScreen, SceneBackground, sections…
+└── src/
+    ├── App.jsx           # routing + layout
+    ├── main.jsx          # entry point
+    ├── index.css         # base styles and utilities
+    ├── components/       # Navbar, Footer, ProjectCard, Timeline, etc.
+    ├── data/             # profile, projects, skills, journey
+    └── pages/            # Home, About, Projects, Skills, Journey, Contact, 404
 ```
 
 ## Deployment
