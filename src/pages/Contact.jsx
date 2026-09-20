@@ -96,7 +96,7 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <form onSubmit={handleSubmit} className="rounded-lg border border-line bg-surface p-6 sm:p-8" noValidate={false}>
+            <form onSubmit={handleSubmit} className="rounded-lg border border-line bg-surface p-6 sm:p-8">
               <div className="grid gap-5 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="mb-2 block text-sm text-ink">
@@ -157,9 +157,7 @@ export default function Contact() {
 
               {sent && (
                 <p className="mt-4 rounded-md border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-ink">
-                  {sent
-                    ? "Your email app should have opened with everything pre-filled. Hit send there and I'll reply soon."
-                    : ''}
+                  Your email app should have opened with everything pre-filled. Hit send there and I'll reply soon.
                 </p>
               )}
 
