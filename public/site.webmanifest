@@ -4,8 +4,8 @@
   "description": "Frontend developer based in Karachi, Pakistan, building responsive, modern web interfaces with React, JavaScript and Tailwind CSS.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B1310",
-  "theme_color": "#0B1310",
+  "background_color": "#080A14",
+  "theme_color": "#080A14",
   "icons": [
     {
       "src": "/favicon.svg",
