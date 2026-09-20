@@ -11,9 +11,44 @@ import { profile } from '../data/profile'
 import { projects } from '../data/projects'
 import { skillCategories } from '../data/skills'
 import { journey } from '../data/journey'
-import { IconArrow, IconMail, IconMapPin } from '../components/Icons'
+import { IconMail, IconMapPin } from '../components/Icons'
 
 const filters = ['All', 'Websites', 'Dashboards', 'Platforms', 'Tools']
+
+const techStrip = [
+  'React',
+  'Tailwind CSS',
+  'JavaScript',
+  'Node.js',
+  'Express.js',
+  'MongoDB',
+  'Python',
+  'Git',
+  'GitHub',
+  'VS Code',
+]
+
+function TechStrip() {
+  const Row = () => (
+    <div className="flex shrink-0 items-center py-4">
+      {techStrip.map((item) => (
+        <span key={item} className="mx-6 inline-flex items-center gap-3">
+          <span>{item}</span>
+          <span className="text-accent" aria-hidden="true">✦</span>
+        </span>
+      ))}
+    </div>
+  )
+
+  return (
+    <div className="overflow-hidden border-y border-line bg-surface/40" aria-hidden="true">
+      <div className="flex w-max animate-marquee">
+        <Row />
+        <Row />
+      </div>
+    </div>
+  )
+}
 
 function SectionHeader({ num, eyebrow, title, description }) {
   return (
@@ -35,11 +70,11 @@ function Hero() {
   return (
     <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 lg:pt-44 lg:pb-24">
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_70%_0%,rgba(255,77,46,0.08),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_70%_0%,rgba(var(--color-accent)_/_0.12),transparent_60%)]"
         aria-hidden="true"
       ></div>
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[400px] bg-[linear-gradient(rgba(23,23,29,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(23,23,29,0.04)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[400px] bg-[linear-gradient(rgba(var(--color-ink)_/_0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.04)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
         aria-hidden="true"
       ></div>
 
@@ -435,6 +470,7 @@ export default function Home() {
       />
 
       <Hero />
+      <TechStrip />
       <About />
       <Skills />
       <Experience />
