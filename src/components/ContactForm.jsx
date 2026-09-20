@@ -104,7 +104,7 @@ export default function ContactForm() {
       </div>
 
       {status === 'ok' && (
-        <p className="mt-4 rounded-md border border-green-300 bg-green-50 px-4 py-3 text-sm text-green-800">
+        <p className="mt-4 rounded-md border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-ink">
           Message sent - thank you! I'll get back to you as soon as I can.
         </p>
       )}
@@ -122,7 +122,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="btn-base mt-6 w-full bg-accent text-accent-ink transition-colors hover:bg-accent/90 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="btn-gradient mt-6 w-full sm:w-auto disabled:cursor-not-allowed"
       >
         {status === 'sending' ? 'Sending...' : 'Send message'}
       </button>
