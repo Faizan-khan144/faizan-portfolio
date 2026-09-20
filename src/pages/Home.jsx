@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import PageTransition from '../components/PageTransition'
 import Seo from '../components/Seo'
 import Container from '../components/Container'
@@ -7,11 +8,16 @@ import Reveal from '../components/Reveal'
 import ProjectCard from '../components/ProjectCard'
 import SocialLinks from '../components/SocialLinks'
 import ContactForm from '../components/ContactForm'
+import Typewriter from '../components/Typewriter'
+import CountUp from '../components/CountUp'
 import { profile } from '../data/profile'
 import { projects } from '../data/projects'
 import { skillCategories } from '../data/skills'
 import { journey } from '../data/journey'
 import { IconMail, IconMapPin } from '../components/Icons'
+
+const heroName = ['Muhammad', 'Faizan', 'Khan']
+const typingRoles = ['Frontend Developer', 'React Builder', 'JavaScript Engineer', 'MERN Stack Learner']
 
 const filters = ['All', 'Websites', 'Dashboards', 'Platforms', 'Tools']
 
@@ -70,28 +76,19 @@ function Hero() {
   return (
     <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 lg:pt-44 lg:pb-24">
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_70%_0%,rgba(var(--color-accent)_/_0.12),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_55%_at_72%_0%,rgba(var(--color-accent)_/_0.1),transparent_60%)]"
         aria-hidden="true"
       ></div>
+      <div className="scanlines pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div
-        className="orb -left-24 top-[-10%] h-80 w-80"
-        style={{ background: 'radial-gradient(circle at 30% 30%, rgba(139,92,246,0.45), transparent 70%)' }}
-        aria-hidden="true"
-      ></div>
-      <div
-        className="orb -right-16 top-[18%] h-96 w-96"
-        style={{ background: 'radial-gradient(circle at 60% 20%, rgba(34,211,238,0.32), transparent 70%)' }}
-        aria-hidden="true"
-      ></div>
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[400px] bg-[linear-gradient(rgba(var(--color-ink)_/_0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.04)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[400px] bg-[linear-gradient(rgba(var(--color-ink)_/_0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.045)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
         aria-hidden="true"
       ></div>
 
       <Container className="relative grid items-center gap-14 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
         <div>
           <Reveal>
-            <p className="inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 font-mono text-xs uppercase tracking-wide2 text-ink shadow-card">
+            <p className="inline-flex items-center gap-2 rounded-sm border border-line bg-surface px-3 py-1.5 font-mono text-xs uppercase tracking-wide2 text-ink shadow-card">
               <span className="relative flex h-2 w-2" aria-hidden="true">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
@@ -103,10 +100,26 @@ function Hero() {
           <Reveal delay={0.05}>
             <p className="eyebrow mt-7">Hi, I'm</p>
             <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-              Muhammad Faizan <span className="text-gradient">Khan</span>
+              {heroName.map((word, i) => (
+                <span
+                  key={word}
+                  className="inline-block overflow-hidden align-top"
+                  aria-hidden="true"
+                >
+                  <motion.span
+                    className={`inline-block ${word === 'Khan' ? 'text-accent' : ''}`}
+                    initial={{ y: '110%' }}
+                    animate={{ y: 0 }}
+                    transition={{ delay: 0.15 + i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                  >
+                    {word}
+                  </motion.span>
+                  {i < heroName.length - 1 && <span>&nbsp;</span>}
+                </span>
+              ))}
             </h1>
-            <p className="mt-5 font-display text-xl font-medium text-muted sm:text-2xl">
-              Frontend Developer · <span className="text-gradient">MERN Stack Learner</span>
+            <p className="mt-5 h-8 font-mono text-lg font-medium text-accent sm:text-xl">
+              <Typewriter words={typingRoles} />
             </p>
           </Reveal>
 
@@ -138,6 +151,15 @@ function Hero() {
         <Reveal delay={0.12}>
           <div className="mx-auto w-full max-w-sm">
             <div className="relative rounded-lg border border-line bg-surface p-6 shadow-card">
+              <motion.div
+                className="absolute -top-4 -right-3 flex items-center gap-2 rounded-sm border border-accent bg-accent-ink px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent shadow-card"
+                animate={{ y: [0, -7, 0] }}
+                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+                aria-hidden="true"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                5+ Years Coding
+              </motion.div>
               <div className="flex items-start justify-between gap-4">
                 <img
                   src={profile.avatar}
@@ -166,7 +188,10 @@ function Hero() {
                 {profile.facts.map((fact) => (
                   <div key={fact.label} className="px-3 py-4 text-center">
                     <dd className="font-display text-2xl font-semibold text-accent">
-                      {fact.value}
+                      <CountUp value={parseInt(fact.value, 10)} />
+                      {fact.value.endsWith('+') && (
+                        <span className="text-accent" aria-hidden="true">+</span>
+                      )}
                     </dd>
                     <dt className="mt-1 block text-[0.6rem] uppercase tracking-wide2 text-muted">
                       {fact.label}
@@ -346,7 +371,8 @@ function Experience() {
 
 function Projects() {
   const [filter, setFilter] = useState('All')
-  const list = filter === 'All' ? projects : projects.filter((p) => p.category === filter)
+  const list =
+    filter === 'All' ? projects.filter((p) => p.featured) : projects.filter((p) => p.category === filter)
 
   return (
     <section className="border-t border-line py-20 lg:py-28">
