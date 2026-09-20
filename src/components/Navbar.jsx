@@ -95,7 +95,7 @@ export default function Navbar() {
             <ThemeToggle />
             <Link
               to="/contact"
-              className="btn-base hidden bg-accent text-accent-ink hover:bg-accent/90 lg:inline-flex"
+              className="btn-gradient hidden lg:inline-flex"
             >
               Let's talk
             </Link>
@@ -137,7 +137,7 @@ export default function Navbar() {
               <ThemeToggle />
               <Link
                 to="/contact"
-                className="btn-base flex-1 bg-accent text-accent-ink hover:bg-accent/90"
+                className="btn-gradient flex-1"
               >
                 Let's talk
                 <IconArrow className="h-4 w-4" />
