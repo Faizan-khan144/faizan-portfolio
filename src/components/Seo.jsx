@@ -1,23 +1,40 @@
 import { useEffect } from 'react'
+import { profile } from '../data/profile'
 
-export default function Seo({ title, description }) {
+const SITE_URL = 'https://faizan-portfolio-kappa.vercel.app'
+
+function upsertMeta(selector, key, value) {
+  let meta = document.head.querySelector(selector)
+  if (!meta) {
+    meta = document.createElement('meta')
+    document.head.appendChild(meta)
+  }
+  meta.setAttribute(key, value)
+}
+
+export default function Seo({ title, description, path = '' }) {
+  const url = `${SITE_URL}${path}`
+
   useEffect(() => {
     document.title = title
 
-    let desc = document.head.querySelector('meta[name="description"]')
-    if (!desc) {
-      desc = document.createElement('meta')
-      desc.setAttribute('name', 'description')
-      document.head.appendChild(desc)
+    upsertMeta('meta[name="description"]', 'name', description)
+    upsertMeta('meta[property="og:title"]', 'property', title)
+    upsertMeta('meta[property="og:description"]', 'property', description)
+    upsertMeta('meta[property="og:url"]', 'property', url)
+    upsertMeta('meta[name="twitter:title"]', 'name', title)
+    upsertMeta('meta[name="twitter:description"]', 'name', description)
+
+    let canonical = document.head.querySelector('link[rel="canonical"]')
+    if (!canonical) {
+      canonical = document.createElement('link')
+      canonical.setAttribute('rel', 'canonical')
+      document.head.appendChild(canonical)
     }
-    desc.setAttribute('content', description)
-
-    const ogTitle = document.head.querySelector('meta[property="og:title"]')
-    if (ogTitle) ogTitle.setAttribute('content', title)
-
-    const ogDesc = document.head.querySelector('meta[property="og:description"]')
-    if (ogDesc) ogDesc.setAttribute('content', description)
-  }, [title, description])
+    canonical.setAttribute('href', url)
+  }, [title, description, url])
 
   return null
 }
+
+export { SITE_URL }
