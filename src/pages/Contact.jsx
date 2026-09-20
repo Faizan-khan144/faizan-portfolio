@@ -10,6 +10,7 @@ export default function Contact() {
       <Seo
         title="Contact - Faizan Khan"
         description="Get in touch with Faizan Khan - frontend developer based in Karachi, Pakistan. Open to opportunities, collaborations and interesting projects."
+        path="/contact"
       />
 
       <section className="pt-36 pb-16 sm:pt-44 lg:pt-48 lg:pb-20">
