@@ -1,37 +1,39 @@
-import { useState } from 'react'
-import SceneBackground from './components/SceneBackground'
-import BootScreen from './components/BootScreen'
+import { Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence, MotionConfig } from 'framer-motion'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import About from './components/About'
-import Services from './components/Services'
-import Skills from './components/Skills'
-import Work from './components/Work'
-import Experience from './components/Experience'
-import Stats from './components/Stats'
-import Contact from './components/Contact'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
+import Home from './pages/Home'
+import About from './pages/About'
+import Projects from './pages/Projects'
+import Skills from './pages/Skills'
+import Journey from './pages/Journey'
+import Contact from './pages/Contact'
+import NotFound from './pages/NotFound'
 
 export default function App() {
-  const [booted, setBooted] = useState(false)
+  const location = useLocation()
 
   return (
-    <div className="relative min-h-screen overflow-x-clip">
-      <SceneBackground />
-      <div className="pointer-events-none fixed inset-0 z-[1] bg-[radial-gradient(120%_90%_at_50%_40%,transparent_45%,rgba(6,6,8,0.9)_100%)]"></div>
-      <Navbar />
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <Services />
-        <Skills />
-        <Work />
-        <Experience />
-        <Stats />
-        <Contact />
-      </main>
-      <Footer />
-      {!booted && <BootScreen onDone={() => setBooted(true)} />}
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="flex min-h-screen flex-col">
+        <ScrollToTop />
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          <AnimatePresence mode="wait" initial={false}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/journey" element={<Journey />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AnimatePresence>
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   )
 }
