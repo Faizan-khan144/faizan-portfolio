@@ -8,79 +8,91 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: 6rem;
+  overflow-x: clip;
 }
 
 body {
   @apply bg-bg text-ink font-sans antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  @apply bg-accent text-bg;
+  @apply bg-accent text-accent-ink;
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 11px;
 }
 ::-webkit-scrollbar-track {
-  background: #060608;
+  background: #08080a;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2027;
+  background: #232329;
   border-radius: 999px;
+  border: 3px solid #08080a;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2e303a;
+  background: #33333b;
+}
+
+@layer base {
+  a,
+  button,
+  input,
+  textarea,
+  [tabindex] {
+    @apply outline-none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:focus-visible {
+    @apply ring-2 ring-accent ring-offset-2 ring-offset-bg rounded-sm;
+  }
 }
 
 @layer components {
   .container-x {
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+    @apply mx-auto w-full max-w-editorial px-5 sm:px-8 lg:px-10;
   }
 
-  .glass {
-    @apply border border-line bg-white/[0.04] backdrop-blur-md;
+  .eyebrow {
+    @apply font-mono text-[0.7rem] uppercase tracking-wide2 text-muted;
   }
 
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, #10b981, #22d3ee 55%, #8b5cf6);
+  .hairline {
+    @apply h-px w-full bg-line;
   }
 
   .chip {
-    @apply inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.04] px-3.5 py-1.5 font-mono text-xs text-muted;
+    @apply inline-flex items-center rounded-full border border-line bg-white/[0.03] px-3 py-1 font-mono text-xs text-ink/80 transition-colors duration-200 hover:border-accent/40 hover:text-accent;
   }
 
-  .line-h {
-    @apply h-px w-full bg-white/10;
-  }
-
-  .term-marker {
-    @apply font-mono text-accent;
+  .btn-base {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 font-medium text-sm transition-colors duration-200 select-none;
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* Faint CRT-style scanlines / grain overlay */
-  .crt-overlay {
-    background-image:
-      repeating-linear-gradient(
-        0deg,
-        rgba(255, 255, 255, 0.025) 0px,
-        rgba(255, 255, 255, 0.025) 1px,
-        transparent 1px,
-        transparent 3px
-      ),
-      radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 100% 100%, 26px 26px;
+  .text-accent-serif {
+    @apply font-serif italic text-accent;
   }
 }
 
-input,
-textarea {
-  @apply outline-none;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
