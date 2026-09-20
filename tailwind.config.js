@@ -26,8 +26,8 @@ export default {
         wide2: '0.16em',
       },
       boxShadow: {
-        card: '0 1px 2px rgba(6, 14, 11, 0.05), 0 8px 24px -12px rgba(6, 14, 11, 0.25)',
-        'card-hover': '0 2px 4px rgba(6, 14, 11, 0.06), 0 20px 40px -16px rgba(6, 14, 11, 0.35)',
+        card: '0 1px 2px rgba(8, 10, 20, 0.04), 0 12px 28px -12px rgba(8, 10, 20, 0.2)',
+        'card-hover': '0 2px 4px rgba(8, 10, 20, 0.05), 0 24px 48px -16px rgba(8, 10, 20, 0.3)',
       },
       keyframes: {
         marquee: {
