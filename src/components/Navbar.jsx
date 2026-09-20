@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
+import { motion, useScroll, useSpring } from 'framer-motion'
 import { IconMenu, IconClose, IconArrow } from './Icons'
 import Brand from './Brand'
+import ThemeToggle from './ThemeToggle'
 
 const links = [
   { to: '/', label: 'Home' },
@@ -15,6 +17,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const location = useLocation()
+  const { scrollYProgress } = useScroll()
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 })
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -42,10 +46,15 @@ export default function Navbar() {
       >
         Skip to main content
       </a>
+      <motion.div
+        style={{ scaleX: progress }}
+        className="fixed inset-x-0 top-0 z-[60] h-0.5 origin-left bg-accent"
+        aria-hidden="true"
+      ></motion.div>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           scrolled || open
-            ? 'border-b border-line bg-bg/90 shadow-card backdrop-blur-md'
+            ? 'border-b border-line bg-bg/85 shadow-card backdrop-blur-md'
             : 'border-b border-transparent'
         }`}
       >
@@ -83,6 +92,7 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <Link
               to="/contact"
               className="btn-base hidden bg-accent text-accent-ink hover:bg-accent/90 lg:inline-flex"
@@ -123,13 +133,16 @@ export default function Navbar() {
                 {link.label}
               </NavLink>
             ))}
-            <Link
-              to="/contact"
-              className="btn-base mt-4 w-full bg-accent text-accent-ink hover:bg-accent/90"
-            >
-              Let's talk
-              <IconArrow className="h-4 w-4" />
-            </Link>
+            <div className="mt-3 flex items-center gap-2">
+              <ThemeToggle />
+              <Link
+                to="/contact"
+                className="btn-base flex-1 bg-accent text-accent-ink hover:bg-accent/90"
+              >
+                Let's talk
+                <IconArrow className="h-4 w-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </header>
