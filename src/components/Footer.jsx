@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { profile } from '../data/profile'
 import SocialLinks from './SocialLinks'
+import Brand from './Brand'
 import { IconArrow } from './Icons'
 
 const footerLinks = [
@@ -20,12 +21,12 @@ export default function Footer() {
       <div className="container-x py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <p className="eyebrow mb-3">Frontend Developer · Karachi, Pakistan</p>
-            <h2 className="font-display text-2xl font-semibold tracking-tight">
-              {profile.name}
-            </h2>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
-              Building responsive, modern web interfaces - and learning the MERN stack one project at a time.
+            <Link to="/" aria-label="Faizan Khan - home" className="inline-block">
+              <Brand className="text-xl" />
+            </Link>
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              Frontend developer in Karachi, Pakistan - building responsive, modern web interfaces
+              and learning the MERN stack one project at a time.
             </p>
             <SocialLinks className="mt-5" />
           </div>
