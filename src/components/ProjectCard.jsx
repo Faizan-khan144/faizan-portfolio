@@ -9,11 +9,11 @@ function FallbackCover({ project }) {
   return (
     <div className="absolute inset-0">
       <div
-        className="absolute inset-0 bg-[radial-gradient(120%_90%_at_15%_0%,rgba(255,77,46,0.1),transparent_55%)]"
+        className="absolute inset-0 bg-[radial-gradient(120%_90%_at_15%_0%,rgba(var(--color-accent)_/_0.12),transparent_55%)]"
         aria-hidden="true"
       ></div>
       <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(23,23,29,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(23,23,29,0.05)_1px,transparent_1px)] bg-[size:36px_36px]"
+        className="absolute inset-0 bg-[linear-gradient(rgba(var(--color-ink)_/_0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.05)_1px,transparent_1px)] bg-[size:36px_36px]"
         aria-hidden="true"
       ></div>
       <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-5">
