@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Muhammad Faizan Khan - Frontend Developer</title>
   <meta name="description" content="Frontend developer based in Karachi, Pakistan, building responsive, modern web interfaces with React, JavaScript and Tailwind CSS. Currently learning the MERN stack." />
-  <meta name="theme-color" content="#faf9f7" />
+  <meta name="theme-color" content="#0B1310" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Faizan Khan" />
   <meta property="og:title" content="Muhammad Faizan Khan - Frontend Developer" />
@@ -16,6 +16,22 @@
   <meta name="twitter:title" content="Muhammad Faizan Khan - Frontend Developer" />
   <meta name="twitter:description" content="Frontend developer based in Karachi, Pakistan, building responsive, modern web interfaces with React, JavaScript and Tailwind CSS." />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('fz-theme') || 'dark';
+        if (stored === 'light') {
+          document.documentElement.removeAttribute('data-theme');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', stored === 'dark' ? '#0B1310' : '#FAF9F7');
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
