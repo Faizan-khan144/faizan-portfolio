@@ -7,7 +7,7 @@ function shotUrl(url) {
 
 function FallbackCover({ project }) {
   return (
-    <div className="absolute inset-0">
+    <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]">
       <div
         className="absolute inset-0 bg-[radial-gradient(120%_90%_at_15%_0%,rgba(var(--color-accent)_/_0.12),transparent_55%)]"
         aria-hidden="true"
@@ -54,7 +54,7 @@ function PreviewFrame({ project }) {
           alt={`${project.title} preview`}
           loading="lazy"
           onError={() => setFailed(true)}
-          className="absolute inset-x-0 bottom-0 top-9 w-full object-cover object-top"
+          className="absolute inset-x-0 bottom-0 top-9 h-[calc(100%-2.25rem)] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
         />
       )}
 
@@ -66,6 +66,12 @@ function PreviewFrame({ project }) {
 export default function ProjectCard({ project, index = 0, delay = 0 }) {
   return (
     <article className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-line bg-surface shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover">
+      {project.featured && (
+        <span className="absolute left-4 top-4 z-20 inline-flex items-center gap-1.5 rounded-sm border border-accent/40 bg-accent-ink/90 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-wide2 text-accent shadow-card backdrop-blur">
+          <IconStar className="h-3 w-3" />
+          Featured
+        </span>
+      )}
       <PreviewFrame project={project} />
 
       <div className="flex flex-1 flex-col p-5">
