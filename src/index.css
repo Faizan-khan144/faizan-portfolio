@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 html {
@@ -25,15 +25,15 @@ body {
   width: 11px;
 }
 ::-webkit-scrollbar-track {
-  background: #08080a;
+  background: #f4f3ef;
 }
 ::-webkit-scrollbar-thumb {
-  background: #232329;
+  background: #d9d6cd;
   border-radius: 999px;
-  border: 3px solid #08080a;
+  border: 3px solid #f4f3ef;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #33333b;
+  background: #c4c1b8;
 }
 
 @layer base {
@@ -68,7 +68,7 @@ body {
   }
 
   .chip {
-    @apply inline-flex items-center rounded-full border border-line bg-white/[0.03] px-3 py-1 font-mono text-xs text-ink/80 transition-colors duration-200 hover:border-accent/40 hover:text-accent;
+    @apply inline-flex items-center rounded-full border border-line bg-surface px-3 py-1 font-mono text-xs text-ink/75 transition-colors duration-200 hover:border-accent/50 hover:text-accent;
   }
 
   .btn-base {
@@ -78,7 +78,7 @@ body {
 
 @layer utilities {
   .text-accent-serif {
-    @apply font-serif italic text-accent;
+    @apply text-accent;
   }
 }
 
