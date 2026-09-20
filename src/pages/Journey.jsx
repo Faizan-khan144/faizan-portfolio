@@ -13,6 +13,7 @@ export default function Journey() {
       <Seo
         title="Journey - Faizan Khan"
         description="The development journey of Faizan Khan - from first HTML and CSS to React, a frontend internship, Python, and now learning the MERN stack."
+        path="/journey"
       />
 
       <section className="pt-36 pb-16 sm:pt-44 lg:pt-48 lg:pb-20">
