@@ -60,6 +60,7 @@ export default function About() {
       <Seo
         title="About - Faizan Khan"
         description="Frontend developer based in Karachi, Pakistan, learning by building. Focused on responsive, modern interfaces with React and Tailwind CSS, now learning the MERN stack."
+        path="/about"
       />
 
       <section className="pt-36 pb-16 sm:pt-44 lg:pt-48 lg:pb-20">
