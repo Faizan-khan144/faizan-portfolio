@@ -1,46 +1,74 @@
-import { navLinks, socials } from '../data'
+import { Link } from 'react-router-dom'
+import { profile } from '../data/profile'
+import SocialLinks from './SocialLinks'
+import { IconArrow } from './Icons'
+
+const footerLinks = [
+  { to: '/', label: 'Home' },
+  { to: '/about', label: 'About' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/skills', label: 'Skills' },
+  { to: '/journey', label: 'Journey' },
+  { to: '/contact', label: 'Contact' },
+]
 
 export default function Footer() {
+  const year = new Date().getFullYear()
+
   return (
-    <footer className="relative overflow-hidden border-t border-white/10">
-      <div className="pointer-events-none select-none whitespace-nowrap font-mono text-[13vw] font-bold leading-none text-white/[0.04] md:text-[16vw]">
-        FAIZAN KHAN
-      </div>
-      <div className="absolute inset-0 flex flex-col items-center justify-between gap-6 px-6 py-10 md:flex-row">
-        <a href="#top" className="font-mono text-sm text-muted">
-          <span className="text-accent">faizan@dev</span>:
-          <span className="text-cyan">~</span>$
-        </a>
+    <footer className="border-t border-line">
+      <div className="container-x py-14">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+          <div>
+            <p className="eyebrow mb-3">Frontend Developer · Karachi, Pakistan</p>
+            <h2 className="font-display text-2xl font-semibold tracking-tight">
+              {profile.name}
+            </h2>
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+              Building responsive, modern web interfaces - and learning the MERN stack one project at a time.
+            </p>
+            <SocialLinks className="mt-5" />
+          </div>
 
-        <ul className="flex flex-wrap items-center justify-center gap-6">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <a
-                href={`#${link.id}`}
-                className="font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
-              >
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
+          <nav aria-label="Footer">
+            <p className="eyebrow mb-4">Sitemap</p>
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
+              {footerLinks.map((link) => (
+                <li key={link.to}>
+                  <Link
+                    to={link.to}
+                    className="text-sm text-muted transition-colors hover:text-accent"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <div className="flex items-center gap-5">
-          {socials.map((s) => (
+          <div>
+            <p className="eyebrow mb-4">Get in touch</p>
             <a
-              key={s.label}
-              href={s.url}
-              target={s.url.startsWith('http') ? '_blank' : undefined}
-              rel="noreferrer"
-              className="font-mono text-xs uppercase tracking-widest text-muted transition-colors hover:text-accent"
+              href={`mailto:${profile.email}`}
+              className="group inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-accent"
             >
-              {s.label}
+              {profile.email}
+              <IconArrow className="h-3.5 w-3.5 -rotate-45 transition-transform group-hover:translate-x-0.5" />
             </a>
-          ))}
+            <p className="mt-4 text-sm leading-relaxed text-muted">
+              Open to opportunities, collaborations and interesting projects.
+            </p>
+          </div>
         </div>
-      </div>
-      <div className="border-t border-white/10 bg-bg/60 py-5 text-center font-mono text-xs text-muted">
-        © 2026 Faizan Khan — Built with React, Tailwind & Three.js
+
+        <div className="mt-12 border-t border-line pt-6">
+          <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
+            <p className="text-xs text-muted">
+              © {year} {profile.name}. All rights reserved.
+            </p>
+            <p className="font-mono text-xs text-muted">Built with React · Tailwind CSS · Vite</p>
+          </div>
+        </div>
       </div>
     </footer>
   )
