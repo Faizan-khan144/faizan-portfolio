@@ -11,12 +11,9 @@ export default function Button({
   type,
   withArrow = false,
 }) {
-  const styles =
-    variant === 'primary'
-      ? 'bg-accent text-accent-ink hover:bg-accent/90'
-      : 'border border-line text-ink hover:border-accent/60 hover:text-accent'
-
-  const cls = `btn-base ${styles} ${className}`
+  const cls = variant === 'primary'
+    ? `btn-gradient ${className}`
+    : `btn-base rounded-full border border-line bg-surface text-ink transition-colors duration-200 hover:border-accent/60 hover:text-accent ${className}`
 
   const inner = (
     <>
