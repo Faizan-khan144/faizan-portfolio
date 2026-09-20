@@ -12,6 +12,7 @@ export default function Skills() {
       <Seo
         title="Skills - Faizan Khan"
         description="Frontend development skills: React, JavaScript, HTML, CSS and Tailwind CSS. Learning Node.js, Express.js and MongoDB for the MERN stack, plus Python."
+        path="/skills"
       />
 
       <section className="pt-36 pb-16 sm:pt-44 lg:pt-48 lg:pb-20">
