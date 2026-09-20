@@ -74,6 +74,16 @@ function Hero() {
         aria-hidden="true"
       ></div>
       <div
+        className="orb -left-24 top-[-10%] h-80 w-80"
+        style={{ background: 'radial-gradient(circle at 30% 30%, rgba(139,92,246,0.45), transparent 70%)' }}
+        aria-hidden="true"
+      ></div>
+      <div
+        className="orb -right-16 top-[18%] h-96 w-96"
+        style={{ background: 'radial-gradient(circle at 60% 20%, rgba(34,211,238,0.32), transparent 70%)' }}
+        aria-hidden="true"
+      ></div>
+      <div
         className="pointer-events-none absolute inset-x-0 top-0 h-[400px] bg-[linear-gradient(rgba(var(--color-ink)_/_0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.04)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
         aria-hidden="true"
       ></div>
@@ -93,10 +103,10 @@ function Hero() {
           <Reveal delay={0.05}>
             <p className="eyebrow mt-7">Hi, I'm</p>
             <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-              Muhammad Faizan <span className="text-accent">Khan</span>
+              Muhammad Faizan <span className="text-gradient">Khan</span>
             </h1>
             <p className="mt-5 font-display text-xl font-medium text-muted sm:text-2xl">
-              Frontend Developer · <span className="text-ink">MERN Stack Learner</span>
+              Frontend Developer · <span className="text-gradient">MERN Stack Learner</span>
             </p>
           </Reveal>
 
