@@ -35,8 +35,15 @@ export default function Navbar() {
   }, [open])
 
   return (
-    <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+    <>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-accent-ink"
+      >
+        Skip to main content
+      </a>
+      <header
+        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled || open ? 'border-b border-line bg-bg/90 backdrop-blur-md' : 'border-b border-transparent'
       }`}
     >
@@ -131,6 +138,7 @@ export default function Navbar() {
           </Link>
         </div>
       </div>
-    </header>
+      </header>
+    </>
   )
 }
