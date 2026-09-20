@@ -5,6 +5,7 @@ export const profile = {
   tagline: 'MERN Stack Learner',
   location: 'Karachi, Pakistan',
   email: 'muhammadfaizankhan525@gmail.com',
+  avatar: 'https://avatars.githubusercontent.com/u/212717009?v=4',
   github: 'https://github.com/Faizan-khan144',
   linkedin: 'https://www.linkedin.com/in/muhammad-faizan-khan-76513041a/',
   x: 'https://x.com/faizan525nk',
