@@ -1,0 +1,17 @@
+{
+  "name": "Muhammad Faizan Khan - Frontend Developer",
+  "short_name": "Faizan Khan",
+  "description": "Frontend developer based in Karachi, Pakistan, building responsive, modern web interfaces with React, JavaScript and Tailwind CSS.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B1310",
+  "theme_color": "#0B1310",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
