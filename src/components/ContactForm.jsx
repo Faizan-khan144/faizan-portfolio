@@ -12,6 +12,9 @@ export default function ContactForm() {
     const form = e.currentTarget
     const payload = Object.fromEntries(new FormData(form))
     payload._captcha = 'false'
+    payload._template = 'table'
+    payload._subject = `Portfolio message from ${payload.name}`
+    payload._replyto = payload.email
     setStatus('sending')
     try {
       const res = await fetch(`https://formsubmit.co/ajax/${profile.email}`, {
