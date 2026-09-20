@@ -4,30 +4,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#0a0a0c',
-        surface: '#101014',
-        'surface-2': '#16161c',
-        line: 'rgba(255, 255, 255, 0.08)',
-        ink: '#f2f1ec',
-        muted: '#a3a19c',
-        accent: '#d9a85b',
-        'accent-ink': '#1c1508',
+        bg: '#faf9f7',
+        surface: '#ffffff',
+        'surface-2': '#f1f0ec',
+        line: 'rgba(18, 18, 24, 0.1)',
+        ink: '#17171d',
+        muted: '#63606a',
+        accent: '#ff4d2e',
+        'accent-ink': '#ffffff',
       },
       fontFamily: {
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
-        serif: ['Fraunces', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
       },
       maxWidth: {
-        editorial: '70rem',
-        content: '42rem',
+        editorial: '72rem',
+        content: '40rem',
       },
       letterSpacing: {
-        wide2: '0.18em',
+        wide2: '0.16em',
       },
-      transitionTimingFunction: {
-        out: 'cubic-bezier(0.22, 1, 0.36, 1)',
+      boxShadow: {
+        card: '0 1px 2px rgba(18,18,24,0.04), 0 8px 24px -12px rgba(18,18,24,0.12)',
+        'card-hover': '0 2px 4px rgba(18,18,24,0.05), 0 20px 40px -16px rgba(18,18,24,0.2)',
       },
     },
   },
