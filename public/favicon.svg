@@ -1,5 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#0a0a0c"/>
-  <rect x="1" y="1" width="62" height="62" rx="13" fill="none" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
-  <text x="32" y="42" font-family="Georgia, serif" font-size="30" font-style="italic" fill="#d9a85b" text-anchor="middle">K</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="11" fill="#ff4d2e"/>
+  <path d="M16 15L8 24L16 33" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M32 15L40 24L32 33" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M28 14L20 34" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
 </svg>
