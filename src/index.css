@@ -11,24 +11,24 @@
   --color-line: 20 20 20;
   --color-ink: 18 18 18;
   --color-muted: 104 102 94;
-  --color-accent: 108 148 12;
-  --color-accent-ink: 252 252 248;
+  --color-accent: 160 122 40;
+  --color-accent-ink: 255 255 252;
   --scrollbar-track: #f2f0ea;
   --scrollbar-thumb: #c9c6ba;
 }
 
 [data-theme='dark'] {
   color-scheme: dark;
-  --color-bg: 10 10 10;
-  --color-surface: 18 18 18;
-  --color-surface-2: 26 26 26;
-  --color-line: 245 245 245;
-  --color-ink: 236 236 231;
-  --color-muted: 148 148 141;
-  --color-accent: 198 241 46;
-  --color-accent-ink: 12 12 12;
-  --scrollbar-track: #0a0a0a;
-  --scrollbar-thumb: #262626;
+  --color-bg: 12 12 11;
+  --color-surface: 20 20 18;
+  --color-surface-2: 28 28 25;
+  --color-line: 230 228 220;
+  --color-ink: 236 234 227;
+  --color-muted: 150 148 138;
+  --color-accent: 201 168 76;
+  --color-accent-ink: 18 16 8;
+  --scrollbar-track: #0c0c0b;
+  --scrollbar-thumb: #2a291f;
 }
 
 html {
