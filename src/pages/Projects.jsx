@@ -18,6 +18,7 @@ export default function Projects() {
       <Seo
         title="Projects - Faizan Khan"
         description="A selection of projects built by Faizan Khan - school platforms, developer tools, dashboards, websites, games and Python utilities."
+        path="/projects"
       />
 
       <section className="pt-36 pb-16 sm:pt-44 lg:pt-48 lg:pb-20">
