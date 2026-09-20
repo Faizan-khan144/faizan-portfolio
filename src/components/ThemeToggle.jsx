@@ -30,7 +30,7 @@ export default function ThemeToggle({ className = '' }) {
       document.documentElement.removeAttribute('data-theme')
     }
     const meta = document.querySelector('meta[name="theme-color"]')
-    if (meta) meta.setAttribute('content', next ? '#0B1310' : '#FAF9F7')
+    if (meta) meta.setAttribute('content', next ? '#080A14' : '#F7F8FC')
   }
 
   return (
