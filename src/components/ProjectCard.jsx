@@ -1,47 +1,71 @@
+import { useState } from 'react'
 import { IconArrow, IconExternal, IconGitHub, IconStar } from './Icons'
 
-function PreviewFrame({ project }) {
-  const initial = project.title.charAt(0)
+function shotUrl(url) {
+  return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=900&h=560`
+}
 
+function FallbackCover({ project }) {
   return (
-    <div className="pointer-events-none relative aspect-[16/10] select-none overflow-hidden rounded-t-lg border-b border-line bg-surface">
+    <div className="absolute inset-0">
       <div
-        className="absolute inset-0"
-        style={{
-          background: `radial-gradient(120% 90% at 20% 0%, rgba(217,168,91,0.07) 0%, rgba(0,0,0,0) 55%)`,
-        }}
+        className="absolute inset-0 bg-[radial-gradient(120%_90%_at_15%_0%,rgba(255,77,46,0.1),transparent_55%)]"
         aria-hidden="true"
       ></div>
+      <div
+        className="absolute inset-0 bg-[linear-gradient(rgba(23,23,29,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(23,23,29,0.05)_1px,transparent_1px)] bg-[size:36px_36px]"
+        aria-hidden="true"
+      ></div>
+      <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-5">
+        <div>
+          <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent">
+            {project.category}
+          </p>
+          <p className="font-display text-2xl font-semibold leading-none tracking-tight sm:text-3xl">
+            {project.title}
+          </p>
+        </div>
+        <span className="max-w-[45%] truncate font-mono text-[0.65rem] text-muted">
+          github.com/Faizan-khan144/{project.name}
+        </span>
+      </div>
+    </div>
+  )
+}
 
-      <div className="absolute inset-x-0 top-0 flex items-center gap-1.5 border-b border-line px-4 py-2.5">
-        <span className="h-2 w-2 rounded-full bg-[#2a2a31]" aria-hidden="true"></span>
-        <span className="h-2 w-2 rounded-full bg-[#2a2a31]" aria-hidden="true"></span>
-        <span className="h-2 w-2 rounded-full bg-[#2a2a31]" aria-hidden="true"></span>
+function PreviewFrame({ project }) {
+  const [failed, setFailed] = useState(false)
+  const showImage = !!project.live && !failed
+
+  return (
+    <div className="pointer-events-none relative aspect-[16/10] select-none overflow-hidden rounded-t-lg border-b border-line bg-surface-2">
+      <div className="relative z-10 flex items-center gap-1.5 border-b border-line bg-surface px-4 py-2.5">
+        <span className="h-2.5 w-2.5 rounded-full bg-accent/70" aria-hidden="true"></span>
+        <span className="h-2.5 w-2.5 rounded-full bg-[#e8b33c]" aria-hidden="true"></span>
+        <span className="h-2.5 w-2.5 rounded-full bg-[#3fb950]" aria-hidden="true"></span>
         <span className="ml-3 truncate font-mono text-[0.65rem] text-muted">
           {project.live || `github.com/Faizan-khan144/${project.name}`}
         </span>
       </div>
 
-      <div className="absolute inset-x-0 bottom-0 top-9 flex flex-col justify-end p-4">
-        <span
-          className="font-serif text-5xl italic leading-none text-accent/90"
-          aria-hidden="true"
-        >
-          {initial}
-        </span>
-        <span className="mt-2 h-px w-10 bg-accent/50" aria-hidden="true"></span>
-        <div className="mt-3 flex flex-col gap-1.5">
-          <span className="h-1.5 w-3/4 rounded-full bg-white/[0.08]" aria-hidden="true"></span>
-          <span className="h-1.5 w-1/2 rounded-full bg-white/[0.05]" aria-hidden="true"></span>
-        </div>
-      </div>
+      {showImage && (
+        <img
+          src={shotUrl(project.live)}
+          alt={`${project.title} preview`}
+          loading="lazy"
+          onError={() => setFailed(true)}
+          className="absolute inset-x-0 bottom-0 top-9 w-full object-cover object-top"
+        />
+      )}
+
+      {!showImage && <FallbackCover project={project} />}
     </div>
   )
 }
 
 export default function ProjectCard({ project, index = 0, delay = 0 }) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-line bg-surface transition-colors duration-300 hover:border-accent/40">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-line bg-surface shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover">
       <PreviewFrame project={project} />
 
       <div className="flex flex-1 flex-col p-5">
@@ -66,7 +90,7 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
         <ul className="mt-4 flex flex-wrap gap-1.5">
           {project.tech.map((t) => (
             <li key={t}>
-              <span className="inline-flex rounded border border-line bg-white/[0.03] px-2 py-0.5 font-mono text-[0.65rem] text-ink/70">
+              <span className="inline-flex rounded border border-line bg-surface-2 px-2 py-0.5 font-mono text-[0.65rem] text-ink/75">
                 {t}
               </span>
             </li>
@@ -103,7 +127,7 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
         href={project.live || project.github}
         target="_blank"
         rel="noreferrer"
-        className="absolute right-4 top-4 flex h-9 w-9 translate-y-1 items-center justify-center rounded-md border border-line bg-bg/80 text-ink opacity-0 backdrop-blur transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:border-accent/60 hover:text-accent"
+        className="absolute right-4 top-4 flex h-9 w-9 translate-y-1 items-center justify-center rounded-md border border-line bg-surface text-ink opacity-0 backdrop-blur transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 hover:border-accent/60 hover:text-accent"
         aria-hidden="true"
         tabIndex={-1}
       >
