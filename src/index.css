@@ -2,11 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+[data-theme='light'] {
   color-scheme: light;
+  --color-bg: 250 249 247;
+  --color-surface: 255 255 255;
+  --color-surface-2: 241 240 236;
+  --color-line: 18 18 24;
+  --color-ink: 23 23 29;
+  --color-muted: 99 96 106;
+  --color-accent: 255 77 46;
+  --color-accent-ink: 255 255 255;
+  --scrollbar-track: #f4f3ef;
+  --scrollbar-thumb: #d9d6cd;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: 11 15 14;
+  --color-surface: 17 23 21;
+  --color-surface-2: 23 30 28;
+  --color-line: 64 80 74;
+  --color-ink: 234 240 237;
+  --color-muted: 154 168 160;
+  --color-accent: 52 211 153;
+  --color-accent-ink: 6 14 11;
+  --scrollbar-track: #0b1310;
+  --scrollbar-thumb: #22302b;
 }
 
 html {
+  background-color: rgb(var(--color-bg));
   scroll-behavior: smooth;
   scroll-padding-top: 6rem;
   overflow-x: clip;
@@ -25,15 +51,15 @@ body {
   width: 11px;
 }
 ::-webkit-scrollbar-track {
-  background: #f4f3ef;
+  background: var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb {
-  background: #d9d6cd;
+  background: var(--scrollbar-thumb);
   border-radius: 999px;
-  border: 3px solid #f4f3ef;
+  border: 3px solid var(--scrollbar-track);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #c4c1b8;
+  filter: brightness(0.9);
 }
 
 @layer base {
