@@ -1,6 +1,8 @@
+import { motion } from 'framer-motion'
+
 export default function SkillCategory({ category, index = 0 }) {
   return (
-    <div className="flex flex-col rounded-lg border border-line bg-surface p-6 transition-colors duration-300 hover:border-accent/40">
+    <div className="flex h-full flex-col rounded-[1.1rem] border border-line/10 bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover">
       <div className="flex items-baseline justify-between">
         <span className="font-mono text-[0.65rem] tracking-wide2 text-accent">{category.num}</span>
         <span className="font-mono text-[0.65rem] uppercase tracking-wide2 text-muted">
@@ -13,10 +15,16 @@ export default function SkillCategory({ category, index = 0 }) {
       <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{category.description}</p>
 
       <ul className="mt-4 flex flex-wrap gap-2">
-        {category.skills.map((skill) => (
-          <li key={skill}>
+        {category.skills.map((skill, i) => (
+          <motion.li
+            key={skill}
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.35, delay: 0.04 * i, ease: 'easeOut' }}
+          >
             <span className="chip">{skill}</span>
-          </li>
+          </motion.li>
         ))}
       </ul>
     </div>

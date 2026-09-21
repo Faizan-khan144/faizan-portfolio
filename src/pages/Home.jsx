@@ -121,6 +121,19 @@ function Hero() {
         aria-hidden="true"
       ></div>
 
+      <motion.div
+        className="pointer-events-none absolute -left-20 top-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
+        animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
+        transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
+        aria-hidden="true"
+      ></motion.div>
+      <motion.div
+        className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-sky-500/10 blur-3xl"
+        animate={{ y: [0, 26, 0], x: [0, -18, 0] }}
+        transition={{ duration: 13, repeat: Infinity, ease: 'easeInOut' }}
+        aria-hidden="true"
+      ></motion.div>
+
       <Container className="relative grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
         <div>
           <Reveal>
