@@ -1,12 +1,12 @@
 export const journey = [
   {
-    period: '2025',
+    period: '2023',
     type: 'Foundations',
     title: 'First lines of HTML & CSS',
     text: 'Started the development journey by learning the fundamentals of structure, semantics and styling. Shipped the first website - My First Website - to celebrate the start.',
   },
   {
-    period: '2025 - 2026',
+    period: '2024 - 2025',
     type: 'JavaScript',
     title: 'Interactive projects & games',
     text: 'Deepened JavaScript by building interactive projects, browser games and utilities - Rock Paper Scissors, Tic Tac Toe, a profile card generator, an attendance tracker and a developer dashboard.',

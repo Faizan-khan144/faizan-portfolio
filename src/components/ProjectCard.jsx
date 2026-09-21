@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Reveal from './Reveal'
 import { IconArrow, IconExternal, IconGitHub, IconStar } from './Icons'
@@ -17,45 +16,81 @@ function accentFor(project) {
   return accents[project.id] || '#6E6E73'
 }
 
-function shotUrl(url) {
-  return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=900&h=560`
+function initials(title) {
+  return title
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word[0])
+    .join('')
+    .slice(0, 3)
+    .toUpperCase()
 }
 
-function FallbackCover({ project }) {
+function CoverArt({ project }) {
+  const accent = accentFor(project)
   return (
-    <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.04]">
+    <div className="absolute inset-0 overflow-hidden transition-transform duration-500 group-hover:scale-[1.05]">
+      <div className="absolute inset-0 bg-surface-2" aria-hidden="true"></div>
       <div
-        className="absolute inset-0 bg-[radial-gradient(120%_90%_at_15%_0%,rgba(var(--color-accent)_/_0.12),transparent_55%)]"
+        className="absolute inset-0"
+        style={{
+          background: `radial-gradient(120% 100% at 12% 0%, ${accent}40, ${accent}08 48%, transparent 62%)`,
+        }}
         aria-hidden="true"
       ></div>
       <div
-        className="absolute inset-0 bg-[linear-gradient(rgba(var(--color-ink)_/_0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.05)_1px,transparent_1px)] bg-[size:36px_36px]"
+        className="absolute inset-0 bg-[linear-gradient(rgba(var(--color-ink)_/_0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.045)_1px,transparent_1px)] bg-[size:34px_34px] [mask-image:radial-gradient(90%_90%_at_50%_0%,black,transparent)]"
         aria-hidden="true"
       ></div>
-      <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-5">
+      <div
+        className="absolute -right-6 -bottom-8 select-none font-display text-[7.5rem] font-extrabold leading-none tracking-tighter transition-transform duration-500 group-hover:-translate-y-2"
+        style={{ color: `${accent}22` }}
+        aria-hidden="true"
+      >
+        {initials(project.title)}
+      </div>
+
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-5">
         <div>
-          <p className="mb-2 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent">
+          <p
+            className="mb-2 inline-flex items-center gap-1.5 font-mono text-[0.65rem] uppercase tracking-wide2"
+            style={{ color: accent }}
+          >
+            <span
+              className="inline-block h-1.5 w-1.5 rounded-full"
+              style={{ backgroundColor: accent }}
+              aria-hidden="true"
+            ></span>
             {project.category}
           </p>
-          <p className="font-display text-2xl font-semibold leading-none tracking-tight sm:text-3xl">
+          <p className="font-display text-2xl font-bold leading-none tracking-tight text-ink sm:text-3xl">
             {project.title}
           </p>
         </div>
-        <span className="max-w-[45%] truncate font-mono text-[0.65rem] text-muted">
-          github.com/Faizan-khan144/{project.name}
-        </span>
+        <div className="flex max-w-[45%] flex-wrap justify-end gap-1.5">
+          {project.tech.slice(0, 3).map((tech) => (
+            <span
+              key={tech}
+              className="rounded-full border border-line/10 bg-bg/80 px-2.5 py-1 font-mono text-[0.6rem] text-ink/70 backdrop-blur"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
       </div>
+
+      <div
+        className="pointer-events-none absolute top-0 h-full w-1/3 -rotate-12 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700 group-hover:translate-x-[420%]"
+        aria-hidden="true"
+      ></div>
     </div>
   )
 }
 
 function PreviewFrame({ project }) {
-  const [failed, setFailed] = useState(false)
-  const showImage = !!project.live && !failed
-
   return (
-    <div className="pointer-events-none relative aspect-[16/10] select-none overflow-hidden rounded-t-lg border-b border-line/10 bg-surface-2">
-      <div className="relative z-10 flex items-center gap-1.5 border-b border-line bg-surface px-4 py-2.5">
+    <div className="pointer-events-none relative aspect-[16/10] select-none overflow-hidden rounded-t-xl border-b border-line/10 bg-surface-2">
+      <div className="relative z-10 flex items-center gap-1.5 border-b border-line/10 bg-surface px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-accent/70" aria-hidden="true"></span>
         <span className="h-2.5 w-2.5 rounded-full bg-[#e8b33c]" aria-hidden="true"></span>
         <span className="h-2.5 w-2.5 rounded-full bg-[#3fb950]" aria-hidden="true"></span>
@@ -64,17 +99,7 @@ function PreviewFrame({ project }) {
         </span>
       </div>
 
-      {showImage && (
-        <img
-          src={shotUrl(project.live)}
-          alt={`${project.title} preview`}
-          loading="lazy"
-          onError={() => setFailed(true)}
-          className="absolute inset-x-0 bottom-0 top-9 h-[calc(100%-2.25rem)] w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]"
-        />
-      )}
-
-      {!showImage && <FallbackCover project={project} />}
+      <CoverArt project={project} />
     </div>
   )
 }
