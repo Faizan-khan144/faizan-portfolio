@@ -166,15 +166,21 @@ body {
   }
 }
 
-/* Hard, editorial corners across the whole site - no pill-y AI look */
+/* Premium soft corners across the whole site */
 :where(.rounded-full) {
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
-:where(.rounded-xl),
-:where(.rounded-lg),
+:where(.rounded-xl) {
+  border-radius: 0.9rem;
+}
+
+:where(.rounded-lg) {
+  border-radius: 0.65rem;
+}
+
 :where(.rounded-md) {
-  border-radius: 5px;
+  border-radius: 0.5rem;
 }
 
 @keyframes cursorBlink {
