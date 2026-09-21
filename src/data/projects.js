@@ -10,7 +10,7 @@ export const projectCategories = [
   'Internship',
 ]
 
-export const featuredProjects = ['schoolmarks', 'devdock', 'eduboard-pro', 'cryptolens-dashboard']
+export const featuredProjects = ['devdock', 'eduboard-pro', 'cryptolens-dashboard', 'fz-bank-modern-banking-website']
 
 export const projects = [
   {
@@ -99,6 +99,7 @@ export const projects = [
     name: 'fz-bank-modern-banking-website',
     title: 'FZ Bank',
     category: 'Websites',
+    featured: true,
     description:
       'A modern banking website with a responsive interface featuring deposits, withdrawals, balance tracking and a polished UI.',
     tech: ['HTML', 'CSS', 'JavaScript'],
