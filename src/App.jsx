@@ -2,7 +2,9 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, MotionConfig } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import Loader from './components/Loader'
 import BackToTop from './components/BackToTop'
+import Assistant from './components/Assistant'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -18,6 +20,7 @@ export default function App() {
   return (
     <MotionConfig reducedMotion="user">
       <div className="flex min-h-screen flex-col">
+        <Loader />
         <ScrollToTop />
         <Navbar />
         <main id="main-content" className="flex-1">
@@ -35,6 +38,7 @@ export default function App() {
         </main>
         <Footer />
         <BackToTop />
+        <Assistant />
       </div>
     </MotionConfig>
   )
