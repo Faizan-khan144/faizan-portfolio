@@ -5,9 +5,10 @@ import { projects } from './projects'
 
 export const suggestedPrompts = [
   'Who is Faizan?',
+  'What is React?',
+  'Tell me about OpenTrace',
   'What are his skills?',
-  'What has he built?',
-  'How did he start coding?',
+  'How did his journey start?',
   'Is he open to work?',
   'How do I contact him?',
 ]
@@ -33,6 +34,72 @@ function skills() {
   return {
     text: `He works with:\n\n${list}\n\nHe's currently learning Node.js, Express.js and MongoDB as part of the MERN stack.`,
     links: [{ label: 'View full skills', url: '/skills' }],
+  }
+}
+
+const techKnowledge = {
+  mern: {
+    text: 'MERN is the MongoDB + Express + React + Node stack. Faizan is strong on the React front-end and is currently learning Node.js, Express.js and MongoDB to complete the full stack.',
+    links: [{ label: 'Skills', url: '/skills' }],
+  },
+  mongodb: {
+    text: 'MongoDB is a document database that stores data in flexible, JSON-like documents. Faizan is learning it as the "M" of the MERN stack for full-stack apps.',
+    links: [],
+  },
+  tailwind: {
+    text: 'Tailwind CSS is a utility-first CSS framework. Faizan styles everything with it - tokens, dark mode and responsive layouts, including this whole portfolio.',
+    links: [],
+  },
+  javascript: {
+    text: 'JavaScript is Faizan\'s core language. Every bit of interactivity here - the typewriter, the terminal, the marquee and even this chat - is JavaScript (React) in action.',
+    links: [{ label: 'Project: DevDock', url: '/projects' }],
+  },
+  express: {
+    text: 'Express.js is a lightweight web framework for Node.js that handles routes, middleware and REST APIs. Faizan is learning it as the "E" in the MERN stack.',
+    links: [],
+  },
+  nodejs: {
+    text: 'Node.js lets JavaScript run on the server. Faizan is currently learning it as part of the MERN stack - building full-stack applications end to end.',
+    links: [],
+  },
+  react: {
+    text: 'React is a component-based JavaScript library for building user interfaces. It is Faizan\'s main framework - this portfolio, DevDock, CryptoLens and OpenTrace all run on it.',
+    links: [{ label: 'React projects', url: '/projects' }],
+  },
+  python: {
+    text: 'Python is Faizan\'s second language. He uses it for scripting and built his first Python project - a Student Management System covering OOP, records and JSON data storage.',
+    links: [],
+  },
+  vite: {
+    text: 'Vite is a fast build tool for modern web apps. This whole site is built and bundled with Vite.',
+    links: [],
+  },
+  github: {
+    text: 'GitHub hosts his public repos and deploys. All of his work - including this portfolio - lives under github.com/Faizan-khan144.',
+    links: [{ label: 'GitHub', url: profile.github }],
+  },
+  git: {
+    text: 'Git is the version-control tool he uses daily - committing and pushing every change to GitHub.',
+    links: [],
+  },
+  css: {
+    text: 'CSS powers the look - layout, color and animation. Combined with Tailwind, it\'s how every page in this portfolio is styled.',
+    links: [],
+  },
+  html: {
+    text: 'HTML is the skeleton of every page. Faizan\'s portfolio markup - semantic sections, forms and accessible labels - is all HTML5.',
+    links: [],
+  },
+}
+
+function techReply(input) {
+  const keys = Object.keys(techKnowledge).sort((a, b) => b.length - a.length)
+  const hit = keys.find((k) => input.includes(k))
+  if (!hit) return null
+  const t = techKnowledge[hit]
+  return {
+    text: t.text,
+    links: t.links,
   }
 }
 
@@ -139,7 +206,7 @@ function thanks() {
 
 function fallback() {
   return {
-    text: `I'm not sure about that one, but I can help with these:\n\n• Who is Faizan?\n• What are his skills?\n• What has he built?\n• How did he start coding?\n• Is he open to work?\n• How do I contact him?`,
+    text: `I can only talk about Faizan and the things he works with. Try one of these:\n\n• Who is Faizan?\n• What is React? Tell me about MERN, Tailwind or Python\n• Tell me about OpenTrace or DevDock\n• What are his skills?\n• How did his journey start?\n• Is he open to work?\n• How do I contact him?`,
     links: [],
   }
 }
@@ -148,7 +215,7 @@ const rules = [
   { keywords: ['hello', 'hi', 'hey', 'salam', 'salaam', 'assalam', 'alo', 'yo'], reply: greetings },
   { keywords: ['who', 'about', 'introduce', 'yourself', 'background', 'tell'], reply: about },
   { keywords: ['skill', 'tech', 'stack', 'know', 'languages', 'expert'], reply: skills },
-  { keywords: ['project', 'work', 'build', 'built', 'portfolio', 'create', 'made'], reply: projectsReply },
+  { keywords: ['project', 'work', 'build', 'built', 'portfolio', 'create', 'made', 'experience', 'career', 'resume'], reply: projectsReply },
   { keywords: ['journey', 'history', 'start', 'begin', 'timeline', 'learn', 'story', 'how'], reply: journeyReply },
   { keywords: ['intern', 'codealpha', 'program'], reply: internship },
   { keywords: ['contact', 'email', 'reach', 'hire', 'job', 'opportunity', 'collaborate', 'freelance', 'offer'], reply: contact },
@@ -163,6 +230,9 @@ export function getReply(raw) {
 
   const detail = projectDetail(tokens)
   if (detail) return detail
+
+  const tech = techReply(input)
+  if (tech) return tech
 
   const focused = focusAreas(tokens)
   if (focused) return focused

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ChevronRight, Rocket, Sparkles } from 'lucide-react'
 import ChatPanel from '../components/ChatPanel'
+import ParticleField from '../components/ParticleField'
 import PageTransition from '../components/PageTransition'
 import Seo from '../components/Seo'
 import Container from '../components/Container'
@@ -264,6 +265,7 @@ function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[linear-gradient(rgba(var(--color-ink)_/_0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.03)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
         aria-hidden="true"
       ></div>
+      <ParticleField className="absolute inset-0 h-full w-full opacity-70" />
 
       <motion.div
         className="pointer-events-none absolute -left-20 top-24 h-72 w-72 rounded-full bg-accent/10 blur-3xl"
@@ -295,7 +297,7 @@ function Hero() {
               I build{' '}
               <Typewriter words={typingRoles} className="text-accent" />
               <br />
-              that feel <span className="moss-text">alive.</span>
+              that feel <span className="text-shimmer">alive.</span>
             </h1>
           </Reveal>
 

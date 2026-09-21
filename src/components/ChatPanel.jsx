@@ -49,6 +49,8 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
   const [started, setStarted] = useState(false)
   const scrollRef = useRef(null)
   const inputRef = useRef(null)
+  const valueRef = useRef('')
+  valueRef.current = value
 
   useEffect(() => {
     if (!started) {
@@ -60,7 +62,10 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
       }, 700)
       return () => clearTimeout(t)
     }
-    if (autoFocus) inputRef.current?.focus()
+    if (autoFocus) {
+      const t = setTimeout(() => inputRef.current?.focus(), 120)
+      return () => clearTimeout(t)
+    }
     return undefined
   }, [started, autoFocus])
 
@@ -69,9 +74,10 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
   }, [messages, typing])
 
   function ask(question) {
-    const text = question.trim()
+    const text = String(question ?? '').trim()
     if (!text || typing) return
     setValue('')
+    valueRef.current = ''
     setMessages((m) => [...m, { role: 'user', text }])
     setTyping(true)
     setTimeout(() => {
@@ -83,7 +89,7 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
           ...m,
           {
             role: 'bot',
-            text: "I hit a snag answering that one. Try asking me something else about Faizan.",
+            text: "I hit a snag answering that one. Try asking me about his tech stack, projects or coding journey.",
             links: [],
           },
         ])
@@ -91,7 +97,12 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
         setTyping(false)
         inputRef.current?.focus()
       }
-    }, 650 + Math.random() * 450)
+    }, 500 + Math.random() * 400)
+  }
+
+  function sendFromInput(raw) {
+    const text = String(raw ?? valueRef.current ?? '').trim()
+    if (text) ask(text)
   }
 
   return (
@@ -192,24 +203,40 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
         <form
           onSubmit={(e) => {
             e.preventDefault()
-            ask(value)
+            sendFromInput(e.target.message?.value)
           }}
           className="mt-1.5 flex items-center gap-2"
         >
           <input
             ref={inputRef}
+            name="message"
             type="text"
+            inputMode="text"
+            enterKeyHint="send"
+            spellCheck={false}
+            autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
             value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="Ask about Faizan..."
-            aria-label="Ask about Faizan"
-            className="h-11 flex-1 rounded-full border border-line/15 bg-surface-2 px-4 text-sm text-ink outline-none transition placeholder:text-muted/70 focus:border-accent/60"
+            onChange={(e) => {
+              setValue(e.target.value)
+              valueRef.current = e.target.value
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault()
+                sendFromInput(e.currentTarget.value)
+              }
+            }}
+            placeholder="Ask about his teck stack..."
+            aria-label="Ask about Faizan's tech, work or journey"
+            className="h-11 flex-1 rounded-full border border-line/15 bg-surface-2 px-4 text-base text-ink outline-none transition placeholder:text-muted/70 focus:border-accent/60 focus:ring-2 focus:ring-accent/20"
           />
           <button
             type="submit"
-            disabled={!value.trim() || typing}
             aria-label="Send message"
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink transition hover:scale-105 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink transition-all duration-200 hover:bg-ink hover:text-bg active:scale-90"
+            style={{ opacity: value.trim() ? 1 : 0.45 }}
           >
             <IconSend className="h-4 w-4" />
           </button>
