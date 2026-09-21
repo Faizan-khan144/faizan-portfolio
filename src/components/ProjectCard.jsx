@@ -1,6 +1,20 @@
 import { useState } from 'react'
 import { IconArrow, IconExternal, IconGitHub, IconStar } from './Icons'
 
+const accents = {
+  schoolmarks: '#8B5CF6',
+  devdock: '#0EA5E9',
+  'eduboard-pro': '#2D6A4F',
+  'cryptolens-dashboard': '#C4A265',
+  'zaviyan-turns-one': '#F59E0B',
+  'fz-bank-modern-banking-website': '#10B981',
+  'august-and-oak-ecommerce': '#C4A265',
+}
+
+function accentFor(project) {
+  return accents[project.id] || '#6E6E73'
+}
+
 function shotUrl(url) {
   return `https://s.wordpress.com/mshots/v1/${encodeURIComponent(url)}?w=900&h=560`
 }
@@ -38,7 +52,7 @@ function PreviewFrame({ project }) {
   const showImage = !!project.live && !failed
 
   return (
-    <div className="pointer-events-none relative aspect-[16/10] select-none overflow-hidden rounded-t-lg border-b border-line bg-surface-2">
+    <div className="pointer-events-none relative aspect-[16/10] select-none overflow-hidden rounded-t-lg border-b border-line/10 bg-surface-2">
       <div className="relative z-10 flex items-center gap-1.5 border-b border-line bg-surface px-4 py-2.5">
         <span className="h-2.5 w-2.5 rounded-full bg-accent/70" aria-hidden="true"></span>
         <span className="h-2.5 w-2.5 rounded-full bg-[#e8b33c]" aria-hidden="true"></span>
@@ -65,7 +79,12 @@ function PreviewFrame({ project }) {
 
 export default function ProjectCard({ project, index = 0, delay = 0 }) {
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-lg border border-line bg-surface shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover">
+    <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.1rem] border border-line/10 bg-surface shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-line/20 hover:shadow-card-hover">
+      <div
+        className="absolute inset-x-0 top-0 z-10 h-[3px] bg-gradient-to-r from-[var(--pc-accent)] to-transparent"
+        style={{ '--pc-accent': accentFor(project) }}
+        aria-hidden="true"
+      ></div>
       {project.featured && (
         <span className="absolute left-4 top-4 z-20 inline-flex items-center gap-1.5 rounded-sm border border-accent/40 bg-accent-ink/90 px-2.5 py-1 font-mono text-[0.6rem] uppercase tracking-wide2 text-accent shadow-card backdrop-blur">
           <IconStar className="h-3 w-3" />
@@ -75,21 +94,21 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
       <PreviewFrame project={project} />
 
       <div className="flex flex-1 flex-col p-5">
-        <div className="mb-3 flex items-center justify-between gap-2">
-          <span className="font-mono text-[0.65rem] uppercase tracking-wide2 text-muted">
-            {project.category}
-          </span>
+        <div className="mb-2 flex items-center justify-between font-mono text-[0.65rem] text-muted">
+          <span>0{index + 1}</span>
           {project.stars ? (
-            <span className="inline-flex items-center gap-1 font-mono text-[0.65rem] text-muted">
-              <IconStar className="h-3 w-3 text-accent" />
+            <span className="inline-flex items-center gap-1">
+              <IconStar className="h-3 w-3" style={{ color: accentFor(project) }} />
               {project.stars}
             </span>
           ) : null}
         </div>
 
-        <h3 className="font-display text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">
-          {project.title}
-        </h3>
+        <h3 className="font-display text-lg font-bold tracking-tight text-ink">{project.title}</h3>
+
+        <p className="mt-0.5 font-mono text-xs font-medium" style={{ color: accentFor(project) }}>
+          {project.category}
+        </p>
 
         <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{project.description}</p>
 
@@ -103,12 +122,12 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
           ))}
         </ul>
 
-        <div className="mt-5 flex items-center gap-4 border-t border-line pt-4">
+        <div className="mt-5 flex items-center gap-4 border-t border-line/10 pt-4">
           <a
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-muted transition-colors hover:text-accent"
+            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-xs font-semibold text-bg transition-colors hover:bg-accent"
             aria-label={`${project.title} source on GitHub`}
           >
             <IconGitHub className="h-4 w-4" />
@@ -119,7 +138,7 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
               href={project.live}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-muted transition-colors hover:text-accent"
+              className="inline-flex items-center gap-1.5 rounded-full border border-line/20 px-4 py-2 text-xs font-semibold text-ink transition-colors hover:border-accent/60 hover:text-accent"
               aria-label={`${project.title} live demo`}
             >
               <IconExternal className="h-4 w-4" />
