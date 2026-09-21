@@ -92,9 +92,11 @@ export default function Assistant() {
       <motion.button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1.2, type: 'spring', stiffness: 260, damping: 18 }}
+        initial={false}
+        animate={{ scale: [1, 1.08, 1], opacity: 1 }}
+        transition={{ scale: { duration: 2.6, repeat: Infinity, ease: 'easeInOut' } }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.94 }}
         aria-expanded={open}
         aria-label={open ? 'Close assistant' : 'Ask about Faizan'}
         className="fixed bottom-6 right-6 z-[75] flex h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-ink shadow-card transition-transform hover:scale-105"
