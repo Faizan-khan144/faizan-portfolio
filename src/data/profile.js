@@ -9,6 +9,7 @@ export const profile = {
   github: 'https://github.com/Faizan-khan144',
   linkedin: 'https://www.linkedin.com/in/muhammad-faizan-khan-76513041a/',
   x: 'https://x.com/faizan525nk',
+  instagram: 'https://www.instagram.com/muhammadfaizankhan324/',
   availability: 'Open to new opportunities',
   intro:
     'I am a frontend developer based in Karachi who builds fast, responsive and thoughtfully designed web interfaces. I work across the modern frontend stack - HTML, CSS, JavaScript, React and Tailwind CSS - and I am currently learning the full MERN stack to build complete web applications.',
@@ -32,5 +33,6 @@ export const socials = [
   { label: 'GitHub', name: 'Faizan-khan144', url: profile.github },
   { label: 'LinkedIn', name: 'in/muhammad-faizan-khan-76513041a', url: profile.linkedin },
   { label: 'X', name: '@faizan525nk', url: profile.x },
+  { label: 'Instagram', name: 'muhammadfaizankhan324', url: profile.instagram },
   { label: 'Email', name: 'muhammadfaizankhan525@gmail.com', url: `mailto:${profile.email}` },
 ]
