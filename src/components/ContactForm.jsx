@@ -7,6 +7,13 @@ const inputClasses =
 export default function ContactForm() {
   const [status, setStatus] = useState('idle')
 
+  function fallbackMailto(payload) {
+    const subject = payload.subject ? `[Portfolio] ${payload.subject}` : 'Portfolio contact'
+    const body = `Name: ${payload.name}\nEmail: ${payload.email}\n\n${payload.message}`
+    const url = `${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    window.location.href = `mailto:${url}`
+  }
+
   async function handleSubmit(e) {
     e.preventDefault()
     const form = e.currentTarget
@@ -14,7 +21,6 @@ export default function ContactForm() {
     payload._captcha = 'false'
     payload._template = 'table'
     payload._subject = `Portfolio message from ${payload.name}`
-    payload._replyto = payload.email
     setStatus('sending')
     try {
       const res = await fetch(`https://formsubmit.co/ajax/${profile.email}`, {
@@ -25,11 +31,13 @@ export default function ContactForm() {
       if (res.ok) {
         setStatus('ok')
         form.reset()
-      } else {
-        setStatus('error')
+        return
       }
+      fallbackMailto(payload)
+      setStatus('mailto')
     } catch {
-      setStatus('error')
+      fallbackMailto(payload)
+      setStatus('mailto')
     }
   }
 
@@ -106,6 +114,17 @@ export default function ContactForm() {
       {status === 'ok' && (
         <p className="mt-4 rounded-md border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-ink">
           Message sent - thank you! I'll get back to you as soon as I can.
+        </p>
+      )}
+
+      {status === 'mailto' && (
+        <p className="mt-4 rounded-md border border-accent/30 bg-accent/10 px-4 py-3 text-sm text-ink">
+          Your email app just opened with your message pre-filled - hit send there and it goes
+          straight to my inbox. If nothing popped up, write to{' '}
+          <a href={`mailto:${profile.email}`} className="text-accent hover:underline">
+            {profile.email}
+          </a>
+          .
         </p>
       )}
 

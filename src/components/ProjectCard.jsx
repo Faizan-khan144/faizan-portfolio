@@ -4,7 +4,7 @@ import Reveal from './Reveal'
 import { IconArrow, IconExternal, IconGitHub, IconStar } from './Icons'
 
 const accents = {
-  schoolmarks: '#8B5CF6',
+  opentrace: '#8B5CF6',
   devdock: '#0EA5E9',
   'eduboard-pro': '#2D6A4F',
   'cryptolens-dashboard': '#C4A265',

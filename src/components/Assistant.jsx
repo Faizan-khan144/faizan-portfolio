@@ -73,6 +73,14 @@ export default function Assistant() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
   }, [messages, typing])
 
+  useEffect(() => {
+    function open() {
+      setOpen(true)
+    }
+    window.addEventListener('fz:assistant:open', open)
+    return () => window.removeEventListener('fz:assistant:open', open)
+  }, [])
+
   function ask(question) {
     const text = question.trim()
     if (!text || typing) return

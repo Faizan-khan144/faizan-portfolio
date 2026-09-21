@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 import { animate } from 'framer-motion'
-import Brand from './Brand'
 
 export default function Loader() {
   const [progress, setProgress] = useState(0)
@@ -20,7 +19,7 @@ export default function Loader() {
 
   useEffect(() => {
     if (!leaving) return
-    const t = setTimeout(() => setGone(true), 750)
+    const t = setTimeout(() => setGone(true), 700)
     return () => clearTimeout(t)
   }, [leaving])
 
@@ -29,32 +28,25 @@ export default function Loader() {
   return (
     <div className="pointer-events-none" aria-hidden="true">
       <div
-        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center gap-10 bg-bg transition-opacity duration-700 ease-out ${
+        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-bg transition-opacity duration-700 ease-out ${
           leaving ? 'opacity-0' : 'opacity-100'
         }`}
       >
-        <div className="flex flex-col items-center gap-3">
-          <Brand className="text-3xl sm:text-4xl" />
-          <p className="font-mono text-[0.6rem] uppercase tracking-[0.45em] text-accent">
-            Frontend Developer
-          </p>
-        </div>
+        <p className="font-mono text-sm tracking-[0.2em] text-accent">
+          {`<`}faizan /{`>`}
+        </p>
 
-        <div className="flex w-[min(360px,72vw)] flex-col items-center gap-4">
-          <div className="relative h-[2px] w-full overflow-hidden bg-line/15">
-            <div
-              className="absolute left-0 top-0 h-full bg-gradient-to-r from-[#8a6a2a] via-[#c9a84c] to-[#e6c97a] transition-[width] ease-out"
-              style={{ width: `${progress}%`, transitionDuration: '120ms' }}
-            ></div>
-          </div>
-          <span className="font-mono text-lg font-semibold tracking-[0.2em] text-ink">
-            {progress}%
-          </span>
-        </div>
-
-        <span className="absolute bottom-10 font-mono text-[0.55rem] uppercase tracking-[0.4em] text-muted/60">
-          Preparing your experience
+        <span className="mt-8 font-display text-7xl font-extrabold tabular-nums tracking-tight text-ink sm:text-8xl">
+          {progress}
+          <span className="text-accent">%</span>
         </span>
+
+        <div className="relative mt-8 h-[2px] w-[min(220px,60vw)] overflow-hidden bg-line/15">
+          <div
+            className="absolute left-0 top-0 h-full bg-gradient-to-r from-accent via-[#52b788] to-[#7388ff]"
+            style={{ width: `${progress}%`, transitionDuration: '120ms' }}
+          ></div>
+        </div>
       </div>
     </div>
   )

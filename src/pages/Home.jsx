@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import PageTransition from '../components/PageTransition'
 import Seo from '../components/Seo'
 import Container from '../components/Container'
@@ -9,9 +9,8 @@ import ProjectCard from '../components/ProjectCard'
 import SocialLinks from '../components/SocialLinks'
 import ContactForm from '../components/ContactForm'
 import Typewriter from '../components/Typewriter'
-import CountUp from '../components/CountUp'
 import { profile } from '../data/profile'
-import { projects } from '../data/projects'
+import { projects, featuredProjects } from '../data/projects'
 import { skillCategories } from '../data/skills'
 import { journey } from '../data/journey'
 import { IconMail, IconMapPin } from '../components/Icons'
@@ -57,6 +56,143 @@ function TechStrip() {
         <Row />
       </div>
     </div>
+  )
+}
+
+const terminalSessions = [
+  { cmd: 'whoami', out: 'Muhammad Faizan Khan - Frontend Developer' },
+  { cmd: 'ls ./stack', out: 'React  Tailwind CSS  JavaScript' },
+  { cmd: 'cat ./learning', out: 'Node.js  Express.js  MongoDB  (MERN)' },
+  { cmd: 'ls ./featured', out: 'OpenTrace  DevDock  CryptoLens' },
+  { cmd: './status', out: 'open to new opportunities' },
+]
+
+function TerminalChip({ children, className = '', delay = 0, distance = 8 }) {
+  return (
+    <motion.div
+      className={`pointer-events-none absolute z-20 ${className}`}
+      animate={{ y: [0, -distance, 0] }}
+      transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay }}
+      aria-hidden="true"
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function HeroTerminal() {
+  const [si, setSi] = useState(0)
+  const [cmdLen, setCmdLen] = useState(0)
+  const [outLen, setOutLen] = useState(0)
+
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), { stiffness: 160, damping: 18 })
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-6, 6]), { stiffness: 160, damping: 18 })
+
+  useEffect(() => {
+    const session = terminalSessions[si]
+    if (cmdLen < session.cmd.length) {
+      const t = setTimeout(() => setCmdLen((v) => v + 1), 42)
+      return () => clearTimeout(t)
+    }
+    if (outLen < session.out.length) {
+      const t = setTimeout(() => setOutLen((v) => v + 1), 26)
+      return () => clearTimeout(t)
+    }
+    const t = setTimeout(() => {
+      setSi((v) => (v + 1) % terminalSessions.length)
+      setCmdLen(0)
+      setOutLen(0)
+    }, 1700)
+    return () => clearTimeout(t)
+  }, [si, cmdLen, outLen])
+
+  function onPointerMove(e) {
+    const rect = e.currentTarget.getBoundingClientRect()
+    mx.set((e.clientX - rect.left) / rect.width - 0.5)
+    my.set((e.clientY - rect.top) / rect.height - 0.5)
+  }
+
+  function onPointerLeave() {
+    mx.set(0)
+    my.set(0)
+  }
+
+  const active = terminalSessions[si]
+  const past = terminalSessions.slice(Math.max(0, si - 2), si)
+
+  return (
+    <motion.div
+      className="relative mx-auto w-full max-w-md"
+      style={{ rotateX, rotateY, transformPerspective: 1000 }}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+    >
+      <TerminalChip className="-left-6 -top-5">
+        <span className="flex items-center gap-1.5 rounded-full border border-line/15 bg-surface px-3.5 py-2 font-mono text-xs font-medium text-ink shadow-card">
+          ✦ React
+        </span>
+      </TerminalChip>
+      <TerminalChip className="-right-4 top-[44%]" delay={0.8} distance={10}>
+        <span className="flex items-center gap-1.5 rounded-full bg-accent px-3.5 py-2 font-mono text-xs font-medium text-accent-ink shadow-card">
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent-ink"></span>
+          Open to work
+        </span>
+      </TerminalChip>
+      <TerminalChip className="-bottom-5 -left-4" delay={1.6} distance={9}>
+        <span className="flex items-center gap-1.5 rounded-full border border-line/15 bg-surface px-3.5 py-2 font-mono text-xs font-medium text-ink shadow-card">
+          🚀 MERN
+        </span>
+      </TerminalChip>
+
+      <motion.div
+        className="relative overflow-hidden rounded-2xl border border-line/10 bg-surface shadow-card-hover"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-accent via-[#52b788] to-transparent"></div>
+
+        <div className="flex items-center gap-2 border-b border-line/10 bg-surface-2/60 px-4 py-3">
+          <span className="h-3 w-3 rounded-full bg-[#ff5f57]" aria-hidden="true"></span>
+          <span className="h-3 w-3 rounded-full bg-[#febc2e]" aria-hidden="true"></span>
+          <span className="h-3 w-3 rounded-full bg-[#28c840]" aria-hidden="true"></span>
+          <span className="ml-3 font-mono text-[0.65rem] tracking-wide2 text-muted">
+            &lt;faizan /&gt; — zsh
+          </span>
+        </div>
+
+        <div className="h-56 px-5 py-4 font-mono text-[0.8rem] leading-[1.7]">
+          {past.map((session) => (
+            <div key={session.cmd} className="mb-1">
+              <p className="text-ink">
+                <span className="mr-2 text-accent" aria-hidden="true">➜</span>
+                <span className="text-muted">{session.cmd}</span>
+              </p>
+              <p className="pl-5 text-accent">{session.out}</p>
+            </div>
+          ))}
+
+          <p className="text-ink">
+            <span className="mr-2 text-accent" aria-hidden="true">➜</span>
+            <span className="text-muted">{active.cmd.slice(0, cmdLen)}</span>
+            <span className="ml-0.5 inline-block h-3.5 w-[7px] translate-y-[2px] animate-pulse bg-accent"></span>
+          </p>
+          {outLen > 0 && (
+            <p className="pl-5 text-accent">
+              {active.out.slice(0, outLen)}
+              <span className="ml-0.5 inline-block h-3.5 w-[7px] translate-y-[2px] animate-pulse bg-accent"></span>
+            </p>
+          )}
+
+          <p className="mt-3 text-muted/60">
+            <span className="mr-2 text-accent" aria-hidden="true">➜</span>
+            Featured: <span className="text-ink">{featuredProjects.map((id) => projects.find((p) => p.id === id)?.title).join(' · ')}</span>
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -178,6 +314,17 @@ function Hero() {
             </p>
           </Reveal>
 
+          <Reveal delay={0.24}>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('fz:assistant:open'))}
+              className="mt-4 inline-flex items-center gap-2 rounded-full border border-dashed border-accent/50 px-4 py-2 font-mono text-xs text-accent transition-colors hover:border-accent hover:bg-accent/10"
+            >
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent"></span>
+              Ask my AI assistant about me
+            </button>
+          </Reveal>
+
           <Reveal delay={0.22}>
             <div className="mt-8 border-t border-line/10 pt-6">
               <p className="eyebrow mb-3">Find me on</p>
@@ -187,66 +334,7 @@ function Hero() {
         </div>
 
         <Reveal delay={0.12}>
-          <div className="mx-auto w-full max-w-sm">
-            <div className="relative rounded-[1.25rem] border border-line/10 bg-surface p-6 shadow-card transition-shadow duration-300 hover:shadow-card-hover">
-              <motion.div
-                className="absolute -top-4 -right-3 flex items-center gap-2 rounded-full bg-accent px-3.5 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent-ink shadow-card"
-                animate={{ y: [0, -7, 0] }}
-                transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-                aria-hidden="true"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-accent-ink"></span>
-                5+ Years Coding
-              </motion.div>
-              <div className="flex items-start justify-between gap-4">
-                <img
-                  src={profile.avatar}
-                  alt={`${profile.name} avatar`}
-                  width={104}
-                  height={104}
-                  loading="lazy"
-                  className="h-28 w-28 rounded-[1.1rem] border border-line/10 object-cover"
-                />
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent/5 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true"></span>
-                  Open to work
-                </span>
-              </div>
-
-              <p className="mt-5 font-display text-xl font-bold tracking-tight">
-                {profile.firstName} Khan
-              </p>
-              <p className="mt-1 text-sm text-muted">{profile.role}</p>
-              <p className="mt-3 inline-flex items-center gap-2 text-sm text-muted">
-                <IconMapPin className="h-4 w-4 text-accent" />
-                {profile.location}
-              </p>
-
-              <dl className="mt-6 grid grid-cols-3 divide-x divide-line/10 rounded-xl border border-line/10 bg-surface-2">
-                {profile.facts.map((fact) => (
-                  <div key={fact.label} className="px-3 py-4 text-center">
-                    <dd className="font-display text-2xl font-semibold text-accent">
-                      <CountUp value={parseInt(fact.value, 10)} />
-                      {fact.value.endsWith('+') && (
-                        <span className="text-accent" aria-hidden="true">+</span>
-                      )}
-                    </dd>
-                    <dt className="mt-1 block text-[0.6rem] uppercase tracking-wide2 text-muted">
-                      {fact.label}
-                    </dt>
-                  </div>
-                ))}
-              </dl>
-
-              <a
-                href={`mailto:${profile.email}`}
-                className="btn-base mt-6 w-full rounded-full border border-line/15 text-ink transition-colors hover:border-accent/60 hover:text-accent"
-              >
-                <IconMail className="h-4 w-4" />
-                {profile.email}
-              </a>
-            </div>
-          </div>
+          <HeroTerminal />
         </Reveal>
       </Container>
     </section>

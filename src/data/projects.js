@@ -10,21 +10,21 @@ export const projectCategories = [
   'Internship',
 ]
 
-export const featuredProjects = ['devdock', 'eduboard-pro', 'cryptolens-dashboard', 'fz-bank-modern-banking-website']
+export const featuredProjects = ['opentrace', 'devdock', 'cryptolens-dashboard']
 
 export const projects = [
   {
-    id: 'schoolmarks',
-    name: 'schoolmarks',
-    title: 'Schoolmarks',
-    category: 'Platforms',
+    id: 'opentrace',
+    name: 'OpenTrace',
+    title: 'OpenTrace',
+    category: 'Tools',
     featured: true,
     description:
-      'A modern school management platform for students, classes, subjects, examinations, marks, attendance, results, performance and reports.',
-    tech: ['React', 'Tailwind CSS'],
-    github: 'https://github.com/Faizan-khan144/schoolmarks',
-    live: 'https://schoolmarks.vercel.app',
-    stars: 2,
+      'OpenTrace - a structured map of useful websites and resources across the web. Find the right website for anything.',
+    tech: ['React', 'Tailwind CSS', 'Vite'],
+    github: 'https://github.com/Faizan-khan144/OpenTrace',
+    live: 'https://opentrace-faizan.vercel.app',
+    stars: 3,
     brand: '#d9a85b',
   },
   {
@@ -39,20 +39,6 @@ export const projects = [
     github: 'https://github.com/Faizan-khan144/devdock',
     live: 'https://faizan-khan144.github.io/devdock/',
     stars: 3,
-    brand: '#d9a85b',
-  },
-  {
-    id: 'eduboard-pro',
-    name: 'eduboard-pro',
-    title: 'Eduboard PRO',
-    category: 'Platforms',
-    featured: true,
-    description:
-      'A student productivity dashboard with assignments, subjects, notes, Pomodoro, analytics, achievements, notifications and dark mode - powered by React and Tailwind with LocalStorage.',
-    tech: ['React', 'Tailwind CSS'],
-    github: 'https://github.com/Faizan-khan144/eduboard-pro',
-    live: 'https://faizan-khan144.github.io/eduboard-pro/',
-    stars: 4,
     brand: '#d9a85b',
   },
   {
@@ -99,7 +85,6 @@ export const projects = [
     name: 'fz-bank-modern-banking-website',
     title: 'FZ Bank',
     category: 'Websites',
-    featured: true,
     description:
       'A modern banking website with a responsive interface featuring deposits, withdrawals, balance tracking and a polished UI.',
     tech: ['HTML', 'CSS', 'JavaScript'],
@@ -119,6 +104,19 @@ export const projects = [
     github: 'https://github.com/Faizan-khan144/zaviyan-turns-one',
     live: 'https://faizan-khan144.github.io/zaviyan-turns-one/',
     stars: 5,
+    brand: '#d9a85b',
+  },
+  {
+    id: 'eduboard-pro',
+    name: 'eduboard-pro',
+    title: 'Eduboard PRO',
+    category: 'Platforms',
+    description:
+      'A student productivity dashboard with assignments, subjects, notes, Pomodoro, analytics, achievements, notifications and dark mode - powered by React and Tailwind with LocalStorage.',
+    tech: ['React', 'Tailwind CSS'],
+    github: 'https://github.com/Faizan-khan144/eduboard-pro',
+    live: 'https://faizan-khan144.github.io/eduboard-pro/',
+    stars: 4,
     brand: '#d9a85b',
   },
   {
