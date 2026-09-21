@@ -12,6 +12,7 @@ import Projects from './pages/Projects'
 import Skills from './pages/Skills'
 import Journey from './pages/Journey'
 import Contact from './pages/Contact'
+import AiAssistant from './pages/AiAssistant'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
               <Route path="/skills" element={<Skills />} />
               <Route path="/journey" element={<Journey />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/ai" element={<AiAssistant />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>

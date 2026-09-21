@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { ChevronRight, Rocket, Sparkles } from 'lucide-react'
+import ChatPanel from '../components/ChatPanel'
 import PageTransition from '../components/PageTransition'
 import Seo from '../components/Seo'
 import Container from '../components/Container'
@@ -41,7 +43,7 @@ function TechStrip() {
           className="mx-8 inline-flex items-center gap-8 font-display text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl"
         >
           {item}
-          <span className="text-accent transition-transform duration-300 group-hover:rotate-90" aria-hidden="true">✦</span>
+          <Sparkles className="h-4 w-4 text-accent transition-transform duration-300 group-hover:rotate-90" aria-hidden="true" />
         </span>
       ))}
     </div>
@@ -131,7 +133,8 @@ function HeroTerminal() {
     >
       <TerminalChip className="-left-6 -top-5">
         <span className="flex items-center gap-1.5 rounded-full border border-line/15 bg-surface px-3.5 py-2 font-mono text-xs font-medium text-ink shadow-card">
-          ✦ React
+          <Sparkles className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+          React
         </span>
       </TerminalChip>
       <TerminalChip className="-right-4 top-[44%]" delay={0.8} distance={10}>
@@ -142,7 +145,8 @@ function HeroTerminal() {
       </TerminalChip>
       <TerminalChip className="-bottom-5 -left-4" delay={1.6} distance={9}>
         <span className="flex items-center gap-1.5 rounded-full border border-line/15 bg-surface px-3.5 py-2 font-mono text-xs font-medium text-ink shadow-card">
-          🚀 MERN
+          <Rocket className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
+          MERN
         </span>
       </TerminalChip>
 
@@ -167,7 +171,7 @@ function HeroTerminal() {
           {past.map((session) => (
             <div key={session.cmd} className="mb-1">
               <p className="text-ink">
-                <span className="mr-2 text-accent" aria-hidden="true">➜</span>
+                <ChevronRight className="mr-1.5 inline h-4 w-4 text-accent" aria-hidden="true" />
                 <span className="text-muted">{session.cmd}</span>
               </p>
               <p className="pl-5 text-accent">{session.out}</p>
@@ -175,7 +179,7 @@ function HeroTerminal() {
           ))}
 
           <p className="text-ink">
-            <span className="mr-2 text-accent" aria-hidden="true">➜</span>
+            <ChevronRight className="mr-1.5 inline h-4 w-4 text-accent" aria-hidden="true" />
             <span className="text-muted">{active.cmd.slice(0, cmdLen)}</span>
             <span className="ml-0.5 inline-block h-3.5 w-[7px] translate-y-[2px] animate-pulse bg-accent"></span>
           </p>
@@ -187,7 +191,7 @@ function HeroTerminal() {
           )}
 
           <p className="mt-3 text-muted/60">
-            <span className="mr-2 text-accent" aria-hidden="true">➜</span>
+            <ChevronRight className="mr-1.5 inline h-4 w-4 text-accent" aria-hidden="true" />
             Featured: <span className="text-ink">{featuredProjects.map((id) => projects.find((p) => p.id === id)?.title).join(' · ')}</span>
           </p>
         </div>
@@ -559,13 +563,52 @@ function Projects() {
   )
 }
 
+function AiSection() {
+  return (
+    <section className="border-t border-line py-20 lg:py-28">
+      <Container>
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
+          <Reveal>
+            <SectionHeader
+              num="05"
+              eyebrow="FZ AI"
+              title={
+                <>
+                  Meet <span className="moss-text">FZ AI</span> - my assistant, built on real data.
+                </>
+              }
+              description="Ask it anything about my work, skills, projects or journey - it answers only from what I've actually built. Nothing is fabricated."
+            />
+            <ul className="mt-6 space-y-3">
+              {['What has he built?', 'What skills does he have?', 'How do I contact him?'].map(
+                (q) => (
+                  <li key={q} className="flex items-center gap-3 font-mono text-sm text-muted">
+                    <ChevronRight className="h-4 w-4 text-accent" aria-hidden="true" />
+                    {q}
+                  </li>
+                )
+              )}
+            </ul>
+            <Button to="/ai" withArrow className="mt-8">
+              Open the AI page
+            </Button>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <ChatPanel className="h-full" />
+          </Reveal>
+        </div>
+      </Container>
+    </section>
+  )
+}
+
 function Contact() {
   return (
     <section className="border-t border-line py-20 lg:py-28">
       <Container>
         <Reveal>
           <SectionHeader
-            num="05"
+            num="06"
             eyebrow="Contact"
             title={
               <>
@@ -637,6 +680,7 @@ export default function Home() {
       <Skills />
       <Experience />
       <Projects />
+      <AiSection />
       <Contact />
     </PageTransition>
   )

@@ -15,6 +15,7 @@ const links = [
   { to: '/projects', label: 'Work' },
   { to: '/skills', label: 'Skills' },
   { to: '/journey', label: 'Journey' },
+  { to: '/ai', label: 'AI' },
 ]
 
 export default function Navbar() {
