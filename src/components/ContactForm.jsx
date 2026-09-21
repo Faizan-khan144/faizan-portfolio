@@ -122,7 +122,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="btn-base group mt-6 w-full border border-accent bg-accent text-accent-ink transition-colors duration-300 hover:bg-accent-ink hover:text-accent disabled:cursor-not-allowed"
+        className="btn-base group mt-6 w-full rounded-full bg-ink text-bg transition-colors duration-300 hover:bg-accent hover:text-accent-ink disabled:cursor-not-allowed sm:w-auto"
       >
         {status === 'sending' ? 'Sending...' : 'Send message'}
       </button>

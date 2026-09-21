@@ -1,29 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="fzGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#6366F1"/>
-      <stop offset="0.55" stop-color="#8B5CF6"/>
-      <stop offset="1" stop-color="#22D3EE"/>
+    <linearGradient id="fzBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1B4332"/>
+      <stop offset="1" stop-color="#2D6A4F"/>
     </linearGradient>
-    <linearGradient id="fzGradText" x1="14" y1="16" x2="50" y2="48" gradientUnits="userSpaceOnUse">
+    <linearGradient id="fzRing" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#52B788"/>
+      <stop offset="1" stop-color="#2D6A4F"/>
+    </linearGradient>
+    <linearGradient id="fzText" x1="14" y1="16" x2="50" y2="48" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#FFFFFF"/>
-      <stop offset="1" stop-color="#DDE3FF"/>
-    </linearGradient>
-    <filter id="fzGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.4 0 0 0 0 0.36 0 0 0 0 0.95 0 0 0 0.65 0"/>
-      <feMerge>
-        <feMergeNode/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-    <linearGradient id="fzHairline" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#A5B4FC"/>
-      <stop offset="1" stop-color="#67E8F9"/>
+      <stop offset="1" stop-color="#BCE4CE"/>
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#fzGrad)"/>
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="none" stroke="url(#fzHairline)" stroke-opacity="0.5" stroke-width="1.5"/>
-  <text x="32" y="42" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="-1.5" fill="url(#fzGradText)" filter="url(#fzGlow)">FZ</text>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#fzBg)"/>
+  <text x="32" y="43" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="-1.5" fill="url(#fzText)">FZ</text>
+  <g>
+    <circle cx="32" cy="32" r="26" fill="none" stroke="url(#fzRing)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="12 10" opacity="0.9">
+      <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32" dur="7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="46" cy="18" r="3" fill="#52B788">
+      <animate attributeName="opacity" values="1;0.25;1" dur="2.2s" repeatCount="indefinite"/>
+    </circle>
+  </g>
 </svg>

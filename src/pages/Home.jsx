@@ -35,19 +35,24 @@ const techStrip = [
 
 function TechStrip() {
   const Row = () => (
-    <div className="flex shrink-0 items-center py-4">
+    <div className="flex shrink-0 items-center">
       {techStrip.map((item) => (
-        <span key={item} className="mx-6 inline-flex items-center gap-3">
-          <span>{item}</span>
-          <span className="text-accent" aria-hidden="true">✦</span>
+        <span
+          key={item}
+          className="mx-8 inline-flex items-center gap-8 font-display text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl"
+        >
+          {item}
+          <span className="text-accent transition-transform duration-300 group-hover:rotate-90" aria-hidden="true">✦</span>
         </span>
       ))}
     </div>
   )
 
   return (
-    <div className="overflow-hidden border-y border-line bg-surface/40" aria-hidden="true">
-      <div className="flex w-max animate-marquee">
+    <div className="group relative overflow-hidden border-y border-line/10 bg-surface/40 py-6" aria-hidden="true">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-bg to-transparent"></div>
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-bg to-transparent"></div>
+      <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
         <Row />
         <Row />
       </div>
@@ -403,7 +408,7 @@ function Projects() {
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {list.map((project, i) => (
             <Reveal key={project.id} delay={i * 0.04}>
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={i} />
             </Reveal>
           ))}
         </div>
