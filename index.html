@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
   <meta name="author" content="Muhammad Faizan Khan" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://faizan-portfolio-kappa.vercel.app/" />
-  <meta name="theme-color" content="#080A14" />
+  <meta name="theme-color" content="#FFFFFF" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
   <meta property="og:site_name" content="Faizan Khan" />
@@ -27,22 +27,22 @@
   <script>
     (function () {
       try {
-        var stored = localStorage.getItem('fz-theme') || 'dark';
+        var stored = localStorage.getItem('fz-theme') || 'light';
         if (stored === 'light') {
           document.documentElement.removeAttribute('data-theme');
         } else {
           document.documentElement.setAttribute('data-theme', 'dark');
         }
         var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute('content', stored === 'dark' ? '#080A14' : '#F7F8FC');
+        if (meta) meta.setAttribute('content', stored === 'dark' ? '#0B0C0E' : '#FFFFFF');
       } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'dark');
+        document.documentElement.removeAttribute('data-theme');
       }
     })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div id="root"></div>
