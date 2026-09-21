@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
+import TiltCard from './TiltCard'
 
 export default function SkillCategory({ category, index = 0 }) {
   return (
-    <div className="flex h-full flex-col rounded-[1.1rem] border border-line/10 bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover">
+    <TiltCard className="h-full flex-col rounded-[1.1rem] border border-line/10 bg-surface p-6 shadow-card transition-shadow duration-300 hover:border-accent/40 hover:shadow-card-hover">
       <div className="flex items-baseline justify-between">
         <span className="font-mono text-[0.65rem] tracking-wide2 text-accent">{category.num}</span>
         <span className="font-mono text-[0.65rem] uppercase tracking-wide2 text-muted">
@@ -18,8 +19,8 @@ export default function SkillCategory({ category, index = 0 }) {
         {category.skills.map((skill, i) => (
           <motion.li
             key={skill}
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 8, rotate: -3 }}
+            whileInView={{ opacity: 1, y: 0, rotate: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.35, delay: 0.04 * i, ease: 'easeOut' }}
           >
@@ -27,6 +28,6 @@ export default function SkillCategory({ category, index = 0 }) {
           </motion.li>
         ))}
       </ul>
-    </div>
+    </TiltCard>
   )
 }

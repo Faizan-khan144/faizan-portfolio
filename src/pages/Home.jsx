@@ -4,6 +4,7 @@ import { ChevronRight, Rocket, Sparkles } from 'lucide-react'
 import ChatPanel from '../components/ChatPanel'
 import ParticleField from '../components/ParticleField'
 import Magnetic from '../components/Magnetic'
+import TiltCard from '../components/TiltCard'
 import PageTransition from '../components/PageTransition'
 import Seo from '../components/Seo'
 import Container from '../components/Container'
@@ -137,6 +138,17 @@ function HeroTerminal() {
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
     >
+      <div
+        className="pointer-events-none absolute inset-1/2 -z-10 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2"
+        aria-hidden="true"
+      >
+        <span className="animate-halo absolute inset-0 rounded-full bg-[radial-gradient(circle,rgba(var(--color-accent)_/_0.16),transparent_62%)] blur-2xl"></span>
+        <span className="animate-spin-slow absolute inset-0 rounded-full border border-dashed border-accent/20"></span>
+        <span className="animate-spin-slower absolute -inset-6 rounded-full border border-dashed border-line/20"></span>
+        <span className="animate-spin-slow absolute inset-0">
+          <span className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 rounded-full bg-accent shadow-[0_0_10px_2px_rgb(var(--color-accent)/0.45)]"></span>
+        </span>
+      </div>
       <TerminalChip className="-left-6 -top-5">
         <span className="flex items-center gap-1.5 rounded-full border border-line/15 bg-surface px-3.5 py-2 font-mono text-xs font-medium text-ink shadow-card">
           <Sparkles className="h-3.5 w-3.5 text-accent" aria-hidden="true" />
@@ -212,7 +224,7 @@ function SectionHeader({ num, eyebrow, title, description }) {
       ? title.split(' ').map((word, i) => (
           <motion.span
             key={i}
-            className="inline-block"
+            className="inline-block cursor-default transition-colors duration-300 hover:text-accent"
             initial={{ y: '110%', opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true, margin: '-60px' }}
@@ -499,21 +511,26 @@ function Experience() {
         <ol className="mt-12 space-y-4">
           {journey.map((item, i) => (
             <Reveal key={item.period + item.title} delay={i * 0.04}>
-              <li className="group relative flex flex-col gap-3 rounded-lg border border-line bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-card-hover sm:flex-row sm:items-center sm:gap-8">
-                <div className="sm:w-44 shrink-0">
-                  <span className="font-mono text-xs uppercase tracking-wide2 text-accent">
-                    {item.period}
-                  </span>
-                  <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-wide2 text-muted">
-                    {item.type}
-                  </p>
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-display text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">
-                    {item.title}
-                  </h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-muted">{item.text}</p>
-                </div>
+              <li className="group relative">
+                <TiltCard
+                  className="flex flex-col gap-3 rounded-lg border border-line/10 bg-surface p-6 shadow-card transition-colors duration-300 hover:border-accent/40 sm:flex-row sm:items-center sm:gap-8"
+                  max={5}
+                >
+                  <div className="sm:w-44 shrink-0">
+                    <span className="font-mono text-xs uppercase tracking-wide2 text-accent">
+                      {item.period}
+                    </span>
+                    <p className="mt-1 font-mono text-[0.65rem] uppercase tracking-wide2 text-muted">
+                      {item.type}
+                    </p>
+                  </div>
+                  <div className="min-w-0">
+                    <h3 className="font-display text-lg font-semibold tracking-tight transition-colors group-hover:text-accent">
+                      {item.title}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-muted">{item.text}</p>
+                  </div>
+                </TiltCard>
               </li>
             </Reveal>
           ))}

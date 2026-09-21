@@ -276,6 +276,36 @@ body {
   animation: heroBounce 1.8s ease-in-out infinite;
 }
 
+@keyframes spinSlow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 22s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spinSlow 38s linear infinite;
+}
+
+@keyframes haloPulse {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+.animate-halo {
+  animation: haloPulse 5s ease-in-out infinite;
+}
+
 .btn-shine {
   position: relative;
   overflow: hidden;
@@ -333,6 +363,28 @@ body {
 
 .group:hover .project-glow-bar::after {
   transform: translateX(400%) skewX(-18deg);
+}
+
+.link-slide {
+  position: relative;
+  display: inline-flex;
+}
+
+.link-slide::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: rgb(var(--color-accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.link-slide:hover::after {
+  transform: scaleX(1);
 }
 
 .text-shimmer {

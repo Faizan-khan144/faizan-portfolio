@@ -24,7 +24,7 @@ export default function Skills() {
               Skills
             </p>
             <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
-              A frontend-first stack, <span className="moss-text">growing full-stack.</span>
+              A frontend-first stack, <span className="text-shimmer">growing full-stack.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
               These are the technologies I work with and the areas I'm actively learning - listed

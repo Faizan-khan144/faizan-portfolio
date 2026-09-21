@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import PageTransition from '../components/PageTransition'
 import Seo from '../components/Seo'
 import Container from '../components/Container'
 import Reveal from '../components/Reveal'
+import Parallax from '../components/Parallax'
 import Button from '../components/Button'
 import ProjectCard from '../components/ProjectCard'
 import { projects, projectCategories } from '../data/projects'
@@ -21,8 +23,16 @@ export default function Projects() {
         path="/projects"
       />
 
-      <section className="pt-36 pb-16 sm:pt-44 lg:pt-48 lg:pb-20">
-        <Container>
+      <section className="relative overflow-hidden pt-36 pb-16 sm:pt-44 lg:pt-48 lg:pb-20">
+        <Parallax
+          from={-30}
+          to={30}
+          className="pointer-events-none absolute right-4 top-8 hidden select-none font-display text-[13rem] font-extrabold leading-none tracking-tighter text-ink/[0.035] lg:block"
+          aria-hidden="true"
+        >
+          WORK
+        </Parallax>
+        <Container className="relative">
           <Reveal>
             <p className="eyebrow mb-4 flex items-center gap-3">
               <span className="text-accent">02</span>
@@ -69,13 +79,25 @@ export default function Projects() {
             </p>
           </Reveal>
 
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {visible.map((project, i) => (
-              <Reveal key={project.id} delay={(i % 3) * 0.05}>
-                <ProjectCard project={project} index={i} />
-              </Reveal>
-            ))}
-          </div>
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={active}
+              layout
+              className="mt-8 grid gap-6 sm:grid-cols-2"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {visible.map((project, i) => (
+                <motion.div layout key={project.id} exit={{ opacity: 0, scale: 0.95 }}>
+                  <Reveal delay={i * 0.05}>
+                    <ProjectCard project={project} index={i} />
+                  </Reveal>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
 
           <Reveal>
             <div className="mt-16 rounded-lg border border-line bg-surface p-8 text-center">

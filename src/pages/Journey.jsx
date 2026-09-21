@@ -4,6 +4,7 @@ import Container from '../components/Container'
 import Reveal from '../components/Reveal'
 import Timeline from '../components/Timeline'
 import GoToLink from '../components/GoToLink'
+import CountUp from '../components/CountUp'
 import { journey } from '../data/journey'
 import { profile } from '../data/profile'
 
@@ -63,7 +64,7 @@ export default function Journey() {
                     <div key={fact.label} className="flex items-baseline justify-between gap-4">
                       <dt className="text-sm text-muted">{fact.label}</dt>
                       <dd className="font-display text-lg font-semibold text-accent">
-                        {fact.value}
+                        <CountUp value={fact.value} />
                       </dd>
                     </div>
                   ))}
