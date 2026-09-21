@@ -30,7 +30,7 @@ export default function ThemeToggle({ className = '' }) {
       document.documentElement.removeAttribute('data-theme')
     }
     const meta = document.querySelector('meta[name="theme-color"]')
-    if (meta) meta.setAttribute('content', next ? '#080A14' : '#F7F8FC')
+    if (meta) meta.setAttribute('content', next ? '#0B0C0E' : '#FFFFFF')
   }
 
   return (
@@ -38,7 +38,7 @@ export default function ThemeToggle({ className = '' }) {
       type="button"
       onClick={toggle}
       aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
-      className={`flex h-10 w-10 items-center justify-center rounded-md border border-line text-ink transition-colors hover:border-accent/60 hover:text-accent ${className}`}
+      className={`flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:bg-surface-2 hover:text-accent ${className}`}
     >
       {dark ? <IconSun className="h-[18px] w-[18px]" /> : <IconMoon className="h-[18px] w-[18px]" />}
     </button>
