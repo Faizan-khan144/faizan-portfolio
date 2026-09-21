@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import Reveal from './Reveal'
 import { IconArrow, IconExternal, IconGitHub, IconStar } from './Icons'
 
 const accents = {
@@ -78,8 +80,31 @@ function PreviewFrame({ project }) {
 }
 
 export default function ProjectCard({ project, index = 0, delay = 0 }) {
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [7, -7]), { stiffness: 180, damping: 18 })
+  const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-7, 7]), { stiffness: 180, damping: 18 })
+
+  function onPointerMove(e) {
+    const rect = e.currentTarget.getBoundingClientRect()
+    mx.set((e.clientX - rect.left) / rect.width - 0.5)
+    my.set((e.clientY - rect.top) / rect.height - 0.5)
+  }
+
+  function onPointerLeave() {
+    mx.set(0)
+    my.set(0)
+  }
+
   return (
-    <article className="group relative flex h-full flex-col overflow-hidden rounded-[1.1rem] border border-line/10 bg-surface shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-line/20 hover:shadow-card-hover">
+    <motion.article
+      className="group relative flex h-full flex-col overflow-hidden rounded-[1.1rem] border border-line/10 bg-surface shadow-card hover:border-line/20 hover:shadow-card-hover"
+      style={{ rotateX, rotateY, transformPerspective: 900 }}
+      whileHover={{ y: -6 }}
+      transition={{ type: 'spring', stiffness: 220, damping: 22 }}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+    >
       <div
         className="absolute inset-x-0 top-0 z-10 h-[3px] bg-gradient-to-r from-[var(--pc-accent)] to-transparent"
         style={{ '--pc-accent': accentFor(project) }}
@@ -158,6 +183,6 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
       >
         <IconArrow className="h-4 w-4 -rotate-45" />
       </a>
-    </article>
+    </motion.article>
   )
 }
