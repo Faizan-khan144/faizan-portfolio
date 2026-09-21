@@ -12,8 +12,8 @@ export default function Button({
   withArrow = false,
 }) {
   const cls = variant === 'primary'
-    ? `btn-base group rounded-full bg-ink text-bg transition-colors duration-300 hover:bg-accent hover:text-accent-ink ${className}`
-    : `btn-base group rounded-full border border-line/20 bg-transparent text-ink transition-colors duration-300 hover:border-accent/60 hover:text-accent ${className}`
+    ? `btn-base btn-shine btn-glow group rounded-full bg-ink text-bg transition-colors duration-300 hover:-translate-y-0.5 hover:bg-accent hover:text-accent-ink ${className}`
+    : `btn-base group rounded-full border border-line/20 bg-transparent text-ink transition-colors duration-300 hover:-translate-y-0.5 hover:border-accent/60 hover:text-accent ${className}`
 
   const inner = (
     <>

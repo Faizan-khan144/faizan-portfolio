@@ -75,9 +75,22 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
     setMessages((m) => [...m, { role: 'user', text }])
     setTyping(true)
     setTimeout(() => {
-      const reply = getReply(text)
-      setTyping(false)
-      setMessages((m) => [...m, { role: 'bot', ...reply }])
+      try {
+        const reply = getReply(text)
+        setMessages((m) => [...m, { role: 'bot', ...reply }])
+      } catch {
+        setMessages((m) => [
+          ...m,
+          {
+            role: 'bot',
+            text: "I hit a snag answering that one. Try asking me something else about Faizan.",
+            links: [],
+          },
+        ])
+      } finally {
+        setTyping(false)
+        inputRef.current?.focus()
+      }
     }, 650 + Math.random() * 450)
   }
 
@@ -122,9 +135,9 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
         {messages.map((m, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.25 }}
+            initial={{ opacity: 0, y: 12, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             <div

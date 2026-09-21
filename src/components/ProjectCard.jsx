@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
+import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Reveal from './Reveal'
 import { IconArrow, IconExternal, IconGitHub, IconStar } from './Icons'
 
@@ -109,6 +109,9 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
   const my = useMotionValue(0)
   const rotateX = useSpring(useTransform(my, [-0.5, 0.5], [7, -7]), { stiffness: 180, damping: 18 })
   const rotateY = useSpring(useTransform(mx, [-0.5, 0.5], [-7, 7]), { stiffness: 180, damping: 18 })
+  const glareX = useTransform(mx, [-0.5, 0.5], [0, 100])
+  const glareY = useTransform(my, [-0.5, 0.5], [0, 100])
+  const glareBg = useMotionTemplate`radial-gradient(220px circle at ${glareX}% ${glareY}%, rgb(var(--color-accent) / 0.16), transparent 65%)`
 
   function onPointerMove(e) {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -141,7 +144,14 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
           Featured
         </span>
       )}
-      <PreviewFrame project={project} />
+      <div className="relative">
+        <PreviewFrame project={project} />
+        <motion.div
+          style={{ background: glareBg }}
+          className="pointer-events-none absolute inset-0 rounded-t-[1.1rem] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          aria-hidden="true"
+        ></motion.div>
+      </div>
 
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-2 flex items-center justify-between font-mono text-[0.65rem] text-muted">

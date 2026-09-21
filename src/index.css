@@ -226,6 +226,93 @@ body {
   }
 }
 
+@keyframes drift-one {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(6%, -8%, 0) scale(1.1);
+  }
+  66% {
+    transform: translate3d(-4%, 5%, 0) scale(0.95);
+  }
+}
+
+@keyframes drift-two {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(-7%, 9%, 0) scale(1.12);
+  }
+  70% {
+    transform: translate3d(5%, -6%, 0) scale(0.92);
+  }
+}
+
+@keyframes heroBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.animate-drift-one {
+  animation: drift-one 26s ease-in-out infinite;
+}
+
+.animate-drift-two {
+  animation: drift-two 34s ease-in-out infinite;
+}
+
+.animate-hero-bounce {
+  animation: heroBounce 1.8s ease-in-out infinite;
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+  transform: skewX(-18deg);
+  left: -60%;
+  pointer-events: none;
+}
+
+.btn-shine:hover::after {
+  animation: sheen 0.7s ease forwards;
+}
+
+@keyframes sheen {
+  to {
+    left: 140%;
+  }
+}
+
+.btn-glow {
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.btn-glow:hover {
+  box-shadow:
+    0 12px 34px -12px rgb(var(--color-accent) / 0.55),
+    0 4px 12px -6px rgb(var(--color-accent) / 0.35);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

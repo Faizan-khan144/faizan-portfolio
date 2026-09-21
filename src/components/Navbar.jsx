@@ -23,11 +23,16 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const { scrollY, scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 })
+  const scale = useSpring(1, { stiffness: 260, damping: 24 })
   const location = useLocation()
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 12)
   })
+
+  useEffect(() => {
+    scale.set(scrolled ? 0.97 : 1)
+  }, [scrolled, scale])
 
   useEffect(() => {
     setOpen(false)
@@ -50,14 +55,18 @@ export default function Navbar() {
       </a>
 
       <motion.header
-        className="fixed inset-x-0 top-0 z-[60] flex justify-center px-4 pt-4 sm:pt-5"
+        initial={{ y: -24, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+        className="fixed inset-x-0 top-0 z-[60] flex justify-center px-4 pt-3 sm:pt-4"
       >
         <motion.nav
-          animate={{ y: open ? 0 : 0, opacity: 1 }}
+          style={{ scale }}
+          animate={{ opacity: 1 }}
           aria-label="Main"
-          className={`relative overflow-hidden rounded-full border transition-all duration-300 ${
+          className={`relative overflow-hidden rounded-full border transition-colors duration-300 ${
             scrolled
-              ? 'border-line/15 bg-bg/80 shadow-card backdrop-blur-2xl'
+              ? 'border-line/15 bg-bg/85 shadow-card backdrop-blur-2xl'
               : 'border-line/10 bg-bg/60 backdrop-blur-xl'
           }`}
         >
@@ -68,12 +77,14 @@ export default function Navbar() {
           ></motion.div>
 
           <div className="flex items-center gap-1 px-2 py-2 sm:gap-2 sm:px-2.5">
-            <Link to="/" className="group flex items-center gap-1 rounded-full" aria-label="Faizan Khan - home">
-              <span
-                className="font-display text-lg font-bold tracking-tight text-ink transition-colors group-hover:text-accent"
-              >
+            <Link to="/" className="group relative flex items-center gap-1 rounded-full" aria-label="Faizan Khan - home">
+              <span className="font-display text-lg font-bold tracking-tight text-ink transition-colors duration-300 group-hover:text-accent">
                 <span className="text-accent">F</span>aizan
               </span>
+              <span
+                className="h-[0.9em] w-[2.5px] rounded-full bg-accent cursor-blink"
+                aria-hidden="true"
+              ></span>
             </Link>
 
             <span className="mx-1 h-4 w-px bg-line/15" aria-hidden="true"></span>
@@ -84,14 +95,34 @@ export default function Navbar() {
                   <NavLink
                     to={link.to}
                     className={({ isActive }) =>
-                      `relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
+                      `group relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-colors duration-200 ${
                         isActive ? 'text-ink' : 'text-muted hover:text-ink'
                       }`
                     }
                   >
                     {({ isActive }) => (
                       <>
-                        {link.label}
+                        <span className="relative z-10 flex items-center gap-1.5">
+                          {link.label}
+                          {link.label === 'AI' && (
+                            <span className="relative flex h-1.5 w-1.5">
+                              <span
+                                className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"
+                                aria-hidden="true"
+                              ></span>
+                              <span
+                                className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent"
+                                aria-hidden="true"
+                              ></span>
+                            </span>
+                          )}
+                        </span>
+                        <span
+                          className={`absolute inset-x-3 -bottom-0.5 h-[2px] origin-left rounded-full bg-accent transition-transform duration-300 ${
+                            isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                          }`}
+                          aria-hidden="true"
+                        ></span>
                         {isActive && (
                           <motion.span
                             layoutId="nav-pill"
@@ -113,7 +144,7 @@ export default function Navbar() {
               <ThemeToggle />
               <Link
                 to="/contact"
-                className="hidden items-center gap-1.5 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-colors duration-200 hover:bg-ink hover:text-bg sm:inline-flex"
+                className="btn-shine btn-glow hidden items-center gap-1.5 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-colors duration-300 hover:-translate-y-0.5 hover:bg-ink hover:text-bg sm:inline-flex"
               >
                 Let's talk
               </Link>

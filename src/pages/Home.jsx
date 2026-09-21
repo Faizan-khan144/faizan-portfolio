@@ -50,10 +50,14 @@ function TechStrip() {
   )
 
   return (
-    <div className="group relative overflow-hidden border-y border-line/10 bg-surface/40 py-6" aria-hidden="true">
+    <div className="group relative overflow-hidden border-y border-line/10 bg-surface/40 py-4" aria-hidden="true">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-bg to-transparent"></div>
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-bg to-transparent"></div>
       <div className="flex w-max animate-marquee group-hover:[animation-play-state:paused]">
+        <Row />
+        <Row />
+      </div>
+      <div className="mt-2 flex w-max animate-marquee-reverse group-hover:[animation-play-state:paused] opacity-70">
         <Row />
         <Row />
       </div>
@@ -341,6 +345,19 @@ function Hero() {
           <HeroTerminal />
         </Reveal>
       </Container>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.4, duration: 0.8 }}
+        className="pointer-events-none absolute bottom-5 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
+        aria-hidden="true"
+      >
+        <span className="font-mono text-[0.6rem] uppercase tracking-wide2 text-muted">scroll</span>
+        <span className="flex h-9 w-5 items-start justify-center rounded-full border border-line/30 p-1">
+          <span className="animate-hero-bounce h-1.5 w-1 rounded-full bg-accent"></span>
+        </span>
+      </motion.div>
     </section>
   )
 }

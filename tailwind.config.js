@@ -34,9 +34,14 @@ export default {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-50%)' },
         },
+        'marquee-reverse': {
+          from: { transform: 'translateX(-50%)' },
+          to: { transform: 'translateX(0)' },
+        },
       },
       animation: {
         marquee: 'marquee 28s linear infinite',
+        'marquee-reverse': 'marquee-reverse 32s linear infinite',
       },
     },
   },
