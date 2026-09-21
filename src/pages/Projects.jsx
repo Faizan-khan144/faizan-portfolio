@@ -72,7 +72,7 @@ export default function Projects() {
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {visible.map((project, i) => (
               <Reveal key={project.id} delay={(i % 3) * 0.05}>
-                <ProjectCard project={project} />
+                <ProjectCard project={project} index={i} />
               </Reveal>
             ))}
           </div>
