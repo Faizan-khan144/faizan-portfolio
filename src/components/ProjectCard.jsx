@@ -126,7 +126,7 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
 
   return (
     <motion.article
-      className="group relative flex h-full flex-col overflow-hidden rounded-[1.1rem] border border-line/10 bg-surface shadow-card hover:border-line/20 hover:shadow-card-hover"
+      className="group card-glow relative flex h-full flex-col overflow-hidden rounded-[1.1rem] border border-line/10 bg-surface shadow-card hover:border-line/20"
       style={{ rotateX, rotateY, transformPerspective: 900 }}
       whileHover={{ y: -6 }}
       transition={{ type: 'spring', stiffness: 220, damping: 22 }}
@@ -134,7 +134,7 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
       onPointerLeave={onPointerLeave}
     >
       <div
-        className="absolute inset-x-0 top-0 z-10 h-[3px] bg-gradient-to-r from-[var(--pc-accent)] to-transparent"
+        className="project-glow-bar absolute inset-x-0 top-0 z-10 h-[3px] bg-gradient-to-r from-[var(--pc-accent)] to-transparent"
         style={{ '--pc-accent': accentFor(project) }}
         aria-hidden="true"
       ></div>

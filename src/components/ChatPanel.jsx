@@ -44,26 +44,23 @@ function BubbleLink({ link }) {
 
 export default function ChatPanel({ className = '', tall = false, autoFocus = false }) {
   const [messages, setMessages] = useState([])
-  const [value, setValue] = useState('')
-  const [typing, setTyping] = useState(false)
+  const [typing, setTyping] = useState(true)
+  const [hasText, setHasText] = useState(false)
   const [started, setStarted] = useState(false)
   const scrollRef = useRef(null)
   const inputRef = useRef(null)
-  const valueRef = useRef('')
-  valueRef.current = value
 
   useEffect(() => {
     if (!started) {
       setStarted(true)
-      setTyping(true)
       const t = setTimeout(() => {
+        setMessages([{ role: 'bot', ...getReply('hi') }])
         setTyping(false)
-        setMessages((m) => [{ role: 'bot', ...getReply('hi') }])
       }, 700)
       return () => clearTimeout(t)
     }
     if (autoFocus) {
-      const t = setTimeout(() => inputRef.current?.focus(), 120)
+      const t = setTimeout(() => inputRef.current?.focus(), 150)
       return () => clearTimeout(t)
     }
     return undefined
@@ -74,12 +71,19 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
   }, [messages, typing])
 
   function ask(question) {
-    const text = String(question ?? '').trim()
-    if (!text || typing) return
-    setValue('')
-    valueRef.current = ''
+    let text = ''
+    if (typeof question === 'string') {
+      text = question.trim()
+    } else {
+      text = String(inputRef.current?.value ?? '').trim()
+    }
+    if (!text) return
+
+    if (inputRef.current) inputRef.current.value = ''
+    setHasText(false)
     setMessages((m) => [...m, { role: 'user', text }])
     setTyping(true)
+
     setTimeout(() => {
       try {
         const reply = getReply(text)
@@ -89,7 +93,7 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
           ...m,
           {
             role: 'bot',
-            text: "I hit a snag answering that one. Try asking me about his tech stack, projects or coding journey.",
+            text: 'I hit a snag answering that one. Try asking me about his tech stack, projects or coding journey.',
             links: [],
           },
         ])
@@ -98,11 +102,6 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
         inputRef.current?.focus()
       }
     }, 500 + Math.random() * 400)
-  }
-
-  function sendFromInput(raw) {
-    const text = String(raw ?? valueRef.current ?? '').trim()
-    if (text) ask(text)
   }
 
   return (
@@ -203,7 +202,8 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
         <form
           onSubmit={(e) => {
             e.preventDefault()
-            sendFromInput(e.target.message?.value)
+            e.stopPropagation()
+            ask(inputRef.current?.value)
           }}
           className="mt-1.5 flex items-center gap-2"
         >
@@ -217,26 +217,29 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
-            value={value}
-            onChange={(e) => {
-              setValue(e.target.value)
-              valueRef.current = e.target.value
-            }}
+            defaultValue=""
+            onInput={(e) => setHasText(e.currentTarget.value.length > 0)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
                 e.preventDefault()
-                sendFromInput(e.currentTarget.value)
+                e.stopPropagation()
+                ask(e.currentTarget.value)
               }
             }}
-            placeholder="Ask about his teck stack..."
+            placeholder="Ask me about tech, work, journey..."
             aria-label="Ask about Faizan's tech, work or journey"
             className="h-11 flex-1 rounded-full border border-line/15 bg-surface-2 px-4 text-base text-ink outline-none transition placeholder:text-muted/70 focus:border-accent/60 focus:ring-2 focus:ring-accent/20"
           />
           <button
             type="submit"
             aria-label="Send message"
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              ask(inputRef.current?.value)
+            }}
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink transition-all duration-200 hover:bg-ink hover:text-bg active:scale-90"
-            style={{ opacity: value.trim() ? 1 : 0.45 }}
+            style={{ opacity: hasText ? 1 : 0.45 }}
           >
             <IconSend className="h-4 w-4" />
           </button>

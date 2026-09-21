@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Loader from './components/Loader'
 import BackToTop from './components/BackToTop'
 import Assistant from './components/Assistant'
+import CursorGlow from './components/CursorGlow'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import About from './pages/About'
@@ -42,6 +43,7 @@ export default function App() {
     <MotionConfig reducedMotion="user">
       <div className="relative flex min-h-screen flex-col">
         <Ambient />
+        <CursorGlow />
         <Loader />
         <ScrollToTop />
         <Navbar />

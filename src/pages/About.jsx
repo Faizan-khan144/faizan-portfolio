@@ -4,6 +4,7 @@ import Container from '../components/Container'
 import Reveal from '../components/Reveal'
 import SocialLinks from '../components/SocialLinks'
 import { profile } from '../data/profile'
+import CountUp from '../components/CountUp'
 import { IconMapPin } from '../components/Icons'
 
 const learningCards = [
@@ -105,7 +106,9 @@ export default function About() {
               <div className="mt-10 grid max-w-md grid-cols-3 divide-x divide-line rounded-lg border border-line bg-surface">
                 {profile.facts.map((fact) => (
                   <div key={fact.label} className="px-4 py-5 text-center">
-                    <p className="font-display text-2xl font-semibold text-accent">{fact.value}</p>
+                    <p className="font-display text-2xl font-semibold text-accent">
+                      <CountUp value={fact.value} />
+                    </p>
                     <p className="mt-1 text-[0.65rem] uppercase tracking-wide2 text-muted">
                       {fact.label}
                     </p>

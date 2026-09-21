@@ -10,6 +10,7 @@ import {
 import { IconMenu, IconClose, IconArrow } from './Icons'
 import Brand from './Brand'
 import ThemeToggle from './ThemeToggle'
+import Magnetic from './Magnetic'
 
 const links = [
   { to: '/projects', label: 'Work' },
@@ -142,12 +143,14 @@ export default function Navbar() {
 
             <div className="flex items-center gap-1.5">
               <ThemeToggle />
-              <Link
-                to="/contact"
-                className="btn-shine btn-glow hidden items-center gap-1.5 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-colors duration-300 hover:-translate-y-0.5 hover:bg-ink hover:text-bg sm:inline-flex"
-              >
-                Let's talk
-              </Link>
+              <Magnetic strength={0.4}>
+                <Link
+                  to="/contact"
+                  className="btn-shine btn-glow hidden items-center gap-1.5 rounded-full bg-accent px-4 py-2.5 text-sm font-semibold text-accent-ink transition-colors duration-300 hover:bg-ink hover:text-bg sm:inline-flex"
+                >
+                  Let's talk
+                </Link>
+              </Magnetic>
               <button
                 type="button"
                 onClick={() => setOpen((v) => !v)}

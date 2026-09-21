@@ -313,6 +313,28 @@ body {
     0 4px 12px -6px rgb(var(--color-accent) / 0.35);
 }
 
+.card-glow:hover {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.05),
+    0 24px 48px -16px rgba(0, 0, 0, 0.4),
+    0 0 32px -8px rgb(var(--color-accent) / 0.22);
+}
+
+.project-glow-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 100%;
+  left: -100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-18deg);
+  transition: transform 0.7s ease;
+}
+
+.group:hover .project-glow-bar::after {
+  transform: translateX(400%) skewX(-18deg);
+}
+
 .text-shimmer {
   background: linear-gradient(
     120deg,

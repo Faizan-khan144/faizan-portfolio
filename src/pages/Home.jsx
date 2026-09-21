@@ -3,6 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ChevronRight, Rocket, Sparkles } from 'lucide-react'
 import ChatPanel from '../components/ChatPanel'
 import ParticleField from '../components/ParticleField'
+import Magnetic from '../components/Magnetic'
 import PageTransition from '../components/PageTransition'
 import Seo from '../components/Seo'
 import Container from '../components/Container'
@@ -309,12 +310,16 @@ function Hero() {
 
           <Reveal delay={0.15}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <Button to="/projects" withArrow>
-                See the work
-              </Button>
-              <Button to="/contact" variant="ghost">
-                Start a project
-              </Button>
+              <Magnetic strength={0.35}>
+                <Button to="/projects" withArrow>
+                  See the work
+                </Button>
+              </Magnetic>
+              <Magnetic strength={0.35}>
+                <Button to="/contact" variant="ghost">
+                  Start a project
+                </Button>
+              </Magnetic>
             </div>
           </Reveal>
 
@@ -608,9 +613,11 @@ function AiSection() {
                 )
               )}
             </ul>
+            <Magnetic strength={0.3}>
             <Button to="/ai" withArrow className="mt-8">
               Open the AI page
             </Button>
+          </Magnetic>
           </Reveal>
           <Reveal delay={0.1}>
             <ChatPanel className="h-full" />
