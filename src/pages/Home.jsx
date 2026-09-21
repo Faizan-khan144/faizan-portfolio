@@ -16,8 +16,7 @@ import { skillCategories } from '../data/skills'
 import { journey } from '../data/journey'
 import { IconMail, IconMapPin } from '../components/Icons'
 
-const heroName = ['Muhammad', 'Faizan', 'Khan']
-const typingRoles = ['Frontend Developer', 'React Builder', 'JavaScript Engineer', 'MERN Stack Learner']
+const typingRoles = ['interfaces', 'dashboards', 'web products', 'landing pages']
 
 const filters = ['All', 'Websites', 'Dashboards', 'Platforms', 'Tools']
 
@@ -76,55 +75,37 @@ function Hero() {
   return (
     <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 lg:pt-44 lg:pb-24">
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(70%_55%_at_72%_0%,rgba(var(--color-accent)_/_0.1),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_50%_at_75%_0%,rgba(var(--color-accent)_/_0.08),transparent_60%)]"
         aria-hidden="true"
       ></div>
-      <div className="scanlines pointer-events-none absolute inset-0" aria-hidden="true"></div>
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-[400px] bg-[linear-gradient(rgba(var(--color-ink)_/_0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.045)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[linear-gradient(rgba(var(--color-ink)_/_0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(var(--color-ink)_/_0.03)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:linear-gradient(to_bottom,black,transparent)]"
         aria-hidden="true"
       ></div>
 
-      <Container className="relative grid items-center gap-14 lg:grid-cols-[1.15fr_1fr] lg:gap-20">
+      <Container className="relative grid items-center gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
         <div>
           <Reveal>
-            <p className="inline-flex items-center gap-2 rounded-sm border border-line bg-surface px-3 py-1.5 font-mono text-xs uppercase tracking-wide2 text-ink shadow-card">
+            <p className="inline-flex items-center gap-2.5 font-mono text-xs tracking-wide2 text-muted">
               <span className="relative flex h-2 w-2" aria-hidden="true">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-40"></span>
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-accent"></span>
               </span>
-              Available for projects
+              Muhammad Faizan Khan — Frontend · MERN Learner
             </p>
           </Reveal>
 
           <Reveal delay={0.05}>
-            <p className="eyebrow mt-7">Hi, I'm</p>
-            <h1 className="mt-3 font-display text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-              {heroName.map((word, i) => (
-                <span
-                  key={word}
-                  className="inline-block overflow-hidden align-top"
-                  aria-hidden="true"
-                >
-                  <motion.span
-                    className={`inline-block ${word === 'Khan' ? 'text-accent' : ''}`}
-                    initial={{ y: '110%' }}
-                    animate={{ y: 0 }}
-                    transition={{ delay: 0.15 + i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                  >
-                    {word}
-                  </motion.span>
-                  {i < heroName.length - 1 && <span>&nbsp;</span>}
-                </span>
-              ))}
+            <h1 className="mt-6 font-display text-[2.6rem] font-extrabold leading-[1.04] tracking-tight text-ink sm:text-6xl lg:text-[4.4rem]">
+              I build{' '}
+              <Typewriter words={typingRoles} className="text-accent" />
+              <br />
+              that feel <span className="moss-text">alive.</span>
             </h1>
-            <p className="mt-5 h-8 font-mono text-lg font-medium text-accent sm:text-xl">
-              <Typewriter words={typingRoles} />
-            </p>
           </Reveal>
 
           <Reveal delay={0.1}>
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-muted">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
               {profile.heroDescription}
             </p>
           </Reveal>
@@ -132,16 +113,22 @@ function Hero() {
           <Reveal delay={0.15}>
             <div className="mt-9 flex flex-wrap items-center gap-4">
               <Button to="/projects" withArrow>
-                View my work
+                See the work
               </Button>
               <Button to="/contact" variant="ghost">
-                Get in touch
+                Start a project
               </Button>
             </div>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="mt-10 border-t border-line pt-6">
+            <p className="mt-8 font-mono text-xs tracking-wide2 text-muted">
+              30+ public repos · {profile.facts[2].value} projects shipped · {profile.availability}
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.22}>
+            <div className="mt-8 border-t border-line/10 pt-6">
               <p className="eyebrow mb-3">Find me on</p>
               <SocialLinks />
             </div>
@@ -150,32 +137,32 @@ function Hero() {
 
         <Reveal delay={0.12}>
           <div className="mx-auto w-full max-w-sm">
-            <div className="relative rounded-lg border border-line bg-surface p-6 shadow-card">
+            <div className="relative rounded-[1.25rem] border border-line/10 bg-surface p-6 shadow-card transition-shadow duration-300 hover:shadow-card-hover">
               <motion.div
-                className="absolute -top-4 -right-3 flex items-center gap-2 rounded-sm border border-accent bg-accent-ink px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent shadow-card"
+                className="absolute -top-4 -right-3 flex items-center gap-2 rounded-full bg-accent px-3.5 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent-ink shadow-card"
                 animate={{ y: [0, -7, 0] }}
                 transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
                 aria-hidden="true"
               >
-                <span className="h-1.5 w-1.5 rounded-full bg-accent"></span>
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-ink"></span>
                 5+ Years Coding
               </motion.div>
               <div className="flex items-start justify-between gap-4">
                 <img
                   src={profile.avatar}
                   alt={`${profile.name} avatar`}
-                  width={96}
-                  height={96}
+                  width={104}
+                  height={104}
                   loading="lazy"
-                  className="h-24 w-24 rounded-lg border border-line object-cover"
+                  className="h-28 w-28 rounded-[1.1rem] border border-line/10 object-cover"
                 />
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent/5 px-3 py-1.5 font-mono text-[0.65rem] uppercase tracking-wide2 text-accent">
                   <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true"></span>
                   Open to work
                 </span>
               </div>
 
-              <p className="mt-5 font-display text-xl font-semibold tracking-tight">
+              <p className="mt-5 font-display text-xl font-bold tracking-tight">
                 {profile.firstName} Khan
               </p>
               <p className="mt-1 text-sm text-muted">{profile.role}</p>
@@ -184,7 +171,7 @@ function Hero() {
                 {profile.location}
               </p>
 
-              <dl className="mt-6 grid grid-cols-3 divide-x divide-line rounded-md border border-line bg-surface-2">
+              <dl className="mt-6 grid grid-cols-3 divide-x divide-line/10 rounded-xl border border-line/10 bg-surface-2">
                 {profile.facts.map((fact) => (
                   <div key={fact.label} className="px-3 py-4 text-center">
                     <dd className="font-display text-2xl font-semibold text-accent">
@@ -202,7 +189,7 @@ function Hero() {
 
               <a
                 href={`mailto:${profile.email}`}
-                className="btn-base mt-6 w-full border border-line text-ink transition-colors hover:border-accent/50 hover:text-accent"
+                className="btn-base mt-6 w-full rounded-full border border-line/15 text-ink transition-colors hover:border-accent/60 hover:text-accent"
               >
                 <IconMail className="h-4 w-4" />
                 {profile.email}
