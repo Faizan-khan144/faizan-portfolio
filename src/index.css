@@ -49,6 +49,29 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+@keyframes mascot-blink {
+  0%,
+  90%,
+  100% {
+    transform: scaleY(1);
+  }
+  93% {
+    transform: scaleY(0.12);
+  }
+}
+
+.mascot-eyes {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: mascot-blink 4.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mascot-eyes {
+    animation: none;
+  }
+}
+
 ::selection {
   background: rgb(var(--color-accent));
   color: rgb(var(--color-accent-ink));
