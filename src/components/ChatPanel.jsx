@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { getReply, suggestedPrompts } from '../data/assistant'
+import { AI_MODE, askAssistant, getAiMode } from '../lib/aiClient'
 import { IconSend } from './Icons'
 
 function TypingDots() {
@@ -47,8 +48,15 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
   const [typing, setTyping] = useState(true)
   const [hasText, setHasText] = useState(false)
   const [started, setStarted] = useState(false)
+  const [mode, setMode] = useState(AI_MODE.pending)
   const scrollRef = useRef(null)
   const inputRef = useRef(null)
+  const messagesRef = useRef([])
+  const abortRef = useRef(null)
+
+  useEffect(() => {
+    messagesRef.current = messages
+  }, [messages])
 
   useEffect(() => {
     if (!started) {
@@ -66,11 +74,13 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
     return undefined
   }, [started, autoFocus])
 
+  useEffect(() => () => abortRef.current?.abort(), [])
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' })
   }, [messages, typing])
 
-  function ask(question) {
+  async function ask(question) {
     let text = ''
     if (typeof question === 'string') {
       text = question.trim()
@@ -81,27 +91,34 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
 
     if (inputRef.current) inputRef.current.value = ''
     setHasText(false)
-    setMessages((m) => [...m, { role: 'user', text }])
+
+    const prior = messagesRef.current
+    const withUser = [...prior, { role: 'user', text }]
+    setMessages(withUser)
     setTyping(true)
 
-    setTimeout(() => {
-      try {
-        const reply = getReply(text)
-        setMessages((m) => [...m, { role: 'bot', ...reply }])
-      } catch {
-        setMessages((m) => [
-          ...m,
-          {
-            role: 'bot',
-            text: 'I hit a snag answering that one. Try asking me about his tech stack, projects or coding journey.',
-            links: [],
-          },
-        ])
-      } finally {
+    const lastTopic = [...prior].reverse().find((m) => m.role === 'user')?.text || ''
+
+    abortRef.current?.abort()
+    const controller = new AbortController()
+    abortRef.current = controller
+
+    try {
+      const reply = await askAssistant(text, prior, controller.signal)
+      if (controller.signal.aborted) return
+      if (!reply) return
+      setMode(reply.mode || getAiMode())
+      setMessages((m) => [...m, { role: 'bot', text: reply.text, links: reply.links || [] }])
+    } catch {
+      const reply = getReply(text, { lastTopic })
+      setMessages((m) => [...m, { role: 'bot', ...reply }])
+      setMode(AI_MODE.offline)
+    } finally {
+      if (!controller.signal.aborted) {
         setTyping(false)
         inputRef.current?.focus()
       }
-    }, 500 + Math.random() * 400)
+    }
   }
 
   return (
@@ -118,14 +135,23 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
             FZ
           </div>
           <span
-            className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-surface bg-emerald-500"
+            className={`absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-surface ${
+              mode === AI_MODE.offline ? 'bg-amber-500' : 'bg-emerald-500'
+            }`}
             aria-hidden="true"
           ></span>
         </div>
         <div className="min-w-0">
           <p className="truncate text-sm font-semibold">FZ AI Assistant</p>
-          <p className="font-mono text-[0.6rem] uppercase tracking-wide2 text-accent">
-            Online · Answers from his real work
+          <p
+            className="font-mono text-[0.6rem] uppercase tracking-wide2 text-accent"
+            aria-live="polite"
+          >
+            {mode === AI_MODE.live
+              ? 'Live model · answers anything'
+              : mode === AI_MODE.offline
+                ? 'Offline mode · local knowledge'
+                : 'Online · Answers from his real work'}
           </p>
         </div>
         <span
