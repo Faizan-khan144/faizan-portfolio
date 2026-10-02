@@ -56,6 +56,17 @@ export const projects = [
     brand: '#d9a85b',
   },
   {
+    id: 'luveia-studio',
+    name: 'Luveia Studio',
+    title: 'Luveia Studio',
+    category: 'Websites',
+    description:
+      'A cinematic, mobile-first marketing site for a web design and development studio - scroll-driven hero, magnetic buttons, 3D tilt cards and parallax imagery.',
+    tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
+    live: 'https://luveia.pages.dev',
+    brand: '#22C55E',
+  },
+  {
     id: 'paklounge-landing-page',
     name: 'paklounge-landing-page',
     title: 'PakLounge',
