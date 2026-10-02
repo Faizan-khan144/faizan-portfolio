@@ -22,8 +22,10 @@ export default function Seo({ title, description, path = '' }) {
     upsertMeta('meta[property="og:title"]', 'property', title)
     upsertMeta('meta[property="og:description"]', 'property', description)
     upsertMeta('meta[property="og:url"]', 'property', url)
+    upsertMeta('meta[property="og:image"]', 'property', `${SITE_URL}/og.jpg`)
     upsertMeta('meta[name="twitter:title"]', 'name', title)
     upsertMeta('meta[name="twitter:description"]', 'name', description)
+    upsertMeta('meta[name="twitter:image"]', 'name', `${SITE_URL}/og.jpg`)
 
     let canonical = document.head.querySelector('link[rel="canonical"]')
     if (!canonical) {
