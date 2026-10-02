@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { getReply, suggestedPrompts } from '../data/assistant'
 import { AI_MODE, askAssistant, getAiMode } from '../lib/aiClient'
 import { IconSend } from './Icons'
+import Mascot from './Mascot'
 
 function TypingDots() {
   return (
@@ -121,6 +122,12 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
     }
   }
 
+  function reset() {
+    abortRef.current?.abort()
+    setTyping(false)
+    setMessages([{ role: 'bot', ...getReply('hi') }])
+  }
+
   return (
     <motion.div
       className={`flex flex-col overflow-hidden rounded-2xl border border-line/15 bg-surface shadow-card-hover ${className}`}
@@ -130,9 +137,9 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="flex items-center gap-3 border-b border-line/10 bg-surface-2/60 px-4 py-3.5">
-        <div className="relative">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-display text-sm font-bold text-accent-ink">
-            FZ
+        <div className="relative shrink-0">
+          <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-accent">
+            <Mascot size={40} className="h-10 w-10" />
           </div>
           <span
             className={`absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full border-2 border-surface ${
@@ -154,12 +161,13 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
                 : 'Online · Answers from his real work'}
           </p>
         </div>
-        <span
-          className="ml-auto hidden font-mono text-[0.6rem] text-muted sm:inline-flex"
-          aria-hidden="true"
+        <button
+          type="button"
+          onClick={reset}
+          className="ml-auto shrink-0 rounded-full border border-line/15 bg-surface px-3 py-1.5 font-mono text-[0.6rem] uppercase tracking-wide2 text-muted transition hover:border-accent/50 hover:text-accent"
         >
-          {`<faizan />`}
-        </span>
+          New chat
+        </button>
       </div>
 
       <div
@@ -174,8 +182,13 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
             initial={{ opacity: 0, y: 12, scale: 0.92 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex items-end gap-2 ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}
           >
+            {m.role !== 'user' && (
+              <span className="mb-0.5 shrink-0 overflow-hidden rounded-full bg-accent/15">
+                <Mascot size={26} className="h-[26px] w-[26px]" />
+              </span>
+            )}
             <div
               className={`max-w-[82%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                 m.role === 'user'
@@ -199,8 +212,11 @@ export default function ChatPanel({ className = '', tall = false, autoFocus = fa
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex justify-start"
+            className="flex items-end gap-2 justify-start"
           >
+            <span className="mb-0.5 shrink-0 overflow-hidden rounded-full bg-accent/15">
+              <Mascot size={26} className="h-[26px] w-[26px]" />
+            </span>
             <div className="rounded-2xl rounded-bl-md border border-line/10 bg-surface-2 px-4 py-1.5">
               <TypingDots />
             </div>
