@@ -1,31 +1,33 @@
 import { useEffect } from 'react'
-import { profile } from '../data/profile'
 
 const SITE_URL = 'https://faizan-portfolio-kappa.vercel.app'
+const OG_IMAGE = `${SITE_URL}/og.jpg`
 
-function upsertMeta(selector, key, value) {
+function setMeta(attr, key, content) {
+  const selector = `meta[${attr}="${key}"]`
   let meta = document.head.querySelector(selector)
   if (!meta) {
     meta = document.createElement('meta')
+    meta.setAttribute(attr, key)
     document.head.appendChild(meta)
   }
-  meta.setAttribute(key, value)
+  meta.setAttribute('content', content)
 }
 
 export default function Seo({ title, description, path = '' }) {
-  const url = `${SITE_URL}${path}`
+  const url = path ? `${SITE_URL}${path}` : `${SITE_URL}/`
 
   useEffect(() => {
     document.title = title
 
-    upsertMeta('meta[name="description"]', 'name', description)
-    upsertMeta('meta[property="og:title"]', 'property', title)
-    upsertMeta('meta[property="og:description"]', 'property', description)
-    upsertMeta('meta[property="og:url"]', 'property', url)
-    upsertMeta('meta[property="og:image"]', 'property', `${SITE_URL}/og.jpg`)
-    upsertMeta('meta[name="twitter:title"]', 'name', title)
-    upsertMeta('meta[name="twitter:description"]', 'name', description)
-    upsertMeta('meta[name="twitter:image"]', 'name', `${SITE_URL}/og.jpg`)
+    setMeta('name', 'description', description)
+    setMeta('property', 'og:title', title)
+    setMeta('property', 'og:description', description)
+    setMeta('property', 'og:url', url)
+    setMeta('property', 'og:image', OG_IMAGE)
+    setMeta('name', 'twitter:title', title)
+    setMeta('name', 'twitter:description', description)
+    setMeta('name', 'twitter:image', OG_IMAGE)
 
     let canonical = document.head.querySelector('link[rel="canonical"]')
     if (!canonical) {
