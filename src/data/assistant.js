@@ -144,15 +144,19 @@ function projectsReply() {
 
 function projectDetail(tokens) {
   const query = tokens.join(' ')
-  const hit = projects.find(
-    (p) => p.title.toLowerCase() !== 'faizan portfolio' && query.includes(p.title.toLowerCase())
-  )
+  const hit = projects.find((p) => {
+    if (p.id === 'faizan-portfolio' || p.title.toLowerCase() === 'faizan portfolio') return false
+    const names = [p.name, p.title].map((s) => String(s || '').toLowerCase())
+    if (names.some((n) => n && query.includes(n))) return true
+    const words = new Set(names.flatMap((n) => n.split(/[\s\-–—_]+/)))
+    return [...words].some((w) => w.length >= 5 && query.includes(w))
+  })
   if (!hit) return null
   const description = String(hit.description || '').replace(new RegExp(`^${hit.title}\\s*[-–—:]\\s*`, 'i'), '')
   return {
     text: `${hit.title} - ${description}\n\nTech: ${hit.tech.join(', ')}`,
     links: [
-      { label: 'Source code', url: hit.github },
+      ...(hit.github ? [{ label: 'Source code', url: hit.github }] : []),
       ...(hit.live ? [{ label: 'Live demo', url: hit.live }] : []),
     ],
   }
