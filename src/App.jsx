@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, MotionConfig, motion, useScroll, useTransform } from 'framer-motion'
 import Navbar from './components/Navbar'
@@ -8,13 +9,14 @@ import Assistant from './components/Assistant'
 import CursorGlow from './components/CursorGlow'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
-import About from './pages/About'
-import Projects from './pages/Projects'
-import Skills from './pages/Skills'
-import Journey from './pages/Journey'
-import Contact from './pages/Contact'
-import AiAssistant from './pages/AiAssistant'
-import NotFound from './pages/NotFound'
+
+const About = lazy(() => import('./pages/About'))
+const Projects = lazy(() => import('./pages/Projects'))
+const Skills = lazy(() => import('./pages/Skills'))
+const Journey = lazy(() => import('./pages/Journey'))
+const Contact = lazy(() => import('./pages/Contact'))
+const AiAssistant = lazy(() => import('./pages/AiAssistant'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 function Ambient() {
   const { scrollYProgress } = useScroll()
@@ -36,6 +38,14 @@ function Ambient() {
   )
 }
 
+function RouteLoading() {
+  return (
+    <div className="flex min-h-[70vh] items-center justify-center" role="status" aria-label="Loading page">
+      <span className="h-6 w-6 animate-spin rounded-full border-2 border-accent/30 border-t-accent" />
+    </div>
+  )
+}
+
 export default function App() {
   const location = useLocation()
 
@@ -48,18 +58,20 @@ export default function App() {
         <ScrollToTop />
         <Navbar />
         <main id="main-content" className="relative z-10 flex-1">
-          <AnimatePresence mode="wait" initial={false}>
-            <Routes location={location} key={location.pathname}>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/journey" element={<Journey />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/ai" element={<AiAssistant />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </AnimatePresence>
+          <Suspense fallback={<RouteLoading />}>
+            <AnimatePresence mode="wait" initial={false}>
+              <Routes location={location} key={location.pathname}>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/skills" element={<Skills />} />
+                <Route path="/journey" element={<Journey />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/ai" element={<AiAssistant />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </AnimatePresence>
+          </Suspense>
         </main>
         <Footer />
         <BackToTop />
