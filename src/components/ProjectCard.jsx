@@ -10,6 +10,7 @@ const accents = {
   'zaviyan-turns-one': '#F59E0B',
   'fz-bank-modern-banking-website': '#10B981',
   'august-and-oak-ecommerce': '#C4A265',
+  'luveia-studio': '#22C55E',
 }
 
 function accentFor(project) {
@@ -183,16 +184,18 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
         </ul>
 
         <div className="mt-5 flex items-center gap-4 border-t border-line/10 pt-4">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-xs font-semibold text-bg transition-colors hover:bg-accent"
-            aria-label={`${project.title} source on GitHub`}
-          >
-            <IconGitHub className="h-4 w-4" />
-            Source
-          </a>
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-xs font-semibold text-bg transition-colors hover:bg-accent"
+              aria-label={`${project.title} source on GitHub`}
+            >
+              <IconGitHub className="h-4 w-4" />
+              Source
+            </a>
+          )}
           {project.live && (
             <a
               href={project.live}
