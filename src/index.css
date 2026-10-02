@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  .grid > * {
+    min-width: 0;
+  }
+}
+
 :root,
 [data-theme='light'] {
   color-scheme: light;
