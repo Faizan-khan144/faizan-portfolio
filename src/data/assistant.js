@@ -1,7 +1,7 @@
-import { profile } from './profile'
-import { skillCategories } from './skills'
-import { journey } from './journey'
-import { projects } from './projects'
+import { profile } from './profile.js'
+import { skillCategories } from './skills.js'
+import { journey } from './journey.js'
+import { projects } from './projects.js'
 
 export const suggestedPrompts = [
   'Who is Faizan?',
@@ -148,13 +148,20 @@ function projectDetail(tokens) {
     (p) => p.title.toLowerCase() !== 'faizan portfolio' && query.includes(p.title.toLowerCase())
   )
   if (!hit) return null
+  const description = String(hit.description || '').replace(new RegExp(`^${hit.title}\\s*[-–—:]\\s*`, 'i'), '')
   return {
-    text: `${hit.title} - ${hit.description}\n\nTech: ${hit.tech.join(', ')}`,
+    text: `${hit.title} - ${description}\n\nTech: ${hit.tech.join(', ')}`,
     links: [
       { label: 'Source code', url: hit.github },
       ...(hit.live ? [{ label: 'Live demo', url: hit.live }] : []),
     ],
   }
+}
+
+function availabilityReply(tokens) {
+  const triggers = ['open', 'available', 'availability', 'hiring', 'recruit', 'freelance', 'fulltime']
+  if (!tokens.some((t) => triggers.some((k) => wordMatch(t, k)))) return null
+  return contact()
 }
 
 function journeyReply() {
@@ -211,22 +218,164 @@ function fallback() {
   }
 }
 
+function followUps() {
+  return {
+    text: `Happy to go deeper. Which of these should I cover?\n\n• A specific project and how it was built\n• His skill stack and what he is learning next\n• How he started learning and what changed since then\n• Availability, contact and where he is based`,
+    links: [
+      { label: 'Projects', url: '/projects' },
+      { label: 'Skills', url: '/skills' },
+      { label: 'Contact', url: '/contact' },
+    ],
+  }
+}
+
+const FOLLOW_UP = /^(more|and|also|ok|okay|yes|yeah|yep|then|next|tell me more|go on|continue|why|how|really)\b/
+
+const STOPWORDS = new Set([
+  'the', 'a', 'an', 'is', 'are', 'was', 'were', 'do', 'does', 'did', 'you', 'your', 'his', 'him', 'he',
+  'about', 'what', 'tell', 'me', 'of', 'for', 'to', 'in', 'on', 'and', 'or', 'can', 'could', 'would',
+  'should', 'please', 'with', 'that', 'this', 'it', 'at', 'as', 'be', 'have', 'has', 'any', 'some',
+  'know', 'tell', 'give', 'show', 'list', 'need', 'want', 'like', 'may', 'might', 'give', 'explain',
+])
+
+function tokenize(text) {
+  return String(text)
+    .toLowerCase()
+    .split(/[^a-z0-9+#.]+/)
+    .filter(Boolean)
+}
+
+function keywords(text) {
+  return tokenize(text).filter((w) => w.length > 1 && !STOPWORDS.has(w))
+}
+
+/** Whole-word match so "hi" never fires inside "his". Allows simple plurals. */
+function wordMatch(token, keyword) {
+  if (token === keyword) return true
+  if (token.length > 3 && keyword.length > 3) {
+    return token.startsWith(keyword) || keyword.startsWith(token)
+  }
+  return false
+}
+
+function matchesRule(tokens, rule) {
+  let score = 0
+  for (const k of rule.keywords) {
+    if (tokens.some((t) => wordMatch(t, k))) score++
+  }
+  return score
+}
+
+/**
+ * Last-resort matcher: instead of giving up, look through every project for
+ * words that overlap the question and describe the closest one. Requires two
+ * overlapping words so unrelated questions are never answered confidently wrong.
+ */
+function closestMatch(input, minScore = 2) {
+  const wanted = keywords(input)
+  if (!wanted.length) return null
+
+  let best = null
+  let bestScore = 0
+
+  for (const p of projects) {
+    const haystack = tokenize([p.name, p.category, p.description, (p.tech || []).join(' ')].join(' '))
+    const score = wanted.filter((w) => w.length > 2 && haystack.some((h) => wordMatch(h, w))).length
+    if (score > bestScore) {
+      bestScore = score
+      best = p
+    }
+  }
+
+  if (!best || bestScore < minScore) return null
+
+  return {
+    text:
+      `That sounds closest to **${best.name}** - a ${best.category.toLowerCase()} project.\n\n` +
+      `${best.description}\n\nBuilt with ${best.tech.join(', ')}.` +
+      (best.live ? '\n\nYou can try it live or read the code.' : ''),
+    links: [
+      ...(best.live ? [{ label: 'Live site', url: best.live }] : []),
+      ...(best.github ? [{ label: 'Source code', url: best.github }] : []),
+      { label: 'All projects', url: '/projects' },
+    ],
+  }
+}
+
+function noMatch(input) {
+  return closestMatch(input, 2) || passageSearch(input) || closestMatch(input, 1) || fallback()
+}
+
+/**
+ * Searches every sentence on the site for the best overlap with the question.
+ * This is what lets the offline assistant answer broad questions it has no
+ * hand-written rule for, using only real content from the portfolio.
+ */
+function passageSearch(input) {
+  const wanted = keywords(input).filter((w) => w.length > 3)
+  if (!wanted.length) return null
+
+  const passages = [
+    { source: 'Bio', text: profile.intro },
+    { source: 'Bio', text: profile.heroDescription },
+    { source: 'Focus', text: profile.currentFocus },
+    ...profile.shortBio.map((t) => ({ source: 'Bio', text: t })),
+    ...skillCategories.map((c) => ({ source: `${c.label} skills`, text: c.description })),
+    ...journey.map((j) => ({ source: 'Journey', text: `${j.title}: ${j.text}` })),
+    ...projects.map((p) => ({ source: p.name, text: `${p.name} (${p.category}): ${p.description}` })),
+  ]
+
+  let best = null
+  let bestScore = 0
+
+  for (const p of passages) {
+    if (!p.text) continue
+    const haystack = tokenize(p.text)
+    const score = wanted.filter((w) => haystack.some((h) => wordMatch(h, w))).length
+    if (score > bestScore) {
+      bestScore = score
+      best = p
+    }
+  }
+
+  if (!best || bestScore < 2) return null
+
+  const sentences = String(best.text)
+    .split(/(?<=[.!?])\s+/)
+    .filter((s) => wanted.some((w) => tokenize(s).some((h) => wordMatch(h, w))))
+
+  const body = (sentences.length ? sentences : [best.text]).slice(0, 3).join(' ')
+
+  return {
+    text: `${body}\n\nWant me to go deeper on that, or point you to the related project?`,
+    links: [{ label: 'See his work', url: '/projects' }],
+  }
+}
+
 const rules = [
   { keywords: ['hello', 'hi', 'hey', 'salam', 'salaam', 'assalam', 'alo', 'yo'], reply: greetings },
-  { keywords: ['who', 'about', 'introduce', 'yourself', 'background', 'tell'], reply: about },
-  { keywords: ['skill', 'tech', 'stack', 'know', 'languages', 'expert'], reply: skills },
-  { keywords: ['project', 'work', 'build', 'built', 'portfolio', 'create', 'made', 'experience', 'career', 'resume'], reply: projectsReply },
-  { keywords: ['journey', 'history', 'start', 'begin', 'timeline', 'learn', 'story', 'how'], reply: journeyReply },
+  { keywords: ['who', 'about', 'introduce', 'yourself', 'background'], reply: about },
+  { keywords: ['focus', 'current', 'now', 'learn', 'improve', 'weak', 'better', 'gap', 'next'], reply: current },
+  { keywords: ['skill', 'tech', 'stack', 'language', 'expert', 'tool'], reply: skills },
+  { keywords: ['project', 'work', 'build', 'portfolio', 'create', 'experience', 'career', 'resume', 'shipped'], reply: projectsReply },
+  { keywords: ['journey', 'history', 'begin', 'timeline', 'story'], reply: journeyReply },
   { keywords: ['intern', 'codealpha', 'program'], reply: internship },
   { keywords: ['contact', 'email', 'reach', 'hire', 'job', 'opportunity', 'collaborate', 'freelance', 'offer'], reply: contact },
-  { keywords: ['location', 'where', 'karachi', 'based', 'from', 'city'], reply: location },
-  { keywords: ['focus', 'currently', 'now', 'learning', 'current'], reply: current },
-  { keywords: ['thank', 'thanks', 'appreciate', 'awesome', 'great', 'cool', 'nice', 'good'], reply: thanks },
+  { keywords: ['location', 'where', 'karachi', 'based', 'city'], reply: location },
+  { keywords: ['thank', 'appreciate', 'awesome', 'great', 'cool', 'nice'], reply: thanks },
 ]
 
-export function getReply(raw) {
-  const input = ` ${raw.toLowerCase()} `.replace(/\s+/g, ' ')
-  const tokens = input.split(/\s+/)
+export function getReply(raw, context = {}) {
+  const text = String(raw).trim()
+  const input = ` ${text.toLowerCase()} `
+  const tokens = tokenize(text)
+
+  if (FOLLOW_UP.test(text.toLowerCase()) && context.lastTopic) {
+    const expanded = `${text} ${context.lastTopic}`
+    const deep = closestMatch(expanded, 2)
+    if (deep) return deep
+    return followUps()
+  }
 
   const detail = projectDetail(tokens)
   if (detail) return detail
@@ -234,19 +383,25 @@ export function getReply(raw) {
   const tech = techReply(input)
   if (tech) return tech
 
+  const fuzzyProject = closestMatch(text, 2)
+  if (fuzzyProject) return fuzzyProject
+
   const focused = focusAreas(tokens)
   if (focused) return focused
+
+  const availability = availabilityReply(tokens)
+  if (availability) return availability
 
   let best = null
   let bestScore = 0
   for (const rule of rules) {
-    const score = rule.keywords.filter((k) => input.includes(k)).length
+    const score = matchesRule(tokens, rule)
     if (score > bestScore) {
       bestScore = score
       best = rule
     }
   }
-  if (best) return best.reply()
+  if (best && bestScore > 0) return best.reply()
 
-  return fallback()
+  return noMatch(text)
 }
