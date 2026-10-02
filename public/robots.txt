@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://faizan-portfolio-kappa.vercel.app/sitemap.xml
