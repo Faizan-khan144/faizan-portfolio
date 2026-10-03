@@ -51,12 +51,12 @@ function buildProviders() {
 
   const groqKey = process.env.GROQ_API_KEY
   if (groqKey) {
-    const model = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile'
+    const model = process.env.GROQ_MODEL || 'openai/gpt-oss-120b'
     providers.push({
       model,
       url: GROQ_URL,
       headers: { Authorization: `Bearer ${groqKey}`, 'Content-Type': 'application/json' },
-      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 700, top_p: 0.9 }),
+      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 1024, top_p: 0.9 }),
     })
   }
 
