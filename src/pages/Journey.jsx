@@ -5,6 +5,7 @@ import Reveal from '../components/Reveal'
 import Timeline from '../components/Timeline'
 import GoToLink from '../components/GoToLink'
 import CountUp from '../components/CountUp'
+import Mascot from '../components/Mascot'
 import { journey } from '../data/journey'
 import { profile } from '../data/profile'
 
@@ -24,6 +25,7 @@ export default function Journey() {
               <span className="text-accent">04</span>
               <span className="h-px w-8 bg-line" aria-hidden="true"></span>
               Journey
+              <Mascot size={18} className="h-[18px] w-[18px]" />
             </p>
             <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
               From first tag to{' '}
