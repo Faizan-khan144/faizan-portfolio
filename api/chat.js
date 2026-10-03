@@ -153,33 +153,48 @@ export default async function handler(req, res) {
   const failures = []
 
   for (const provider of buildProviders()) {
-    try {
-      const upstream = await fetch(provider.url, {
-        method: 'POST',
-        headers: provider.headers,
-        body: JSON.stringify(provider.payload(messages)),
-      })
+    for (let attempt = 0; attempt < 2; attempt++) {
+      try {
+        const upstream = await fetch(provider.url, {
+          method: 'POST',
+          headers: provider.headers,
+          body: JSON.stringify(provider.payload(messages)),
+        })
 
-      if (!upstream.ok) {
-        const detail = await upstream.text().catch(() => '')
-        failures.push(`${provider.model}:${upstream.status}`)
-        console.error('provider error', provider.model, upstream.status, detail.slice(0, 200))
-        continue
+        if (!upstream.ok) {
+          const detail = await upstream.text().catch(() => '')
+          console.error('provider error', provider.model, upstream.status, detail.slice(0, 200))
+          if (attempt === 0 && (upstream.status >= 500 || upstream.status === 429)) {
+            await new Promise((r) => setTimeout(r, 400))
+            continue
+          }
+          failures.push(`${provider.model}:${upstream.status}`)
+          break
+        }
+
+        const data = await upstream.json()
+        const reply = data?.choices?.[0]?.message?.content?.trim()
+
+        if (!reply) {
+          if (attempt === 0) {
+            await new Promise((r) => setTimeout(r, 350))
+            continue
+          }
+          failures.push(`${provider.model}:empty`)
+          break
+        }
+
+        cacheSet(cacheKey, reply)
+        return res.status(200).json({ reply, model: provider.model, cached: false })
+      } catch (err) {
+        console.error('provider failed', provider.model, err)
+        if (attempt === 0) {
+          await new Promise((r) => setTimeout(r, 350))
+          continue
+        }
+        failures.push(`${provider.model}:${err?.name || 'error'}`)
+        break
       }
-
-      const data = await upstream.json()
-      const reply = data?.choices?.[0]?.message?.content?.trim()
-
-      if (!reply) {
-        failures.push(`${provider.model}:empty`)
-        continue
-      }
-
-      cacheSet(cacheKey, reply)
-      return res.status(200).json({ reply, model: provider.model, cached: false })
-    } catch (err) {
-      failures.push(`${provider.model}:${err?.name || 'error'}`)
-      console.error('provider failed', provider.model, err)
     }
   }
 
