@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { animate } from 'framer-motion'
+import Mascot from './Mascot'
 
 export default function Loader() {
   const [progress, setProgress] = useState(0)
@@ -32,6 +33,8 @@ export default function Loader() {
           leaving ? 'opacity-0' : 'opacity-100'
         }`}
       >
+        <Mascot size={78} className="mb-5 h-[78px] w-[78px]" animate />
+
         <p className="font-mono text-sm tracking-[0.2em] text-accent">
           {`<`}faizan /{`>`}
         </p>
