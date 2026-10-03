@@ -2,9 +2,11 @@ import { profile } from './profile.js'
 import { skillCategories } from './skills.js'
 import { journey } from './journey.js'
 import { projects } from './projects.js'
+import { studio, founderBio } from './studio.js'
 
 export const suggestedPrompts = [
   'Who is Faizan?',
+  'Tell me about Luveia Studio',
   'What is React?',
   'Tell me about OpenTrace',
   'What are his skills?',
@@ -168,6 +170,16 @@ function availabilityReply(tokens) {
   return contact()
 }
 
+function studioReply() {
+  return {
+    text: `${founderBio}\n\n${studio.description}\n\nIt is built with ${studio.stack.join(', ')} and lives at ${studio.url}.`,
+    links: [
+      { label: 'Visit Luveia Studio', url: studio.url },
+      { label: 'Work with him', url: '/contact' },
+    ],
+  }
+}
+
 function journeyReply() {
   const steps = journey.map((j) => `${j.period} · ${j.title}: ${j.text}`).join('\n')
   return {
@@ -217,7 +229,7 @@ function thanks() {
 
 function fallback() {
   return {
-    text: `I can only talk about Faizan and the things he works with. Try one of these:\n\n• Who is Faizan?\n• What is React? Tell me about MERN, Tailwind or Python\n• Tell me about OpenTrace or DevDock\n• What are his skills?\n• How did his journey start?\n• Is he open to work?\n• How do I contact him?`,
+    text: `I can only talk about Faizan and the things he works with. Try one of these:\n\n• Who is Faizan?\n• Tell me about Luveia Studio, his company\n• What is React? Tell me about MERN, Tailwind or Python\n• Tell me about OpenTrace or DevDock\n• What are his skills?\n• How did his journey start?\n• Is he open to work?\n• How do I contact him?`,
     links: [],
   }
 }
@@ -358,6 +370,7 @@ function passageSearch(input) {
 
 const rules = [
   { keywords: ['hello', 'hi', 'hey', 'salam', 'salaam', 'assalam', 'alo', 'yo'], reply: greetings },
+  { keywords: ['luveia', 'studio', 'founder', 'ceo', 'company', 'business', 'agency', 'launch'], reply: studioReply },
   { keywords: ['who', 'about', 'introduce', 'yourself', 'background'], reply: about },
   { keywords: ['focus', 'current', 'now', 'learn', 'improve', 'weak', 'better', 'gap', 'next'], reply: current },
   { keywords: ['skill', 'tech', 'stack', 'language', 'expert', 'tool'], reply: skills },
