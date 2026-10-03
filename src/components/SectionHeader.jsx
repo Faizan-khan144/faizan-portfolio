@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Mascot from './Mascot'
 
 function Word({ children, i }) {
   return (
@@ -37,6 +38,7 @@ export default function SectionHeader({ eyebrow, index, title, description }) {
         {index && <span className="text-accent">{index}</span>}
         {index && <span className="h-px w-8 bg-line" aria-hidden="true"></span>}
         {eyebrow}
+        <Mascot size={18} className="h-[18px] w-[18px]" />
       </motion.p>
       <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
         {words || title}
