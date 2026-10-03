@@ -10,7 +10,7 @@ export const projectCategories = [
   'Internship',
 ]
 
-export const featuredProjects = ['opentrace', 'devdock', 'cryptolens-dashboard']
+export const featuredProjects = ['luveia-studio', 'opentrace', 'devdock', 'cryptolens-dashboard']
 
 export const projects = [
   {
@@ -60,6 +60,7 @@ export const projects = [
     name: 'Luveia Studio',
     title: 'Luveia Studio',
     category: 'Websites',
+    featured: true,
     description:
       'A cinematic, mobile-first marketing site for a web design and development studio - scroll-driven hero, magnetic buttons, 3D tilt cards and parallax imagery.',
     tech: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion'],
