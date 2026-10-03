@@ -1,7 +1,7 @@
 import { getReply } from '../data/assistant'
 
 const ENDPOINT = '/api/chat'
-const TIMEOUT_MS = 15000
+const TIMEOUT_MS = 22000
 
 export const AI_MODE = {
   pending: 'pending',

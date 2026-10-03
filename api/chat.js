@@ -1,7 +1,9 @@
 import { SYSTEM_PROMPT } from './_lib/context.js'
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
-const MODEL = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile'
+const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
+const OPENAI_URL = 'https://api.openai.com/v1/chat/completions'
+const POLLINATIONS_URL = 'https://text.pollinations.ai/openai'
 
 const MAX_MESSAGE = 800
 const MAX_HISTORY = 12
@@ -43,18 +45,64 @@ function clientIp(req) {
   return req.socket?.remoteAddress || 'unknown'
 }
 
+function buildProviders() {
+  const providers = []
+
+  const groqKey = process.env.GROQ_API_KEY
+  if (groqKey) {
+    const model = process.env.GROQ_MODEL || 'llama-3.3-70b-versatile'
+    providers.push({
+      model,
+      url: GROQ_URL,
+      headers: { Authorization: `Bearer ${groqKey}`, 'Content-Type': 'application/json' },
+      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 700, top_p: 0.9 }),
+    })
+  }
+
+  const openrouterKey = process.env.OPENROUTER_API_KEY
+  if (openrouterKey) {
+    const model = process.env.OPENROUTER_MODEL || 'meta-llama/llama-3.3-70b-instruct:free'
+    providers.push({
+      model,
+      url: OPENROUTER_URL,
+      headers: { Authorization: `Bearer ${openrouterKey}`, 'Content-Type': 'application/json' },
+      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 700, top_p: 0.9 }),
+    })
+  }
+
+  const openaiKey = process.env.OPENAI_API_KEY
+  if (openaiKey) {
+    const model = process.env.OPENAI_MODEL || 'gpt-4o-mini'
+    providers.push({
+      model,
+      url: OPENAI_URL,
+      headers: { Authorization: `Bearer ${openaiKey}`, 'Content-Type': 'application/json' },
+      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 700, top_p: 0.9 }),
+    })
+  }
+
+  const pollModel = process.env.POLLINATIONS_MODEL || 'openai'
+  providers.push({
+    model: `pollinations:${pollModel}`,
+    url: POLLINATIONS_URL,
+    headers: { 'Content-Type': 'application/json' },
+    payload: (messages) => ({
+      model: pollModel,
+      messages,
+      temperature: 0.5,
+      max_tokens: 700,
+      top_p: 0.9,
+      stream: false,
+    }),
+  })
+
+  return providers
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST')
     return res.status(405).json({ error: 'Method not allowed' })
-  }
-
-  const key = process.env.GROQ_API_KEY
-  if (!key) {
-    return res.status(503).json({
-      fallback: true,
-      error: 'AI key not configured',
-    })
   }
 
   const { message, history = [] } = req.body || {}
@@ -84,43 +132,45 @@ export default async function handler(req, res) {
     return res.status(200).json({ reply: cached, cached: true })
   }
 
-  try {
-    const upstream = await fetch(GROQ_URL, {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${key}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: MODEL,
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          ...past,
-          { role: 'user', content: trimmed },
-        ],
-        temperature: 0.5,
-        max_tokens: 700,
-        top_p: 0.9,
-      }),
-    })
+  const messages = [
+    { role: 'system', content: SYSTEM_PROMPT },
+    ...past,
+    { role: 'user', content: trimmed },
+  ]
 
-    if (!upstream.ok) {
-      const detail = await upstream.text().catch(() => '')
-      console.error('groq error', upstream.status, detail.slice(0, 300))
-      return res.status(502).json({ fallback: true, error: 'Upstream model error' })
+  const failures = []
+
+  for (const provider of buildProviders()) {
+    try {
+      const upstream = await fetch(provider.url, {
+        method: 'POST',
+        headers: provider.headers,
+        body: JSON.stringify(provider.payload(messages)),
+      })
+
+      if (!upstream.ok) {
+        const detail = await upstream.text().catch(() => '')
+        failures.push(`${provider.model}:${upstream.status}`)
+        console.error('provider error', provider.model, upstream.status, detail.slice(0, 200))
+        continue
+      }
+
+      const data = await upstream.json()
+      const reply = data?.choices?.[0]?.message?.content?.trim()
+
+      if (!reply) {
+        failures.push(`${provider.model}:empty`)
+        continue
+      }
+
+      cacheSet(cacheKey, reply)
+      return res.status(200).json({ reply, model: provider.model, cached: false })
+    } catch (err) {
+      failures.push(`${provider.model}:${err?.name || 'error'}`)
+      console.error('provider failed', provider.model, err)
     }
-
-    const data = await upstream.json()
-    const reply = data?.choices?.[0]?.message?.content?.trim()
-
-    if (!reply) {
-      return res.status(502).json({ fallback: true, error: 'Empty model response' })
-    }
-
-    cacheSet(cacheKey, reply)
-    return res.status(200).json({ reply, model: MODEL, cached: false })
-  } catch (err) {
-    console.error('chat handler failed', err)
-    return res.status(500).json({ fallback: true, error: 'Assistant unavailable' })
   }
+
+  console.error('all providers failed', failures.join(', '))
+  return res.status(502).json({ fallback: true, error: 'Upstream model error' })
 }
