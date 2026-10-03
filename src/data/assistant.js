@@ -229,7 +229,7 @@ function thanks() {
 
 function fallback() {
   return {
-    text: `I can only talk about Faizan and the things he works with. Try one of these:\n\n• Who is Faizan?\n• Tell me about Luveia Studio, his company\n• What is React? Tell me about MERN, Tailwind or Python\n• Tell me about OpenTrace or DevDock\n• What are his skills?\n• How did his journey start?\n• Is he open to work?\n• How do I contact him?`,
+    text: `I'm in offline mode right now, so I can only answer from Faizan's saved knowledge - the live model is unreachable. Ask me about him, or try again in a bit. Some things I can cover:\n\n• Who is Faizan?\n• Tell me about Luveia Studio, his company\n• What is React? Tell me about MERN, Tailwind or Python\n• Tell me about OpenTrace or DevDock\n• What are his skills?\n• How did his journey start?\n• Is he open to work?\n• How do I contact him?`,
     links: [],
   }
 }
