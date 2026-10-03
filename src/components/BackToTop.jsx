@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion'
-import { IconArrow } from './Icons'
+import Mascot from './Mascot'
 
 export default function BackToTop() {
   const [visible, setVisible] = useState(false)
@@ -41,7 +41,7 @@ export default function BackToTop() {
               style={{ pathLength: progress }}
             />
           </svg>
-          <IconArrow className="h-4 w-4 -rotate-90" />
+          <Mascot size={24} className="h-6 w-6" />
         </motion.button>
       )}
     </AnimatePresence>
