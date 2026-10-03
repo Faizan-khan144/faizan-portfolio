@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ChevronRight, Rocket, Sparkles } from 'lucide-react'
 import ChatPanel from '../components/ChatPanel'
@@ -12,17 +12,8 @@ import Button from '../components/Button'
 import Reveal from '../components/Reveal'
 import ProjectCard from '../components/ProjectCard'
 import Mascot from '../components/Mascot'
+import MascotInteractive from '../components/MascotInteractive'
 import SocialLinks from '../components/SocialLinks'
-
-const Mascot3D = lazy(() => import('../components/Mascot3D'))
-
-function Mascot3DBox({ size, className = '', interactive = true, autoGreet = false }) {
-  return (
-    <Suspense fallback={<Mascot size={size} className={className} />}>
-      <Mascot3D size={size} className={className} interactive={interactive} autoGreet={autoGreet} />
-    </Suspense>
-  )
-}
 import ContactForm from '../components/ContactForm'
 import Typewriter from '../components/Typewriter'
 import { profile } from '../data/profile'
@@ -150,13 +141,25 @@ function HeroTerminal() {
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
     >
-      <motion.div
-        className="absolute -left-24 -top-24 z-30 hidden sm:block"
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-      >
-        <Mascot3DBox size={132} interactive autoGreet />
-      </motion.div>
+      <div className="pointer-events-none absolute inset-x-0 -top-20 z-30 hidden justify-center sm:flex">
+        <motion.div
+          className="pointer-events-auto relative"
+          initial={{ y: -220, opacity: 0, rotate: -10 }}
+          animate={{ y: 0, opacity: 1, rotate: 0 }}
+          transition={{ type: 'spring', stiffness: 190, damping: 13, mass: 0.9, delay: 0.4 }}
+        >
+          <span
+            className="pointer-events-none absolute inset-0 m-auto h-20 w-20 rounded-full bg-accent/20 blur-2xl"
+            aria-hidden="true"
+          ></span>
+          <motion.div
+            animate={{ y: [0, -6, 0] }}
+            transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 1.4 }}
+          >
+            <MascotInteractive size={112} interactive autoGreet />
+          </motion.div>
+        </motion.div>
+      </div>
       <div
         className="pointer-events-none absolute inset-1/2 -z-10 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2"
         aria-hidden="true"
@@ -687,12 +690,16 @@ function Studio() {
                   </Button>
                 </div>
               </div>
-              <div className="flex justify-center">
+              <div className="relative flex justify-center">
+                <span
+                  className="pointer-events-none absolute inset-0 m-auto h-28 w-28 rounded-full bg-accent/15 blur-2xl"
+                  aria-hidden="true"
+                ></span>
                 <motion.div
-                  animate={{ y: [0, -10, 0] }}
+                  animate={{ y: [0, -9, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
                 >
-                  <Mascot3DBox size={184} interactive />
+                  <MascotInteractive size={150} interactive />
                 </motion.div>
               </div>
             </div>

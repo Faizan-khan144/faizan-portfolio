@@ -1,4 +1,3 @@
-import { lazy, Suspense } from 'react'
 import { Sparkles } from 'lucide-react'
 import PageTransition from '../components/PageTransition'
 import Seo from '../components/Seo'
@@ -6,16 +5,7 @@ import Container from '../components/Container'
 import Reveal from '../components/Reveal'
 import ChatPanel from '../components/ChatPanel'
 import Mascot from '../components/Mascot'
-
-const Mascot3D = lazy(() => import('../components/Mascot3D'))
-
-function Mascot3DBox({ size, className = '', interactive = true, autoGreet = false }) {
-  return (
-    <Suspense fallback={<Mascot size={size} className={className} />}>
-      <Mascot3D size={size} className={className} interactive={interactive} autoGreet={autoGreet} />
-    </Suspense>
-  )
-}
+import MascotInteractive from '../components/MascotInteractive'
 
 export default function AiAssistant() {
   return (
@@ -47,7 +37,7 @@ export default function AiAssistant() {
                 </p>
               </div>
               <div className="mx-auto shrink-0 lg:mx-0">
-                <Mascot3DBox size={184} interactive autoGreet />
+                <MascotInteractive size={160} interactive autoGreet />
               </div>
             </div>
           </Reveal>
