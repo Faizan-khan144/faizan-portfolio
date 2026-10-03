@@ -11,11 +11,13 @@ import Container from '../components/Container'
 import Button from '../components/Button'
 import Reveal from '../components/Reveal'
 import ProjectCard from '../components/ProjectCard'
+import Mascot from '../components/Mascot'
 import SocialLinks from '../components/SocialLinks'
 import ContactForm from '../components/ContactForm'
 import Typewriter from '../components/Typewriter'
 import { profile } from '../data/profile'
 import { projects, featuredProjects } from '../data/projects'
+import { studio } from '../data/studio'
 import { skillCategories } from '../data/skills'
 import { journey } from '../data/journey'
 import { IconMail, IconMapPin } from '../components/Icons'
@@ -138,6 +140,14 @@ function HeroTerminal() {
       onPointerMove={onPointerMove}
       onPointerLeave={onPointerLeave}
     >
+      <motion.div
+        className="absolute -left-6 -top-9 z-30 hidden sm:block"
+        animate={{ rotate: [0, -6, 6, 0], y: [0, -4, 0] }}
+        transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
+        aria-hidden="true"
+      >
+        <Mascot size={66} className="h-[66px] w-[66px] drop-shadow-xl" />
+      </motion.div>
       <div
         className="pointer-events-none absolute inset-1/2 -z-10 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2"
         aria-hidden="true"
@@ -318,6 +328,22 @@ function Hero() {
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
               {profile.heroDescription}
             </p>
+          </Reveal>
+
+          <Reveal delay={0.13}>
+            <a
+              href={studio.url}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/5 px-3.5 py-1.5 transition-colors hover:border-accent hover:bg-accent/10"
+            >
+              <Mascot size={22} className="h-[22px] w-[22px] shrink-0" />
+              <span className="font-mono text-[0.7rem] uppercase tracking-wide2 text-accent">
+                {studio.role}
+              </span>
+              <span className="text-muted" aria-hidden="true">·</span>
+              <span className="text-sm font-medium text-ink">{studio.name}</span>
+            </a>
           </Reveal>
 
           <Reveal delay={0.15}>
@@ -604,6 +630,71 @@ function Projects() {
   )
 }
 
+function Studio() {
+  return (
+    <section className="border-t border-line py-20 lg:py-28">
+      <Container>
+        <Reveal>
+          <div className="relative overflow-hidden rounded-2xl border border-line/10 bg-surface p-8 shadow-card sm:p-12">
+            <div
+              className="pointer-events-none absolute inset-0"
+              style={{
+                background: `radial-gradient(120% 100% at 0% 0%, ${studio.brand}1f, transparent 60%)`,
+              }}
+              aria-hidden="true"
+            ></div>
+            <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+              <div>
+                <p className="eyebrow mb-4 flex items-center gap-3">
+                  <span className="text-accent">00</span>
+                  <span className="h-px w-8 bg-line" aria-hidden="true"></span>
+                  Founder &amp; CEO
+                </p>
+                <div className="flex items-center gap-3">
+                  <span
+                    className="flex h-12 w-12 items-center justify-center rounded-full"
+                    style={{ backgroundColor: `${studio.brand}22` }}
+                  >
+                    <Mascot size={34} className="h-[34px] w-[34px]" />
+                  </span>
+                  <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+                    {studio.name}
+                  </h2>
+                </div>
+                <p className="mt-3 font-mono text-sm" style={{ color: studio.brand }}>
+                  {studio.tagline}
+                </p>
+                <p className="mt-5 max-w-xl leading-relaxed text-muted">{studio.description}</p>
+                <ul className="mt-6 flex flex-wrap gap-2">
+                  {studio.stack.map((tech) => (
+                    <li key={tech}>
+                      <span className="chip">{tech}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-7">
+                  <Button href={studio.url} withArrow>
+                    Visit {studio.name}
+                  </Button>
+                </div>
+              </div>
+              <div className="hidden lg:block">
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                  aria-hidden="true"
+                >
+                  <Mascot size={168} className="h-[168px] w-[168px]" />
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </Container>
+    </section>
+  )
+}
+
 function AiSection() {
   return (
     <section className="border-t border-line py-20 lg:py-28">
@@ -720,6 +811,7 @@ export default function Home() {
       <Hero />
       <TechStrip />
       <About />
+      <Studio />
       <Skills />
       <Experience />
       <Projects />
