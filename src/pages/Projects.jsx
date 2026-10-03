@@ -7,6 +7,7 @@ import Reveal from '../components/Reveal'
 import Parallax from '../components/Parallax'
 import Button from '../components/Button'
 import ProjectCard from '../components/ProjectCard'
+import Mascot from '../components/Mascot'
 import { projects, projectCategories } from '../data/projects'
 import { profile } from '../data/profile'
 
@@ -38,6 +39,7 @@ export default function Projects() {
               <span className="text-accent">02</span>
               <span className="h-px w-8 bg-line" aria-hidden="true"></span>
               Projects
+              <Mascot size={18} className="h-[18px] w-[18px]" />
             </p>
             <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
               Work built to <span className="text-accent-serif">be used.</span>
