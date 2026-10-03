@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { animate } from 'framer-motion'
-import Mascot from './Mascot'
+import { animate, motion } from 'framer-motion'
+import MascotInteractive from './MascotInteractive'
 
 export default function Loader() {
   const [progress, setProgress] = useState(0)
@@ -33,7 +33,22 @@ export default function Loader() {
           leaving ? 'opacity-0' : 'opacity-100'
         }`}
       >
-        <Mascot size={78} className="mb-5 h-[78px] w-[78px]" animate />
+        <div className="relative mb-5 flex flex-col items-center">
+          <motion.div
+            initial={{ y: -300, opacity: 0, rotate: -12 }}
+            animate={{ y: 0, opacity: 1, rotate: 0 }}
+            transition={{ type: 'spring', stiffness: 180, damping: 11, mass: 0.9, delay: 0.1 }}
+          >
+            <MascotInteractive size={92} interactive autoGreet />
+          </motion.div>
+          <motion.span
+            initial={{ scaleX: 0, opacity: 0 }}
+            animate={{ scaleX: 1, opacity: 0.3 }}
+            transition={{ delay: 0.6, duration: 0.4 }}
+            className="mt-1 h-2 w-14 rounded-full bg-ink/25 blur-[2px]"
+            aria-hidden="true"
+          ></motion.span>
+        </div>
 
         <p className="font-mono text-sm tracking-[0.2em] text-accent">
           {`<`}faizan /{`>`}

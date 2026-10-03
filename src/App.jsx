@@ -8,7 +8,7 @@ import BackToTop from './components/BackToTop'
 import Assistant from './components/Assistant'
 import CursorGlow from './components/CursorGlow'
 import ScrollToTop from './components/ScrollToTop'
-import Mascot from './components/Mascot'
+import MascotInteractive from './components/MascotInteractive'
 import Home from './pages/Home'
 
 const About = lazy(() => import('./pages/About'))
@@ -46,7 +46,13 @@ function RouteLoading() {
       role="status"
       aria-label="Loading page"
     >
-      <Mascot size={72} className="h-[72px] w-[72px]" />
+      <motion.div
+        initial={{ y: -220, opacity: 0, rotate: -10 }}
+        animate={{ y: 0, opacity: 1, rotate: 0 }}
+        transition={{ type: 'spring', stiffness: 180, damping: 12, mass: 0.9 }}
+      >
+        <MascotInteractive size={72} interactive />
+      </motion.div>
       <span className="font-mono text-xs uppercase tracking-wide2 text-muted">Loading</span>
     </div>
   )
