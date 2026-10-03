@@ -11,6 +11,7 @@ import { IconMenu, IconClose, IconArrow } from './Icons'
 import Brand from './Brand'
 import ThemeToggle from './ThemeToggle'
 import Magnetic from './Magnetic'
+import Mascot from './Mascot'
 
 const links = [
   { to: '/projects', label: 'Work' },
@@ -78,7 +79,8 @@ export default function Navbar() {
           ></motion.div>
 
           <div className="flex items-center gap-1 px-2 py-2 sm:gap-2 sm:px-2.5">
-            <Link to="/" className="group relative flex items-center gap-1 rounded-full" aria-label="Faizan Khan - home">
+            <Link to="/" className="group relative flex items-center gap-1.5 rounded-full" aria-label="Faizan Khan - home">
+              <Mascot size={22} className="h-[22px] w-[22px] shrink-0" />
               <span className="font-display text-lg font-bold tracking-tight text-ink transition-colors duration-300 group-hover:text-accent">
                 <span className="text-accent">F</span>aizan
               </span>
