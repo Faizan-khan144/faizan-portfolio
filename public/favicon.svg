@@ -1,27 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="fzBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#1B4332"/>
-      <stop offset="1" stop-color="#2D6A4F"/>
-    </linearGradient>
-    <linearGradient id="fzRing" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#52B788"/>
-      <stop offset="1" stop-color="#2D6A4F"/>
-    </linearGradient>
-    <linearGradient id="fzText" x1="14" y1="16" x2="50" y2="48" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FFFFFF"/>
-      <stop offset="1" stop-color="#BCE4CE"/>
+    <linearGradient id="mascotBg" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1B4332" />
+      <stop offset="1" stop-color="#2D6A4F" />
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#fzBg)"/>
-  <text x="32" y="43" text-anchor="middle" font-family="Inter, 'Segoe UI', Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="-1.5" fill="url(#fzText)">FZ</text>
-  <g>
-    <circle cx="32" cy="32" r="26" fill="none" stroke="url(#fzRing)" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="12 10" opacity="0.9">
-      <animateTransform attributeName="transform" type="rotate" from="0 32 32" to="360 32 32" dur="7s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="46" cy="18" r="3" fill="#52B788">
-      <animate attributeName="opacity" values="1;0.25;1" dur="2.2s" repeatCount="indefinite"/>
-    </circle>
+
+  <rect x="0" y="0" width="64" height="64" rx="15" fill="url(#mascotBg)" />
+
+  <g transform="translate(32 35) scale(1.16) translate(-32 -35)">
+    <path d="M32 9c0-4 3-7 7-7 0 5-2 8-7 8z" fill="#8EE0B8" />
+    <line x1="32" y1="9" x2="32" y2="14" stroke="#8EE0B8" stroke-width="2" stroke-linecap="round" />
+    <circle cx="32" cy="8" r="2.4" fill="#8EE0B8" />
+
+    <rect
+      x="8"
+      y="14"
+      width="48"
+      height="44"
+      rx="22"
+      fill="#F0F1F3"
+      stroke="#8EE0B8"
+      stroke-width="2.5"
+    />
+
+    <ellipse cx="18.5" cy="43" rx="4.4" ry="3" fill="#F472B6" opacity="0.35" />
+    <ellipse cx="45.5" cy="43" rx="4.4" ry="3" fill="#F472B6" opacity="0.35" />
+
+    <circle cx="23" cy="34" r="5.4" fill="#0F172A" />
+    <circle cx="41" cy="34" r="5.4" fill="#0F172A" />
+    <circle cx="24.9" cy="32" r="1.9" fill="#FFFFFF" />
+    <circle cx="42.9" cy="32" r="1.9" fill="#FFFFFF" />
+
+    <path
+      d="M27 45c2 2.7 8 2.7 10 0"
+      fill="none"
+      stroke="#0F172A"
+      stroke-width="2.2"
+      stroke-linecap="round"
+    />
   </g>
 </svg>
