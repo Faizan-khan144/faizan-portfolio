@@ -3,6 +3,7 @@ import Seo from '../components/Seo'
 import Container from '../components/Container'
 import Reveal from '../components/Reveal'
 import ContactForm from '../components/ContactForm'
+import Mascot from '../components/Mascot'
 
 export default function Contact() {
   return (
@@ -20,6 +21,7 @@ export default function Contact() {
               <span className="text-accent">05</span>
               <span className="h-px w-8 bg-line" aria-hidden="true"></span>
               Contact
+              <Mascot size={18} className="h-[18px] w-[18px]" />
             </p>
             <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
               Let's build something <span className="text-accent">worth shipping.</span>
