@@ -172,7 +172,7 @@ export default async function handler(req, res) {
         if (!upstream.ok) {
           const detail = await upstream.text().catch(() => '')
           console.error('provider error', provider.model, upstream.status, detail.slice(0, 200))
-          if (attempt < 2 && (upstream.status >= 500 || upstream.status === 429)) {
+          if (attempt < 2 && upstream.status >= 500) {
             await new Promise((r) => setTimeout(r, 400 * (attempt + 1)))
             continue
           }
@@ -207,5 +207,5 @@ export default async function handler(req, res) {
   }
 
   console.error('all providers failed', failures.join(', '))
-  return res.status(502).json({ fallback: true, error: 'Upstream model error', failures })
+  return res.status(502).json({ fallback: true, error: 'Upstream model error' })
 }
