@@ -8,6 +8,7 @@ import BackToTop from './components/BackToTop'
 import Assistant from './components/Assistant'
 import CursorGlow from './components/CursorGlow'
 import ScrollToTop from './components/ScrollToTop'
+import Mascot from './components/Mascot'
 import Home from './pages/Home'
 
 const About = lazy(() => import('./pages/About'))
@@ -40,8 +41,13 @@ function Ambient() {
 
 function RouteLoading() {
   return (
-    <div className="flex min-h-[70vh] items-center justify-center" role="status" aria-label="Loading page">
-      <span className="h-6 w-6 animate-spin rounded-full border-2 border-accent/30 border-t-accent" />
+    <div
+      className="flex min-h-[70vh] flex-col items-center justify-center gap-4"
+      role="status"
+      aria-label="Loading page"
+    >
+      <Mascot size={72} className="h-[72px] w-[72px]" />
+      <span className="font-mono text-xs uppercase tracking-wide2 text-muted">Loading</span>
     </div>
   )
 }
