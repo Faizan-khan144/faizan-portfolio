@@ -62,13 +62,21 @@ function buildProviders() {
 
   const geminiKey = process.env.GEMINI_API_KEY
   if (geminiKey) {
-    const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash'
-    providers.push({
-      model: `gemini:${model}`,
-      url: GEMINI_URL,
-      headers: { Authorization: `Bearer ${geminiKey}`, 'Content-Type': 'application/json' },
-      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 1024, top_p: 0.9 }),
-    })
+    const models = [...new Set([process.env.GEMINI_MODEL || 'gemini-3.8-flash', 'gemini-flash-latest'])]
+    for (const model of models) {
+      providers.push({
+        model: `gemini:${model}`,
+        url: GEMINI_URL,
+        headers: { Authorization: `Bearer ${geminiKey}`, 'Content-Type': 'application/json' },
+        payload: (messages, attempt = 0) => ({
+        model,
+        messages,
+        temperature: 0.5,
+        max_tokens: 1024 + attempt * 1024,
+        top_p: 0.9,
+      }),
+      })
+    }
   }
 
   const openrouterKey = process.env.OPENROUTER_API_KEY
@@ -153,19 +161,19 @@ export default async function handler(req, res) {
   const failures = []
 
   for (const provider of buildProviders()) {
-    for (let attempt = 0; attempt < 2; attempt++) {
+    for (let attempt = 0; attempt < 3; attempt++) {
       try {
         const upstream = await fetch(provider.url, {
           method: 'POST',
           headers: provider.headers,
-          body: JSON.stringify(provider.payload(messages)),
+          body: JSON.stringify(provider.payload(messages, attempt)),
         })
 
         if (!upstream.ok) {
           const detail = await upstream.text().catch(() => '')
           console.error('provider error', provider.model, upstream.status, detail.slice(0, 200))
-          if (attempt === 0 && (upstream.status >= 500 || upstream.status === 429)) {
-            await new Promise((r) => setTimeout(r, 400))
+          if (attempt < 2 && (upstream.status >= 500 || upstream.status === 429)) {
+            await new Promise((r) => setTimeout(r, 400 * (attempt + 1)))
             continue
           }
           failures.push(`${provider.model}:${upstream.status}`)
@@ -176,8 +184,8 @@ export default async function handler(req, res) {
         const reply = data?.choices?.[0]?.message?.content?.trim()
 
         if (!reply) {
-          if (attempt === 0) {
-            await new Promise((r) => setTimeout(r, 350))
+          if (attempt < 2) {
+            await new Promise((r) => setTimeout(r, 350 * (attempt + 1)))
             continue
           }
           failures.push(`${provider.model}:empty`)
@@ -188,8 +196,8 @@ export default async function handler(req, res) {
         return res.status(200).json({ reply, model: provider.model, cached: false })
       } catch (err) {
         console.error('provider failed', provider.model, err)
-        if (attempt === 0) {
-          await new Promise((r) => setTimeout(r, 350))
+        if (attempt < 2) {
+          await new Promise((r) => setTimeout(r, 350 * (attempt + 1)))
           continue
         }
         failures.push(`${provider.model}:${err?.name || 'error'}`)
