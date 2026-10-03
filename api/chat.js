@@ -62,12 +62,12 @@ function buildProviders() {
 
   const geminiKey = process.env.GEMINI_API_KEY
   if (geminiKey) {
-    const model = process.env.GEMINI_MODEL || 'gemini-2.0-flash'
+    const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash'
     providers.push({
       model: `gemini:${model}`,
       url: GEMINI_URL,
       headers: { Authorization: `Bearer ${geminiKey}`, 'Content-Type': 'application/json' },
-      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 700, top_p: 0.9 }),
+      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 1024, top_p: 0.9 }),
     })
   }
 
