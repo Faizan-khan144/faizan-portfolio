@@ -2,6 +2,7 @@ import { profile, socials } from '../../src/data/profile.js'
 import { skillCategories } from '../../src/data/skills.js'
 import { projects } from '../../src/data/projects.js'
 import { journey } from '../../src/data/journey.js'
+import { studio } from '../../src/data/studio.js'
 
 function projectLine(p) {
   const bits = [`- ${p.name} (${p.category})`]
@@ -31,6 +32,7 @@ export function buildKnowledge() {
 ## WHO HE IS
 Name: ${profile.name} (goes by ${profile.firstName})
 Role: ${profile.role} - ${profile.tagline}
+Founder: ${studio.role} of ${studio.name} (${studio.url})
 Location: ${profile.location}
 Availability: ${profile.availability}
 Email: ${profile.email}
@@ -51,6 +53,14 @@ Also works with: ${profile.array}
 
 ## STATS
 ${profile.facts.map((f) => `- ${f.value} ${f.label}`).join('\n')}
+
+## STUDIO / COMPANY
+${studio.name} - ${studio.tagline}
+Role: ${studio.role}
+What it is: ${studio.description}
+Stack: ${studio.stack.join(', ')}
+Website: ${studio.url}
+${studio.highlights.map((h) => `- ${h}`).join('\n')}
 
 ## PROJECTS (${projects.length} total)
 ${projects.map(projectLine).join('\n')}
@@ -75,6 +85,7 @@ RULES:
 5. If someone asks about hiring, availability or contact, mention he is ${profile.availability} and share the email: ${profile.email}.
 6. Keep formatting light - no markdown headings. Occasional **bold** and \`code\` is fine.
 7. You are speaking to a potential client, employer or fellow developer. Sound like a knowledgeable, modest representative of him.
+8. ${profile.firstName} is the founder and CEO of ${studio.name}, a web design and development studio. When asked about his company, his role as founder or "${studio.short}", describe it accurately using the STUDIO section below and share ${studio.url}.
 
 KNOWLEDGE BASE:
 ${buildKnowledge()}`
