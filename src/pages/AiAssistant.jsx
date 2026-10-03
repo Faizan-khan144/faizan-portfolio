@@ -4,6 +4,7 @@ import Seo from '../components/Seo'
 import Container from '../components/Container'
 import Reveal from '../components/Reveal'
 import ChatPanel from '../components/ChatPanel'
+import Mascot from '../components/Mascot'
 
 export default function AiAssistant() {
   return (
@@ -22,6 +23,7 @@ export default function AiAssistant() {
                 <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
               </span>
               FZ AI · Full-page chat
+              <Mascot size={18} className="h-[18px] w-[18px]" />
             </p>
             <h1 className="max-w-3xl font-display text-4xl font-bold leading-[1.06] tracking-tight text-ink sm:text-5xl lg:text-6xl">
               Chat with my AI about <span className="moss-text">what I actually build.</span>
