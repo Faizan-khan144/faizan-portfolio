@@ -4,6 +4,7 @@ import Container from '../components/Container'
 import Reveal from '../components/Reveal'
 import SkillCategory from '../components/SkillCategory'
 import GoToLink from '../components/GoToLink'
+import Mascot from '../components/Mascot'
 import { skillCategories } from '../data/skills'
 
 export default function Skills() {
@@ -22,6 +23,7 @@ export default function Skills() {
               <span className="text-accent">03</span>
               <span className="h-px w-8 bg-line" aria-hidden="true"></span>
               Skills
+              <Mascot size={18} className="h-[18px] w-[18px]" />
             </p>
             <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
               A frontend-first stack, <span className="text-shimmer">growing full-stack.</span>
