@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { profile } from '../data/profile'
+import Mascot from './Mascot'
 
 const inputClasses =
   'w-full rounded-md border border-line bg-surface px-4 py-3 text-sm text-ink placeholder:text-muted/70 transition-colors focus:border-accent/60'
@@ -143,6 +144,7 @@ export default function ContactForm() {
         disabled={status === 'sending'}
         className="btn-base group mt-6 w-full rounded-full bg-ink text-bg transition-colors duration-300 hover:bg-accent hover:text-accent-ink disabled:cursor-not-allowed sm:w-auto"
       >
+        <Mascot size={18} className="h-[18px] w-[18px]" />
         {status === 'sending' ? 'Sending...' : 'Send message'}
       </button>
 
