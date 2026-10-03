@@ -1,6 +1,7 @@
 import { SYSTEM_PROMPT } from './_lib/context.js'
 
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions'
+const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions'
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions'
 const POLLINATIONS_URL = 'https://text.pollinations.ai/openai'
@@ -55,6 +56,17 @@ function buildProviders() {
       model,
       url: GROQ_URL,
       headers: { Authorization: `Bearer ${groqKey}`, 'Content-Type': 'application/json' },
+      payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 700, top_p: 0.9 }),
+    })
+  }
+
+  const geminiKey = process.env.GEMINI_API_KEY
+  if (geminiKey) {
+    const model = process.env.GEMINI_MODEL || 'gemini-2.0-flash'
+    providers.push({
+      model: `gemini:${model}`,
+      url: GEMINI_URL,
+      headers: { Authorization: `Bearer ${geminiKey}`, 'Content-Type': 'application/json' },
       payload: (messages) => ({ model, messages, temperature: 0.5, max_tokens: 700, top_p: 0.9 }),
     })
   }
