@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { profile } from '../data/profile'
 import SocialLinks from './SocialLinks'
 import Brand from './Brand'
+import Mascot from './Mascot'
 import { IconArrow } from './Icons'
 
 const footerLinks = [
@@ -21,9 +22,12 @@ export default function Footer() {
       <div className="container-x py-14">
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
-            <Link to="/" aria-label="Faizan Khan - home" className="inline-block">
-              <Brand className="text-xl" />
-            </Link>
+            <div className="flex items-center gap-3">
+              <Mascot size={40} className="h-10 w-10 shrink-0" />
+              <Link to="/" aria-label="Faizan Khan - home" className="inline-block">
+                <Brand className="text-xl" />
+              </Link>
+            </div>
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Frontend developer in Karachi, Pakistan - building responsive, modern web interfaces
               and learning the MERN stack one project at a time.
@@ -67,7 +71,9 @@ export default function Footer() {
             <p className="text-xs text-muted">
               © {year} {profile.name}. All rights reserved.
             </p>
-            <p className="font-mono text-xs text-muted">Built with React · Tailwind CSS · Vite</p>
+            <p className="flex items-center gap-2 font-mono text-xs text-muted">
+              <Mascot size={18} className="h-[18px] w-[18px]" />
+              Built with React · Tailwind CSS · Vite</p>
           </div>
         </div>
       </div>
