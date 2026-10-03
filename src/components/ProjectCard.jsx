@@ -1,5 +1,6 @@
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Reveal from './Reveal'
+import Mascot from './Mascot'
 import { IconArrow, IconExternal, IconGitHub, IconStar } from './Icons'
 
 const accents = {
@@ -156,7 +157,10 @@ export default function ProjectCard({ project, index = 0, delay = 0 }) {
 
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-2 flex items-center justify-between font-mono text-[0.65rem] text-muted">
-          <span>0{index + 1}</span>
+          <span className="inline-flex items-center gap-1.5">
+            <Mascot size={16} className="h-4 w-4" />
+            0{index + 1}
+          </span>
           {project.stars ? (
             <span className="inline-flex items-center gap-1">
               <IconStar className="h-3 w-3" style={{ color: accentFor(project) }} />
