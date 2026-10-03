@@ -207,5 +207,5 @@ export default async function handler(req, res) {
   }
 
   console.error('all providers failed', failures.join(', '))
-  return res.status(502).json({ fallback: true, error: 'Upstream model error' })
+  return res.status(502).json({ fallback: true, error: 'Upstream model error', failures })
 }
