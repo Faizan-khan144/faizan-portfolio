@@ -5,6 +5,7 @@ import Reveal from '../components/Reveal'
 import SocialLinks from '../components/SocialLinks'
 import { profile } from '../data/profile'
 import CountUp from '../components/CountUp'
+import Mascot from '../components/Mascot'
 import { IconMapPin } from '../components/Icons'
 
 const learningCards = [
@@ -71,6 +72,7 @@ export default function About() {
               <span className="text-accent">01</span>
               <span className="h-px w-8 bg-line" aria-hidden="true"></span>
               About
+              <Mascot size={18} className="h-[18px] w-[18px]" />
             </p>
             <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
               'Designing for clarity,{' '}
