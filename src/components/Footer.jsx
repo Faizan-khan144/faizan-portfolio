@@ -4,6 +4,7 @@ import SocialLinks from './SocialLinks'
 import Brand from './Brand'
 import Mascot from './Mascot'
 import { IconArrow } from './Icons'
+import { studio } from '../data/studio'
 
 const footerLinks = [
   { to: '/', label: 'Home' },
@@ -63,6 +64,21 @@ export default function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-muted">
               Open to opportunities, collaborations and interesting projects.
             </p>
+            <a
+              href={studio.url}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-5 inline-flex items-center gap-3 rounded-lg border border-accent/25 bg-accent/5 px-3 py-2.5 transition-colors hover:border-accent"
+            >
+              <Mascot size={22} className="h-[22px] w-[22px] shrink-0" />
+              <span className="leading-tight">
+                <span className="block font-mono text-[0.6rem] uppercase tracking-wide2 text-accent">
+                  Founder &amp; CEO
+                </span>
+                <span className="text-sm font-medium text-ink">Luveia Studio</span>
+              </span>
+              <IconArrow className="ml-3 h-3.5 w-3.5 -rotate-45 text-muted" />
+            </a>
           </div>
         </div>
 

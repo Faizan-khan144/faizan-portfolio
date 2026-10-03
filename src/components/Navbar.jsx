@@ -12,6 +12,7 @@ import Brand from './Brand'
 import ThemeToggle from './ThemeToggle'
 import Magnetic from './Magnetic'
 import Mascot from './Mascot'
+import { studio } from '../data/studio'
 
 const links = [
   { to: '/projects', label: 'Work' },
@@ -144,6 +145,17 @@ export default function Navbar() {
             <span className="mx-1 hidden h-4 w-px bg-line/15 lg:block" aria-hidden="true"></span>
 
             <div className="flex items-center gap-1.5">
+              <a
+                href={studio.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Luveia Studio - Founder and CEO"
+                className="group hidden items-center gap-1.5 rounded-full border border-accent/30 bg-accent/5 px-3 py-2 font-mono text-xs font-medium text-accent transition-colors hover:border-accent hover:bg-accent/10 sm:inline-flex"
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+                Luveia
+                <IconArrow className="h-3 w-3 -rotate-45 transition-transform group-hover:translate-x-0.5" />
+              </a>
               <ThemeToggle />
               <Magnetic strength={0.4}>
                 <Link
@@ -222,15 +234,24 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.35, duration: 0.3 }}
-                className="mt-8 flex gap-3"
+                className="mt-8 flex flex-col gap-3"
               >
                 <Link
                   to="/contact"
-                  className="btn-base flex-1 rounded-full bg-accent text-accent-ink transition-colors hover:bg-ink hover:text-bg"
+                  className="btn-base justify-center rounded-full bg-accent text-accent-ink transition-colors hover:bg-ink hover:text-bg"
                 >
                   Let's talk
                   <IconArrow className="h-4 w-4" />
                 </Link>
+                <a
+                  href={studio.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn-base justify-center rounded-full border border-accent/40 text-accent transition-colors hover:border-accent hover:bg-accent/5"
+                >
+                  Founder · Luveia Studio
+                  <IconArrow className="h-4 w-4 -rotate-45" />
+                </a>
               </motion.div>
             </nav>
           </motion.div>

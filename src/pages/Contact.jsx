@@ -4,6 +4,7 @@ import Container from '../components/Container'
 import Reveal from '../components/Reveal'
 import ContactForm from '../components/ContactForm'
 import Mascot from '../components/Mascot'
+import { studio } from '../data/studio'
 
 export default function Contact() {
   return (
@@ -29,6 +30,18 @@ export default function Contact() {
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
               Whether it's a role, a collaboration or just a good idea - my inbox is open. Send a
               message below and it lands straight in my email.
+            </p>
+            <p className="mt-4 text-sm text-muted">
+              Looking for the studio? Visit{' '}
+              <a
+                href={studio.url}
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium text-accent underline decoration-accent/40 underline-offset-4 transition-colors hover:decoration-accent"
+              >
+                {studio.name}
+              </a>{' '}
+              - I'm its founder &amp; CEO.
             </p>
           </Reveal>
         </Container>

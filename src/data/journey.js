@@ -35,4 +35,10 @@ export const journey = [
     title: 'Learning the MERN stack',
     text: 'Learning Node.js, Express.js and MongoDB to move from frontend-only work toward building complete full-stack web applications.',
   },
+  {
+    period: 'Now',
+    type: 'Founder',
+    title: 'Founder & CEO - Luveia Studio',
+    text: 'Founded and lead Luveia Studio, a web design and development studio turning ideas into reliable software - strategy, design and engineering, end to end.',
+  },
 ]

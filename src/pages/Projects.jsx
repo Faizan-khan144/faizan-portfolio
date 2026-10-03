@@ -8,8 +8,10 @@ import Parallax from '../components/Parallax'
 import Button from '../components/Button'
 import ProjectCard from '../components/ProjectCard'
 import Mascot from '../components/Mascot'
+import { IconArrow } from '../components/Icons'
 import { projects, projectCategories } from '../data/projects'
 import { profile } from '../data/profile'
+import { studio } from '../data/studio'
 
 export default function Projects() {
   const [active, setActive] = useState('All')
@@ -79,6 +81,34 @@ export default function Projects() {
             <p className="mt-6 font-mono text-xs text-muted">
               Showing {visible.length} of {projects.length} projects
             </p>
+          </Reveal>
+
+          <Reveal delay={0.08}>
+            <a
+              href={studio.url}
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 flex flex-col gap-5 rounded-2xl border border-accent/25 bg-surface p-6 shadow-card transition-colors hover:border-accent sm:flex-row sm:items-center sm:justify-between"
+            >
+              <div className="flex items-center gap-4">
+                <Mascot size={46} className="h-[46px] w-[46px] shrink-0" />
+                <div>
+                  <p className="font-mono text-[0.65rem] uppercase tracking-wide2 text-accent">
+                    Founder &amp; CEO
+                  </p>
+                  <p className="font-display text-lg font-semibold tracking-tight text-ink">
+                    {studio.name}
+                  </p>
+                  <p className="mt-0.5 text-sm text-muted">
+                    {studio.tagline} - the studio I founded and lead.
+                  </p>
+                </div>
+              </div>
+              <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-ink">
+                Visit Luveia
+                <IconArrow className="h-4 w-4 -rotate-45" />
+              </span>
+            </a>
           </Reveal>
 
           <AnimatePresence mode="popLayout">

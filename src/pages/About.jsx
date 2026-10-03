@@ -7,6 +7,7 @@ import { profile } from '../data/profile'
 import CountUp from '../components/CountUp'
 import Mascot from '../components/Mascot'
 import { IconMapPin } from '../components/Icons'
+import { studio } from '../data/studio'
 
 const learningCards = [
   {
@@ -75,7 +76,7 @@ export default function About() {
               <Mascot size={18} className="h-[18px] w-[18px]" />
             </p>
             <h1 className="max-w-3xl font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl">
-              'Designing for clarity,{' '}
+              Designing for clarity,{' '}
               <span className="text-accent-serif">building for the web.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{profile.intro}</p>
@@ -154,6 +155,22 @@ export default function About() {
                 <p className="eyebrow mb-4">Connect</p>
                 <SocialLinks />
               </div>
+
+              <a
+                href={studio.url}
+                target="_blank"
+                rel="noreferrer"
+                className="group rounded-lg border border-accent/25 bg-surface p-6 transition-colors hover:border-accent"
+              >
+                <div className="flex items-center gap-3">
+                  <Mascot size={26} className="h-[26px] w-[26px] shrink-0" />
+                  <p className="eyebrow">Founder &amp; CEO</p>
+                </div>
+                <p className="mt-3 font-display text-lg font-semibold tracking-tight text-ink transition-colors group-hover:text-accent">
+                  {studio.name}
+                </p>
+                <p className="mt-1 text-sm text-muted">{studio.tagline}</p>
+              </a>
             </div>
           </Reveal>
         </Container>
