@@ -1,12 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import ChatPanel from './ChatPanel'
 import Mascot from './Mascot'
-import { IconClose } from './Icons'
+import { IconClose, IconVolume, IconVolumeOff } from './Icons'
+import { isSoundOn, setSoundOn, playChirp, speak, muteVoice } from '../lib/mascotSound'
 
 export default function Assistant() {
   const [open, setOpen] = useState(false)
   const [hint, setHint] = useState(false)
+  const [sound, setSound] = useState(true)
+  const greeted = useRef(false)
 
   useEffect(() => {
     function openPanel() {
@@ -23,12 +26,35 @@ export default function Assistant() {
     return () => clearTimeout(t)
   }, [open, hint])
 
+  useEffect(() => {
+    setSound(isSoundOn())
+  }, [])
+
+  function openChat() {
+    playChirp()
+    if (!greeted.current) {
+      greeted.current = true
+      if (isSoundOn()) speak("Hi, I'm FZ AI. Ask me anything about Faizan.")
+    }
+    setOpen(true)
+    setHint(false)
+  }
+
+  function toggleSound() {
+    const next = !sound
+    setSound(next)
+    setSoundOn(next)
+    if (next) playChirp()
+    else muteVoice()
+  }
+
   return (
     <>
       <motion.button
         type="button"
         onClick={() => {
-          setOpen((v) => !v)
+          if (open) setOpen(false)
+          else openChat()
           setHint(false)
         }}
         initial={false}
@@ -58,6 +84,16 @@ export default function Assistant() {
         </AnimatePresence>
       </motion.button>
 
+      <button
+        type="button"
+        onClick={toggleSound}
+        aria-label={sound ? 'Mute mascot voice' : 'Unmute mascot voice'}
+        aria-pressed={sound}
+        className="fixed bottom-6 right-[5.75rem] z-[75] flex h-10 w-10 items-center justify-center rounded-full border border-line/15 bg-bg/85 text-muted shadow-card backdrop-blur transition-colors hover:border-accent/60 hover:text-accent"
+      >
+        {sound ? <IconVolume className="h-4 w-4" /> : <IconVolumeOff className="h-4 w-4" />}
+      </button>
+
       <AnimatePresence>
         {hint && !open && (
           <motion.div
@@ -73,10 +109,7 @@ export default function Assistant() {
               </span>
               <button
                 type="button"
-                onClick={() => {
-                  setOpen(true)
-                  setHint(false)
-                }}
+                onClick={openChat}
                 className="text-left"
               >
                 <p className="text-sm font-semibold text-ink">Hi, I&apos;m FZ AI</p>
