@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import { ChevronRight, Rocket, Sparkles } from 'lucide-react'
 import ChatPanel from '../components/ChatPanel'
@@ -13,6 +13,16 @@ import Reveal from '../components/Reveal'
 import ProjectCard from '../components/ProjectCard'
 import Mascot from '../components/Mascot'
 import SocialLinks from '../components/SocialLinks'
+
+const Mascot3D = lazy(() => import('../components/Mascot3D'))
+
+function Mascot3DBox({ size, className = '', interactive = true, autoGreet = false }) {
+  return (
+    <Suspense fallback={<Mascot size={size} className={className} />}>
+      <Mascot3D size={size} className={className} interactive={interactive} autoGreet={autoGreet} />
+    </Suspense>
+  )
+}
 import ContactForm from '../components/ContactForm'
 import Typewriter from '../components/Typewriter'
 import { profile } from '../data/profile'
@@ -141,12 +151,11 @@ function HeroTerminal() {
       onPointerLeave={onPointerLeave}
     >
       <motion.div
-        className="absolute -left-6 -top-9 z-30 hidden sm:block"
-        animate={{ rotate: [0, -6, 6, 0], y: [0, -4, 0] }}
+        className="absolute -left-24 -top-24 z-30 hidden sm:block"
+        animate={{ y: [0, -6, 0] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-        aria-hidden="true"
       >
-        <Mascot size={66} className="h-[66px] w-[66px] drop-shadow-xl" />
+        <Mascot3DBox size={132} interactive autoGreet />
       </motion.div>
       <div
         className="pointer-events-none absolute inset-1/2 -z-10 h-[24rem] w-[24rem] -translate-x-1/2 -translate-y-1/2"
@@ -678,13 +687,12 @@ function Studio() {
                   </Button>
                 </div>
               </div>
-              <div className="hidden lg:block">
+              <div className="flex justify-center">
                 <motion.div
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-                  aria-hidden="true"
                 >
-                  <Mascot size={168} className="h-[168px] w-[168px]" />
+                  <Mascot3DBox size={184} interactive />
                 </motion.div>
               </div>
             </div>
