@@ -66,8 +66,66 @@ body {
   animation: mascot-blink 4.4s ease-in-out infinite;
 }
 
+@keyframes byte-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.22;
+  }
+  50% {
+    transform: scale(1.35);
+    opacity: 0.06;
+  }
+}
+
+@keyframes byte-hover {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes byte-thruster {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scaleY(1.22);
+    opacity: 1;
+  }
+}
+
+.byte-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: byte-pulse 2.4s ease-in-out infinite;
+}
+
+.byte-pulse-lag {
+  animation-duration: 3.4s;
+  animation-delay: 0.5s;
+}
+
+.bt-thruster {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: byte-thruster 1.5s ease-in-out infinite;
+}
+
+.mascot-float {
+  animation: byte-hover 4s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .mascot-eyes {
+  .mascot-eyes,
+  .byte-pulse,
+  .bt-thruster,
+  .mascot-float {
     animation: none;
   }
 }
