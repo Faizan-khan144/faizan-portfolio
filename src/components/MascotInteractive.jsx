@@ -12,7 +12,7 @@ function prefersReducedMotion() {
 }
 
 export default function MascotInteractive({
-  size = 168,
+  size = 128,
   className = '',
   interactive = true,
   autoGreet = false,
@@ -22,6 +22,7 @@ export default function MascotInteractive({
   const [look, setLook] = useState({ x: 0, y: 0 })
   const [blink, setBlink] = useState(false)
   const [grin, setGrin] = useState(false)
+  const [wave, setWave] = useState(false)
   const [bubble, setBubble] = useState(false)
   const [reduced] = useState(prefersReducedMotion)
   const timers = useRef([])
@@ -69,9 +70,11 @@ export default function MascotInteractive({
     speak(greeting)
     setGrin(true)
     setBubble(true)
+    setWave(true)
     timers.current.forEach((id) => window.clearTimeout(id))
     timers.current = [
       window.setTimeout(() => setGrin(false), 950),
+      window.setTimeout(() => setWave(false), 1800),
       window.setTimeout(() => setBubble(false), 2300),
     ]
   }, [interactive, greeting])
@@ -84,7 +87,17 @@ export default function MascotInteractive({
 
   useEffect(() => () => timers.current.forEach((id) => window.clearTimeout(id)), [])
 
-  const svg = <Mascot ref={ref} size={size} look={look} blink={blink} grin={grin} />
+  const svg = (
+    <Mascot
+      ref={ref}
+      size={size}
+      look={look}
+      blink={blink}
+      grin={grin}
+      wave={wave}
+      className={wave ? undefined : 'mascot-float'}
+    />
+  )
   const bubbleEl = bubble ? (
     <span className="pointer-events-none absolute left-1/2 top-0 z-10 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border border-accent/30 bg-surface px-3 py-1 font-mono text-xs font-semibold text-accent shadow-card">
       {greeting}
