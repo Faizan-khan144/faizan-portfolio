@@ -109,21 +109,109 @@ body {
   animation: mochi-topknot 3.2s ease-in-out infinite;
 }
 
-.mochi-arm {
+.mo-tuft {
   transform-box: fill-box;
-  transform-origin: center top;
+  animation: mochi-topknot 3.2s ease-in-out infinite;
 }
 
-.mochi-arm-left {
+.mo-arm {
+  transform-box: fill-box;
+  transform-origin: center top;
   animation: mochi-arm-swing-alt 3.6s ease-in-out infinite;
 }
 
-.mochi-arm-right {
-  animation: mochi-arm-swing 3.6s ease-in-out infinite;
+.mo-arm-right {
+  animation-name: mochi-arm-swing;
 }
 
-.mochi-arm-right.is-waving {
-  animation: mochi-wave 0.62s ease-in-out infinite;
+.mo-arm-right.is-waving {
+  animation: mochi-wave 0.55s ease-in-out infinite;
+}
+
+.mo-dizzy {
+  animation: mo-dizzy-wobble 0.55s ease-in-out infinite;
+}
+
+.mo-squished {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+}
+
+@keyframes mo-dizzy-wobble {
+  0%,
+  100% {
+    transform: rotate(-7deg);
+  }
+  50% {
+    transform: rotate(7deg);
+  }
+}
+
+.mo-pop {
+  animation: mo-pop 0.32s cubic-bezier(.2, 1.5, .5, 1) both;
+}
+
+@keyframes mo-pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -100%) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -100%) scale(1);
+  }
+}
+
+.mo-spark {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: rgb(var(--color-accent));
+  opacity: 0;
+  animation: mo-spark 0.7s ease-out forwards;
+}
+
+.mo-spark-0 {
+  top: 12%;
+  left: 8%;
+  animation-delay: 0.02s;
+}
+.mo-spark-1 {
+  top: 4%;
+  right: 14%;
+  width: 5px;
+  height: 5px;
+  animation-delay: 0.1s;
+}
+.mo-spark-2 {
+  bottom: 22%;
+  left: 2%;
+  width: 5px;
+  height: 5px;
+  background: #ff8fbd;
+  animation-delay: 0.16s;
+}
+.mo-spark-3 {
+  top: 26%;
+  right: 4%;
+  background: #ff8fbd;
+  animation-delay: 0.22s;
+}
+
+@keyframes mo-spark {
+  0% {
+    opacity: 0;
+    transform: translateY(6px) scale(0.4);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.5);
+  }
 }
 
 .mascot-float {
@@ -132,11 +220,21 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .mascot-float,
-  .mochi-topknot,
-  .mochi-arm-left,
-  .mochi-arm-right,
-  .mochi-arm-right.is-waving {
+  .mo-tuft,
+  .mo-arm,
+  .mo-arm-right,
+  .mo-arm-right.is-waving,
+  .mo-dizzy,
+  .mo-pop,
+  .mo-spark {
     animation: none;
+  }
+  .mo-spark {
+    display: none;
+  }
+  .mo-pop {
+    opacity: 1;
+    transform: translate(-50%, -100%);
   }
 }
 
