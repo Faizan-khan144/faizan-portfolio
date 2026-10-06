@@ -66,66 +66,105 @@ body {
   animation: mascot-blink 4.4s ease-in-out infinite;
 }
 
-@keyframes byte-pulse {
+@keyframes mochi-breathe {
   0%,
   100% {
-    transform: scale(1);
-    opacity: 0.22;
+    transform: scale(1, 1);
   }
   50% {
-    transform: scale(1.35);
-    opacity: 0.06;
+    transform: scale(1.018, 0.982);
   }
 }
 
-@keyframes byte-hover {
+@keyframes mochi-sway {
   0%,
   100% {
-    transform: translateY(0);
+    transform: rotate(-2.2deg);
   }
   50% {
-    transform: translateY(-3px);
+    transform: rotate(2.2deg);
   }
 }
 
-@keyframes byte-thruster {
+@keyframes mochi-topknot {
   0%,
   100% {
-    transform: scaleY(1);
-    opacity: 0.75;
+    transform: rotate(-6deg);
   }
   50% {
-    transform: scaleY(1.22);
-    opacity: 1;
+    transform: rotate(7deg);
   }
 }
 
-.byte-pulse {
+@keyframes mochi-arm-swing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(11deg);
+  }
+}
+
+@keyframes mochi-arm-swing-alt {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-11deg);
+  }
+}
+
+@keyframes mochi-wave {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-26deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-18deg);
+  }
+}
+
+.mochi-topknot {
+  animation: mochi-topknot 3.2s ease-in-out infinite;
+}
+
+.mochi-arm {
   transform-box: fill-box;
-  transform-origin: center;
-  animation: byte-pulse 2.4s ease-in-out infinite;
+  transform-origin: center top;
 }
 
-.byte-pulse-lag {
-  animation-duration: 3.4s;
-  animation-delay: 0.5s;
+.mochi-arm-left {
+  animation: mochi-arm-swing-alt 3.6s ease-in-out infinite;
 }
 
-.bt-thruster {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: byte-thruster 1.5s ease-in-out infinite;
+.mochi-arm-right {
+  animation: mochi-arm-swing 3.6s ease-in-out infinite;
+}
+
+.mochi-arm-right.is-waving {
+  animation: mochi-wave 0.62s ease-in-out infinite;
 }
 
 .mascot-float {
-  animation: byte-hover 4s ease-in-out infinite;
+  animation: mochi-breathe 4.2s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .mascot-eyes,
   .byte-pulse,
   .bt-thruster,
-  .mascot-float {
+  .mascot-float,
+  .mochi-topknot,
+  .mochi-arm-left,
+  .mochi-arm-right {
     animation: none;
   }
 }
